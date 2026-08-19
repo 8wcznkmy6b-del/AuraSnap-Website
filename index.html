@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraSnap · 专为 Apple Silicon 打造的原生 macOS 截图与 AI 视觉工作台</title>
+    <meta name="description" content="AuraSnap 是一款纯 Swift/AppKit 构建的 macOS 原生极速截图、Retina 2x 双引擎长截图、贴图二次编辑、区域录屏直拖外发、AuraVision AI 视觉大模型与双工具栏拖拽定制工作台。零 Electron 内存黑洞，为 Apple Silicon (M1-M4) 深度优化。">
+    <meta name="keywords" content="AuraSnap, macOS 截图, Apple Silicon, 长截图, 屏幕贴图, 穿透模式, 区域录屏, Vision OCR, DeepSeek, 工具栏自定义, 快捷键自定义, ScreenCaptureKit">
+    
+    <!-- Fonts & CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 顶部极简毛玻璃导航栏 -->
+    <header id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-badge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <span class="logo-text">AuraSnap</span>
+                <span class="logo-tag">v2.6.1</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-link">概览</a>
+                <a href="#studio" class="nav-link">功能工作台</a>
+                <a href="#hud-tester" class="nav-link">快捷键体验</a>
+                <a href="#benchmarks" class="nav-link">架构对比</a>
+                <a href="https://dochi.dpdns.org" class="nav-link" target="_blank" rel="noopener">开发者博客</a>
+            </nav>
+
+            <div class="nav-cta-group">
+                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="btn-github" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="#downloads" class="btn-nav-download">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>下载 DMG</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主视觉 Hero 区域 -->
+    <section id="hero" class="hero-section">
+        <div class="hero-glow-sphere"></div>
+        
+        <div class="chip-pill">
+            <span class="pulse-dot"></span>
+            <span>专为 Apple Silicon M1 - M4 纯原生深度打磨 · 零 Electron 内存黑洞</span>
+        </div>
+
+        <h1 class="hero-title">
+            让屏幕捕获与视觉创作<br>
+            <span class="gradient-title-text">重归极致原生与优雅心流</span>
+        </h1>
+
+        <p class="hero-subtitle">
+            告别卡顿、接缝错位与内存膨胀。AuraSnap 基于 <strong>Swift / AppKit / ScreenCaptureKit</strong> 与 <strong>Apple Accelerate</strong> 矢量数学引擎从零构建，带来双引擎长截图、贴图穿透接管、区域录屏 ⌘ 直拖外发、AuraVision AI 标注感知与双工具栏拖拽定制。
+        </p>
+
+        <div class="hero-actions">
+            <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" class="btn-primary-lg" target="_blank" rel="noopener">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2.02.6-2.66 1.36-.57.66-.99 1.74-.86 2.76 1.01.08 2.01-.52 2.6-1.27z"/>
+                </svg>
+                <span>免费下载 macOS 版 (DMG)</span>
+            </a>
+            <a href="#studio" class="btn-secondary-lg">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                <span>探索交互工作台</span>
+            </a>
+        </div>
+
+        <div class="hero-meta-badges">
+            <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                macOS 13.0+ (Ventura / Sonoma / Sequoia)
+            </span>
+            <span class="meta-divider">|</span>
+            <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                Apple Silicon (M1 - M4) 硬件加速
+            </span>
+            <span class="meta-divider">|</span>
+            <span class="meta-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                100% 自由开源
+            </span>
+        </div>
+
+        <!-- 交互式实机 macOS Desktop 模拟器 -->
+        <div class="hero-desktop-stage">
+            <div class="mac-desktop-frame">
+                <!-- macOS 顶部系统菜单栏 -->
+                <div class="mac-system-menubar">
+                    <div class="menubar-left">
+                        <span class="apple-icon"></span>
+                        <span class="menubar-item active">AuraSnap</span>
+                        <span class="menubar-item">文件</span>
+                        <span class="menubar-item">编辑</span>
+                        <span class="menubar-item">截屏</span>
+                        <span class="menubar-item">贴图</span>
+                    </div>
+                    <div class="menubar-right">
+                        <span>⚡ 100%</span>
+                        <span>Wi-Fi</span>
+                        <span id="macClock">09:41 AM</span>
+                    </div>
+                </div>
+
+                <!-- 模拟 macOS 桌面画布 (支持光标取色与工具栏互动) -->
+                <div class="mac-desktop-canvas" id="desktopCanvas">
+                    <!-- 背景 Xcode 窗口 -->
+                    <div class="sim-app-window xcode" id="xcodeWin">
+                        <div class="sim-window-header">
+                            <div class="traffic-lights">
+                                <span class="traffic-dot r"></span>
+                                <span class="traffic-dot y"></span>
+                                <span class="traffic-dot g"></span>
+                            </div>
+                            <span class="sim-win-title">CaptureEngine.swift — Xcode</span>
+                        </div>
+                        <div class="sim-window-body">
+                            <span class="code-kw">import</span> ScreenCaptureKit<br>
+                            <span class="code-kw">import</span> Accelerate<br><br>
+                            <span class="code-kw">final class</span> <span class="code-fn">AuraCapture</span> {<br>
+                            &nbsp;&nbsp;<span class="code-kw">let</span> engine = <span class="code-str">"Accelerate 2D DP"</span><br>
+                            &nbsp;&nbsp;<span class="code-kw">func</span> <span class="code-fn">grabScreen</span>() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;ScreenCaptureKit.capture(displayID: 1)<br>
+                            &nbsp;&nbsp;}<br>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- 背景浏览器窗口 -->
+                    <div class="sim-app-window browser" id="browserWin">
+                        <div class="sim-window-header">
+                            <div class="traffic-lights">
+                                <span class="traffic-dot r"></span>
+                                <span class="traffic-dot y"></span>
+                                <span class="traffic-dot g"></span>
+                            </div>
+                            <span class="sim-win-title">AuraSnap Documentation</span>
+                        </div>
+                        <div class="sim-window-body">
+                            <h3>⚡ Extreme Native Speed</h3>
+                            <p style="color: #64748b; font-size: 0.7rem; margin-top: 0.4rem;">常驻内存仅 ~45MB，毫秒级 C-API 热键响应。</p>
+                        </div>
+                    </div>
+
+                    <!-- 动态选区框与 8 个白色吸附控制手柄 (SelectionResizerView.swift 1:1 还原) -->
+                    <div id="snappingBorder" class="sim-snapping-border">
+                        <div class="resizer-handle handle-tl"></div>
+                        <div class="resizer-handle handle-tc"></div>
+                        <div class="resizer-handle handle-tr"></div>
+                        <div class="resizer-handle handle-ml"></div>
+                        <div class="resizer-handle handle-mr"></div>
+                        <div class="resizer-handle handle-bl"></div>
+                        <div class="resizer-handle handle-bc"></div>
+                        <div class="resizer-handle handle-br"></div>
+                    </div>
+
+                    <!-- 实时像素采样放大镜与色值胶囊 (MagnifierView 1:1 真实取色) -->
+                    <div id="liveMagnifier" class="sim-live-magnifier">
+                        <div class="mag-grid-matrix">
+                            <span></span><span></span><span></span>
+                            <span></span><span class="mag-center-cell" id="magCenterCell"></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="mag-crosshair-h"></div>
+                        <div class="mag-crosshair-v"></div>
+                        <div class="mag-color-capsule" id="magColorText">#0E121C · RGB(14, 18, 28)</div>
+                    </div>
+
+                    <!-- 真实 1:1 AuraSnap 原生三层悬浮工具栏 (Authentic 3-Tier Native Toolbar) -->
+                    <div class="aurasnap-toolbar-stack" id="nativeToolbarStack">
+                        
+                        <!-- Tier 1: 顶部二次选项栏 (AnnotationOptionsView: 动态跟随选中工具切换) -->
+                        <div class="aurasnap-tier-options" id="tierOptionsBar">
+                            <!-- 动态由 JavaScript 注入当前工具对应二级菜单 -->
+                        </div>
+
+                        <!-- Tier 2: 中间主工具栏 (ToolbarView: 标注工具 + 扩展 + 动作) -->
+                        <div class="aurasnap-tier-main">
+                            <button class="native-tool-btn" data-tool="select" title="选择 / 移动标注">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7 18 3-7 7-3L3 3z"></path></svg>
+                            </button>
+                            <button class="native-tool-btn active" data-tool="pen" title="画笔 (支持智能图形与荧光笔)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.375-9.375z"></path></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="rect" title="矩形标注">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="arrow" title="箭头标注">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="line" title="直线标注">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="20" x2="20" y2="4"></line></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="mosaic" title="马赛克 (高斯模糊 / 像素块)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7" fill="currentColor"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7" fill="currentColor"></rect></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="step" title="序号步骤 (圆圈 / 水滴图钉)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle><text x="12" y="16" font-size="12" text-anchor="middle" fill="#ffffff" font-weight="bold">1</text></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="text" title="文字输入">
+                                <span style="font-weight: 700; font-size: 13px;">Aa</span>
+                            </button>
+                            <button class="native-tool-btn" data-tool="remark" title="智能引线批注 (Ray-AABB 射线吸附)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><text x="12" y="13" font-size="9" text-anchor="middle" fill="currentColor" stroke="none" font-weight="bold">字</text></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="watermark" title="全局防泄密水印">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+                            </button>
+
+                            <div class="native-divider"></div>
+
+                            <button class="native-tool-btn" data-tool="cutout" title="智能主体提取 / 移除背景">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path><circle cx="19" cy="11" r="1" fill="currentColor"></circle><circle cx="5" cy="11" r="1" fill="currentColor"></circle></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="longshot" title="长截图 (滚动截屏)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><polyline points="8 10 12 6 16 10"></polyline><polyline points="8 14 12 18 16 14"></polyline></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="record" title="区域录屏 (MP4/GIF/WebM ⌘ 拖拽外发)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="15" height="16" rx="2"></rect><polygon points="22 7 17 12 22 17 22 7" fill="currentColor"></polygon></svg>
+                            </button>
+                            <button class="native-tool-btn" data-tool="undo" title="撤销 (⌘Z)" style="opacity: 0.45;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
+                            </button>
+                            
+                            <!-- 选区圆角调节滑块 -->
+                            <div class="corner-radius-control" title="调整选区圆角">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="3" y="3" width="18" height="18"></rect></svg>
+                                <input type="range" min="0" max="40" value="0" class="native-corner-slider">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="6"></rect></svg>
+                            </div>
+
+                            <button class="native-tool-btn btn-cancel" data-tool="cancel" title="取消截图 (Esc)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                            </button>
+                            <button class="native-tool-btn btn-copy" id="btnCopySim" title="复制到剪贴板并退出 (⌘C)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                            <button class="native-tool-btn btn-save" data-tool="save" title="保存截图至磁盘 (⌘S)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            </button>
+                            <button class="native-tool-btn btn-pin" data-tool="pin" title="固定为屏幕贴图 (⌘P / ⌘ 拖拽外发)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
+                            </button>
+                        </div>
+
+                        <!-- Tier 3: 底部 AI 视觉胶囊栏 (AIPillBarView 真实原生组件) -->
+                        <div class="aurasnap-tier-ai">
+                            <div class="ai-pill-input-capsule">
+                                <span class="sparkle-icon">✨</span>
+                                <span>指令 (如:总结这段文本)</span>
+                                <svg class="paperplane-icon" width="13" height="13" viewBox="0 0 24 24" fill="#0ea5e9"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                            </div>
+                            <button class="ai-pill-action-btn" id="heroAiExplain">
+                                <span style="font-size: 11px;">✨</span>
+                                <span>解释</span>
+                            </button>
+                            <button class="ai-pill-action-btn" id="heroAiTranslate">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                <span>翻译</span>
+                            </button>
+                            <button class="ai-pill-action-btn" id="heroAiOCR">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path></svg>
+                                <span>提取</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- 提示 Toast -->
+                    <div id="simToast" class="sim-toast-msg">已复制选区画面至剪贴板</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交互功能工作台 (Interactive Studio) -->
+    <section id="studio" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Interactive Studio</span>
+                <h2 class="section-title">为极致效率与美感而生的原生工作流</h2>
+                <p class="section-description">无需安装，直接在浏览器中把玩高精度净底抠图、AI 视觉、文本贴图与微秒级交互手势</p>
+            </div>
+
+            <!-- 工作台切换 Tabs -->
+            <div class="studio-tabs-nav">
+                <button class="studio-tab-btn active" data-tab="matting">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <span>智能抠图与净底</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="ai">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    <span>AuraVision AI 视觉</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="textpin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                    <span>文本贴图 & 水印</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="pin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
+                    <span>贴图 ⌘ 拖拽 & 穿透</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="remark">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line></svg>
+                    <span>引线批注 & 水滴图钉</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="longshot">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    <span>长截图 & ⌘ 录屏</span>
+                </button>
+            </div>
+
+            <!-- Tab 1: 智能抠图与净底 (Matting Studio) -->
+            <div class="studio-panel active" id="panel-matting">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>三路智能分流路由抠图矩阵</h3>
+                        <p>告别单一算法的局限！AuraSnap 根据画面内容智能调度最强引擎，在纯粹数学与云端大模型之间取得完美平衡：</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>拉普拉斯高频净底 (UI 截图)</strong>：二阶微分算法，文字笔画/图标 100% 锐利，大模型无法替代</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>云端商业级语义去背 (兼容 Bria API)</strong>：支持配置自有 API 密钥，生成高保真连续 Alpha 蒙版，精准处理复杂毛发与半透明边缘</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Apple Vision 离线兜底</strong>：零网络依赖、零包体积，确保 100% 极致可用率</li>
+                        </ul>
+                        <div class="matting-pill-group" style="margin-top: 1rem;">
+                            <button class="matting-pill-btn active" id="btnEngineLaplace">拉普拉斯 UI 净底</button>
+                            <button class="matting-pill-btn" id="btnEngineBria">云端商业级引擎 (Bria API)</button>
+                            <button class="matting-pill-btn" id="btnEngineVision">Apple Vision 离线兜底</button>
+                        </div>
+                    </div>
+                    <div class="studio-stage-box">
+                        <div class="matting-demo-container">
+                            <div class="matting-preview-card bg-checkerboard" id="mattingPreviewCard">
+                                <div class="matting-content-box" id="mattingContentBox">
+                                    <code>
+                                        <span style="color: #f43f5e;">struct</span> <span style="color: #38bdf8;">AuraSnap</span> {<br>
+                                        &nbsp;&nbsp;<span style="color: #a855f7;">let</span> engine = <span style="color: #10b981;">"Laplace 4-Pass"</span><br>
+                                        &nbsp;&nbsp;<span style="color: #a855f7;">let</span> sharpness = <span style="color: #f59e0b;">1.00</span><br>
+                                        }
+                                    </code>
+                                </div>
+                            </div>
+                            <div class="matting-toggle-bar">
+                                <span style="font-size: 0.78rem; color: #94a3b8;" id="mattingStatusText">💡 当前预览：拉普拉斯去背 (GPU 棋盘格)</span>
+                                <button class="btn-primary-sm" id="btnToggleCutout" style="padding: 0.35rem 0.9rem; font-size: 0.78rem; background: var(--accent-sky); color: #0f172a; border-radius: 6px; font-weight: 700; border: none; cursor: pointer;">
+                                    还原原图背景
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 2: AuraVision AI 视觉大模型 -->
+            <div class="studio-panel" id="panel-ai">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>AuraVision AI 视觉与标注感知聚焦</h3>
+                        <p>兼容接入 <strong>DeepSeek-R1 / V3、Claude 3.5、OpenAI、Ollama 等开放大模型接口</strong>（支持用户配置自有密钥与 Base URL）。具备两大独家绝技：</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>标注感知聚焦</strong>：截图上的红圈、箭头记号会自动引导大模型聚焦核心内容</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>隐式控制字符自动清洗</strong>：自动滤除零宽空格 (`\u200B`)，彻底告别 403/401 报错</li>
+                        </ul>
+                        <!-- 真实 AIPillBarView 操作胶囊组 -->
+                        <div class="ai-action-pills-bar" style="margin-top: 1rem;">
+                            <button class="ai-action-pill-btn active" id="btnAiExplain">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span>解释</span>
+                            </button>
+                            <button class="ai-action-pill-btn" id="btnAiTranslate">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                                <span>翻译</span>
+                            </button>
+                            <button class="ai-action-pill-btn" id="btnAiOCR">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+                                <span>提取</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="studio-stage-box">
+                        <div class="ai-screenshot-preview">
+                            <div class="red-circle-annotation"></div>
+                            <span class="code-kw">func</span> <span class="code-fn">calculateTax</span>(amount: Double) -> Double {<br>
+                            &nbsp;&nbsp;<span class="code-kw">return</span> amount * 0.0825 <span class="code-comment">// ⚠️ 标注重点</span><br>
+                            }
+                        </div>
+                        <!-- 真实 App AIPillBarView 展开对话卡片 -->
+                        <div class="ai-pill-window-card" id="aiPillCard">
+                            <div class="ai-think-block">
+                                <div class="ai-think-line"></div>
+                                <span>正在聚焦红圈区域 amount * 0.0825 进行核心逻辑语义推理...</span>
+                            </div>
+                            <div class="ai-pill-response-text" id="aiStreamBox">
+                                💡 <strong>AI 标注感知:</strong> 检测到红圈框选了税率计算逻辑 <code>amount * 0.0825</code>，这是 8.25% 的综合消费税率计算公式。
+                            </div>
+                            <div class="ai-pill-footer">
+                                <div class="ai-followup-input-box">
+                                    <input type="text" placeholder="✨ 追问或修改..." readonly>
+                                    <button class="ai-send-btn" title="发送">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                    </button>
+                                </div>
+                                <div class="ai-footer-actions">
+                                    <button class="ai-icon-btn" title="复制结果">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    </button>
+                                    <button class="ai-icon-btn" title="导出文件">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: 剪贴板文本贴图 & 全局水印 -->
+            <div class="studio-panel" id="panel-textpin">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>剪贴板文本贴图 (`⌘⌥T`) 与全局防泄密水印</h3>
+                        <p><strong>代码/日志对账神器</strong>！无需手动框选，复制一段报错日志或 Token 密钥，按下 <strong>`⌘ + ⌥ + T`</strong> 瞬间在鼠标所在屏幕居中生成原生毛玻璃文本贴图！</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>原生毛玻璃与次像素抗锯齿</strong>：极致锐利，支持在此基础上直接打马赛克</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>10,000pt 安全截断</strong>：自带底部“锯齿撕裂+透明渐变”，保护 GPU 显存</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>全局防泄密水印</strong>：底层平铺铺满，零误触，GPU 原生渲染 0 CPU 开销</li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box">
+                        <!-- 真实 TextPinView 原生毛玻璃窗口结构 -->
+                        <div class="native-text-pin-window">
+                            <div class="native-text-pin-body">
+                                <code>
+                                    <span style="color: #64748b;">[2026-08-18 22:15:00]</span> <span style="color: #38bdf8;">INFO:</span> Authenticated with Bearer Token<br>
+                                    <span style="color: #64748b;">[2026-08-18 22:15:01]</span> <span style="color: #10b981;">SUCCESS:</span> AuraVision Stream Ready<br>
+                                    <span style="color: #f59e0b;">{"status": "active", "latency_ms": 1.2}</span><br>
+                                    <span style="color: #94a3b8;">// ⌘⌥T 剪贴板文本毫秒级原生直出贴图</span>
+                                </code>
+                            </div>
+                            <div class="native-text-pin-tear">
+                                <div class="tear-sawtooth"></div>
+                                <span>▼ 10,000pt 物理安全截断渐变</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: 贴图 ⌘ 拖拽与 Ghost 穿透 -->
+            <div class="studio-panel" id="panel-pin">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>贴图二次编辑、⌘ 直拖外发 & Ghost 穿透</h3>
+                        <p>贴图不是死图，生成后随时可再次涂鸦、加文字、打马赛克。<strong>按住 ⌘ (Command) 键直接拖拽贴图</strong>，即可将贴图直接拖入<strong>微信、钉钉、飞书、Slack 等通讯工具发送，或直接拖进访达文件夹秒存</strong>！开启 <strong>Ghost 穿透模式 (`⌥G`)</strong> 后完全穿透点击底层代码，<strong>长按 ⌥ 键</strong> 随时唤醒接管移动！</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>按住 ⌘ 拖拽贴图</strong>：直接外发至通讯工具或拖入文件夹秒存</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ⌥ + 滚轮无极调节透明度 (10% - 100%)，中键一键重置</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ⌥ + 2 历史栈一键恢复误关贴图 (Disk-backed 零内存常驻)</li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box">
+                        <div class="sim-pin-widget" id="simPinBox">
+                            <div class="sim-pin-header">
+                                <span class="pin-badge">PINNED · 贴图</span>
+                                <span style="font-size: 0.7rem; color: #64748b;">按住 ⌘ 拖拽外发 / 双击销毁</span>
+                            </div>
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #94a3b8; line-height: 1.5;">
+                                let config = ScreenCaptureKit()<br>
+                                config.pixelFormat = .bgra32
+                            </div>
+                            <div class="pin-controls-bar">
+                                <div class="pin-slider-row">
+                                    <span>透明度: <strong id="opacityVal">100%</strong></span>
+                                    <input type="range" id="pinOpacitySlider" min="10" max="100" value="100">
+                                </div>
+                                <button class="pin-ghost-toggle-btn" id="btnGhostToggle">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                                    <span id="ghostBtnText">开启 Ghost 穿透模式 (⌥G)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 5: 智能引线批注 & 水滴图钉 -->
+            <div class="studio-panel" id="panel-remark">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>智能引线批注 (Remark) 与水滴指向图钉</h3>
+                        <p>复杂界面与 Bug 反馈的终极排版利器！</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Ray-AABB 射线自适应边缘吸附</strong>：引线说明卡片无论怎么拖动，引线顺滑自适应停靠</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>120fps 击键呼吸自适应包裹</strong>：卡片随打字平滑扩张，三阶黄金比例排版拒绝细长面条</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>水滴图钉 360° 原地旋转 & 原子连续重排</strong>：删除图钉后编号自动递补，永不跳空</li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box" style="gap: 1.8rem;">
+                        <!-- 真实 Remark 批注卡片与锚点引线 -->
+                        <div class="native-remark-stage">
+                            <div class="native-remark-anchor"></div>
+                            <svg class="native-remark-line-svg" width="120" height="40">
+                                <line x1="6" y1="20" x2="114" y2="20" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <div class="native-remark-card">
+                                <span>Ray-AABB 自适应四边吸附</span>
+                            </div>
+                        </div>
+
+                        <!-- 真实 Waterdrop 水滴序号图钉 (Teardrop Pins) -->
+                        <div class="native-waterdrop-group">
+                            <div class="native-waterdrop-pin pin-blue">
+                                <svg class="waterdrop-svg" viewBox="0 0 32 44" width="28" height="38">
+                                    <path d="M16 42 C16 42, 2 24, 2 15 A14 14 0 1 1 30 15 C30 24, 16 42, 16 42 Z" fill="#ffffff" stroke="#38bdf8" stroke-width="2"/>
+                                </svg>
+                                <span class="waterdrop-num" style="color: #38bdf8;">1</span>
+                            </div>
+                            <div class="native-waterdrop-pin pin-rose">
+                                <svg class="waterdrop-svg" viewBox="0 0 32 44" width="28" height="38">
+                                    <path d="M16 42 C16 42, 2 24, 2 15 A14 14 0 1 1 30 15 C30 24, 16 42, 16 42 Z" fill="#ffffff" stroke="#f43f5e" stroke-width="2"/>
+                                </svg>
+                                <span class="waterdrop-num" style="color: #f43f5e;">2</span>
+                            </div>
+                            <div class="native-waterdrop-pin pin-emerald">
+                                <svg class="waterdrop-svg" viewBox="0 0 32 44" width="28" height="38">
+                                    <path d="M16 42 C16 42, 2 24, 2 15 A14 14 0 1 1 30 15 C30 24, 16 42, 16 42 Z" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+                                </svg>
+                                <span class="waterdrop-num" style="color: #10b981;">3</span>
+                            </div>
+                            <span class="waterdrop-caption">尖端指向 360° 原地旋转 · 原子序号重排</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 6: 双引擎长截图 & 区域录屏 -->
+            <div class="studio-panel" id="panel-longshot">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>双引擎长截图 & 区域录屏 ⌘ 直拖外发</h3>
+                        <p>2D DP 接缝切取算法（单帧计算 &lt; 1.5ms）攻克慢滑重复，DAG 滑窗攻克快滑截断。录屏支持 MP4、高保真 GIF、WebM 三种格式，<strong>按住 ⌘ 键直接拖拽即可将视频拖进外部通讯工具发送</strong>！</p>
+                        <ul class="studio-feature-bullets">
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 2D DP 能量接缝算法单帧计算 &lt; 1.5ms，Retina 2x Minimap 实时微缩地图</li>
+                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 按住 ⌘ 拖拽录屏文件直接外发，告别另存为弹窗</li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box" style="padding: 0.85rem;">
+                        <div class="record-format-pills" style="margin-bottom: 0.8rem;">
+                            <span class="fmt-pill active">MP4</span>
+                            <span class="fmt-pill">GIF</span>
+                            <span class="fmt-pill">WebM</span>
+                        </div>
+                        <div class="record-drag-target-zone" id="recordDragZone" style="width: 100%;">
+                            <div class="draggable-video-chip" id="videoDragChip">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span>按住 ⌘ 拖拽我外发</span>
+                            </div>
+                            <span style="font-size: 0.72rem; color: #64748b;">拖入聊天软件 / 邮件 / 访达文件夹</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实时键盘热键 HUD 体验区 (Live Keyboard HUD Tester) -->
+    <section id="hud-tester" class="section">
+        <div class="container">
+            <div class="hud-keyboard-tester">
+                <span class="section-eyebrow">Interactive Shortcut Tester</span>
+                <h2 class="section-title">在键盘上按下按键 · 实时点亮体验</h2>
+                <p class="section-description">在你的实体键盘上尝试按下 <strong>Space、C、Esc、1、2、G、T</strong> 等按键，感受极速响应</p>
+
+                <div class="hud-grid">
+                    <div class="hud-key-card" id="hudKeyCapture">
+                        <kbd>⌥ 1</kbd>
+                        <span>全局唤起屏幕截图</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyRestore">
+                        <kbd>⌥ 2</kbd>
+                        <span>恢复最近误关贴图</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyTextPin">
+                        <kbd>⌘ ⌥ T</kbd>
+                        <span>剪贴板文本转贴图</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyGhost">
+                        <kbd>⌥ G</kbd>
+                        <span>切换贴图 Ghost 穿透</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeySpace">
+                        <kbd>Space</kbd>
+                        <span>切换 宏观整窗 / 微观控件</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyColor">
+                        <kbd>C</kbd>
+                        <span>复制光标处 HEX / RGB</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyCopy">
+                        <kbd>⌘ C</kbd>
+                        <span>复制截图并退出</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyPin">
+                        <kbd>⌘ P</kbd>
+                        <span>置顶为屏幕贴图</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 架构对比表格 (Native vs Electron - 真实严谨指标) -->
+    <section id="benchmarks" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Architecture Comparison</span>
+                <h2 class="section-title">纯原生架构 vs. 传统 Electron 工具</h2>
+                <p class="section-description">为什么说用系统底层原生语言开发截图软件，体验是完全不同的量级？</p>
+            </div>
+
+            <div class="benchmark-container">
+                <table class="benchmark-table">
+                    <thead>
+                        <tr>
+                            <th>对比指标</th>
+                            <th class="col-aurasnap">⚡ AuraSnap (纯原生 Swift)</th>
+                            <th>传统 Electron / Web 封装截图软件</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>日常常驻内存</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 仅 ~45MB - 65MB</span> (贴图关闭时内存释放至磁盘)</td>
+                            <td class="dimmed">400MB ~ 800MB (Chromium 多进程常驻后台)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>启动与唤醒响应</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 毫秒级瞬间响应</span> (Carbon C-API 硬件级快捷键)</td>
+                            <td class="dimmed">150ms ~ 500ms (IPC 跨进程通信与渲染延迟)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>长截图接缝算法</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 2D DP 接缝切取 + Accelerate 硬件加速</span></td>
+                            <td class="dimmed">简单位移覆盖 (极易出现文字断层或重复)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>工具栏与热键自由度</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 双工具栏拖拽排序 + 局部动作全键位录制</span></td>
+                            <td class="dimmed">固定界面排版，仅支持修改单一截屏热键</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI 视觉与离线安全</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 开放协议兼容 (OpenAI/DeepSeek/Ollama)</span></td>
+                            <td class="dimmed">绑定固定付费云端模型，无法本地离线运行</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载与构建专区 (Download & Build Hub) -->
+    <section id="downloads" class="section">
+        <div class="container">
+            <div class="download-card-wrapper">
+                <h2>立即开启 AuraSnap 原生工作流</h2>
+                <p>为你的 Mac 换上一款纯粹、轻快、趁手、充满极客质感的屏幕捕获利器。</p>
+
+                <div class="download-btn-group">
+                    <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" class="btn-primary-lg" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2.02.6-2.66 1.36-.57.66-.99 1.74-.86 2.76 1.01.08 2.01-.52 2.6-1.27z"/>
+                        </svg>
+                        <span>下载最新版本 v2.6.1 (.dmg)</span>
+                    </a>
+                    <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="btn-secondary-lg" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                        </svg>
+                        <span>GitHub Release 源码与归档</span>
+                    </a>
+                </div>
+
+                <div class="version-meta-pill">
+                    <span>当前稳定版: <strong>v2.6.1 (Build 2026.08)</strong></span>
+                    <span>·</span>
+                    <span>适配: <strong>Apple Silicon (M1-M4)</strong></span>
+                    <span>·</span>
+                    <span>安装要求: <strong>macOS 13.0+</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚与合规商标声明 -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand-col">
+                <div class="footer-brand-logo">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                    <span>AuraSnap</span>
+                </div>
+                <p>专为 Apple Silicon 打造的原生 macOS 截图、长截图、贴图与 AI 视觉工作台。Crafted with Vibe Coding by Dochi.</p>
+            </div>
+
+            <div class="footer-links-grid">
+                <div class="footer-links-col">
+                    <h5>生态与开源</h5>
+                    <ul>
+                        <li><a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" target="_blank" rel="noopener">GitHub 仓库</a></li>
+                        <li><a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" target="_blank" rel="noopener">更新日志 (Changelog)</a></li>
+                        <li><a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/issues" target="_blank" rel="noopener">反馈与 Issue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-col">
+                    <h5>开发者</h5>
+                    <ul>
+                        <li><a href="https://dochi.dpdns.org" target="_blank" rel="noopener">博主小站 (Dochi)</a></li>
+                        <li><a href="mailto:pengyj0811@gmail.com">联系作者</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 法律与商标免责声明 (Nominative Fair Use Disclaimer) -->
+        <div class="footer-legal-disclaimer">
+            <p><strong>免责声明与商标声明 (Legal & Trademark Notice)：</strong></p>
+            <p>macOS、Apple Silicon、AppKit、ScreenCaptureKit 均为 Apple Inc. 在美国及其他国家/地区的注册商标。DeepSeek、Claude (Anthropic)、OpenAI (ChatGPT)、Google Gemini、Bria (Bria.ai)、微信 (WeChat)、钉钉 (DingTalk)、飞书 (Feishu)、Slack 等商标、服务标志及产品名称均为其各自所有者的财产。AuraSnap 是一款独立开发的开源 macOS 客户端效率工具，通过开放标准协议与系统级原生 API 提供功能集成与客户端适配，与上述任何第三方实体均无任何附属、赞助、合作或官方背书关系。</p>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>© 2026 AuraSnap. All rights reserved. 遵循 MIT 开源协议。</p>
+            <p>Designed with ui-ux-pro-max + taste-skill + interface-design</p>
+        </div>
+    </footer>
+
+    <!-- 交互脚本 -->
+    <script src="main.js"></script>
+</body>
+</html>
