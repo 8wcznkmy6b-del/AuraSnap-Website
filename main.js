@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initClock();
     initNavbarScroll();
+    initMobileMenu();
     initHeroDesktopSimulator();
     initFeatureStudio();
     initKeyboardHUDTester();
@@ -29,7 +30,7 @@ function initClock() {
 }
 
 /* ==========================================================================
-   2. Navbar Scroll Behavior
+   2. Navbar Scroll & Mobile Menu Behavior
    ========================================================================== */
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
@@ -42,6 +43,33 @@ function initNavbarScroll() {
             navbar.classList.remove('scrolled');
         }
     }, { passive: true });
+}
+
+function initMobileMenu() {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const drawer = document.getElementById('mobileNavDrawer');
+    if (!toggleBtn || !drawer) return;
+
+    toggleBtn.addEventListener('click', () => {
+        toggleBtn.classList.toggle('active');
+        drawer.classList.toggle('open');
+    });
+
+    const links = drawer.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleBtn.classList.remove('active');
+            drawer.classList.remove('open');
+        });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+        if (!drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+            toggleBtn.classList.remove('active');
+            drawer.classList.remove('open');
+        }
+    });
 }
 
 /* ==========================================================================

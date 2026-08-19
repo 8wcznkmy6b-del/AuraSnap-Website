@@ -1899,57 +1899,8 @@ footer {
 }
 
 /* ==========================================================================
-   Responsive Adaptations
+   Secondary Options & Matrix Auxiliary Controls
    ========================================================================== */
-@media (max-width: 1024px) {
-  .studio-panel-layout {
-    grid-template-columns: 1fr;
-  }
-  .hud-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .nav-links, .nav-cta-group {
-    display: none;
-  }
-  .hero-section {
-    padding-top: 105px;
-  }
-  .mac-desktop-canvas {
-    height: 420px;
-  }
-  .aurasnap-toolbar-stack {
-    transform: translateX(-50%) scale(0.75);
-    transform-origin: bottom center;
-    bottom: 8px;
-  }
-  .sim-app-window.browser {
-    display: none;
-  }
-  .sim-app-window.xcode {
-    width: calc(100% - 40px);
-    left: 20px;
-  }
-  .hud-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-inner {
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .footer-links-grid {
-    gap: 2.5rem;
-  }
-  .footer-bottom-bar {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-
-/* Magnifier 3x3 Pixel Grid Matrix */
 .mag-grid-matrix {
   position: absolute;
   width: 42px;
@@ -1975,7 +1926,6 @@ footer {
   z-index: 3;
 }
 
-/* Secondary Options Auxiliary Controls */
 .native-toggle-btn {
   background: rgba(0, 0, 0, 0.04);
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -2029,3 +1979,441 @@ footer {
   width: 140px;
   outline: none;
 }
+
+/* ==========================================================================
+   Mobile Navigation Drawer & Toggle
+   ========================================================================== */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 36px;
+  height: 36px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--text-pure);
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav-drawer {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: rgba(12, 16, 26, 0.96);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-mac);
+  flex-direction: column;
+  gap: 0.4rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: all 0.25s var(--ease-spring);
+  z-index: 1001;
+}
+
+.mobile-nav-drawer.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-nav-link {
+  color: var(--text-high);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+}
+
+.mobile-nav-link:hover, .mobile-nav-link:active {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-sky);
+}
+
+.mobile-nav-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Tablet & Mobile Optimized)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .studio-panel-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .hud-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navigation */
+  #navbar {
+    width: calc(100% - 1.5rem);
+    top: 12px;
+  }
+  .nav-links, .nav-cta-group {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  /* Section Padding */
+  .section {
+    padding: 70px 1rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+  }
+  .section-description {
+    font-size: 0.95rem;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 100px 1rem 40px;
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 7.5vw, 3rem);
+    line-height: 1.18;
+    margin-bottom: 1rem;
+  }
+  .hero-subtitle {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+  }
+  .chip-pill {
+    font-size: 0.74rem;
+    padding: 0.35rem 0.8rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 1.2rem;
+    max-width: 100%;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto 1.5rem;
+    gap: 0.75rem;
+  }
+  .btn-primary-lg, .btn-secondary-lg {
+    width: 100%;
+    justify-content: center;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  .hero-meta-badges {
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+  }
+  .meta-divider {
+    display: none;
+  }
+
+  /* Interactive Desktop Stage */
+  .hero-desktop-stage {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  .mac-desktop-frame {
+    border-radius: 14px;
+  }
+  .mac-system-menubar {
+    padding: 0 0.65rem;
+  }
+  .menubar-left .menubar-item:not(.active) {
+    display: none;
+  }
+  .mac-desktop-canvas {
+    height: 380px;
+  }
+  .sim-app-window.browser {
+    display: none;
+  }
+  .sim-app-window.xcode {
+    left: 10px;
+    top: 12px;
+    width: calc(100% - 20px);
+    height: 240px;
+  }
+  .sim-window-body {
+    font-size: 0.65rem;
+    padding: 0.75rem;
+    line-height: 1.5;
+  }
+  .aurasnap-toolbar-stack {
+    transform: translateX(-50%) scale(0.65);
+    transform-origin: bottom center;
+    bottom: 8px;
+    max-width: 100vw;
+  }
+  .sim-live-magnifier {
+    width: 95px;
+    height: 95px;
+  }
+
+  /* Feature Studio Tabs (Smooth Mobile Scrollbar) */
+  .studio-tabs-nav {
+    display: flex;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding: 4px 1rem 12px;
+    margin: 0 -1rem 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .studio-tabs-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .studio-tab-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+
+  /* Studio Panels */
+  .studio-panel {
+    padding: 1.35rem 1rem;
+    border-radius: 18px;
+  }
+  .studio-panel-layout {
+    gap: 1.5rem;
+  }
+  .studio-panel-info h3 {
+    font-size: 1.35rem;
+    line-height: 1.3;
+  }
+  .studio-panel-info p {
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
+  }
+  .studio-feature-bullets {
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+  .studio-feature-bullets li {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .matting-pill-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .matting-pill-btn {
+    font-size: 0.76rem;
+    padding: 0.35rem 0.65rem;
+  }
+
+  /* Studio Stage */
+  .studio-stage-box {
+    min-height: auto;
+    padding: 1rem 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .matting-preview-card {
+    height: 170px;
+  }
+  .matting-content-box {
+    padding: 1rem;
+    font-size: 0.76rem;
+  }
+  .matting-toggle-bar {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+    text-align: center;
+  }
+  .sim-pin-widget {
+    width: 100%;
+    max-width: 280px;
+    padding: 1rem 0.85rem;
+  }
+  .record-drag-target-zone {
+    width: 100%;
+    height: 160px;
+    padding: 0.75rem;
+  }
+  .ai-screenshot-preview {
+    width: 100%;
+    font-size: 0.66rem;
+  }
+  .ai-pill-window-card {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.75rem;
+  }
+  .ai-pill-footer {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: stretch;
+  }
+  .ai-followup-input-box {
+    width: 100%;
+  }
+  .ai-footer-actions {
+    justify-content: flex-end;
+  }
+
+  /* HUD Keyboard Tester */
+  .hud-keyboard-tester {
+    padding: 1.75rem 1rem;
+    border-radius: 18px;
+  }
+  .hud-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+  .hud-key-card {
+    padding: 0.85rem 0.5rem;
+  }
+  .hud-key-card kbd {
+    font-size: 0.86rem;
+    padding: 0.25rem 0.55rem;
+  }
+  .hud-key-card span {
+    font-size: 0.75rem;
+  }
+
+  /* Benchmarks Table */
+  .benchmark-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 14px;
+  }
+  .benchmark-table {
+    min-width: 540px;
+  }
+  .benchmark-table th, .benchmark-table td {
+    padding: 0.8rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  /* Download Hub */
+  .download-card-wrapper {
+    padding: 2.5rem 1.25rem;
+    border-radius: 20px;
+  }
+  .download-card-wrapper h2 {
+    font-size: 1.85rem;
+  }
+  .download-card-wrapper p {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+  .download-btn-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 1.5rem;
+    gap: 0.75rem;
+  }
+  .version-meta-pill {
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  /* Footer */
+  footer {
+    padding: 3.5rem 1rem 2rem;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .footer-brand-col {
+    max-width: 100%;
+  }
+  .footer-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+    width: 100%;
+  }
+  .footer-legal-disclaimer {
+    padding: 1rem;
+    font-size: 0.72rem;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aurasnap-toolbar-stack {
+    transform: translateX(-50%) scale(0.53);
+    bottom: 5px;
+  }
+  .mac-desktop-canvas {
+    height: 350px;
+  }
+  .hud-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
