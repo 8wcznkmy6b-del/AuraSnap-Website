@@ -66,7 +66,7 @@
                 <a href="index.html" class="docs-brand">
                     <img src="logo.png?v=3.6.0" alt="AuraSnap" class="docs-brand-img">
                     <span>AuraSnap</span>
-                    <span class="badge-ver badge-blue">v2.7.9</span>
+                    <span class="badge-ver badge-blue">v2.8.2</span>
                 </a>
                 <span class="docs-nav-divider"></span>
                 <span class="docs-nav-title">用户使用手册</span>
@@ -75,25 +75,25 @@
             <!-- 即时搜索框 -->
             <div class="docs-search-container">
                 <div class="docs-search-input-wrap">
-                    <svg class="docs-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" id="docsSearchInput" class="docs-search-input" placeholder="搜索功能、快捷键或参数..." autocomplete="off">
-                    <span class="docs-search-shortcut">⌘K</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="docsSearchInput" placeholder="全局搜索功能、快捷键或特性 (⌘K)..." autocomplete="off">
+                    <kbd class="search-kbd-hint">⌘K</kbd>
                 </div>
             </div>
 
-            <!-- 右侧快捷跳转 -->
-            <div class="docs-nav-right">
-                <a href="index.html" class="docs-nav-link-btn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>返回主页</span>
+            <!-- 右侧操作 -->
+            <div class="docs-nav-actions">
+                <a href="index.html" class="docs-btn-back">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>返回官网</span>
                 </a>
-                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="docs-nav-link-btn" target="_blank" rel="noopener">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" class="docs-nav-link-btn docs-nav-primary-btn" target="_blank" rel="noopener">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    <span>下载 DMG</span>
+                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" target="_blank" rel="noopener" class="docs-btn-gh" aria-label="GitHub">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 </a>
             </div>
         </div>
@@ -211,7 +211,7 @@
                 <div class="docs-stats-bar">
                     <span class="docs-stat-chip">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        <span>适用版本：v2.7.9</span>
+                        <span>适用版本：v2.8.2</span>
                     </span>
                     <span class="docs-stat-chip">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -378,10 +378,19 @@
             <section id="sec-6" class="docs-section">
                 <div class="docs-section-title">
                     <span>6. OCR 文字识别与文本清洗套件</span>
-                    <span class="badge-ver badge-rose">OCR Studio</span>
+                    <span class="badge-ver badge-rose">v2.8.0 毫秒级引擎</span>
                 </div>
 
-                <h3 class="docs-subsection-title">6.1 触发与操作方式</h3>
+                <h3 class="docs-subsection-title">6.1 高可用多语言 OCR 架构 (v2.8.0)</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>Apple Neural Engine 硬件级加速</strong>：启用系统多语系神经网络探测，中英日韩德法西等混排识别提速至 <strong>0.1~0.4s</strong> 毫秒级直出。</li>
+                    <li class="docs-list-item"><strong>规范化语言解析 (BCP-47)</strong>：自动剥离地区后缀，构建主力语种高可用提示池，彻底杜绝向 Apple CDN 请求未安装语言包导致的 15~30s 卡顿与网络依赖。</li>
+                    <li class="docs-list-item"><strong>4K/5K Retina 等比下采样防御</strong>：对超过 4096px 的超大截图进行等比尺度防御，归一化坐标与行高保持 100% 同构，杜绝显存溢出。</li>
+                    <li class="docs-list-item"><strong>两阶段容灾降级</strong>：语义主通道异常时毫秒级自动降级至 <code>.fast</code> 纯视觉字形通道，确保 100% 成功产出文字。</li>
+                    <li class="docs-list-item"><strong>渐进式状态提示 HUD</strong>：耗时超 400ms 自动在屏幕顶部浮现磨砂无焦点提示条，识别完成平滑淡出。</li>
+                </ul>
+
+                <h3 class="docs-subsection-title">6.2 触发与操作方式</h3>
                 <ul class="docs-list">
                     <li class="docs-list-item"><strong>快捷键直达</strong>：按 <kbd>⌥</kbd> + <kbd>4</kbd> 框选任意区域，松开鼠标直接弹出 OCR 结果面板。</li>
                     <li class="docs-list-item"><strong>工具栏/贴图提取</strong>：截图或贴图时点击工具栏 🔍 图标或按 <kbd>⌥</kbd> + <kbd>O</kbd> 提取文字。</li>
@@ -389,13 +398,13 @@
                     <li class="docs-list-item"><strong>连续追加模式</strong>：开启 Header 栏「追加模式」后，多次连续截图的识别文字将自动换行拼接在文末，适合整理多页文档。</li>
                 </ul>
 
-                <h3 class="docs-subsection-title">6.2 空间排版与表格还原</h3>
+                <h3 class="docs-subsection-title">6.3 空间排版与表格还原</h3>
                 <ul class="docs-list">
                     <li class="docs-list-item"><strong>阅读顺序还原</strong>：根据行高垂直聚类与水平间距，还原多栏排版与表格行列对齐结构。</li>
                     <li class="docs-list-item"><strong>转 Markdown 表格</strong>：按制表符或间距智能分列，一键转换为标准 GitHub Flavored Markdown 表格，可直接粘贴至 Obsidian、Notion 等工具。</li>
                 </ul>
 
-                <h3 class="docs-subsection-title">6.3 快捷文本清洗工具栏</h3>
+                <h3 class="docs-subsection-title">6.4 快捷文本清洗工具栏</h3>
                 <p class="docs-paragraph">OCR 面板顶部集成快捷格式化工具栏，支持对全文或局部选中文本执行清洗：</p>
                 
                 <!-- 真实 UI 模拟工具栏 -->
@@ -442,7 +451,7 @@
                     </div>
                 </div>
 
-                <h3 class="docs-subsection-title">6.4 二维码检测、AI 解析与快捷操作</h3>
+                <h3 class="docs-subsection-title">6.5 二维码检测、AI 解析与快捷操作</h3>
                 <ul class="docs-list">
                     <li class="docs-list-item"><strong>二维码/条形码识别</strong>：自动检测画面中的二维码与条码，顶部滑出横幅提供一键【打开网址】或【复制内容】。</li>
                     <li class="docs-list-item"><strong>AI 流式解析</strong>：点击「✨ AI 解释」调用大模型进行内容提炼，支持思考过程折叠、Markdown 渲染与多轮连续追问。</li>
@@ -453,15 +462,17 @@
             <!-- 7. 矢量标注与智能图形体系 -->
             <section id="sec-7" class="docs-section">
                 <div class="docs-section-title">
-                    <span>7. 标注工具与智能图形</span>
-                    <span class="badge-ver badge-sky">矢量标注</span>
+                    <span>7. 标注工具与高级马赛克管线</span>
+                    <span class="badge-ver badge-sky">v2.8.2 重构</span>
                 </div>
 
-                <h3 class="docs-subsection-title">7.1 常用标注工具</h3>
+                <h3 class="docs-subsection-title">7.1 常用标注工具与区域均值马赛克 (v2.8.2)</h3>
                 <ul class="docs-list">
-                    <li class="docs-list-item"><strong>基础图形</strong>：矩形、椭圆、箭头、直线、折线。</li>
+                    <li class="docs-list-item"><strong>基础图形</strong>：矩形、椭圆、箭头、直线、折线（支持单键 <kbd>R</kbd>/<kbd>A</kbd>/<kbd>P</kbd>/<kbd>L</kbd>/<kbd>T</kbd> 等秒级直达）。</li>
                     <li class="docs-list-item"><strong>自由画笔与荧光笔</strong>：贝塞尔曲线平滑绘制，支持半透明叠色。</li>
-                    <li class="docs-list-item"><strong>马赛克与高斯模糊</strong>：提供像素化马赛克与平滑高斯模糊两种模式。</li>
+                    <li class="docs-list-item"><strong>区域均值像素化管线 (v2.8.2)</strong>：采用两阶段面积积分均值采样与无插值点阵上采样，彻底消除文字死白橡皮擦抹除感，保留文字排版密度与灰度颗粒质感，处理耗时 < 2ms。</li>
+                    <li class="docs-list-item"><strong>游程分块与连续涂抹防崩 (v2.8.2)</strong>：时序分块渲染隔离各笔刷，支持单点打码与连续多次独立涂抹。</li>
+                    <li class="docs-list-item"><strong>特征能力解耦 (v2.8.2)</strong>：马赛克模式下二级工具栏自动收起无意义颜色圆点，仅展示【像素化/模糊/纯黑】样式、一键全屏智能脱敏与粗细调节。</li>
                 </ul>
 
                 <h3 class="docs-subsection-title">7.2 引线批注 (Remark)</h3>
@@ -561,32 +572,45 @@
                 </ul>
             </section>
 
-            <!-- 13. 全维度快捷键自定义系统 -->
+            <!-- 13. 全维度快捷键体系与单键直达系统 -->
             <section id="sec-13" class="docs-section">
                 <div class="docs-section-title">
-                    <span>13. 快捷键配置</span>
-                    <span class="badge-ver badge-emerald">快捷键</span>
+                    <span>13. 快捷键体系与单键直达</span>
+                    <span class="badge-ver badge-emerald">v2.8.1 重构</span>
                 </div>
-                <h3 class="docs-subsection-title">13.1 全局快捷键</h3>
+                <h3 class="docs-subsection-title">13.1 单键标注工具秒级直达 (v2.8.1)</h3>
+                <p class="docs-paragraph">截屏框选后或在贴图窗口中，直接按下单键即刻切换标注工具；在贴图浏览态下按单键自动激活编辑模式：</p>
+                <div class="docs-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>R</kbd></strong> 矩形选框</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>A</kbd></strong> 精准箭头</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>M</kbd></strong> 马赛克/模糊</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>P</kbd></strong> 自由画笔</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>L</kbd></strong> 直线折线</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>T</kbd></strong> 文本标注</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>N</kbd></strong> 序号图钉</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>B</kbd></strong> 引线批注</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>W</kbd></strong> 防泄密水印</div>
+                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>V</kbd></strong> 选择/手柄</div>
+                </div>
+
+                <h3 class="docs-subsection-title">13.2 文本打字焦点安全第一防线</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>输入安全路由 (ShortcutRouter)</strong>：当光标聚焦于文本输入区（NSTextView / NSTextField）打字时，系统 100% 绝对放行原生按键，彻底杜绝打字时误触工具切换。</li>
+                    <li class="docs-list-item"><strong>自研 60ms 主题悬浮气泡</strong>：鼠标悬停工具栏 60ms 瞬发弹出毛玻璃气泡，内嵌实体按键微标，完美自适应三大主题并消除遮挡。</li>
+                </ul>
+
+                <h3 class="docs-subsection-title">13.3 全局与会话快捷键</h3>
                 <ul class="docs-list">
                     <li class="docs-list-item"><strong>屏幕截图</strong>：默认 <kbd>⌥</kbd> + <kbd>1</kbd></li>
                     <li class="docs-list-item"><strong>恢复贴图栈</strong>：默认 <kbd>⌥</kbd> + <kbd>2</kbd></li>
                     <li class="docs-list-item"><strong>历史图库</strong>：默认 <kbd>⌥</kbd> + <kbd>3</kbd></li>
                     <li class="docs-list-item"><strong>文字识别直达</strong>：默认 <kbd>⌥</kbd> + <kbd>4</kbd></li>
+                    <li class="docs-list-item"><strong>滚动截长图直达</strong>：默认 <kbd>⌥</kbd> + <kbd>5</kbd> <span class="badge-ver badge-rose">v2.8.1</span></li>
+                    <li class="docs-list-item"><strong>录制动图直达</strong>：默认 <kbd>⌥</kbd> + <kbd>6</kbd> <span class="badge-ver badge-rose">v2.8.1</span></li>
                     <li class="docs-list-item"><strong>剪贴板转贴图</strong>：默认 <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd></li>
                     <li class="docs-list-item"><strong>贴图穿透模式</strong>：默认 <kbd>⌥</kbd> + <kbd>G</kbd></li>
-                </ul>
-
-                <h3 class="docs-subsection-title">13.2 局部操作快捷键</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>复制内容</strong>：<kbd>⌘</kbd> + <kbd>C</kbd>（截图、贴图、动图均适用）</li>
-                    <li class="docs-list-item"><strong>保存文件</strong>：<kbd>⌘</kbd> + <kbd>S</kbd></li>
-                    <li class="docs-list-item"><strong>固定贴图</strong>：<kbd>⌘</kbd> + <kbd>P</kbd></li>
-                    <li class="docs-list-item"><strong>执行 OCR</strong>：<kbd>⌥</kbd> + <kbd>O</kbd></li>
-                    <li class="docs-list-item"><strong>OCR 复制并关闭</strong>：<kbd>⌘</kbd> + <kbd>↩</kbd></li>
-                    <li class="docs-list-item"><strong>复制取色</strong>：<kbd>C</kbd></li>
-                    <li class="docs-list-item"><strong>撤销 / 重做</strong>：<kbd>⌘</kbd> + <kbd>Z</kbd> / <kbd>⇧</kbd> + <kbd>⌘</kbd> + <kbd>Z</kbd></li>
-                    <li class="docs-list-item"><strong>退出 / 取消</strong>：<kbd>Esc</kbd> 或 单击右键</li>
+                    <li class="docs-list-item"><strong>一键抠图/提取主体</strong>：选区按 <kbd>E</kbd> <span class="badge-ver badge-rose">v2.8.1</span></li>
+                    <li class="docs-list-item"><strong>选区转长截图/录屏</strong>：选区按 <kbd>S</kbd> 转长图，按 <kbd>G</kbd> 转录屏 <span class="badge-ver badge-rose">v2.8.1</span></li>
                 </ul>
             </section>
 
@@ -607,7 +631,7 @@
             <section id="sec-15" class="docs-section">
                 <div class="docs-section-title">
                     <span>15. 快捷键与手势速查表</span>
-                    <span class="badge-ver badge-blue">速查表</span>
+                    <span class="badge-ver badge-blue">v2.8.2 最新</span>
                 </div>
 
                 <div class="cheatsheet-header-row">
@@ -661,6 +685,18 @@
                             </tr>
                             <tr>
                                 <td class="td-scene">全局</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>5</kbd></td>
+                                <td>滚动截长图直达：框选松手直接唤起长截图控制条</td>
+                                <td><span class="badge-ver badge-rose">v2.8.1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">全局</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>6</kbd></td>
+                                <td>录制动图 (GIF) 直达：框选松手直接锁定选区并唤起录屏栏</td>
+                                <td><span class="badge-ver badge-rose">v2.8.1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">全局</td>
                                 <td class="td-action"><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd></td>
                                 <td>剪贴板转贴图：复制的文本、代码或图片直接生成浮动贴图</td>
                                 <td><span class="badge-ver badge-rose">直出</span></td>
@@ -696,6 +732,30 @@
                                 <td><span class="badge-ver badge-core">核心</span></td>
                             </tr>
                             <tr>
+                                <td class="td-scene">选区/标注</td>
+                                <td class="td-action"><kbd>R</kbd> / <kbd>A</kbd> / <kbd>M</kbd> / <kbd>P</kbd> / <kbd>L</kbd></td>
+                                <td>单键直达：矩形 / 箭头 / 马赛克 / 画笔 / 直线</td>
+                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">选区/标注</td>
+                                <td class="td-action"><kbd>T</kbd> / <kbd>N</kbd> / <kbd>B</kbd> / <kbd>W</kbd> / <kbd>V</kbd></td>
+                                <td>单键直达：文本 / 序号图钉 / 引线批注 / 水印 / 选择</td>
+                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">选区/标注</td>
+                                <td class="td-action"><kbd>E</kbd></td>
+                                <td>单键一键提取主体 / 抠图 (Extract)</td>
+                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">选区/标注</td>
+                                <td class="td-action"><kbd>S</kbd> / <kbd>G</kbd></td>
+                                <td>当前选区一键转滚动截长图 (S) 或录制动图 (G)</td>
+                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
+                            </tr>
+                            <tr>
                                 <td class="td-scene">选区中</td>
                                 <td class="td-action">双击选区</td>
                                 <td>复制选区图片并退出截图</td>
@@ -724,6 +784,12 @@
                                 <td class="td-action"><kbd>Esc</kbd> 或 单击右键</td>
                                 <td>取消并退出当前截图</td>
                                 <td><span class="badge-ver badge-core">核心</span></td>
+                            </tr>
+                            <tr>
+                                <td class="td-scene">批注</td>
+                                <td class="td-action">涂抹马赛克</td>
+                                <td>区域均值像素化采样，彻底消除文字死白，保留排版密度</td>
+                                <td><span class="badge-ver badge-sky">v2.8.2</span></td>
                             </tr>
                             <tr>
                                 <td class="td-scene">批注</td>
@@ -894,7 +960,7 @@
         <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
             <div>
                 <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem;">AuraSnap 用户使用手册</p>
-                <p style="font-size: 0.85rem; color: var(--text-tertiary);">适用于 AuraSnap v2.7.9。遵循 MIT 开源协议。</p>
+                <p style="font-size: 0.85rem; color: var(--text-tertiary);">适用于 AuraSnap v2.8.2。遵循 MIT 开源协议。</p>
             </div>
             <div style="display: flex; gap: 1rem;">
                 <a href="index.html" class="docs-nav-link-btn">返回主页</a>

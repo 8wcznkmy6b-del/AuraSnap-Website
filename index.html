@@ -64,7 +64,7 @@
             <a href="#" class="logo">
                 <img src="logo.png?v=3.6.0" alt="AuraSnap" class="logo-badge-img">
                 <span class="logo-text">AuraSnap</span>
-                <span class="logo-tag">v2.7.9</span>
+                <span class="logo-tag">v2.8.2</span>
             </a>
 
             <nav class="nav-links">
@@ -418,13 +418,17 @@
                 </button>
             </div>
 
-            <!-- Tab 0: 独立 OCR & 文本清洗套件 (OCR Studio - v2.7.9 Flagship) -->
+            <!-- Tab 0: 独立 OCR & 文本清洗套件 (OCR Studio - v2.8.0 ANE Accelerated) -->
             <div class="studio-panel active" id="panel-ocr">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
-                        <h3>空间几何排版重构与全能文本清洗套件</h3>
-                        <p>告别传统 OCR 碎片化垂直分行与表格乱码！AuraSnap 翻转 Vision 坐标系为物理阅读流，行高自适应垂直聚类，还原表格行列对齐与多栏布局；集成 4 大纯净分类下拉工具栏与 CharCategory 字符分类状态机。</p>
+                        <h3>毫秒级多语言 OCR 空间排版与全能文本清洗套件</h3>
+                        <p>告别传统 OCR 碎片化垂直分行与冷门语言网络卡顿！AuraSnap 启用 Apple Neural Engine 硬件级加速，中英日韩多语言混排 0.1~0.4s 秒级识别；翻转 Vision 坐标系为物理阅读流，行高自适应垂直聚类，还原表格与多栏布局；集成 4 大纯净分类下拉工具栏与 CharCategory 字符分类状态机。</p>
                         <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>ANE 硬件加速 & 0.1~0.4s 秒级识别 (v2.8.0)</strong>：多语系神经网络混排探测，超大 Retina 4K/5K 等比下采样防御与两阶段容灾降级</div>
+                            </li>
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                                 <div><strong>空间排版 & 幂等 Markdown 表格</strong>：智能插入 <code>\t</code> 还原表格结构，一键转标准 GFM 表格，Obsidian / Notion 零错位</div>
@@ -946,6 +950,14 @@
                         <kbd>⌥ 4</kbd>
                         <span>文字识别 (OCR) 直达</span>
                     </div>
+                    <div class="hud-key-card" id="hudKeyScroll">
+                        <kbd>⌥ 5</kbd>
+                        <span>滚动截长图直达 (v2.8.1)</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyGIF">
+                        <kbd>⌥ 6</kbd>
+                        <span>录制动图直达 (v2.8.1)</span>
+                    </div>
                     <div class="hud-key-card" id="hudKeyRestore">
                         <kbd>⌥ 2</kbd>
                         <span>恢复最近误关贴图</span>
@@ -957,6 +969,10 @@
                     <div class="hud-key-card" id="hudKeyGhost">
                         <kbd>⌥ G</kbd>
                         <span>切换贴图 Ghost 穿透</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyTools">
+                        <kbd>R / A / M / P</kbd>
+                        <span>单键标注直达 (v2.8.1)</span>
                     </div>
                     <div class="hud-key-card" id="hudKeySpace">
                         <kbd>Space</kbd>
