@@ -1,30 +1,34 @@
 /* ==========================================================================
    AuraSnap Documentation & Feature Guide Stylesheet (guide.css)
-   Clean Apple Pro Developer Documentation Theme
+   Native Apple Silicon Dark Canvas Theme (Unified with style.css)
    ========================================================================== */
 
-/* 基础与整体容器 */
+/* 整体容器与暗色画布背景 */
 .docs-body {
-  background-color: var(--bg-page);
-  color: var(--text-primary);
+  background-color: var(--bg-desktop, #06070b);
+  color: var(--text-high, #f1f5f9);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 45%, rgba(129, 140, 248, 0.08), transparent 60%);
+  background-attachment: fixed;
 }
 
-/* 顶部文档导航条 */
+/* 顶部固定毛玻璃导航栏 */
 .docs-navbar {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(12, 16, 26, 0.85);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
   z-index: 100;
-  transition: all var(--transition-normal);
+  transition: all var(--transition-normal, 0.25s);
 }
 
 .docs-nav-inner {
@@ -49,7 +53,7 @@
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   font-weight: 700;
   font-size: 1.1rem;
 }
@@ -58,27 +62,27 @@
   width: 28px;
   height: 28px;
   border-radius: 7px;
-  background: linear-gradient(135deg, #0071e3, #38bdf8);
+  background: linear-gradient(135deg, #0284c7, #38bdf8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
 }
 
 .docs-nav-divider {
   width: 1px;
   height: 18px;
-  background: var(--border-medium);
+  background: var(--border-medium, rgba(255, 255, 255, 0.15));
 }
 
 .docs-nav-title {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
 }
 
-/* 搜索框 */
+/* 顶部搜索框 */
 .docs-search-container {
   flex: 1;
   max-width: 480px;
@@ -89,21 +93,21 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: rgba(15, 23, 42, 0.05);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 12px);
   padding: 0.4rem 0.8rem;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast, 0.15s);
 }
 
 .docs-search-input-wrap:focus-within {
-  background: #ffffff;
-  border-color: var(--accent-blue);
-  box-shadow: 0 0 0 3px var(--accent-blue-subtle);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--accent-sky, #38bdf8);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
 }
 
 .docs-search-icon {
-  color: var(--text-tertiary);
+  color: var(--text-low, #64748b);
   margin-right: 0.6rem;
   flex-shrink: 0;
 }
@@ -114,17 +118,17 @@
   background: transparent;
   font-family: inherit;
   font-size: 0.88rem;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   outline: none;
 }
 
 .docs-search-input::placeholder {
-  color: var(--text-muted);
+  color: var(--text-low, #64748b);
 }
 
 .docs-search-shortcut {
-  background: rgba(15, 23, 42, 0.08);
-  color: var(--text-tertiary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-medium, #94a3b8);
   border-radius: 4px;
   font-size: 0.72rem;
   font-weight: 600;
@@ -146,26 +150,27 @@
   gap: 0.4rem;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   text-decoration: none;
   padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  border-radius: var(--radius-sm, 8px);
+  transition: all var(--transition-fast, 0.15s);
 }
 
 .docs-nav-link-btn:hover {
-  background: rgba(15, 23, 42, 0.06);
-  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-pure, #ffffff);
 }
 
 .docs-nav-primary-btn {
-  background: var(--accent-blue);
-  color: #ffffff !important;
-  box-shadow: 0 2px 8px rgba(0, 113, 227, 0.25);
+  background: var(--accent-sky, #38bdf8);
+  color: #06070b !important;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.35);
 }
 
 .docs-nav-primary-btn:hover {
-  background: var(--accent-blue-hover) !important;
+  background: #7dd3fc !important;
   transform: translateY(-1px);
 }
 
@@ -173,10 +178,10 @@
 .docs-sidebar-toggle {
   display: none;
   background: transparent;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-sm, 8px);
   padding: 0.4rem;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   cursor: pointer;
 }
 
@@ -199,8 +204,8 @@
   height: calc(100vh - 60px);
   overflow-y: auto;
   padding: 1.8rem 1.2rem 2.5rem 1.5rem;
-  border-right: 1px solid var(--border-subtle);
-  background: rgba(248, 250, 252, 0.7);
+  border-right: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  background: rgba(9, 12, 19, 0.65);
   backdrop-filter: blur(10px);
 }
 
@@ -209,7 +214,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-tertiary);
+  color: var(--text-low, #64748b);
   margin-bottom: 1rem;
   padding-left: 0.6rem;
 }
@@ -227,24 +232,25 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.5rem 0.75rem;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-sm, 8px);
   font-size: 0.86rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast, 0.15s);
   line-height: 1.35;
 }
 
 .docs-nav-link:hover {
-  background: rgba(0, 113, 227, 0.06);
-  color: var(--accent-blue);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--accent-sky, #38bdf8);
 }
 
 .docs-nav-link.active {
-  background: var(--accent-blue);
-  color: #ffffff;
+  background: rgba(56, 189, 248, 0.14);
+  color: var(--accent-sky, #38bdf8);
   font-weight: 600;
+  border-left: 2px solid var(--accent-sky, #38bdf8);
 }
 
 .docs-nav-num {
@@ -264,27 +270,27 @@
   flex: 1;
   min-width: 0;
   padding: 2.5rem 3.5rem 6rem;
-  background: #ffffff;
+  background: transparent;
 }
 
 .docs-hero-header {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
 }
 
 .docs-main-title {
   font-size: 2.4rem;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   margin-bottom: 1rem;
   line-height: 1.25;
 }
 
 .docs-subtitle-lead {
   font-size: 1.05rem;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   line-height: 1.7;
   margin-bottom: 1.5rem;
 }
@@ -292,24 +298,24 @@
 .docs-stats-bar {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .docs-stat-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
+  background: var(--surface-1, #0e121c);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
   border-radius: var(--radius-full);
   padding: 0.35rem 0.85rem;
   font-size: 0.8rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-high, #f1f5f9);
 }
 
 .docs-stat-chip svg {
-  color: var(--accent-blue);
+  color: var(--accent-sky, #38bdf8);
 }
 
 /* 章节通用排版 */
@@ -322,10 +328,10 @@
   font-size: 1.65rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   margin-bottom: 1.25rem;
   padding-bottom: 0.6rem;
-  border-bottom: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -334,9 +340,9 @@
 }
 
 .docs-subsection-title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-high, #f1f5f9);
   margin: 1.8rem 0 0.8rem;
   display: flex;
   align-items: center;
@@ -346,7 +352,7 @@
 .docs-paragraph {
   font-size: 0.96rem;
   line-height: 1.75;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   margin-bottom: 1.2rem;
 }
 
@@ -362,7 +368,11 @@
   margin-bottom: 0.85rem;
   font-size: 0.94rem;
   line-height: 1.65;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
+}
+
+.docs-list-item strong {
+  color: var(--text-high, #f1f5f9);
 }
 
 .docs-list-item::before {
@@ -370,7 +380,7 @@
   position: absolute;
   left: 0.4rem;
   top: 0;
-  color: var(--accent-blue);
+  color: var(--accent-sky, #38bdf8);
   font-weight: bold;
   font-size: 1.1rem;
 }
@@ -388,14 +398,14 @@
   padding-left: 1.2rem;
   margin-bottom: 0.45rem;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
 }
 
 .docs-sublist-item::before {
   content: "–";
   position: absolute;
   left: 0.2rem;
-  color: var(--text-tertiary);
+  color: var(--text-low, #64748b);
 }
 
 /* 键帽 macOS Keycap Styling */
@@ -404,14 +414,14 @@ kbd, .kbd-key {
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--text-primary);
-  background: #f8fafc;
-  border: 1px solid #cbd5e1;
-  border-bottom: 2px solid #94a3b8;
+  color: var(--text-pure, #ffffff);
+  background: #141926;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 5px;
   padding: 2px 7px;
   margin: 0 3px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   vertical-align: middle;
   line-height: 1.3;
 }
@@ -428,38 +438,38 @@ kbd, .kbd-key {
 }
 
 .badge-ver.badge-core {
-  background: rgba(15, 23, 42, 0.08);
-  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-high, #f1f5f9);
 }
 
 .badge-ver.badge-sky {
-  background: rgba(2, 132, 199, 0.12);
-  color: var(--accent-sky);
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--accent-sky, #38bdf8);
 }
 
 .badge-ver.badge-blue {
-  background: rgba(0, 113, 227, 0.12);
-  color: var(--accent-blue);
+  background: rgba(129, 140, 248, 0.15);
+  color: var(--accent-indigo, #818cf8);
 }
 
 .badge-ver.badge-emerald {
-  background: rgba(5, 150, 105, 0.12);
-  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald, #10b981);
 }
 
 .badge-ver.badge-purple {
-  background: rgba(124, 58, 237, 0.12);
-  color: var(--accent-purple);
+  background: rgba(192, 132, 252, 0.15);
+  color: var(--accent-purple, #c084fc);
 }
 
 .badge-ver.badge-rose {
-  background: rgba(225, 29, 72, 0.12);
-  color: var(--accent-rose);
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--accent-rose, #f43f5e);
 }
 
 /* Apple 风格 Callout 提示框 */
 .docs-callout {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-md, 12px);
   padding: 1rem 1.25rem;
   margin: 1.5rem 0;
   display: flex;
@@ -478,27 +488,16 @@ kbd, .kbd-key {
   display: block;
   font-size: 0.94rem;
   margin-bottom: 0.2rem;
+  color: var(--text-pure, #ffffff);
 }
 
 .docs-callout-info {
-  background: rgba(0, 113, 227, 0.06);
-  border: 1px solid rgba(0, 113, 227, 0.2);
-  color: #0c4a6e;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #bae6fd;
 }
 .docs-callout-info .docs-callout-icon {
-  color: var(--accent-blue);
-}
-
-.docs-callout-tip {
-  background: rgba(5, 150, 105, 0.06);
-  border: 1px solid rgba(5, 150, 105, 0.2);
-  color: #064e3b;
-}
-
-.docs-callout-warning {
-  background: rgba(217, 119, 6, 0.07);
-  border: 1px solid rgba(217, 119, 6, 0.25);
-  color: #78350f;
+  color: var(--accent-sky, #38bdf8);
 }
 
 /* 结构卡片与网格 */
@@ -510,16 +509,16 @@ kbd, .kbd-key {
 }
 
 .docs-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+  background: var(--surface-1, #0e121c);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 12px);
   padding: 1.25rem;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast, 0.15s);
 }
 
 .docs-card:hover {
-  border-color: var(--border-hover);
+  border-color: var(--border-hover, rgba(255, 255, 255, 0.25));
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
 }
@@ -527,7 +526,7 @@ kbd, .kbd-key {
 .docs-card-title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
@@ -536,42 +535,55 @@ kbd, .kbd-key {
 
 .docs-card-desc {
   font-size: 0.88rem;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   line-height: 1.6;
 }
 
-/* 文本/代码块与 ASCII 示意图 */
-.docs-code-block {
-  position: relative;
-  background: #0f172a;
-  color: #e2e8f0;
-  border-radius: var(--radius-md);
-  padding: 1.2rem 1.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.84rem;
-  line-height: 1.55;
-  overflow-x: auto;
-  margin: 1.25rem 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+/* OCR 工具栏 UI 模拟组件 */
+.ocr-toolbar-preview {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: var(--surface-1, #0e121c);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  border-radius: var(--radius-md, 12px);
+  display: flex;
+  justify-content: center;
 }
 
-.code-copy-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #cbd5e1;
-  border-radius: 4px;
-  padding: 4px 8px;
-  font-size: 0.72rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+.ocr-toolbar-preview-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface-2, #141926);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-md, 12px);
 }
 
-.code-copy-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
-  color: #ffffff;
+.ocr-tool-pill {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-high, #f1f5f9);
+  background: var(--surface-3, #1c2336);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  user-select: none;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.ocr-tool-pill:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.ocr-tool-pill-ai {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(192, 132, 252, 0.2));
+  border-color: rgba(56, 189, 248, 0.4);
+  color: var(--accent-sky, #38bdf8);
+  font-weight: 600;
 }
 
 /* 第 15 节交互式快捷键速查表 */
@@ -591,46 +603,50 @@ kbd, .kbd-key {
 }
 
 .cheatsheet-tab-btn {
-  background: var(--bg-canvas);
-  border: 1px solid var(--border-subtle);
+  background: var(--surface-1, #0e121c);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
   border-radius: var(--radius-full);
   padding: 0.35rem 0.85rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: var(--text-medium, #94a3b8);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast, 0.15s);
 }
 
 .cheatsheet-tab-btn:hover {
-  background: rgba(0, 113, 227, 0.08);
-  color: var(--accent-blue);
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-sky, #38bdf8);
 }
 
 .cheatsheet-tab-btn.active {
-  background: var(--accent-blue);
-  color: #ffffff;
-  border-color: var(--accent-blue);
+  background: var(--accent-sky, #38bdf8);
+  color: #06070b;
+  font-weight: 700;
+  border-color: var(--accent-sky, #38bdf8);
 }
 
 .cheatsheet-search {
   max-width: 240px;
   padding: 0.35rem 0.75rem;
   font-size: 0.82rem;
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-sm);
+  background: var(--surface-1, #0e121c);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.15));
+  border-radius: var(--radius-sm, 8px);
+  color: var(--text-pure, #ffffff);
   outline: none;
 }
 
 .cheatsheet-search:focus {
-  border-color: var(--accent-blue);
+  border-color: var(--accent-sky, #38bdf8);
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
 }
 
 .docs-table-wrapper {
   overflow-x: auto;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
-  background: #ffffff;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  background: var(--surface-1, #0e121c);
   box-shadow: var(--shadow-sm);
 }
 
@@ -642,19 +658,19 @@ kbd, .kbd-key {
 }
 
 .docs-table th {
-  background: var(--bg-canvas);
-  color: var(--text-secondary);
+  background: var(--surface-2, #141926);
+  color: var(--text-high, #f1f5f9);
   font-weight: 700;
   padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid var(--border-medium);
+  border-bottom: 1px solid var(--border-medium, rgba(255, 255, 255, 0.15));
   font-size: 0.84rem;
   letter-spacing: 0.02em;
 }
 
 .docs-table td {
   padding: 0.85rem 1.1rem;
-  border-bottom: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.08));
+  color: var(--text-medium, #94a3b8);
   vertical-align: middle;
   line-height: 1.5;
 }
@@ -664,17 +680,18 @@ kbd, .kbd-key {
 }
 
 .docs-table tbody tr:hover td {
-  background: rgba(0, 113, 227, 0.03);
+  background: rgba(56, 189, 248, 0.04);
 }
 
 .docs-table .td-scene {
   font-weight: 700;
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   white-space: nowrap;
 }
 
 .docs-table .td-action {
   font-weight: 600;
+  color: var(--text-high, #f1f5f9);
 }
 
 /* 返回顶部按钮 */
@@ -685,10 +702,10 @@ kbd, .kbd-key {
   width: 44px;
   height: 44px;
   border-radius: var(--radius-full);
-  background: #ffffff;
-  border: 1px solid var(--border-medium);
+  background: var(--surface-2, #141926);
+  border: 1px solid var(--border-medium, rgba(255, 255, 255, 0.15));
   box-shadow: var(--shadow-lg);
-  color: var(--text-primary);
+  color: var(--text-pure, #ffffff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -696,7 +713,7 @@ kbd, .kbd-key {
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
-  transition: all var(--transition-fast);
+  transition: all var(--transition-fast, 0.15s);
   z-index: 90;
 }
 
@@ -707,58 +724,10 @@ kbd, .kbd-key {
 }
 
 .docs-back-to-top:hover {
-  background: var(--accent-blue);
-  color: #ffffff;
-  border-color: var(--accent-blue);
-  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.35);
-}
-
-/* OCR 工具栏 UI 模拟组件 */
-.ocr-toolbar-preview {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: #0f172a;
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  display: flex;
-  justify-content: center;
-}
-
-.ocr-toolbar-preview-inner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(30, 41, 59, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0.4rem 0.6rem;
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
-}
-
-.ocr-tool-pill {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: #e2e8f0;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-  user-select: none;
-  cursor: default;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.ocr-tool-pill:hover {
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.ocr-tool-pill-ai {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.25), rgba(168, 85, 247, 0.25));
-  border-color: rgba(56, 189, 248, 0.35);
-  color: #38bdf8;
-  font-weight: 600;
+  background: var(--accent-sky, #38bdf8);
+  color: #06070b;
+  border-color: var(--accent-sky, #38bdf8);
+  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
 }
 
 /* Toast 提示 */
@@ -767,9 +736,10 @@ kbd, .kbd-key {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: rgba(15, 23, 42, 0.92);
+  background: rgba(14, 18, 28, 0.95);
   backdrop-filter: blur(10px);
-  color: #ffffff;
+  border: 1px solid var(--border-subtle, rgba(255, 255, 255, 0.1));
+  color: var(--text-pure, #ffffff);
   padding: 0.6rem 1.25rem;
   border-radius: var(--radius-full);
   font-size: 0.84rem;
@@ -795,8 +765,8 @@ kbd, .kbd-key {
     width: 300px;
     height: calc(100vh - 60px);
     z-index: 99;
-    background: #ffffff;
-    box-shadow: var(--shadow-floating);
+    background: var(--surface-1, #0e121c);
+    box-shadow: var(--shadow-lg);
     transition: left 0.3s var(--ease-spring);
   }
 
