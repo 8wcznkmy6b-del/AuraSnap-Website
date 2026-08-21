@@ -212,6 +212,30 @@ body {
   transform: translateY(-1px);
 }
 
+.logo-badge-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.logo:hover .logo-badge-img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(0, 113, 227, 0.3);
+}
+
+.footer-brand-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08);
+}
+
 .logo-badge {
   width: 30px;
   height: 30px;

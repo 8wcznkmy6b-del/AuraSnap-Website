@@ -59,6 +59,20 @@
   font-size: 1.1rem;
 }
 
+.docs-brand-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  transition: transform 0.15s ease;
+}
+
+.docs-brand:hover .docs-brand-img {
+  transform: scale(1.05);
+}
+
 .docs-brand-badge {
   width: 28px;
   height: 28px;
