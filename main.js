@@ -257,6 +257,29 @@ function initHeroDesktopSimulator() {
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                 </button>
             `;
+        } else if (tool === 'ocr') {
+            tierOptionsBar.innerHTML = `
+                <button class="native-menu-btn" id="btnHeroOcrClean" title="清洗文本">
+                    <span style="font-size: 11px;">🧹 清洗 ▾</span>
+                </button>
+                <button class="native-menu-btn" id="btnHeroOcrFormat" title="排版文本">
+                    <span style="font-size: 11px;">📐 排版 ▾</span>
+                </button>
+                <button class="native-menu-btn" id="btnHeroOcrCase" title="大小写转换">
+                    <span style="font-size: 11px;">Aa 大小写 ▾</span>
+                </button>
+                <button class="native-menu-btn" id="btnHeroOcrPunct" title="标点转换">
+                    <span style="font-size: 11px;">，。标点 ▾</span>
+                </button>
+                <div class="native-divider"></div>
+                <button class="native-toggle-btn active" id="btnHeroOcrAppend" title="追加模式：连续截图自动保序拼接">
+                    <span>➕ 追加模式</span>
+                </button>
+                <div class="native-divider"></div>
+                <button class="native-toggle-btn" id="btnHeroOcrAi" title="流式 AI 深度解析">
+                    <span>✨ AI 解释</span>
+                </button>
+            `;
         } else {
             tierOptionsBar.innerHTML = `
                 <span style="font-size: 11px; color: #475569; font-weight: 500;">
@@ -484,7 +507,7 @@ function initHeroDesktopSimulator() {
 }
 
 /* ==========================================================================
-   4. Feature Studio (5-Tab Interactive Playground)
+   4. Feature Studio (Interactive Playground for All Flagship Modules)
    ========================================================================== */
 function initFeatureStudio() {
     const tabButtons = document.querySelectorAll('.studio-tab-btn[data-tab]');
@@ -502,7 +525,242 @@ function initFeatureStudio() {
         });
     });
 
+    // Global Toast Helper
+    function showGlobalToast(msg) {
+        const toast = document.getElementById('simToast');
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 2200);
+    }
+
+    // =========================================================================
+    // Tab 0: OCR Studio Interactivity (v2.7.9 Flagship)
+    // =========================================================================
+    const ocrEditor = document.getElementById('simOcrTextEditor');
+    const ocrWordCount = document.getElementById('ocrWordCount');
+    const btnOcrCleanSpaces = document.getElementById('btnOcrCleanSpaces');
+    const btnOcrMergeLines = document.getElementById('btnOcrMergeLines');
+    const btnOcrPangu = document.getElementById('btnOcrPangu');
+    const btnOcrToTable = document.getElementById('btnOcrToTable');
+    const btnOcrAiExplain = document.getElementById('btnOcrAiExplain');
+    const btnOcrReset = document.getElementById('btnOcrReset');
+    const btnOcrAppendMode = document.getElementById('btnOcrAppendMode');
+    const btnOcrMono = document.getElementById('btnOcrMonoToggle');
+    const btnOcrCopyOnly = document.getElementById('btnOcrCopyOnly');
+    const btnOcrCopyAndClose = document.getElementById('btnOcrCopyAndClose');
+    const simOcrAiPanel = document.getElementById('simOcrAiPanel');
+    const ocrThinkToggle = document.getElementById('ocrThinkToggle');
+    const ocrThinkBody = document.getElementById('ocrThinkBody');
+    const ocrAiMarkdownBody = document.getElementById('ocrAiMarkdownBody');
+    const btnCopyOcrAi = document.getElementById('btnCopyOcrAi');
+    const simOcrAiPill = document.getElementById('simOcrAiPill');
+
+    const sampleRawOCR = `项 目\t单 价\t数 量\t小 计
+M4 Max 芯片\t$ 1999\t2\t$ 3998
+Retina 5K 显示器\t$ 1299\t1\t$ 1299
+AuraSnap 永久授权\t$ 0\t1\t$ 0
+
+AuraSnap 是 专 为 macOS 开 发 的 原 生 极 速 截 图 工 具 。
+它 具 备 双 模 态 撤 销 重 做 和 自 动 去 空 格 等 特 性 。
+connec-
+tion string for SQLite database.`;
+
+    if (ocrEditor) {
+        ocrEditor.value = sampleRawOCR;
+        updateOcrStats();
+
+        ocrEditor.addEventListener('input', updateOcrStats);
+
+        function updateOcrStats() {
+            const val = ocrEditor.value;
+            const lines = val.split('\n').length;
+            const chars = val.replace(/\s/g, '').length;
+            if (ocrWordCount) {
+                ocrWordCount.textContent = `${chars} 字 · ${lines} 行`;
+            }
+        }
+
+        const ocrActionBtns = [btnOcrCleanSpaces, btnOcrMergeLines, btnOcrPangu, btnOcrToTable, btnOcrAiExplain];
+        function setOcrActionActive(targetBtn) {
+            ocrActionBtns.forEach(b => {
+                if (b) b.classList.remove('active');
+            });
+            if (targetBtn) targetBtn.classList.add('active');
+        }
+
+        // Action 1: Remove Spaces (CharCategory state machine simulation)
+        if (btnOcrCleanSpaces) {
+            btnOcrCleanSpaces.addEventListener('click', () => {
+                setOcrActionActive(btnOcrCleanSpaces);
+                let text = ocrEditor.value;
+                // Clean spaces between Chinese characters, punctuation, preserving English word gaps
+                text = text.replace(/([\u4e00-\u9fa5，。！？；：、（）《》【】])\s+([\u4e00-\u9fa5，。！？；：、（）《》【】])/g, '$1$2');
+                text = text.replace(/([\u4e00-\u9fa5])\s+([A-Za-z0-9])/g, '$1 $2');
+                text = text.replace(/([A-Za-z0-9])\s+([\u4e00-\u9fa5])/g, '$1 $2');
+                ocrEditor.value = text;
+                updateOcrStats();
+                showGlobalToast("🧹 已执行 CharCategory 去空格：保留英文词距，清除汉字标点间冗余空格");
+            });
+        }
+
+        // Action 2: Merge Lines
+        if (btnOcrMergeLines) {
+            btnOcrMergeLines.addEventListener('click', () => {
+                setOcrActionActive(btnOcrMergeLines);
+                let text = ocrEditor.value;
+                text = text.replace(/(\w+)-\n(\w+)/g, '$1$2');
+                text = text.replace(/([^\n])\n([^\n\t|])/g, '$1 $2');
+                ocrEditor.value = text;
+                updateOcrStats();
+                showGlobalToast("📄 已执行智能去换行：修复断词连字符并合并段内折行");
+            });
+        }
+
+        // Action 3: Pangu Spacing
+        if (btnOcrPangu) {
+            btnOcrPangu.addEventListener('click', () => {
+                setOcrActionActive(btnOcrPangu);
+                let text = ocrEditor.value;
+                text = text.replace(/([\u4e00-\u9fa5])([A-Za-z0-9])/g, '$1 $2');
+                text = text.replace(/([A-Za-z0-9])([\u4e00-\u9fa5])/g, '$1 $2');
+                ocrEditor.value = text;
+                updateOcrStats();
+                showGlobalToast("📐 已执行盘古排版：中英文及数字间已自动补齐规范间距");
+            });
+        }
+
+        // Action 4: Convert to Markdown Table
+        if (btnOcrToTable) {
+            btnOcrToTable.addEventListener('click', () => {
+                setOcrActionActive(btnOcrToTable);
+                const text = ocrEditor.value;
+                const lines = text.split('\n');
+                let tableLines = [];
+                let otherLines = [];
+
+                lines.forEach((line) => {
+                    if (line.includes('\t') || (line.includes('芯片') || line.includes('显示器') || line.includes('授权') || line.includes('项 目'))) {
+                        const parts = line.split('\t').map(s => s.trim()).filter(s => s.length > 0);
+                        if (parts.length >= 2) {
+                            tableLines.push(parts);
+                            return;
+                        }
+                    }
+                    otherLines.push(line);
+                });
+
+                if (tableLines.length > 0) {
+                    let maxCols = Math.max(...tableLines.map(r => r.length));
+                    let mdRows = [];
+                    let header = tableLines[0];
+                    while (header.length < maxCols) header.push('');
+                    mdRows.push(`| ${header.join(' | ')} |`);
+                    mdRows.push(`| ${Array(maxCols).fill(':---').join(' | ')} |`);
+                    for (let i = 1; i < tableLines.length; i++) {
+                        let row = tableLines[i];
+                        while (row.length < maxCols) row.push('');
+                        mdRows.push(`| ${row.join(' | ')} |`);
+                    }
+                    ocrEditor.value = `${mdRows.join('\n')}\n\n${otherLines.join('\n').trim()}`;
+                    updateOcrStats();
+                    showGlobalToast("📊 已转为标准 GFM Markdown 表格");
+                }
+            });
+        }
+
+        // Action 5: AI Explanation (DeepSeek-R1 Stream Simulation)
+        const triggerAi = () => {
+            setOcrActionActive(btnOcrAiExplain);
+            if (!simOcrAiPanel || !ocrAiMarkdownBody) return;
+            simOcrAiPanel.style.display = 'block';
+            ocrAiMarkdownBody.innerHTML = '<span class="ocr-ai-typing-cursor">正在请求 DeepSeek-R1 深度流式解析...</span>';
+            
+            const streamResponse = `**📌 结构化摘要与核心提要**
+1. **硬件配置**: M4 Max 芯片旗舰算力架构，专为 macOS 原生矢量加速设计；
+2. **显示与渲染**: 配备 5K Retina 超清物理视口与 Accelerate 矢量数学矩阵；
+3. **生产力套件**: AuraSnap 具备空间几何排版重构、全能文本清洗与流式大模型赋能。`;
+
+            let currentIdx = 0;
+            ocrAiMarkdownBody.innerHTML = '';
+            const typeTimer = setInterval(() => {
+                if (currentIdx < streamResponse.length) {
+                    currentIdx += 3;
+                    const chunk = streamResponse.substring(0, currentIdx);
+                    ocrAiMarkdownBody.innerHTML = chunk.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                } else {
+                    clearInterval(typeTimer);
+                }
+            }, 40);
+        };
+
+        if (btnOcrAiExplain) btnOcrAiExplain.addEventListener('click', triggerAi);
+        if (simOcrAiPill) simOcrAiPill.addEventListener('click', triggerAi);
+
+        // Reset
+        if (btnOcrReset) {
+            btnOcrReset.addEventListener('click', () => {
+                setOcrActionActive(null);
+                ocrEditor.value = sampleRawOCR;
+                if (simOcrAiPanel) simOcrAiPanel.style.display = 'none';
+                updateOcrStats();
+                showGlobalToast("🔄 已重置为初始 OCR 待清洗样本");
+            });
+        }
+
+        // Think Toggle
+        if (ocrThinkToggle && ocrThinkBody) {
+            ocrThinkToggle.addEventListener('click', () => {
+                const isHidden = ocrThinkBody.style.display === 'none';
+                ocrThinkBody.style.display = isHidden ? 'block' : 'none';
+                ocrThinkToggle.querySelector('span').textContent = isHidden ? '🧠 思考过程 (点击收起)' : '🧠 思考过程 (已折叠，点击展开)';
+            });
+        }
+
+        // Mono font toggle
+        let isMono = false;
+        if (btnOcrMono) {
+            btnOcrMono.addEventListener('click', () => {
+                isMono = !isMono;
+                ocrEditor.style.fontFamily = isMono ? 'var(--font-mono)' : 'var(--font-main)';
+                btnOcrMono.classList.toggle('active', isMono);
+                showGlobalToast(isMono ? "已切换为等宽字体 (JetBrains Mono)" : "已切换为系统比例字体");
+            });
+        }
+
+        // Append Mode
+        let isAppend = true;
+        if (btnOcrAppendMode) {
+            btnOcrAppendMode.addEventListener('click', () => {
+                isAppend = !isAppend;
+                btnOcrAppendMode.classList.toggle('active', isAppend);
+                showGlobalToast(isAppend ? "➕ 连续追加模式已开启：后续截图将自动保序追加至末尾" : "➖ 单次识别模式：新截图将替换当前内容");
+            });
+        }
+
+        // Copy buttons
+        if (btnOcrCopyOnly) {
+            btnOcrCopyOnly.addEventListener('click', () => {
+                showGlobalToast("📋 已复制全文至剪贴板");
+            });
+        }
+        if (btnOcrCopyAndClose) {
+            btnOcrCopyAndClose.addEventListener('click', () => {
+                showGlobalToast("✨ 已复制全文并关闭 OCR 窗口 (⌘↩)");
+            });
+        }
+        if (btnCopyOcrAi) {
+            btnCopyOcrAi.addEventListener('click', () => {
+                showGlobalToast("✨ 已复制 AI 深度解析 Markdown 内容");
+            });
+        }
+    }
+
+    // =========================================================================
     // Tab 1: Matting Studio Interactivity
+    // =========================================================================
     const mattingCard = document.getElementById('mattingPreviewCard');
     const mattingBox = document.getElementById('mattingContentBox');
     const btnToggleCutout = document.getElementById('btnToggleCutout');
@@ -514,7 +772,6 @@ function initFeatureStudio() {
 
     let isCutout = true;
     if (mattingCard && btnToggleCutout) {
-        // Start in cutout mode
         mattingCard.classList.add('matting-cutout-active');
 
         btnToggleCutout.addEventListener('click', () => {
@@ -549,7 +806,9 @@ function initFeatureStudio() {
         });
     }
 
-    // Tab 4: Pin Opacity & Ghost Mode
+    // =========================================================================
+    // Tab 5: Pin Opacity & Ghost Mode
+    // =========================================================================
     const pinBox = document.getElementById('simPinBox');
     const opacitySlider = document.getElementById('pinOpacitySlider');
     const opacityVal = document.getElementById('opacityVal');
@@ -565,7 +824,7 @@ function initFeatureStudio() {
 
         pinBox.addEventListener('click', (e) => {
             if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
-                alert("💡 在 AuraSnap 中，按住 ⌘ (Command) 键不放直接拖拽贴图，即可将贴图直接拖入微信、钉钉、飞书、Slack 聊天窗口发送，或者直接拖入访达（Finder）文件夹秒存为 PNG！");
+                showGlobalToast("💡 在 AuraSnap 中，按住 ⌘ 键直接拖拽贴图，可直接拖入微信/飞书或访达秒存！");
             }
         });
     }
@@ -586,7 +845,9 @@ function initFeatureStudio() {
         });
     }
 
-    // Tab 6: Recording ⌘ Drag Animation
+    // =========================================================================
+    // Tab 7: Recording ⌘ Drag Animation
+    // =========================================================================
     const dragChip = document.getElementById('videoDragChip');
     const dragZone = document.getElementById('recordDragZone');
 
@@ -595,25 +856,14 @@ function initFeatureStudio() {
             dragChip.style.transform = 'scale(0.95)';
             setTimeout(() => {
                 dragChip.style.transform = 'scale(1)';
-                alert("💡 在 AuraSnap 原生客户端中，按住 ⌘ 键直接拖拽即可将 MP4/GIF 直接拖进微信、飞书、Slack 或访达文件夹！");
+                showGlobalToast("💡 在 AuraSnap 原生客户端中，按住 ⌘ 键直接拖拽即可将 MP4/GIF 直接拖进微信、飞书或访达文件夹！");
             }, 150);
         });
     }
 
-    // Longshot Minimap Tracker
-    const tabCodeViewport = document.getElementById('tabCodeViewport');
-    const tabMinimapThumb = document.getElementById('tabMinimapThumb');
-
-    if (tabCodeViewport && tabMinimapThumb) {
-        tabCodeViewport.addEventListener('scroll', () => {
-            const top = tabCodeViewport.scrollTop;
-            const max = tabCodeViewport.scrollHeight - tabCodeViewport.clientHeight;
-            const progress = max > 0 ? top / max : 0;
-            tabMinimapThumb.style.top = `${4 + progress * 80}px`;
-        });
-    }
-
+    // =========================================================================
     // Tab 2: AI Stream Actions (1:1 AIPillBarView Behavior)
+    // =========================================================================
     const btnAiExplain = document.getElementById('btnAiExplain');
     const btnAiTranslate = document.getElementById('btnAiTranslate');
     const btnAiOCR = document.getElementById('btnAiOCR');
@@ -642,7 +892,32 @@ function initFeatureStudio() {
         });
     }
 
-    // Tab 5: Waterdrop Step Pins 360 Rotation Interactivity
+    // =========================================================================
+    // Tab 3: Modular Themes Wallpaper Switcher Interactivity
+    // =========================================================================
+    const themeStage = document.getElementById('themeDemoStage');
+    const themeWpBtns = document.querySelectorAll('.theme-wp-btn');
+    if (themeStage && themeWpBtns.length > 0) {
+        const wallpapers = {
+            'sonoma': 'linear-gradient(135deg, rgba(249, 115, 22, 0.8) 0%, rgba(236, 72, 153, 0.7) 40%, rgba(139, 92, 246, 0.8) 75%, rgba(59, 130, 246, 0.85) 100%)',
+            'sequoia': 'linear-gradient(135deg, rgba(5, 150, 105, 0.85) 0%, rgba(2, 132, 199, 0.8) 40%, rgba(99, 102, 241, 0.85) 75%, rgba(168, 85, 247, 0.9) 100%)',
+            'code': 'linear-gradient(135deg, #090d16 0%, #111827 50%, #1e293b 100%)'
+        };
+        themeWpBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const wp = btn.getAttribute('data-wp');
+                themeWpBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if (wallpapers[wp]) {
+                    themeStage.style.background = wallpapers[wp];
+                }
+            });
+        });
+    }
+
+    // =========================================================================
+    // Tab 6: Waterdrop Step Pins 360 Rotation Interactivity
+    // =========================================================================
     const waterdropPins = document.querySelectorAll('.native-waterdrop-pin');
     waterdropPins.forEach(pin => {
         let currentRot = 0;
@@ -658,7 +933,7 @@ function initFeatureStudio() {
 }
 
 /* ==========================================================================
-   5. Live Keyboard Shortcut HUD Tester
+   5. Live Keyboard Shortcut HUD Tester (v2.7.9 Full Mappings)
    ========================================================================== */
 function initKeyboardHUDTester() {
     const keyMap = {
@@ -667,9 +942,11 @@ function initKeyboardHUDTester() {
         'Escape': 'hudKeyEsc',
         'Digit1': 'hudKeyCapture',
         'Digit2': 'hudKeyRestore',
+        'Digit4': 'hudKeyOCR',
         'KeyG': 'hudKeyGhost',
         'KeyP': 'hudKeyPin',
-        'KeyT': 'hudKeyTextPin'
+        'KeyT': 'hudKeyTextPin',
+        'Enter': 'hudKeyOcrSubmit'
     };
 
     window.addEventListener('keydown', (e) => {

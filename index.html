@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraSnap · 专为 Apple Silicon 打造的原生 macOS 截图与 AI 视觉工作台</title>
-    <meta name="description" content="AuraSnap 是一款纯 Swift/AppKit 构建的 macOS 原生极速截图、Retina 2x 双引擎长截图、贴图二次编辑、区域录屏直拖外发、AuraVision AI 视觉大模型与双工具栏拖拽定制工作台。零 Electron 内存黑洞，为 Apple Silicon (M1-M4) 深度优化。">
-    <meta name="keywords" content="AuraSnap, macOS 截图, Apple Silicon, 长截图, 屏幕贴图, 穿透模式, 区域录屏, Vision OCR, DeepSeek, 工具栏自定义, 快捷键自定义, ScreenCaptureKit">
+    <title>AuraSnap · 专为 Apple Silicon 打造的原生 macOS 截图、独立 OCR 与 AI 视觉工作台</title>
+    <meta name="description" content="AuraSnap 是一款纯 Swift/AppKit 构建的 macOS 原生极速截图、独立 OCR 空间排版与全能文本清洗套件、分模块独立主题、Retina 2x 双引擎长截图、贴图二次编辑、区域录屏直拖外发、AuraVision AI 视觉大模型与双工具栏拖拽定制工作台。零 Electron 内存黑洞，为 Apple Silicon (M1-M4) 深度优化。">
+    <meta name="keywords" content="AuraSnap, macOS 截图, Apple Silicon, 独立 OCR, 文本清洗, 空间几何排版, Liquid Glass, HUD 主题, 长截图, 屏幕贴图, 穿透模式, 区域录屏, Vision OCR, DeepSeek, 工具栏自定义, 快捷键自定义, ScreenCaptureKit">
     
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
                     </svg>
                 </div>
                 <span class="logo-text">AuraSnap</span>
-                <span class="logo-tag">v2.6.1</span>
+                <span class="logo-tag">v2.7.9</span>
             </a>
 
             <nav class="nav-links">
@@ -101,7 +101,7 @@
         </h1>
 
         <p class="hero-subtitle">
-            告别卡顿、接缝错位与内存膨胀。AuraSnap 基于 <strong>Swift / AppKit / ScreenCaptureKit</strong> 与 <strong>Apple Accelerate</strong> 矢量数学引擎从零构建，带来双引擎长截图、贴图穿透接管、区域录屏 ⌘ 直拖外发、AuraVision AI 标注感知与双工具栏拖拽定制。
+            告别卡顿、接缝错位与内存膨胀。AuraSnap 基于 <strong>Swift / AppKit / ScreenCaptureKit</strong> 与 <strong>Apple Accelerate</strong> 矢量数学引擎从零构建，带来空间几何排版还原的<strong>独立 OCR 与全能文本清洗套件</strong>、分模块独立主题（通透玻璃 / 高对比 HUD）、双引擎长截图、贴图穿透接管、区域录屏 ⌘ 直拖外发与 AuraVision AI 视觉流式解析。
         </p>
 
         <div class="hero-actions">
@@ -264,6 +264,9 @@
 
                             <div class="native-divider"></div>
 
+                            <button class="native-tool-btn" data-tool="ocr" title="文字识别 OCR (⌥4 / ⌥O)">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+                            </button>
                             <button class="native-tool-btn" data-tool="cutout" title="智能主体提取 / 移除背景">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path><circle cx="19" cy="11" r="1" fill="currentColor"></circle><circle cx="5" cy="11" r="1" fill="currentColor"></circle></svg>
                             </button>
@@ -339,7 +342,11 @@
 
             <!-- 工作台切换 Tabs -->
             <div class="studio-tabs-nav">
-                <button class="studio-tab-btn active" data-tab="matting">
+                <button class="studio-tab-btn active" data-tab="ocr">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path><line x1="9" y1="12" x2="15" y2="12"></line></svg>
+                    <span>独立 OCR & 文本清洗</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="matting">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                     <span>智能抠图与净底</span>
                 </button>
@@ -347,9 +354,13 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                     <span>AuraVision AI 视觉</span>
                 </button>
+                <button class="studio-tab-btn" data-tab="themes">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <span>分模块独立主题</span>
+                </button>
                 <button class="studio-tab-btn" data-tab="textpin">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                    <span>文本贴图 & 水印</span>
+                    <span>图文贴图 & 水印</span>
                 </button>
                 <button class="studio-tab-btn" data-tab="pin">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="17" x2="12" y2="22"></line><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"></path></svg>
@@ -365,16 +376,165 @@
                 </button>
             </div>
 
+            <!-- Tab 0: 独立 OCR & 文本清洗套件 (OCR Studio - v2.7.9 Flagship) -->
+            <div class="studio-panel active" id="panel-ocr">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>空间几何排版重构与全能文本清洗套件</h3>
+                        <p>告别传统 OCR 碎片化垂直分行与表格乱码！AuraSnap 翻转 Vision 坐标系为物理阅读流，行高自适应垂直聚类，还原表格行列对齐与多栏布局；集成 4 大纯净分类下拉工具栏与 CharCategory 字符分类状态机。</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>空间排版 & 幂等 Markdown 表格</strong>：智能插入 <code>\t</code> 还原表格结构，一键转标准 GFM 表格，Obsidian / Notion 零错位</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>CharCategory 智能去空格</strong>：仅在英文词距间保留空格，100% 清除汉字、标点与数字间多余空格</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>智能去换行 & Pangu 间距</strong>：智能合并段内断行并修复英文连字符；中英文数字自动规范空格</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>全域图片拖拽 & 连续追加模式</strong>：图片直接拖入窗口即刻识别；开启追加模式连续截屏自动保序拼接</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>二维码自动检测 & 40ms AI 流式打字机</strong>：检测到条码顶部滑出横幅直达网址，AI 思考过程折叠与多轮追问</div>
+                            </li>
+                        </ul>
+                        <!-- 交互清洗演示按钮组 -->
+                        <div class="ocr-interactive-actions-bar" style="margin-top: 1rem;">
+                            <button class="ocr-action-btn active" id="btnOcrCleanSpaces">去空格</button>
+                            <button class="ocr-action-btn" id="btnOcrMergeLines">去换行</button>
+                            <button class="ocr-action-btn" id="btnOcrPangu">智能间距</button>
+                            <button class="ocr-action-btn" id="btnOcrToTable">转 Markdown 表格</button>
+                            <button class="ocr-action-btn" id="btnOcrAiExplain">✨ AI 解释</button>
+                            <button class="ocr-action-btn" id="btnOcrReset">重置样本</button>
+                        </div>
+                    </div>
+                    <div class="studio-stage-box" style="padding: 1rem;">
+                        <!-- 1:1 OCR Studio Window Simulator -->
+                        <div class="sim-ocr-window" id="simOcrWindow">
+                            <!-- OCR 窗口 Header -->
+                            <div class="sim-ocr-header">
+                                <div class="ocr-header-left">
+                                    <span class="ocr-tag-lang">中文 (简体)</span>
+                                    <span class="ocr-meta-text" id="ocrWordCount">168 字 · 5 行</span>
+                                </div>
+                                <div class="ocr-header-right">
+                                    <button class="ocr-header-btn active" id="btnOcrAppendMode" title="追加模式：连续截图自动拼接">
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                        <span>追加模式</span>
+                                    </button>
+                                    <button class="ocr-header-icon-btn" title="撤销 (⌘Z)">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
+                                    </button>
+                                    <button class="ocr-header-icon-btn" title="重做 (⇧⌘Z)">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 7v6h-6"></path><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3L21 13"></path></svg>
+                                    </button>
+                                    <button class="ocr-header-icon-btn" id="btnOcrMonoToggle" title="切换等宽/比例字体">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                    </button>
+                                    <button class="ocr-header-icon-btn" title="原图对照">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 智能二维码横幅 -->
+                            <div class="sim-ocr-barcode-banner" id="simOcrBarcodeBanner">
+                                <div class="barcode-badge">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                                    <span>QR Code</span>
+                                </div>
+                                <span class="barcode-payload">https://github.com/8wcznkmy6b-del/AuraSnap-PB</span>
+                                <div class="barcode-actions">
+                                    <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" target="_blank" class="barcode-open-btn">打开网址</a>
+                                    <button class="barcode-copy-btn" title="复制链接">
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- 4 大分类下拉清洗胶囊栏 -->
+                            <div class="sim-ocr-quickbar">
+                                <div class="ocr-menu-capsule">
+                                    <span>清洗 ▾</span>
+                                </div>
+                                <div class="ocr-menu-capsule">
+                                    <span>排版 ▾</span>
+                                </div>
+                                <div class="ocr-menu-capsule">
+                                    <span>大小写 ▾</span>
+                                </div>
+                                <div class="ocr-menu-capsule">
+                                    <span>标点 ▾</span>
+                                </div>
+                                <div class="ocr-ai-capsule" id="simOcrAiPill">
+                                    <span>✨ AI 解释</span>
+                                </div>
+                            </div>
+
+                            <!-- 文本编辑区 -->
+                            <div class="sim-ocr-editor-area">
+                                <textarea id="simOcrTextEditor" class="sim-ocr-textarea" spellcheck="false"></textarea>
+                            </div>
+
+                            <!-- AI 流式解析展开卡片 -->
+                            <div class="sim-ocr-ai-panel" id="simOcrAiPanel" style="display: none;">
+                                <div class="ocr-ai-panel-header">
+                                    <div class="ocr-ai-panel-title">
+                                        <span>✨ AI 深度解析 (DeepSeek-R1)</span>
+                                    </div>
+                                    <button class="ocr-ai-copy-btn" id="btnCopyOcrAi">复制解析</button>
+                                </div>
+                                <div class="ocr-ai-think-card" id="ocrThinkCard">
+                                    <div class="ocr-think-header" id="ocrThinkToggle">
+                                        <span>🧠 思考过程 (已折叠，点击展开)</span>
+                                    </div>
+                                    <div class="ocr-think-body" id="ocrThinkBody" style="display: none;">
+                                        分析当前文本内容：包含 Xcode 构建配置与 Apple Silicon 硬件加速指令。需要提炼出核心关键参数并按结构化要点清晰输出...
+                                    </div>
+                                </div>
+                                <div class="ocr-ai-markdown-body" id="ocrAiMarkdownBody">
+                                    <!-- 动态流式逐字打字机内容 -->
+                                </div>
+                            </div>
+
+                            <!-- OCR 底部操作栏 -->
+                            <div class="sim-ocr-footer">
+                                <span class="ocr-footer-hint">💡 提示：按 ⌘↩ 复制并关闭</span>
+                                <div class="ocr-footer-btns">
+                                    <button class="ocr-btn-secondary" id="btnOcrCopyOnly">仅复制</button>
+                                    <button class="ocr-btn-primary" id="btnOcrCopyAndClose">复制并关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Tab 1: 智能抠图与净底 (Matting Studio) -->
-            <div class="studio-panel active" id="panel-matting">
+            <div class="studio-panel" id="panel-matting">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
                         <h3>三路智能分流路由抠图矩阵</h3>
                         <p>告别单一算法的局限！AuraSnap 根据画面内容智能调度最强引擎，在纯粹数学与云端大模型之间取得完美平衡：</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>拉普拉斯高频净底 (UI 截图)</strong>：二阶微分算法，文字笔画/图标 100% 锐利，大模型无法替代</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>云端商业级语义去背 (兼容 Bria API)</strong>：支持配置自有 API 密钥，生成高保真连续 Alpha 蒙版，精准处理复杂毛发与半透明边缘</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Apple Vision 离线兜底</strong>：零网络依赖、零包体积，确保 100% 极致可用率</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>拉普拉斯高频净底 (UI 截图)</strong>：二阶微分算法，文字笔画/图标 100% 锐利，大模型无法替代</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>云端商业级语义去背 (兼容 Bria API)</strong>：支持配置自有 API 密钥，生成高保真连续 Alpha 蒙版，精准处理复杂毛发与半透明边缘</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>Apple Vision 离线兜底</strong>：零网络依赖、零包体积，确保 100% 极致可用率</div>
+                            </li>
                         </ul>
                         <div class="matting-pill-group" style="margin-top: 1rem;">
                             <button class="matting-pill-btn active" id="btnEngineLaplace">拉普拉斯 UI 净底</button>
@@ -412,8 +572,14 @@
                         <h3>AuraVision AI 视觉与标注感知聚焦</h3>
                         <p>兼容接入 <strong>DeepSeek-R1 / V3、Claude 3.5、OpenAI、Ollama 等开放大模型接口</strong>（支持用户配置自有密钥与 Base URL）。具备两大独家绝技：</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>标注感知聚焦</strong>：截图上的红圈、箭头记号会自动引导大模型聚焦核心内容</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>隐式控制字符自动清洗</strong>：自动滤除零宽空格 (`\u200B`)，彻底告别 403/401 报错</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>标注感知聚焦</strong>：截图上的红圈、箭头记号会自动引导大模型聚焦核心内容</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>隐式控制字符自动清洗</strong>：自动滤除零宽空格 (`\u200B`)，彻底告别 403/401 报错</div>
+                            </li>
                         </ul>
                         <!-- 真实 AIPillBarView 操作胶囊组 -->
                         <div class="ai-action-pills-bar" style="margin-top: 1rem;">
@@ -468,16 +634,80 @@
                 </div>
             </div>
 
-            <!-- Tab 3: 剪贴板文本贴图 & 全局水印 -->
+            <!-- Tab 3: 分模块独立主题 (Modular Themes - v2.7.8) -->
+            <div class="studio-panel" id="panel-themes">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>分模块独立主题渲染与高对比 HUD 磨砂</h3>
+                        <p>工具栏追求轻透水滴感，而 OCR 窗口需要高对比度阅读，两者需求不再冲突！AuraSnap 将外观配置解耦为独立渲染管线：</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>通透玻璃 (Liquid Glass)</strong>：macOS 26 原生 <code>Glass.clear</code> + 12% 吸光滤镜 + 纯白文字微米级动态投影，极度晶莹通透</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>高对比度 HUD (.hudWindow)</strong>：原生深色厚磨砂材质，大模糊半径深度吸收底图高频噪点与杂乱反光，文字超清晰</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>独立持久化配置</strong>：主工具栏与 OCR 窗口分别独立选择主题，即选即生效</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box" id="themeDemoStage" style="gap: 1rem;">
+                        <div class="theme-wallpaper-switcher">
+                            <button class="theme-wp-btn active" data-wp="sonoma">🌄 绚丽彩霞 (Sonoma)</button>
+                            <button class="theme-wp-btn" data-wp="sequoia">🌲 暮色森林 (Sequoia)</button>
+                            <button class="theme-wp-btn" data-wp="code">💻 代码视口 (Xcode)</button>
+                        </div>
+                        <div class="theme-showcase-cards">
+                            <div class="theme-card glass-mode">
+                                <div class="theme-card-badge">🔮 通透玻璃 (Liquid Glass)</div>
+                                <div class="theme-toolbar-preview">
+                                    <span class="preview-tool active">画笔</span>
+                                    <span class="preview-tool">矩形</span>
+                                    <span class="preview-tool">OCR</span>
+                                    <span class="preview-tool">贴图</span>
+                                </div>
+                                <span class="theme-card-caption">主工具栏默认推荐 · 真实透出底层壁纸色彩与晶莹高光</span>
+                            </div>
+                            <div class="theme-card hud-mode">
+                                <div class="theme-card-badge">🌫️ 高对比度 (HUD 磨砂)</div>
+                                <div class="theme-ocr-preview">
+                                    <span class="hud-text-strong">TextTransformEngine.swift</span>
+                                    <span class="hud-text-desc">原生深色厚磨砂吸收底层反光，文字边缘极度锐利</span>
+                                </div>
+                                <span class="theme-card-caption">OCR 结果窗口默认推荐 · 强力阻隔底层杂乱噪点</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: 剪贴板图文贴图 & 全局水印 (TextPin) -->
             <div class="studio-panel" id="panel-textpin">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
-                        <h3>剪贴板文本贴图 (`⌘⌥T`) 与全局防泄密水印</h3>
-                        <p><strong>代码/日志对账神器</strong>！无需手动框选，复制一段报错日志或 Token 密钥，按下 <strong>`⌘ + ⌥ + T`</strong> 瞬间在鼠标所在屏幕居中生成原生毛玻璃文本贴图！</p>
+                        <h3>剪贴板图文贴图 (`⌘⌥T`) 与全局防泄密水印</h3>
+                        <p><strong>代码/日志对账神器</strong>！无需手动框选，复制一段报错日志、Token 密钥或<strong>外部图片</strong>，按下 <strong>`⌘ + ⌥ + T`</strong> 瞬间在当前鼠标屏幕居中生成原生毛玻璃贴图！</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>原生毛玻璃与次像素抗锯齿</strong>：极致锐利，支持在此基础上直接打马赛克</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>10,000pt 安全截断</strong>：自带底部“锯齿撕裂+透明渐变”，保护 GPU 显存</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>全局防泄密水印</strong>：底层平铺铺满，零误触，GPU 原生渲染 0 CPU 开销</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>图文双模态分流</strong>：纯文本生成原生毛玻璃文本贴图；复制图片自动走 Alpha Trimming 去留白降维贴图</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>字形轮廓级穿透拖拽</strong>：纯文本贴图点击文字间空白处直接穿透拖拽移动，文字精准划选</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>10,000pt 安全截断</strong>：底部自带“锯齿撕裂+透明渐变”，保护 GPU 显存</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>水印防丢闭环 (v2.6.9)</strong>：保存、复制、贴图及长截图全链路包含水印，对角线包围盒防文字截断</div>
+                            </li>
                         </ul>
                     </div>
                     <div class="studio-stage-box">
@@ -485,10 +715,10 @@
                         <div class="native-text-pin-window">
                             <div class="native-text-pin-body">
                                 <code>
-                                    <span style="color: #64748b;">[2026-08-18 22:15:00]</span> <span style="color: #38bdf8;">INFO:</span> Authenticated with Bearer Token<br>
-                                    <span style="color: #64748b;">[2026-08-18 22:15:01]</span> <span style="color: #10b981;">SUCCESS:</span> AuraVision Stream Ready<br>
+                                    <span style="color: #64748b;">[2026-08-21 16:30:00]</span> <span style="color: #38bdf8;">INFO:</span> Authenticated with Bearer Token<br>
+                                    <span style="color: #64748b;">[2026-08-21 16:30:01]</span> <span style="color: #10b981;">SUCCESS:</span> AuraVision Stream Ready<br>
                                     <span style="color: #f59e0b;">{"status": "active", "latency_ms": 1.2}</span><br>
-                                    <span style="color: #94a3b8;">// ⌘⌥T 剪贴板文本毫秒级原生直出贴图</span>
+                                    <span style="color: #94a3b8;">// ⌘⌥T 剪贴板文本/图片毫秒级原生直出贴图</span>
                                 </code>
                             </div>
                             <div class="native-text-pin-tear">
@@ -500,16 +730,33 @@
                 </div>
             </div>
 
-            <!-- Tab 4: 贴图 ⌘ 拖拽与 Ghost 穿透 -->
+            <!-- Tab 5: 贴图 ⌘ 拖拽与 Ghost 穿透 -->
             <div class="studio-panel" id="panel-pin">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
                         <h3>贴图二次编辑、⌘ 直拖外发 & Ghost 穿透</h3>
                         <p>贴图不是死图，生成后随时可再次涂鸦、加文字、打马赛克。<strong>按住 ⌘ (Command) 键直接拖拽贴图</strong>，即可将贴图直接拖入<strong>微信、钉钉、飞书、Slack 等通讯工具发送，或直接拖进访达文件夹秒存</strong>！开启 <strong>Ghost 穿透模式 (`⌥G`)</strong> 后完全穿透点击底层代码，<strong>长按 ⌥ 键</strong> 随时唤醒接管移动！</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>按住 ⌘ 拖拽贴图</strong>：直接外发至通讯工具或拖入文件夹秒存</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ⌥ + 滚轮无极调节透明度 (10% - 100%)，中键一键重置</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> ⌥ + 2 历史栈一键恢复误关贴图 (Disk-backed 零内存常驻)</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>全域浮窗快捷键 (v2.7.1)</strong>：贴图窗口支持 <code>⌘C</code> 复制、<code>⌘S</code> 保存、<code>⌘P</code> 转贴图、<code>Esc</code> 关闭</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>跨空间全屏穿透 (v2.7.2)</strong>：注入 <code>.canJoinAllSpaces</code> 权限，贴图可悬浮在全屏 Safari/Xcode 之上</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>未截断浮点时间线 (v2.7.3)</strong>：<code>unroundedFrame</code> 消除坐标整数截断累加漂移，120Hz 极稳缩放</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>按住 ⌘ 拖拽贴图</strong>：直接外发至通讯工具或拖入文件夹秒存</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>⌥ + 2 历史栈一键恢复</strong>：误关贴图随时调回 (Disk-backed 零内存常驻)</div>
+                            </li>
                         </ul>
                     </div>
                     <div class="studio-stage-box">
@@ -537,16 +784,25 @@
                 </div>
             </div>
 
-            <!-- Tab 5: 智能引线批注 & 水滴图钉 -->
+            <!-- Tab 6: 智能引线批注 & 水滴图钉 -->
             <div class="studio-panel" id="panel-remark">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
                         <h3>智能引线批注 (Remark) 与水滴指向图钉</h3>
                         <p>复杂界面与 Bug 反馈的终极排版利器！</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>Ray-AABB 射线自适应边缘吸附</strong>：引线说明卡片无论怎么拖动，引线顺滑自适应停靠</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>120fps 击键呼吸自适应包裹</strong>：卡片随打字平滑扩张，三阶黄金比例排版拒绝细长面条</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <strong>水滴图钉 360° 原地旋转 & 原子连续重排</strong>：删除图钉后编号自动递补，永不跳空</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>Ray-AABB 射线自适应边缘吸附</strong>：引线说明卡片无论怎么拖动，引线顺滑自适应停靠</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>120fps 击键呼吸自适应包裹</strong>：卡片随打字平滑扩张，三阶黄金比例排版拒绝细长面条</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>水滴图钉 360° 原地旋转 & 原子连续重排</strong>：删除图钉后编号自动递补，永不跳空</div>
+                            </li>
                         </ul>
                     </div>
                     <div class="studio-stage-box" style="gap: 1.8rem;">
@@ -587,15 +843,29 @@
                 </div>
             </div>
 
-            <!-- Tab 6: 双引擎长截图 & 区域录屏 -->
+            <!-- Tab 7: 双引擎长截图 & 区域录屏 -->
             <div class="studio-panel" id="panel-longshot">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
                         <h3>双引擎长截图 & 区域录屏 ⌘ 直拖外发</h3>
                         <p>2D DP 接缝切取算法（单帧计算 &lt; 1.5ms）攻克慢滑重复，DAG 滑窗攻克快滑截断。录屏支持 MP4、高保真 GIF、WebM 三种格式，<strong>按住 ⌘ 键直接拖拽即可将视频拖进外部通讯工具发送</strong>！</p>
                         <ul class="studio-feature-bullets">
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 2D DP 能量接缝算法单帧计算 &lt; 1.5ms，Retina 2x Minimap 实时微缩地图</li>
-                            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 按住 ⌘ 拖拽录屏文件直接外发，告别另存为弹窗</li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>零闪烁穿透抓图 (v2.7.6)</strong>：基于 WindowID 穿透遮罩捕获物理底图，对齐生命周期消除黑闪</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>120Hz 硬件原子同步拖拽 (v2.7.2)</strong>：<code>CATransaction</code> 打包位移，播放器与工具栏绝对同步跟随</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>GIF 富文本剪贴板注水 (v2.7.1)</strong>：<code>⌘C</code> 复制动图，微信/飞书粘贴为真实动图而非路径</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>2D DP 能量接缝算法</strong>：单帧计算 &lt; 1.5ms，Retina 2x Minimap 实时微缩地图</div>
+                            </li>
                         </ul>
                     </div>
                     <div class="studio-stage-box" style="padding: 0.85rem;">
@@ -630,13 +900,17 @@
                         <kbd>⌥ 1</kbd>
                         <span>全局唤起屏幕截图</span>
                     </div>
+                    <div class="hud-key-card" id="hudKeyOCR">
+                        <kbd>⌥ 4</kbd>
+                        <span>文字识别 (OCR) 直达</span>
+                    </div>
                     <div class="hud-key-card" id="hudKeyRestore">
                         <kbd>⌥ 2</kbd>
                         <span>恢复最近误关贴图</span>
                     </div>
                     <div class="hud-key-card" id="hudKeyTextPin">
                         <kbd>⌘ ⌥ T</kbd>
-                        <span>剪贴板文本转贴图</span>
+                        <span>剪贴板图文转贴图</span>
                     </div>
                     <div class="hud-key-card" id="hudKeyGhost">
                         <kbd>⌥ G</kbd>
@@ -649,6 +923,10 @@
                     <div class="hud-key-card" id="hudKeyColor">
                         <kbd>C</kbd>
                         <span>复制光标处 HEX / RGB</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyOcrSubmit">
+                        <kbd>⌘ ↩</kbd>
+                        <span>OCR 复制全文并关闭</span>
                     </div>
                     <div class="hud-key-card" id="hudKeyCopy">
                         <kbd>⌘ C</kbd>
@@ -693,18 +971,33 @@
                             <td class="dimmed">150ms ~ 500ms (IPC 跨进程通信与渲染延迟)</td>
                         </tr>
                         <tr>
+                            <td><strong>OCR 空间排版与清洗</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 空间几何垂直聚类还原表格 + CharCategory 智能去空格 + 幂等 Markdown</span></td>
+                            <td class="dimmed">碎片化垂直分行，充满乱空格与换行错位</td>
+                        </tr>
+                        <tr>
+                            <td><strong>外观渲染与独立主题</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 通透玻璃 (Liquid Glass) / 高对比度 HUD / 经典纯色 分模块解耦</span></td>
+                            <td class="dimmed">全局单一固定深浅色主题，缺乏厚磨砂抗反光</td>
+                        </tr>
+                        <tr>
+                            <td><strong>全屏跨空间穿透</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ [.canJoinAllSpaces] 特权，常驻悬浮于全屏 Safari/Xcode 之上</span></td>
+                            <td class="dimmed">被系统全屏 Space 隔离阻断，无法跨屏穿透</td>
+                        </tr>
+                        <tr>
                             <td><strong>长截图接缝算法</strong></td>
-                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 2D DP 接缝切取 + Accelerate 硬件加速</span></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 2D DP 接缝切取 + Accelerate 硬件加速 + 零闪烁穿透底图</span></td>
                             <td class="dimmed">简单位移覆盖 (极易出现文字断层或重复)</td>
                         </tr>
                         <tr>
-                            <td><strong>工具栏与热键自由度</strong></td>
-                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 双工具栏拖拽排序 + 局部动作全键位录制</span></td>
+                            <td><strong>工具栏与菜单栏自由度</strong></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 双工具栏 + 菜单栏显隐拖拽排序 + 局部动作全键位录制</span></td>
                             <td class="dimmed">固定界面排版，仅支持修改单一截屏热键</td>
                         </tr>
                         <tr>
                             <td><strong>AI 视觉与离线安全</strong></td>
-                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 开放协议兼容 (OpenAI/DeepSeek/Ollama)</span></td>
+                            <td class="highlight-good"><span class="benchmark-badge-win">✓ 开放协议兼容 (OpenAI/DeepSeek/Ollama) + 40ms 流式打字机 + 思考折叠</span></td>
                             <td class="dimmed">绑定固定付费云端模型，无法本地离线运行</td>
                         </tr>
                     </tbody>
@@ -718,14 +1011,14 @@
         <div class="container">
             <div class="download-card-wrapper">
                 <h2>立即开启 AuraSnap 原生工作流</h2>
-                <p>为你的 Mac 换上一款纯粹、轻快、趁手、充满极客质感的屏幕捕获利器。</p>
+                <p>为你的 Mac 换上一款纯粹、轻快、趁手、充满极客质感的屏幕捕获与 OCR 生产力利器。</p>
 
                 <div class="download-btn-group">
                     <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" class="btn-primary-lg" target="_blank" rel="noopener">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2.02.6-2.66 1.36-.57.66-.99 1.74-.86 2.76 1.01.08 2.01-.52 2.6-1.27z"/>
                         </svg>
-                        <span>下载最新版本 v2.6.1 (.dmg)</span>
+                        <span>下载最新版本 v2.7.9 (.dmg)</span>
                     </a>
                     <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="btn-secondary-lg" target="_blank" rel="noopener">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -736,7 +1029,7 @@
                 </div>
 
                 <div class="version-meta-pill">
-                    <span>当前稳定版: <strong>v2.6.1 (Build 2026.08)</strong></span>
+                    <span>当前稳定版: <strong>v2.7.9 (Build 2026.08)</strong></span>
                     <span>·</span>
                     <span>适配: <strong>Apple Silicon (M1-M4)</strong></span>
                     <span>·</span>
