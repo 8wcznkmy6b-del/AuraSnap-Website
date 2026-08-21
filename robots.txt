@@ -1,0 +1,7 @@
+# robots.txt for https://aurasnap.dpdns.org/
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aurasnap.dpdns.org/sitemap.xml
