@@ -234,7 +234,7 @@ function initHeroDesktopSimulator() {
                 ${colorsHTML}
                 <div class="native-divider"></div>
                 <button class="native-menu-btn" id="btnRemarkLine" title="引线样式 (直线 / 折线)">
-                    <span style="font-size: 11px;">直线引线 (Ray-AABB)</span>
+                    <span style="font-size: 11px;">直线引线 (智能吸附)</span>
                 </button>
                 <div class="native-divider"></div>
                 ${sliderHTML}
@@ -284,8 +284,8 @@ function initHeroDesktopSimulator() {
             tierOptionsBar.innerHTML = `
                 <span style="font-size: 11px; color: #475569; font-weight: 500;">
                     ${tool === 'select' ? '🎯 选择模式：可点击拖动任意已有标注或缩放' :
-                      tool === 'cutout' ? '⚡ 智能去背：拉普拉斯高频净底 / Bria API / Apple Vision' :
-                      tool === 'longshot' ? '↕ 长截图：滚动捕捉超长代码与网页 (2D DP 算法)' :
+                      tool === 'cutout' ? '⚡ 智能去背：UI 界面净底 / 复杂主体去背 / 本地离线去背' :
+                      tool === 'longshot' ? '↕ 长截图：滚动捕捉长图与网页' :
                       tool === 'record' ? '📹 录屏模式：支持导出 GIF/MP4/WebM 与 ⌘ 拖拽外发' :
                       '已就绪'}
                 </span>
@@ -602,7 +602,7 @@ tion string for SQLite database.`;
                 text = text.replace(/([A-Za-z0-9])\s+([\u4e00-\u9fa5])/g, '$1 $2');
                 ocrEditor.value = text;
                 updateOcrStats();
-                showGlobalToast("🧹 已执行 CharCategory 去空格：保留英文词距，清除汉字标点间冗余空格");
+                showGlobalToast("🧹 已执行智能去空格：保留英文词距，清除汉字标点间冗余空格");
             });
         }
 
@@ -679,9 +679,9 @@ tion string for SQLite database.`;
             ocrAiMarkdownBody.innerHTML = '<span class="ocr-ai-typing-cursor">正在请求 DeepSeek-R1 深度流式解析...</span>';
             
             const streamResponse = `**📌 结构化摘要与核心提要**
-1. **硬件配置**: M4 Max 芯片旗舰算力架构，专为 macOS 原生矢量加速设计；
-2. **显示与渲染**: 配备 5K Retina 超清物理视口与 Accelerate 矢量数学矩阵；
-3. **生产力套件**: AuraSnap 具备空间几何排版重构、全能文本清洗与流式大模型赋能。`;
+1. **硬件配置**: 高性能算力架构，专为 macOS 体验深度优化；
+2. **显示与渲染**: 超清视口显示与高精度色彩渲染；
+3. **生产力套件**: AuraSnap 具备空间排版还原、全能文本清洗与 AI 深度解析能力。`;
 
             let currentIdx = 0;
             ocrAiMarkdownBody.innerHTML = '';
@@ -779,7 +779,7 @@ tion string for SQLite database.`;
             if (isCutout) {
                 mattingCard.classList.add('matting-cutout-active');
                 btnToggleCutout.textContent = "还原原图背景";
-                mattingStatus.textContent = "💡 当前预览：拉普拉斯高频净底去背 (GPU 棋盘格)";
+                mattingStatus.textContent = "💡 当前预览：UI 净底效果 (透明棋盘格)";
             } else {
                 mattingCard.classList.remove('matting-cutout-active');
                 btnToggleCutout.textContent = "一键智能去背";
@@ -793,14 +793,14 @@ tion string for SQLite database.`;
                 mattingBtns.forEach(btn => btn && btn.classList.remove('active'));
                 b.classList.add('active');
                 if (b === btnLaplace) {
-                    mattingBox.innerHTML = `<code><span style="color: #f43f5e;">struct</span> <span style="color: #38bdf8;">AuraSnap</span> {<br>&nbsp;&nbsp;<span style="color: #a855f7;">let</span> engine = <span style="color: #10b981;">"Laplace 4-Pass"</span><br>&nbsp;&nbsp;<span style="color: #a855f7;">let</span> sharpness = <span style="color: #f59e0b;">1.00</span><br>}</code>`;
-                    mattingStatus.textContent = "💡 拉普拉斯 UI 净底：二阶微分数学算法，文字笔画 100% 锐利";
+                    mattingBox.innerHTML = `<code><span style="color: #f43f5e;">struct</span> <span style="color: #38bdf8;">AuraSnap</span> {<br>&nbsp;&nbsp;<span style="color: #a855f7;">let</span> mode = <span style="color: #10b981;">"Instant Cutout"</span><br>&nbsp;&nbsp;<span style="color: #a855f7;">let</span> transparency = <span style="color: #f59e0b;">1.00</span><br>}</code>`;
+                    mattingStatus.textContent = "💡 UI 界面净底：专为代码与图标优化，文字边缘清晰锐利";
                 } else if (b === btnBria) {
-                    mattingBox.innerHTML = `<div style="text-align: center; padding: 0.5rem;"><span style="font-size: 2rem;">👤</span><br><strong style="color: #38bdf8;">云端商业级语义去背 (兼容 Bria API)</strong><br><span style="font-size: 0.72rem; color: #94a3b8;">支持配置自有密钥 · 高保真连续 Alpha 蒙版</span></div>`;
-                    mattingStatus.textContent = "💡 云端商业级语义去背：支持接入 Bria API，高保真连续 Alpha 蒙版，自然过渡毛发与半透明边缘";
+                    mattingBox.innerHTML = `<div style="text-align: center; padding: 0.5rem;"><span style="font-size: 2rem;">👤</span><br><strong style="color: #38bdf8;">复杂主体与毛发去背</strong><br><span style="font-size: 0.72rem; color: #94a3b8;">支持配置自有密钥 · 高保真平滑蒙版</span></div>`;
+                    mattingStatus.textContent = "💡 复杂主体去背：支持接入商业级去背接口，自然过渡毛发与半透明边缘";
                 } else if (b === btnVision) {
-                    mattingBox.innerHTML = `<div style="text-align: center; padding: 0.5rem;"><span style="font-size: 2rem;">⚡</span><br><strong style="color: #10b981;">Apple Vision 离线兜底</strong><br><span style="font-size: 0.72rem; color: #94a3b8;">0 延迟 · 0 网络依赖 · 0 额外包体积</span></div>`;
-                    mattingStatus.textContent = "💡 Apple Vision：原生离线神经引擎提取主体，光速兜底 100% 可用";
+                    mattingBox.innerHTML = `<div style="text-align: center; padding: 0.5rem;"><span style="font-size: 2rem;">⚡</span><br><strong style="color: #10b981;">本地离线快速去背</strong><br><span style="font-size: 0.72rem; color: #94a3b8;">无需网络 · 即刻可用</span></div>`;
+                    mattingStatus.textContent = "💡 本地离线去背：无需网络连接，快速提取前景主体";
                 }
             });
         });
