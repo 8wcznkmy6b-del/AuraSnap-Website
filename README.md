@@ -4,4 +4,6 @@ This repository hosts the official landing page, interactive studio, and documen
 
 - 🌐 **Official Website**: [https://aurasnap.dpdns.org/](https://aurasnap.dpdns.org/)
 - 📦 **App Repository**: [8wcznkmy6b-del/AuraSnap-PB](https://github.com/8wcznkmy6b-del/AuraSnap-PB)
-- ⚡ **爱发电 (Afdian) 赞助支持**: [https://afdian.com/a/aurasnap](https://afdian.com/a/aurasnap)
+- 💎 **Pro Plans & Pricing**: [https://aurasnap.dpdns.org/#pricing](https://aurasnap.dpdns.org/#pricing)
+- 📖 **User Guide**: [https://aurasnap.dpdns.org/guide.html](https://aurasnap.dpdns.org/guide.html)
+
