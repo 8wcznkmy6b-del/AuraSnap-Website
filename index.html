@@ -59,9 +59,9 @@
         /* Pricing & Comparison Table Inline Protection Styles */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
-            max-width: 1160px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.4rem;
+            max-width: 1280px;
             margin: 0 auto;
             align-items: stretch;
         }
@@ -69,7 +69,7 @@
             background: #ffffff;
             border: 1px solid rgba(15, 23, 42, 0.08);
             border-radius: 24px;
-            padding: 2.5rem 2rem;
+            padding: 2.2rem 1.6rem;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -85,6 +85,11 @@
             border: 2px solid #0071e3;
             box-shadow: 0 16px 36px -10px rgba(0, 113, 227, 0.18);
         }
+        .pricing-card.lifetime {
+            background: linear-gradient(180deg, #ffffff 0%, #faf5ff 100%);
+            border: 2px solid #a855f7;
+            box-shadow: 0 16px 36px -10px rgba(168, 85, 247, 0.2);
+        }
         .pricing-badge-popular {
             position: absolute;
             top: -14px;
@@ -98,6 +103,32 @@
             border-radius: 9999px;
             box-shadow: 0 4px 12px rgba(0, 113, 227, 0.35);
             white-space: nowrap;
+        }
+        .pricing-badge-lifetime {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 700;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 12px rgba(147, 51, 234, 0.35);
+            white-space: nowrap;
+        }
+        @media (max-width: 1120px) {
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 780px;
+            }
+        }
+        @media (max-width: 680px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 440px;
+            }
         }
         .pricing-header { margin-bottom: 1.5rem; }
         .pricing-plan-name { font-size: 1.3rem; font-weight: 700; color: #0f172a; margin-bottom: 0.4rem; }
@@ -1579,7 +1610,7 @@
                             <span><strong>1 对 1 优先专属技术支持</strong></span>
                         </li>
                     </ul>
-                    <a href="https://www.creem.io/checkout" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);">终身买断 ($19.99)</a>
+                    <a href="https://www.creem.io/payment/prod_OiQpqfsiZJnrhP1S50dJF" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);">终身买断 ($19.99)</a>
                 </div>
             </div>
 
