@@ -667,6 +667,10 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
                     <span>区域录屏 & ⌘ 外发</span>
                 </button>
+                <button class="studio-tab-btn" data-tab="customization">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h.01M12 12h.01M16 12h.01M7 16h10"></path></svg>
+                    <span>双工具栏/菜单 & 专属键位定制</span>
+                </button>
             </div>
 
             <!-- Tab 0: 独立 OCR & 文本清洗套件 (OCR Studio) -->
@@ -1317,6 +1321,88 @@
                                 <span>按住 ⌘ 拖拽我外发</span>
                             </div>
                             <span style="font-size: 0.72rem; color: #64748b;">拖入聊天软件 / 邮件 / 访达文件夹</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 11: 双工具栏/菜单自定义 & 专属快捷键矩阵 -->
+            <div class="studio-panel" id="panel-customization">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>全域高自由度定制 · 双工具栏拖拽、状态栏定制与专属键位重构</h3>
+                        <p>你的截屏工作台，由你完全掌控。AuraSnap 深度开放了原生 macOS 菜单栏与截图标注栏的编排权限，支持任意工具自由显隐与无感拖拽重排，配合全套单键/组合快捷键深度定制，为专业极客量身打造肌肉记忆。</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>截图标注 & 贴图双工具栏自由拖拽编排</strong>：两大核心工具栏均支持 100% 自由拖拽排序；常用工具一键置前、冗余工具随时隐藏，打造极致精简的原生工作台</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>状态栏菜单完全自主控制与纯净收敛</strong>：支持菜单项自由显隐与上下排序；Pro 会员状态、截屏动作、历史记录等按需呈现，甚至可关闭 Pro 入口保持状态栏绝对极简</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>细化到每一个单独工具的快捷键定制</strong>：不仅支持全局唤起热键，更细化到画笔 (<code>P</code>)、矩形 (<code>R</code>)、箭头 (<code>A</code>)、橡皮擦 (<code>E</code>)、智能抠图 (<code>M</code>)、背景美化 (<code>F</code>)、OCR (<code>T</code>) 等每一个独立标注工具的自定义键位映射</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>智能冲突预警与防呆安全机制</strong>：内置实时按键冲突检测与系统级保护，杜绝与 macOS 系统核心快捷键撞车，热键修改即时生效、硬件级安全持久化</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>配置一键备份与秒级重置恢复</strong>：支持快速恢复官方推荐预设，随时随地随心定制，永无后顾之忧</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <!-- 交互式工具栏与快捷键定制可视化面板 -->
+                        <div style="width: 100%; max-width: 340px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 14px; box-shadow: 0 16px 32px rgba(0,0,0,0.35);">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <span style="font-size: 12px; font-weight: 700; color: #f8fafc;">偏好设置 ➔ 工具栏与快捷键</span>
+                                <span style="font-size: 9px; padding: 2px 6px; background: rgba(34,197,94,0.2); color: #4ade80; border-radius: 4px; font-weight: 600;">实时生效</span>
+                            </div>
+                            <!-- 模拟可拖拽工具栏排序列表 -->
+                            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 11px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 6px; border-left: 3px solid #0071e3;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #64748b; font-size: 10px;">☰</span>
+                                        <span>📷 截取屏幕 (全局)</span>
+                                    </div>
+                                    <kbd style="background: rgba(255,255,255,0.12); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; color: #38bdf8;">⌥ 1</kbd>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 6px; border-left: 3px solid #10b981;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #64748b; font-size: 10px;">☰</span>
+                                        <span>📜 滚动截长图</span>
+                                    </div>
+                                    <kbd style="background: rgba(255,255,255,0.12); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; color: #38bdf8;">⌥ 2</kbd>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 6px; border-left: 3px solid #a855f7;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #64748b; font-size: 10px;">☰</span>
+                                        <span>🎨 5K 背景美化 (独立工具)</span>
+                                    </div>
+                                    <kbd style="background: rgba(255,255,255,0.12); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; color: #a855f7;">F</kbd>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 6px; border-left: 3px solid #eab308;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #64748b; font-size: 10px;">☰</span>
+                                        <span>🪄 智能主体抠图 (独立工具)</span>
+                                    </div>
+                                    <kbd style="background: rgba(255,255,255,0.12); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; color: #eab308;">M</kbd>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 6px 10px; border-radius: 6px; border-left: 3px solid #ec4899;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #64748b; font-size: 10px;">☰</span>
+                                        <span>🔍 空间 OCR 与清洗</span>
+                                    </div>
+                                    <kbd style="background: rgba(255,255,255,0.12); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; color: #ec4899;">T</kbd>
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; text-align: center; font-size: 10px; color: #64748b;">
+                                💡 拖拽左侧 ☰ 把手自由排序 · 点击按键即可录制新快捷键
+                            </div>
                         </div>
                     </div>
                 </div>
