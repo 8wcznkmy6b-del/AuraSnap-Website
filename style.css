@@ -2537,9 +2537,9 @@ footer {
    ========================================================================== */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  max-width: 1160px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
+  max-width: 1280px;
   margin: 0 auto;
   align-items: stretch;
 }
@@ -2548,7 +2548,7 @@ footer {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
-  padding: 2.5rem 2rem;
+  padding: 2.2rem 1.6rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -2568,6 +2568,12 @@ footer {
   box-shadow: 0 16px 36px -10px rgba(0, 113, 227, 0.18);
 }
 
+.pricing-card.lifetime {
+  background: linear-gradient(180deg, #ffffff 0%, #faf5ff 100%);
+  border: 2px solid #a855f7;
+  box-shadow: 0 16px 36px -10px rgba(168, 85, 247, 0.2);
+}
+
 .pricing-badge-popular {
   position: absolute;
   top: -14px;
@@ -2582,6 +2588,23 @@ footer {
   padding: 4px 14px;
   border-radius: var(--radius-full);
   box-shadow: 0 4px 12px rgba(0, 113, 227, 0.35);
+  white-space: nowrap;
+}
+
+.pricing-badge-lifetime {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.35);
   white-space: nowrap;
 }
 
@@ -2821,10 +2844,17 @@ footer {
   display: inline-block;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1120px) {
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 780px;
+  }
+}
+
+@media (max-width: 680px) {
   .pricing-grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 440px;
   }
   .pricing-guarantee-banner {
     flex-direction: column;

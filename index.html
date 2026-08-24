@@ -629,8 +629,12 @@
                     <span>引线批注 & 水滴图钉</span>
                 </button>
                 <button class="studio-tab-btn" data-tab="longshot">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                    <span>智能无缝长截图</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="recording">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
-                    <span>长截图 & ⌘ 录屏</span>
+                    <span>区域录屏 & ⌘ 外发</span>
                 </button>
             </div>
 
@@ -1201,16 +1205,64 @@
                 </div>
             </div>
 
-            <!-- Tab 9: 双引擎长截图 & 区域录屏 -->
+            <!-- Tab 9: 全场景智能长截图 -->
             <div class="studio-panel" id="panel-longshot">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
-                        <h3>双引擎长截图 & 区域录屏 ⌘ 直拖外发</h3>
-                        <p>智能识别滚动重叠区域，快滑慢滑都能精准拼接无断层。录屏支持 MP4、高保真 GIF、WebM 三种格式，<strong>按住 ⌘ 键直接拖拽即可将视频拖进外部聊天工具发送</strong>！</p>
+                        <h3>全场景智能长截图 · 多气泡置顶与底栏无缝融合</h3>
+                        <p>专为现代复杂交互视窗重度打磨的长截图体验。快滑慢滑都能精准拼接无断层，<strong>独创多层置顶浮动气泡平滑顺延接力与底部固定输入栏纯净隔离</strong>，长图浑然一体，带来行业顶尖的长截屏表现！</p>
                         <ul class="studio-feature-bullets">
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>平滑无闪烁捕获</strong>：长截图启动与拼接过程画面干净利落，无黑屏与界面闪烁</div>
+                                <div><strong>多气泡连续置顶平滑接力</strong>：智能感知聊天记录与文档中的多层置顶浮动卡片（如时间戳、消息引用、置顶公告），进场出场平滑衔接，彻底消除重复截取与字画断层</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>底部固定输入栏与底座纯净隔离</strong>：智能隔离界面底部常驻固定的输入框、工具底座与悬浮阴影，滑动中 0 渗漏，在截屏终态实现单次精准闭合</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>硬件级高帧率平滑事件同步</strong>：深度联动滚轮与触控板手势动量，快滑慢滑画面均平滑干净，零黑屏、零界面闪烁</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>高清矢量画卷与 14,400pt 流式直出</strong>：无论截取数千还是超万像素，均支持无损直出为标准高清矢量 PDF 与超清 PNG，画质晶莹剔透</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>实时微缩全景预览与常驻贴图视口</strong>：右侧提供实时长图微缩全景图，截取完成后支持一键转为桌面常驻贴图并在安全视口内自适应缩放浏览</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="studio-stage-box" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div style="width: 100%; max-width: 330px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px; box-shadow: 0 12px 28px rgba(0,0,0,0.3);">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                                <span style="font-size: 12px; font-weight: 700; color: #38bdf8;">✨ 智能长截图拼接视口</span>
+                                <span style="font-size: 9px; padding: 2px 6px; background: rgba(56,189,248,0.2); color: #38bdf8; border-radius: 4px; font-weight: 600;">60 FPS 同步</span>
+                            </div>
+                            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; font-size: 11px; color: #94a3b8; line-height: 1.7;">
+                                <div style="color: #38bdf8; font-weight: 600; margin-bottom: 6px;">📌 顶部多气泡：连续平滑接力 (0 重复)</div>
+                                <div style="padding-left: 10px; border-left: 2px solid #38bdf8; margin-bottom: 8px; font-size: 10.5px;">
+                                    · 消息引用与时间胶囊自适应顺延<br>
+                                    · 滚动重叠区微秒级无缝对齐
+                                </div>
+                                <div style="color: #10b981; font-weight: 600; margin-top: 8px;">🔒 固定底栏：纯净隔离 (0 渗漏)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 10: 区域录屏 & ⌘ 外发 -->
+            <div class="studio-panel" id="panel-recording">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>区域录屏 & 高保真动图 ⌘ 直拖外发</h3>
+                        <p>支持 MP4、高保真 GIF、WebM 三种通用格式，最高支持 60FPS 极速捕获。<strong>按住 ⌘ 键直接拖拽即可将录制的视频/动图拖进外部聊天工具发送</strong>，无需在本地繁琐保存文件！</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>动图一键复制直接发送</strong>：按 <code>⌘C</code> 复制动图，粘贴至微信、飞书直接显示为真实动图，无需保存文件</div>
                             </li>
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1218,11 +1270,7 @@
                             </li>
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>动图一键复制直接发送</strong>：按 <code>⌘C</code> 复制动图，粘贴至微信、飞书直接显示为真实动图，无需保存文件</div>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>实时高清微缩全景预览</strong>：右侧提供实时长图微缩缩略图，滚动进度一目了然</div>
+                                <div><strong>轻量无损封装</strong>：MP4 / 高保真 GIF / WebM 格式体积高度精简，画质细腻无水波纹</div>
                             </li>
                         </ul>
                     </div>
@@ -1380,10 +1428,10 @@
     <section id="pricing" class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-eyebrow">灵活订阅 · 支持月付 / 季付 / 年付</span>
-                <h2 class="section-title">简单透明的订阅方案</h2>
+                <span class="section-eyebrow">灵活订阅 & 终生买断 · 支持月付 / 季付 / 年付 / 永久买断</span>
+                <h2 class="section-title">简单透明的定价方案</h2>
                 <p class="section-desc">
-                    所有订阅方案均完整解锁 <strong>全部 Pro 专业版功能</strong>。付款成功后，激活码将秒级自动发放至您的收件邮箱，即买即用。
+                    所有方案均完整解锁 <strong>全部 Pro 专业版功能</strong>。付款成功后，激活码将秒级自动发放至您的收件邮箱，即买即用。
                 </p>
             </div>
 
@@ -1396,7 +1444,7 @@
                     </div>
                     <div class="pricing-price-wrap">
                         <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">1</span>
+                        <span class="pricing-amount">1.49</span>
                         <span class="pricing-period">/ 月 (USD)</span>
                     </div>
                     <ul class="pricing-features-list">
@@ -1421,7 +1469,7 @@
                             <span>支持 <strong>1 台 Mac 设备</strong> 授权激活</span>
                         </li>
                     </ul>
-                    <a href="https://www.creem.io/payment/prod_6dHlEhyQDjuk5q2u1Hy9Xq" target="_blank" rel="noopener" class="pricing-btn pricing-btn-secondary">按月订阅 ($1/月)</a>
+                    <a href="https://www.creem.io/payment/prod_6dHlEhyQDjuk5q2u1Hy9Xq" target="_blank" rel="noopener" class="pricing-btn pricing-btn-secondary">按月订阅 ($1.49/月)</a>
                 </div>
 
                 <!-- Pro 季度订阅 -->
@@ -1432,7 +1480,7 @@
                     </div>
                     <div class="pricing-price-wrap">
                         <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">2.49</span>
+                        <span class="pricing-amount">3.99</span>
                         <span class="pricing-period">/ 季 (USD)</span>
                     </div>
                     <ul class="pricing-features-list">
@@ -1442,7 +1490,7 @@
                         </li>
                         <li>
                             <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>折合每月仅 $0.83</strong>（立省 17%）</span>
+                            <span><strong>折合每月仅 $1.33</strong></span>
                         </li>
                         <li>
                             <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1457,19 +1505,19 @@
                             <span>支持 <strong>最多 2 台 Mac 设备</strong> 同时激活</span>
                         </li>
                     </ul>
-                    <a href="https://www.creem.io/payment/prod_B06ghVI7XTHeKytgE02WP" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary">按季订阅 ($2.49/季)</a>
+                    <a href="https://www.creem.io/payment/prod_B06ghVI7XTHeKytgE02WP" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary">按季订阅 ($3.99/季)</a>
                 </div>
 
                 <!-- Pro 年度订阅 -->
                 <div class="pricing-card featured">
-                    <div class="pricing-badge-popular">🔥 最受欢迎 · 立省 42%</div>
+                    <div class="pricing-badge-popular">🔥 热门推荐 · 年省 45%</div>
                     <div class="pricing-header">
                         <div class="pricing-plan-name">Pro 年度订阅</div>
                         <div class="pricing-plan-desc">追求极致生产力的专业设计师、开发者与学者首选</div>
                     </div>
                     <div class="pricing-price-wrap">
                         <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">6.99</span>
+                        <span class="pricing-amount">9.99</span>
                         <span class="pricing-period">/ 年 (USD)</span>
                     </div>
                     <ul class="pricing-features-list">
@@ -1479,7 +1527,7 @@
                         </li>
                         <li>
                             <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>折合每月仅 $0.58</strong>（超高性价比 · 立省 42%）</span>
+                            <span><strong>折合每月仅 $0.83</strong>（超高性价比 · 年省 45%）</span>
                         </li>
                         <li>
                             <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1494,7 +1542,44 @@
                             <span><strong>1 对 1 优先邮件技术支持</strong></span>
                         </li>
                     </ul>
-                    <a href="https://www.creem.io/payment/prod_320DbARNclTMpsfsIj6qTo" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #0071e3 0%, #0284c7 100%);">按年订阅 ($6.99/年)</a>
+                    <a href="https://www.creem.io/payment/prod_320DbARNclTMpsfsIj6qTo" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #0071e3 0%, #0284c7 100%);">按年订阅 ($9.99/年)</a>
+                </div>
+
+                <!-- 早鸟限时买断 -->
+                <div class="pricing-card lifetime">
+                    <div class="pricing-badge-lifetime">💎 终生买断 · 早鸟特惠</div>
+                    <div class="pricing-header">
+                        <div class="pricing-plan-name">早鸟限时买断</div>
+                        <div class="pricing-plan-desc">限时买断！一次付费终身使用，包含后续所有升级</div>
+                    </div>
+                    <div class="pricing-price-wrap">
+                        <span class="pricing-currency">$</span>
+                        <span class="pricing-amount">19.99</span>
+                        <span class="pricing-period">一次性买断 (USD)</span>
+                    </div>
+                    <ul class="pricing-features-list">
+                        <li>
+                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>一次买断，终身永久使用所有 Pro 特权</strong></span>
+                        </li>
+                        <li>
+                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>包含未来所有重大版本迭代与功能升级</span>
+                        </li>
+                        <li>
+                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>支持 <strong>最多 3 台 Mac 设备</strong> 同时激活</span>
+                        </li>
+                        <li>
+                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>支持随时自主解绑并迁移至新 Mac</span>
+                        </li>
+                        <li>
+                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span><strong>1 对 1 优先专属技术支持</strong></span>
+                        </li>
+                    </ul>
+                    <a href="https://www.creem.io/checkout" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);">终身买断 ($19.99)</a>
                 </div>
             </div>
 
