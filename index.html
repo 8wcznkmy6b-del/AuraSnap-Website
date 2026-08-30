@@ -45,7 +45,7 @@
       "author": {
         "@type": "Person",
         "name": "Dochi",
-        "url": "https://dochi.dpdns.org"
+        "url": "https://aurasnap.dpdns.org"
       },
       "description": "专为 Apple Silicon 打造的原生 macOS 截图、独立 OCR、文本清洗套件与屏幕贴图工作台。"
     }
@@ -54,7 +54,7 @@
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css?v=3.8.0">
+    <link rel="stylesheet" href="style.css?v=3.0.16">
     <style>
         /* Pricing & Comparison Table Inline Protection Styles */
         .pricing-grid {
@@ -302,17 +302,16 @@
             <a href="#" class="logo">
                 <img src="logo.png?v=3.6.0" alt="AuraSnap" class="logo-badge-img">
                 <span class="logo-text">AuraSnap</span>
-                <span class="logo-tag">v2.9.0</span>
+                <span class="logo-tag">v3.0.16</span>
             </a>
 
             <nav class="nav-links">
                 <a href="#hero" class="nav-link">概览</a>
                 <a href="#studio" class="nav-link">功能工作台</a>
-                <a href="#pricing" class="nav-link" style="color: var(--accent-blue); font-weight: 700;">价格方案</a>
+                <a href="pricing.html" class="nav-link" style="color: var(--accent-blue); font-weight: 700;">价格方案</a>
                 <a href="guide.html" class="nav-link">使用手册</a>
                 <a href="#hud-tester" class="nav-link">快捷键体验</a>
                 <a href="#benchmarks" class="nav-link">架构对比</a>
-                <a href="https://dochi.dpdns.org" class="nav-link" target="_blank" rel="noopener">开发者博客</a>
             </nav>
 
             <div class="nav-cta-group">
@@ -344,11 +343,10 @@
         <div class="mobile-nav-drawer" id="mobileNavDrawer">
             <a href="#hero" class="mobile-nav-link">概览</a>
             <a href="#studio" class="mobile-nav-link">功能工作台</a>
-            <a href="#pricing" class="mobile-nav-link" style="color: var(--accent-blue); font-weight: 700;">价格方案 (Pricing)</a>
+            <a href="pricing.html" class="mobile-nav-link" style="color: var(--accent-blue); font-weight: 700;">价格方案 (Pricing)</a>
             <a href="guide.html" class="mobile-nav-link">用户使用手册 ↗</a>
             <a href="#hud-tester" class="mobile-nav-link">快捷键体验</a>
             <a href="#benchmarks" class="mobile-nav-link">架构对比</a>
-            <a href="https://dochi.dpdns.org" class="mobile-nav-link" target="_blank" rel="noopener">开发者博客</a>
             <div class="mobile-nav-actions">
                 <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="btn-github mobile-btn" target="_blank" rel="noopener">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -618,7 +616,7 @@
             <div class="section-header">
                 <span class="section-eyebrow">Interactive Studio</span>
                 <h2 class="section-title">为极致效率与美感而生的原生工作流</h2>
-                <p class="section-description">无需安装，直接在浏览器中把玩高精度净底抠图、AI 视觉、文本贴图与微秒级交互手势</p>
+                <p class="section-description">无需安装，直接在浏览器中把玩高精度净底抠图、AI 视觉、原地截图翻译、文本贴图与微秒级交互手势</p>
             </div>
 
             <!-- 工作台切换 Tabs -->
@@ -626,6 +624,10 @@
                 <button class="studio-tab-btn active" data-tab="ocr">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h3"></path><path d="M20 7V4h-3"></path><path d="M4 17v3h3"></path><path d="M20 17v3h-3"></path><line x1="9" y1="12" x2="15" y2="12"></line></svg>
                     <span>独立 OCR & 文本清洗</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="translate">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                    <span>原地截图翻译</span>
                 </button>
                 <button class="studio-tab-btn" data-tab="beautify">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -818,6 +820,56 @@
             </div>
 
             <!-- Tab 1: 独立背景美化工作台 (Background Beautifier) -->
+            <!-- Tab: 原地截图翻译 (In-Place Translation) -->
+            <div class="studio-panel" id="panel-translate">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>原地截图翻译：框选即译，译文字号原样呈现</h3>
+                        <p>框选外文内容松手即译——自动完成文字识别、原文字像素级擦除与目标语言原字号重绘，选区内容秒变母语，版面观感与原图一致。</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>三步极简触发</strong>：工具栏按钮 / <kbd>⌥T</kbd> / 全局 <kbd>⌥8</kbd> 直呼；贴图右键同样一键翻译，自动进入编辑态</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>原字号原地重绘</strong>：译文继承原文字号、字重与颜色，智能擦除原文字不留痕迹，中英混排不溢出不重叠</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>双引擎自由切换</strong>：免 KEY 云端一体引擎（0 配置、0.3 秒级极速）与自定义 KEY 本地智能管线（自备 Key、排版更可控）共 10 种组合</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>代码标识符大小写校正</strong>：行内代码的驼峰命名被 OCR 误读大小写时自动二次校正，译文拼写忠实原代码</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>译文钉定与多贴图隔离</strong>：翻译生效后调整选区，译文钉在原位不漂移；多个贴图各自独立翻译互不连带</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>重新翻译强制刷新</strong>：对结果不满意一键全量重跑，自动改写请求形态治愈云端确定性回显</div>
+                            </li>
+                        </ul>
+                        <p style="font-size: 0.82rem; color: #64748b; margin-top: 12px;">💡 免费用户每日 3 次翻译额度；Pro 会员无限次畅用。</p>
+                    </div>
+                    <div class="studio-panel-visual">
+                        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
+                            <div style="background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);">
+                                <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 8px;">BEFORE · 原文截图</div>
+                                <div style="font-family: 'SF Mono', Menlo, monospace; font-size: 0.88rem; color: #0f172a; line-height: 1.7;">Error: The requested resource<br>could not be found.<br>Please verify your API endpoint.</div>
+                            </div>
+                            <div style="text-align: center; font-size: 1.1rem; color: #0071e3;">⬇︎ <span style="font-size: 0.78rem; color: #64748b;">框选松手 · 自动识别擦除重绘</span></div>
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #eef2ff 100%); border-radius: 12px; padding: 18px 20px; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.14); border: 1px solid rgba(2, 132, 199, 0.18);">
+                                <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #0284c7; margin-bottom: 8px;">AFTER · 原地译文重绘</div>
+                                <div style="font-size: 0.92rem; color: #0f172a; line-height: 1.8;">错误：找不到请求的资源。<br>请核对您的 API 端点地址。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="studio-panel" id="panel-beautify">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
@@ -1542,310 +1594,6 @@
     </section>
 
     <!-- 价格方案与版本对比 (Pricing & Plans) -->
-    <section id="pricing" class="section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-eyebrow">灵活订阅 & 终生买断 · 支持月付 / 季付 / 年付 / 永久买断</span>
-                <h2 class="section-title">简单透明的定价方案</h2>
-                <p class="section-desc">
-                    所有方案均完整解锁 <strong>全部 Pro 专业版功能</strong>。付款成功后，激活码将秒级自动发放至您的收件邮箱，即买即用。
-                </p>
-            </div>
-
-            <div class="pricing-grid">
-                <!-- Pro 月度订阅 -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-plan-name">Pro 月度订阅</div>
-                        <div class="pricing-plan-desc">适合短期项目、体验尝鲜与灵活轻量需求</div>
-                    </div>
-                    <div class="pricing-price-wrap">
-                        <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">1.49</span>
-                        <span class="pricing-period">/ 月 (USD)</span>
-                    </div>
-                    <ul class="pricing-features-list">
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>解锁全部 Pro 专业版功能</strong></span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>OCR 表格转换、内容消除与背景美化</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>60 FPS 高帧率录屏与长截图 PDF 导出</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>AI 视觉解析与第三方 API 接入支持</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持 <strong>1 台 Mac 设备</strong> 授权激活</span>
-                        </li>
-                    </ul>
-                    <a href="https://www.creem.io/payment/prod_6dHlEhyQDjuk5q2u1Hy9Xq" target="_blank" rel="noopener" class="pricing-btn pricing-btn-secondary">按月订阅 ($1.49/月)</a>
-                </div>
-
-                <!-- Pro 季度订阅 -->
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <div class="pricing-plan-name">Pro 季度订阅</div>
-                        <div class="pricing-plan-desc">兼顾灵活性与性价比，畅享中期高效工作流</div>
-                    </div>
-                    <div class="pricing-price-wrap">
-                        <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">3.99</span>
-                        <span class="pricing-period">/ 季 (USD)</span>
-                    </div>
-                    <ul class="pricing-features-list">
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>解锁全部 Pro 专业版功能</strong></span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>折合每月仅 $1.33</strong></span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>OCR 表格转换、内容消除与背景美化</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>60 FPS 高帧率录屏与长截图 PDF 导出</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持 <strong>最多 2 台 Mac 设备</strong> 同时激活</span>
-                        </li>
-                    </ul>
-                    <a href="https://www.creem.io/payment/prod_B06ghVI7XTHeKytgE02WP" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary">按季订阅 ($3.99/季)</a>
-                </div>
-
-                <!-- Pro 年度订阅 -->
-                <div class="pricing-card featured">
-                    <div class="pricing-badge-popular">🔥 热门推荐 · 年省 45%</div>
-                    <div class="pricing-header">
-                        <div class="pricing-plan-name">Pro 年度订阅</div>
-                        <div class="pricing-plan-desc">追求极致生产力的专业设计师、开发者与学者首选</div>
-                    </div>
-                    <div class="pricing-price-wrap">
-                        <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">9.99</span>
-                        <span class="pricing-period">/ 年 (USD)</span>
-                    </div>
-                    <ul class="pricing-features-list">
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>解锁全部 Pro 专业版功能</strong></span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>折合每月仅 $0.83</strong>（超高性价比 · 年省 45%）</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持 <strong>最多 3 台 Mac 设备</strong> 同时激活</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持随时自主解绑并迁移至新 Mac</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>1 对 1 优先邮件技术支持</strong></span>
-                        </li>
-                    </ul>
-                    <a href="https://www.creem.io/payment/prod_320DbARNclTMpsfsIj6qTo" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #0071e3 0%, #0284c7 100%);">按年订阅 ($9.99/年)</a>
-                </div>
-
-                <!-- 早鸟限时买断 -->
-                <div class="pricing-card lifetime">
-                    <div class="pricing-badge-lifetime">💎 终生买断 · 早鸟特惠</div>
-                    <div class="pricing-header">
-                        <div class="pricing-plan-name">早鸟限时买断</div>
-                        <div class="pricing-plan-desc">限时买断！一次付费终身使用，包含后续所有升级</div>
-                    </div>
-                    <div class="pricing-price-wrap">
-                        <span class="pricing-currency">$</span>
-                        <span class="pricing-amount">19.99</span>
-                        <span class="pricing-period">一次性买断 (USD)</span>
-                    </div>
-                    <ul class="pricing-features-list">
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>一次买断，终身永久使用所有 Pro 特权</strong></span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>包含未来所有重大版本迭代与功能升级</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持 <strong>最多 3 台 Mac 设备</strong> 同时激活</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span>支持随时自主解绑并迁移至新 Mac</span>
-                        </li>
-                        <li>
-                            <svg class="pricing-icon-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                            <span><strong>1 对 1 优先专属技术支持</strong></span>
-                        </li>
-                    </ul>
-                    <a href="https://www.creem.io/payment/prod_OiQpqfsiZJnrhP1S50dJF" target="_blank" rel="noopener" class="pricing-btn pricing-btn-primary" style="background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);">终身买断 ($19.99)</a>
-                </div>
-            </div>
-
-            <!-- 信任保障条 -->
-            <div class="pricing-guarantee-banner">
-                <div class="pricing-guarantee-item">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                    <span><strong>14 天无条件退款保障</strong>：不满意邮件极速退款</span>
-                </div>
-                <div class="pricing-guarantee-item">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0071e3" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M7 15h0M2 9.5h20"></path></svg>
-                    <span><strong>即时数字交付</strong>：付款后激活码秒级自动发信</span>
-                </div>
-                <div class="pricing-guarantee-item">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span><strong>官方支持邮箱</strong>：<a href="mailto:pengyj0811@gmail.com" style="color: var(--accent-blue); text-decoration: none;">pengyj0811@gmail.com</a></span>
-                </div>
-            </div>
-
-            <!-- 免费社区版 vs Pro 专业版功能全览对比矩阵 -->
-            <div class="pricing-comparison-wrap">
-                <h3 class="comparison-title">免费社区版 (Free) vs Pro 专业版 (Pro 💎) 功能全览对比</h3>
-                <p class="comparison-desc">AuraSnap 坚守 macOS 原生高效体验，所有核心基础截图、标注涂鸦、贴图置顶与本地历史图库能力<strong>永久 100% 免费</strong>。</p>
-
-                <div class="comparison-table-card">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 38%;">功能模块 / 特性</th>
-                                <th style="width: 31%;">免费用户 (Free Plan)</th>
-                                <th style="width: 31%;" class="th-pro">PRO 会员 (Pro Plan 💎)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 1. 基础屏幕截图 -->
-                            <tr>
-                                <td><strong>基础屏幕截图</strong><br><span style="font-size: 0.78rem; color: #64748b;">矩形框选、窗口自动吸附、多屏幕感知、放大镜辅助</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-                            <!-- 2. 基础标注工具集 -->
-                            <tr>
-                                <td><strong>基础标注工具集</strong><br><span style="font-size: 0.78rem; color: #64748b;">矩形、箭头、直线、普通画笔、马赛克、序号、批注气泡、Emoji/印章、水印</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-                            <!-- 3. 基础文本标注 -->
-                            <tr>
-                                <td><strong>基础文本标注</strong><br><span style="font-size: 0.78rem; color: #64748b;">系统默认现代无衬线字体，支持颜色、字号与加粗调节</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-                            <!-- 4. 贴图置顶与多窗口 -->
-                            <tr>
-                                <td><strong>贴图置顶与多窗口交互</strong><br><span style="font-size: 0.78rem; color: #64748b;">贴图置顶、自由缩放、旋转、透明度调节、鼠标穿透幽灵模式、二次标注</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-                            <!-- 5. 历史记录图库 -->
-                            <tr>
-                                <td><strong>历史记录图库</strong><br><span style="font-size: 0.78rem; color: #64748b;">本地截屏历史记录存储、实时搜索、大图预览、复制与重开贴图</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-                            <!-- 6. 基础导出与剪贴板 -->
-                            <tr>
-                                <td><strong>基础导出与剪贴板</strong><br><span style="font-size: 0.78rem; color: #64748b;">⌘C 一键复制并退出、⌘S 保存为 PNG 与 JPEG 图像</span></td>
-                                <td><span class="feat-check">✓ 永久无限次免费</span></td>
-                                <td class="td-pro"><span class="feat-check">✓ 永久无限次免费</span></td>
-                            </tr>
-
-                            <!-- 7. 背景美化 -->
-                            <tr style="background: rgba(0, 113, 227, 0.015);">
-                                <td><strong>背景美化工作台 (Studio Beautifier) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">当前桌面、4K 矢量渐变、5K/6K 极清壁纸合成、自定义壁纸导入、3D 浮空光影与圆角卡片渲染</span></td>
-                                <td><span class="feat-cross">✕ 不可用 (PRO 专属)</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 完整解锁全套能力</span></td>
-                            </tr>
-                            <!-- 8. 文字与二维码识别 -->
-                            <tr>
-                                <td><strong>文字与二维码识别 (OCR / QR) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">本地离线提取 + 表格截图一键转 Markdown/CSV 表格 + 多图连续追加模式</span></td>
-                                <td><span class="feat-quota">每日免费体验 3 次</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 无限次极速提取 + 结构化工作台</span></td>
-                            </tr>
-                            <!-- 9. 智能内容消除 -->
-                            <tr>
-                                <td><strong>内容感知智能消除 (Smart Eraser) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">智能纹理合成无痕擦除画面多余元素</span></td>
-                                <td><span class="feat-quota">每日免费体验 3 次</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 无限次智能无痕消除</span></td>
-                            </tr>
-                            <!-- 10. 主体抠图 / 移除背景 -->
-                            <tr>
-                                <td><strong>主体分割与背景移除 (Cutout) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">本地主体智能提取与透明通道导出（支持自定义接入第三方云端抠图 API）</span></td>
-                                <td><span class="feat-quota">每日免费体验 3 次</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 无限次本地主体抠图</span></td>
-                            </tr>
-                            <!-- 11. 动图与视频录制 -->
-                            <tr>
-                                <td><strong>动图与视频录制 (GIF / Video) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">60 FPS 极清高帧率、原画无损画质输出、MP4/WebM/GIF 格式自由切换</span></td>
-                                <td><span class="feat-quota">最长限录 15 秒 (15/30 FPS)</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 无时长限制 + 60 FPS 原画</span></td>
-                            </tr>
-                            <!-- 12. 画笔智能图形 -->
-                            <tr>
-                                <td><strong>手绘线条几何规整 (Smart Shape) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">手绘笔迹自适应识别并智能平滑规整为标准直线、矩形、椭圆与箭头</span></td>
-                                <td><span class="feat-cross">✕ 仅限普通手绘涂鸦</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 几何矢量自适应规整</span></td>
-                            </tr>
-                            <!-- 13. 自定义贴纸导入 -->
-                            <tr>
-                                <td><strong>自定义贴纸导入 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">从本地相册自由导入透明 PNG、JPG 与自定义表情包作为图元贴图</span></td>
-                                <td><span class="feat-cross">✕ 仅限内置 Emoji/图标</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 自由导入本地图形资产</span></td>
-                            </tr>
-                            <!-- 14. 排版艺术中文字体 -->
-                            <tr>
-                                <td><strong>排版字体扩展 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">解锁 PingFang SC、黑体、楷体、宋体等专业中文字体排版</span></td>
-                                <td><span class="feat-cross">✕ 仅限系统默认字体</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 解锁精选排版中文字体</span></td>
-                            </tr>
-                            <!-- 15. 全屏隐私智能脱敏 -->
-                            <tr>
-                                <td><strong>敏感信息智能隐私遮罩 (Auto Redact) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">一键自动识别画面中的人脸、手机号、邮箱、身份证与银行卡等敏感信息并打码遮罩</span></td>
-                                <td><span class="feat-cross">✕ 仅限手动涂抹马赛克</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 一键敏感信息智能遮罩</span></td>
-                            </tr>
-                            <!-- 16. 长截图矢量 PDF 导出 -->
-                            <tr>
-                                <td><strong>长截图矢量 PDF 导出 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">超长截图支持无损流式输出为标准高清 PDF 矢量文档</span></td>
-                                <td><span class="feat-cross">✕ 仅支持 PNG/JPG 导出</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 高清 PDF 矢量导出</span></td>
-                            </tr>
-                            <!-- 17. AI 视觉多模态大模型解析 -->
-                            <tr>
-                                <td><strong>AI 视觉多模态分析 (自备 API Key) 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">支持自由接入主流大模型 API（OpenAI / Claude / Gemini / DeepSeek 等），进行图像问答、代码解析与多语言翻译</span></td>
-                                <td><span class="feat-cross">✕ 不可用 (PRO 专属)</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 完整解锁 AI 视觉工作台</span></td>
-                            </tr>
-                            <!-- 18. 界面纯净度与多设备授权 -->
-                            <tr>
-                                <td><strong>界面纯净度与多设备授权 💎</strong><br><span style="font-size: 0.78rem; color: #64748b;">PRO 激活后 100% 自动隐藏所有 💎 角标与升级提示，恢复纯净原生工作台</span></td>
-                                <td><span>单机使用，显示微型 💎 徽标</span></td>
-                                <td class="td-pro"><span class="feat-pro-badge">★ 100% 纯净界面 + 最多 3 台 Mac</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- 下载与构建专区 (Download & Build Hub) -->
     <section id="downloads" class="section section-alt">
@@ -1897,7 +1645,7 @@
                     <ul>
                         <li><a href="#hero">产品概览</a></li>
                         <li><a href="#studio">功能工作台</a></li>
-                        <li><a href="#pricing" style="color: var(--accent-blue); font-weight: 700;">价格与许可方案</a></li>
+                        <li><a href="pricing.html" style="color: var(--accent-blue); font-weight: 700;">价格与许可方案</a></li>
                         <li><a href="guide.html">用户使用手册 (Docs)</a></li>
                         <li><a href="#downloads">下载 DMG 客户端</a></li>
                     </ul>
@@ -1914,7 +1662,6 @@
                     <h5>开发者与支持</h5>
                     <ul>
                         <li><a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" target="_blank" rel="noopener">GitHub 仓库</a></li>
-                        <li><a href="https://dochi.dpdns.org" target="_blank" rel="noopener">博主小站 (Dochi)</a></li>
                         <li><a href="mailto:pengyj0811@gmail.com" style="color: var(--accent-blue); font-weight: 600;">客服邮箱: pengyj0811@gmail.com</a></li>
                     </ul>
                 </div>
@@ -1934,6 +1681,6 @@
     </footer>
 
     <!-- 交互脚本 -->
-    <script src="main.js?v=3.5.0"></script>
+    <script src="main.js?v=3.0.16"></script>
 </body>
 </html>

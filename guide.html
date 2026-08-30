@@ -208,6 +208,18 @@
                         <span>快捷键与手势速查表</span>
                     </a>
                 </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-18" class="docs-nav-link">
+                        <span class="docs-nav-num">18</span>
+                        <span>原地截图翻译 (In-Place Translation)</span>
+                    </a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-19" class="docs-nav-link">
+                        <span class="docs-nav-num">19</span>
+                        <span>Pro 会员与免费配额</span>
+                    </a>
+                </li>
             </ul>
         </aside>
 
@@ -1073,9 +1085,107 @@
                                 <td>复制长图 / 保存长图 / 固定为贴图</td>
                                 <td><span class="badge-ver badge-emerald">快捷键</span></td>
                             </tr>
+                                                    <tr data-scene="global">
+                                <td class="td-scene">全局</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>8</kbd></td>
+                                <td>极速直达原地截图翻译：框选松手直接替换为目标语言</td>
+                                <td><span class="badge-ver badge-blue">v3.0.5</span></td>
+                            </tr>
+                            <tr data-scene="capture">
+                                <td class="td-scene">选区中</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>T</kbd></td>
+                                <td>当前选区一键原地翻译（擦除原文字 + 译文原字号重绘）</td>
+                                <td><span class="badge-ver badge-blue">v3.0.5</span></td>
+                            </tr>
+                            <tr data-scene="pin">
+                                <td class="td-scene">贴图</td>
+                                <td class="td-action"><kbd>⌘</kbd> + <kbd>E</kbd></td>
+                                <td>切换贴图二次编辑模式（标注 / 翻译 / 消除）</td>
+                                <td><span class="badge-ver badge-purple">v3.0.14</span></td>
+                            </tr>
+                            <tr data-scene="pin">
+                                <td class="td-scene">贴图</td>
+                                <td class="td-action"><kbd>Space</kbd></td>
+                                <td>切换贴图编辑模式（二次编辑开/关）</td>
+                                <td><span class="badge-ver badge-purple">v3.0.16</span></td>
+                            </tr>
+                            <tr data-scene="pin">
+                                <td class="td-scene">贴图</td>
+                                <td class="td-action"><kbd>E</kbd></td>
+                                <td>移除背景 / 恢复原图（计入每日抠图配额）</td>
+                                <td><span class="badge-ver badge-core">核心</span></td>
+                            </tr>
+                            <tr data-scene="pin">
+                                <td class="td-scene">贴图</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>T</kbd> / 右键「翻译」</td>
+                                <td>对贴图内容原地翻译（自动进入编辑态，多贴图互不连带）</td>
+                                <td><span class="badge-ver badge-blue">v3.0.14</span></td>
+                            </tr>
+                            <tr data-scene="pin">
+                                <td class="td-scene">翻译面板</td>
+                                <td class="td-action">「重新翻译」按钮</td>
+                                <td>强制刷新：跳过译文缓存全量重跑，治愈确定性回显</td>
+                                <td><span class="badge-ver badge-blue">v3.0.14</span></td>
+                            </tr>
+</tbody>
+                    </table>
+                </div>
+            </section>
+
+                    <section id="sec-18" class="docs-section">
+                <div class="docs-section-title">
+                    <span>18. 原地截图翻译 (In-Place Translation)</span>
+                    <span class="badge-ver badge-blue">v2.9.6 ~ v3.0.16 核心功能</span>
+                </div>
+
+                <p>选区内的外文截图，一键把文字替换为目标语言——擦除、排版、重绘全自动，译文以原字号原地呈现。</p>
+
+                <h3 style="margin-top: 1.2rem;">触发方式与全流程</h3>
+                <div class="docs-card" style="padding: 1rem;"><strong>工具栏按钮</strong>：选区拉出后点击工具栏「翻译」</div>
+                <div class="docs-card" style="padding: 1rem;"><strong><kbd>⌥</kbd> + <kbd>T</kbd></strong>：选区内直接翻译 <span class="badge-ver badge-blue">v3.0.5</span></div>
+                <div class="docs-card" style="padding: 1rem;"><strong><kbd>⌥</kbd> + <kbd>8</kbd> 全局直呼</strong>：框选松手直接原地翻译，免点按钮</div>
+                <div class="docs-card" style="padding: 1rem;"><strong>贴图</strong>：右键菜单「翻译」/ 工具栏按钮 / <kbd>⌥</kbd> + <kbd>T</kbd>（自动进入编辑态）</div>
+                <div class="docs-card" style="padding: 1rem;"><strong>重新翻译</strong>：翻译二级面板「重新翻译」= 强制刷新（跳过译文缓存 + 混排块遮罩首发）</div>
+
+                <h3 style="margin-top: 1.2rem;">双引擎模式</h3>
+                <div class="docs-card" style="padding: 1rem;"><strong>免 KEY 引擎（云端一体）</strong>：无需申请任何 API Key，图像直传云端完成「OCR + 翻译 + 像素级擦除重绘」一体输出，0 本地计算开销，0.3 秒级极速呈现。</div>
+                <div class="docs-card" style="padding: 1rem;"><strong>自定义 KEY 引擎（本地智能管线）</strong>：本地 Vision 高精度 OCR + 神经网络翻译 + CoreText 原生排版重绘，译文清晰锐利、完全可控（自备服务商 Key）。</div>
+
+                <h3 style="margin-top: 1.2rem;">核心特性</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>原字号优先排版</strong>：译文继承原文的字号、字重与颜色，版面观感与原图一致。</li>
+                    <li class="docs-list-item"><strong>空间几何排版引擎</strong>：CoreText 原生测绘 + 射线借宽 + 平衡折行，中英混排不溢出不重叠。</li>
+                    <li class="docs-list-item"><strong>代码标识符大小写校正</strong>：行内代码驼峰标识符被 OCR 误读大小写时自动二次校正，译文拼写忠实原代码。</li>
+                    <li class="docs-list-item"><strong>译文钉定</strong>：翻译生效后调整选区范围，译文与擦除补丁钉在原位不随框漂移。</li>
+                    <li class="docs-list-item"><strong>多贴图隔离</strong>：多个贴图各自独立翻译，互不连带。</li>
+                    <li class="docs-list-item"><strong>三态显示切换</strong>：译文 / 原文一键切换，随时回看原文。</li>
+                </ul>
+            </section>
+
+            <section id="sec-19" class="docs-section">
+                <div class="docs-section-title">
+                    <span>19. Pro 会员与免费配额</span>
+                    <span class="badge-ver badge-emerald">v3.0.16</span>
+                </div>
+
+                <h3 style="margin-top: 1.2rem;">免费用户每日配额（自然日自动重置）</h3>
+                <div class="docs-table-wrapper">
+                    <table class="docs-table">
+                        <thead><tr><th>功能</th><th>每日免费次数</th></tr></thead>
+                        <tbody>
+                            <tr><td class="td-scene">智能主体抠图</td><td>3 次</td></tr>
+                            <tr><td class="td-scene">智能内容消除</td><td>3 次</td></tr>
+                            <tr><td class="td-scene">OCR 文字识别</td><td>3 次</td></tr>
+                            <tr><td class="td-scene">原地截图翻译</td><td>3 次</td></tr>
                         </tbody>
                     </table>
                 </div>
+                <ul class="docs-list">
+                    <li class="docs-list-item">工具栏悬停提示实时显示<strong>今日剩余次数</strong>；剩余 ≤2 次时主动气泡提醒。</li>
+                    <li class="docs-list-item">额度耗尽后气泡提示前往「设置 → 关于」开通 Pro；基础功能免费不限量。</li>
+                    <li class="docs-list-item"><strong>Pro 会员</strong>：全部配额功能无限次，外加 AI 视觉、背景美化与 3D 光影、60FPS 录屏、长截图 PDF 导出、表格转 Markdown、多图追加、隐私遮罩、智能形状、自定义贴纸与 Pro 字体库。</li>
+                    <li class="docs-list-item"><strong>开通与激活</strong>：「设置 → 关于」→「开通 Pro 会员」前往购买页面；激活码秒级发送至邮箱，在「关于 → 输入激活码」粘贴即可激活。</li>
+                </ul>
             </section>
 
         </main>
