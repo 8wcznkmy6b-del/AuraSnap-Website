@@ -220,6 +220,18 @@
                         <span>Pro 会员与免费配额</span>
                     </a>
                 </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-20" class="docs-nav-link">
+                        <span class="docs-nav-num">20</span>
+                        <span>径向分屏管理 (Window Manager)</span>
+                    </a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-21" class="docs-nav-link">
+                        <span class="docs-nav-num">21</span>
+                        <span>鼠标增强与平滑滚动 (Mouse)</span>
+                    </a>
+                </li>
             </ul>
         </aside>
 
@@ -1127,6 +1139,42 @@
                                 <td>强制刷新：跳过译文缓存全量重跑，治愈确定性回显</td>
                                 <td><span class="badge-ver badge-blue">v3.0.14</span></td>
                             </tr>
+                            <tr data-scene="window">
+                                <td class="td-scene">分屏管理</td>
+                                <td class="td-action">按住滚轮 / 侧键 / <kbd>Fn</kbd> / <kbd>⌥</kbd> 滑动</td>
+                                <td>唤起 8 向径向分屏轮盘，推向对应方向松手吸附</td>
+                                <td><span class="badge-ver badge-purple">v3.1.0</span></td>
+                            </tr>
+                            <tr data-scene="window">
+                                <td class="td-scene">分屏快捷键</td>
+                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>←</kbd> / <kbd>→</kbd></td>
+                                <td>前台窗口极速吸附至 左半屏 / 右半屏</td>
+                                <td><span class="badge-ver badge-purple">v3.1.0</span></td>
+                            </tr>
+                            <tr data-scene="window">
+                                <td class="td-scene">分屏快捷键</td>
+                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td>
+                                <td>前台窗口极速吸附至 上半屏 / 下半屏</td>
+                                <td><span class="badge-ver badge-purple">v3.1.0</span></td>
+                            </tr>
+                            <tr data-scene="window">
+                                <td class="td-scene">分屏快捷键</td>
+                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↩</kbd> / <kbd>C</kbd></td>
+                                <td>全屏最大化 / 居中显示窗口</td>
+                                <td><span class="badge-ver badge-purple">v3.1.0</span></td>
+                            </tr>
+                            <tr data-scene="window">
+                                <td class="td-scene">分屏快捷键</td>
+                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>U</kbd> / <kbd>I</kbd> / <kbd>J</kbd> / <kbd>K</kbd></td>
+                                <td>四角 1/4 分屏（左上 / 右上 / 左下 / 右下）</td>
+                                <td><span class="badge-ver badge-purple">v3.1.0</span></td>
+                            </tr>
+                            <tr data-scene="mouse">
+                                <td class="td-scene">鼠标增强</td>
+                                <td class="td-action">独立设置面板</td>
+                                <td>模拟触控板平滑滚动、滚轮独立反向、线性指针与侧键映射</td>
+                                <td><span class="badge-ver badge-emerald">v3.1.0</span></td>
+                            </tr>
 </tbody>
                     </table>
                 </div>
@@ -1185,6 +1233,93 @@
                     <li class="docs-list-item">额度耗尽后气泡提示前往「设置 → 关于」开通 Pro；基础功能免费不限量。</li>
                     <li class="docs-list-item"><strong>Pro 会员</strong>：全部配额功能无限次，外加 AI 视觉、背景美化与 3D 光影、60FPS 录屏、长截图 PDF 导出、表格转 Markdown、多图追加、隐私遮罩、智能形状、自定义贴纸与 Pro 字体库。</li>
                     <li class="docs-list-item"><strong>开通与激活</strong>：「设置 → 关于」→「开通 Pro 会员」前往购买页面；激活码秒级发送至邮箱，在「关于 → 输入激活码」粘贴即可激活。</li>
+                </ul>
+            </section>
+
+            <section id="sec-20" class="docs-section">
+                <div class="docs-section-title">
+                    <span>20. 径向分屏管理 (Radial Window Manager)</span>
+                    <span class="badge-ver badge-purple">v3.1.0 旗舰新增</span>
+                </div>
+
+                <p>AuraSnap 全新内置纯 Swift 原生构建的轻量级径向分屏管理引擎。通过极简的 160pt 灵动毛玻璃轮盘与全套键盘快捷键，让 macOS 窗口布局如丝般顺滑，彻底告别臃肿的第三方窗口管理工具。</p>
+
+                <h3 style="margin-top: 1.2rem;">8 向灵动轮盘与手势极速吸附</h3>
+                <div class="docs-card" style="padding: 1rem;">
+                    <strong>160pt 毛玻璃灵动轮盘</strong>：非激活式浮动面板（<code>NSPanel</code>），呼出瞬间不夺取当前前台 App 焦点，100% 零阴影零渲染伪影。
+                </div>
+                <div class="docs-card" style="padding: 1rem;">
+                    <strong>8 方向极速吸附</strong>：以光标为中心向 8 个方向轻推鼠标，松手瞬间窗口即刻吸附：
+                    <ul style="margin: 0.5rem 0 0 1.2rem; font-size: 0.9rem; line-height: 1.7;">
+                        <li><strong>向左 / 向右推</strong>：左半屏 / 右半屏（50% 宽度）</li>
+                        <li><strong>向上 / 向下推</strong>：上半屏 / 下半屏（50% 高度）</li>
+                        <li><strong>左上 / 右上 / 左下 / 右下推</strong>：四角 1/4 屏幕贴靠</li>
+                        <li><strong>中心稍推</strong>：全屏最大化（铺满当前屏幕工作区）</li>
+                        <li><strong>中心微移</strong>：居中窗口（保持原始尺寸或黄金比例居中）</li>
+                    </ul>
+                </div>
+                <div class="docs-card" style="padding: 1rem;">
+                    <strong>半透明落点预览框 (Footprint Overlay)</strong>：在滑动过程中实时高亮半透明落点示意框，所见即所得。
+                </div>
+
+                <h3 style="margin-top: 1.2rem;">多样化触发方式与防误触死区</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>鼠标滚轮中键</strong>：按住滚轮中键滑动即可唤起轮盘；</li>
+                    <li class="docs-list-item"><strong>鼠标侧键触发</strong>：内置智能侧键录制器，支持一键捕获并绑定鼠标按键 4 或按键 5；</li>
+                    <li class="docs-list-item"><strong>键盘修饰键触发</strong>：支持 <code>按住 Fn 滑动</code>、<code>按住 ⌥ 滑动</code> 或 <code>按住 ⌃⌥ 滑动</code>；</li>
+                    <li class="docs-list-item"><strong>滑动触发死区调节 (10~35pt)</strong>：有效过滤日常使用修饰键时的微小鼠标抖动，杜绝误触；</li>
+                    <li class="docs-list-item"><strong>纯键盘模式</strong>：可随时关闭手势轮盘，仅使用键盘快捷键极速分屏。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">智能邻接贴合 (Smart Complementary Tiling) 与窗口间隙</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>消除小屏重叠</strong>：当某个分屏应用具有系统级最小尺寸限制时，邻接贴合引擎会自动感知相邻窗口，智能微调相邻窗口尺寸并实现无缝对齐铺满，彻底消除重叠遮挡。</li>
+                    <li class="docs-list-item"><strong>台前调度 (Stage Manager) 自动避让</strong>：在系统开启台前调度时，分屏自动在屏幕侧边预留缩略图安全区。</li>
+                    <li class="docs-list-item"><strong>窗口贴边与间隙调节 (Window Gaps)</strong>：支持 0~24pt 自由调整窗口之间与屏幕边缘的间距。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">常用分屏快捷键速查</h3>
+                <div class="docs-table-wrapper">
+                    <table class="docs-table">
+                        <thead><tr><th>分屏动作</th><th>默认快捷键</th><th>手势方向</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>左半屏 / 右半屏</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>←</kbd> / <kbd>→</kbd></td><td>向左推 / 向右推</td></tr>
+                            <tr><td><strong>上半屏 / 下半屏</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td><td>向上推 / 向下推</td></tr>
+                            <tr><td><strong>全屏最大化</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↩</kbd></td><td>中心稍推</td></tr>
+                            <tr><td><strong>居中窗口</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd></td><td>中心微移</td></tr>
+                            <tr><td><strong>左上 / 右上 1/4</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>U</kbd> / <kbd>I</kbd></td><td>左上推 / 右上推</td></tr>
+                            <tr><td><strong>左下 / 右下 1/4</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>J</kbd> / <kbd>K</kbd></td><td>左下推 / 右下推</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-21" class="docs-section">
+                <div class="docs-section-title">
+                    <span>21. 鼠标增强与平滑滚动 (Mouse Enhancement)</span>
+                    <span class="badge-ver badge-emerald">v3.1.0 旗舰新增</span>
+                </div>
+
+                <p>为普通外接鼠标带来媲美 Apple Magic Trackpad 触控板的顺滑体验，一站式解决 macOS 外接鼠标滚轮生硬、方向绑定及加速度漂移的历史痛点。</p>
+
+                <h3 style="margin-top: 1.2rem;">模拟触控板平滑滚动 (Smooth Scroll)</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>触控板级惯性算法</strong>：将传统机械滚轮阶梯式的生硬跳动转化为类似触控板的高帧率平滑过渡。</li>
+                    <li class="docs-list-item"><strong>平滑度与滚动速度档位调节</strong>：支持精细化级别调节，适配不同滚轮手感。</li>
+                    <li class="docs-list-item"><strong>精准滚动模式 (Precision Scroll)</strong>：在代码编辑器、设计画布与长文档中提供像素级平稳滚动。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">独立反转滚轮方向与冲突检测</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>鼠标与触控板方向解耦</strong>：单独反转外接鼠标的滚轮滚动方向，内置触控板双指滑动方向保持不变。</li>
+                    <li class="docs-list-item"><strong>第三方工具冲突主动检测</strong>：自动识别后台运行的 Mos、LinearMouse、Scroll Reverser 等工具，给出温馨提示防止反转冲突。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">线性指针移动与物理按键录制映射</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>线性指针 (消除系统加速度)</strong>：消除 macOS 默认的非线性鼠标加速度曲线，指针移动距离与物理鼠标位移绝对成正比，专为 Figma/Sketch 精准修图与 FPS 游戏优化。</li>
+                    <li class="docs-list-item"><strong>全局鼠标物理按键录制</strong>：按下鼠标上的物理侧键或中键，系统自动识别按键编号。</li>
+                    <li class="docs-list-item"><strong>灵活绑定核心动作</strong>：可将鼠标侧键自由映射为屏幕截图、屏幕贴图、OCR 文字识别、背景美化、原地翻译、径向分屏等任意动作，单手掌控全局效率。</li>
                 </ul>
             </section>
 

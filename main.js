@@ -930,10 +930,171 @@ tion string for SQLite database.`;
             }
         });
     });
+
+    // =========================================================================
+    // Tab: Radial Window Manager Interactivity (v3.1.0)
+    // =========================================================================
+    const simWmScreen = document.getElementById('simWmScreen');
+    const simWmWindow = document.getElementById('simWmWindow');
+    const simWmFootprint = document.getElementById('simWmFootprint');
+    const simWmWinTitle = document.getElementById('simWmWinTitle');
+    const simWmGapSlider = document.getElementById('simWmGapSlider');
+    const simWmGapVal = document.getElementById('simWmGapVal');
+    const wmSnapBtns = document.querySelectorAll('.btn-wm-snap');
+
+    let currentGap = 6;
+    let currentSnap = 'center';
+
+    function applyWindowSnap(snapType, gap) {
+        if (!simWmScreen || !simWmWindow || !simWmFootprint) return;
+        currentSnap = snapType;
+        const screenW = simWmScreen.clientWidth || 388;
+        const screenH = simWmScreen.clientHeight || 210;
+
+        let left = gap;
+        let top = gap;
+        let width = screenW - gap * 2;
+        let height = screenH - gap * 2;
+        let title = '活动窗口 (居中)';
+
+        switch (snapType) {
+            case 'left':
+                width = (screenW - gap * 3) / 2;
+                height = screenH - gap * 2;
+                left = gap;
+                top = gap;
+                title = '左半屏 (50%)';
+                break;
+            case 'right':
+                width = (screenW - gap * 3) / 2;
+                height = screenH - gap * 2;
+                left = screenW - width - gap;
+                top = gap;
+                title = '右半屏 (50%)';
+                break;
+            case 'top':
+                width = screenW - gap * 2;
+                height = (screenH - gap * 3) / 2;
+                left = gap;
+                top = gap;
+                title = '上半屏 (50%)';
+                break;
+            case 'bottom':
+                width = screenW - gap * 2;
+                height = (screenH - gap * 3) / 2;
+                left = gap;
+                top = screenH - height - gap;
+                title = '下半屏 (50%)';
+                break;
+            case 'topleft':
+                width = (screenW - gap * 3) / 2;
+                height = (screenH - gap * 3) / 2;
+                left = gap;
+                top = gap;
+                title = '左上 1/4 屏';
+                break;
+            case 'topright':
+                width = (screenW - gap * 3) / 2;
+                height = (screenH - gap * 3) / 2;
+                left = screenW - width - gap;
+                top = gap;
+                title = '右上 1/4 屏';
+                break;
+            case 'bottomleft':
+                width = (screenW - gap * 3) / 2;
+                height = (screenH - gap * 3) / 2;
+                left = gap;
+                top = screenH - height - gap;
+                title = '左下 1/4 屏';
+                break;
+            case 'bottomright':
+                width = (screenW - gap * 3) / 2;
+                height = (screenH - gap * 3) / 2;
+                left = screenW - width - gap;
+                top = screenH - height - gap;
+                title = '右下 1/4 屏';
+                break;
+            case 'max':
+                width = screenW - gap * 2;
+                height = screenH - gap * 2;
+                left = gap;
+                top = gap;
+                title = '全屏最大化';
+                break;
+            case 'center':
+            default:
+                width = Math.min(230, screenW - gap * 2);
+                height = Math.min(140, screenH - gap * 2);
+                left = (screenW - width) / 2;
+                top = (screenH - height) / 2;
+                title = '居中窗口';
+                break;
+        }
+
+        // Show footprint flash
+        simWmFootprint.style.left = `${left}px`;
+        simWmFootprint.style.top = `${top}px`;
+        simWmFootprint.style.width = `${width}px`;
+        simWmFootprint.style.height = `${height}px`;
+        simWmFootprint.style.opacity = '1';
+
+        setTimeout(() => {
+            simWmFootprint.style.opacity = '0';
+        }, 320);
+
+        // Apply window position
+        simWmWindow.style.left = `${left}px`;
+        simWmWindow.style.top = `${top}px`;
+        simWmWindow.style.width = `${width}px`;
+        simWmWindow.style.height = `${height}px`;
+        if (simWmWinTitle) simWmWinTitle.textContent = title;
+    }
+
+    if (wmSnapBtns.length > 0) {
+        wmSnapBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const snap = btn.getAttribute('data-snap');
+                wmSnapBtns.forEach(b => b.style.borderColor = '');
+                btn.style.borderColor = '#38bdf8';
+                applyWindowSnap(snap, currentGap);
+            });
+        });
+    }
+
+    if (simWmGapSlider && simWmGapVal) {
+        simWmGapSlider.addEventListener('input', (e) => {
+            currentGap = parseInt(e.target.value, 10);
+            simWmGapVal.textContent = `${currentGap} pt`;
+            applyWindowSnap(currentSnap, currentGap);
+        });
+    }
+
+    // =========================================================================
+    // Tab: Mouse Enhancement Smooth Scroll Interactivity (v3.1.0)
+    // =========================================================================
+    const simMouseSmoothToggle = document.getElementById('simMouseSmoothToggle');
+    const simScrollTestBox = document.getElementById('simScrollTestBox');
+    const simScrollModeTag = document.getElementById('simScrollModeTag');
+
+    if (simMouseSmoothToggle && simScrollTestBox && simScrollModeTag) {
+        simMouseSmoothToggle.addEventListener('change', () => {
+            if (simMouseSmoothToggle.checked) {
+                simScrollTestBox.style.scrollBehavior = 'smooth';
+                simScrollModeTag.textContent = '平滑惯性模式';
+                simScrollModeTag.style.color = '#38bdf8';
+                showGlobalToast('🌊 已启用模拟触控板平滑惯性滚动');
+            } else {
+                simScrollTestBox.style.scrollBehavior = 'auto';
+                simScrollModeTag.textContent = '传统机械卡顿模式';
+                simScrollModeTag.style.color = '#94a3b8';
+                showGlobalToast('⚙️ 已切换为原生传统滚轮步进模式');
+            }
+        });
+    }
 }
 
 /* ==========================================================================
-   5. Live Keyboard Shortcut HUD Tester (v2.7.9 Full Mappings)
+   5. Live Keyboard Shortcut HUD Tester (v3.1.0 Full Mappings)
    ========================================================================== */
 function initKeyboardHUDTester() {
     const keyMap = {
@@ -950,7 +1111,15 @@ function initKeyboardHUDTester() {
     };
 
     window.addEventListener('keydown', (e) => {
-        const cardId = keyMap[e.code];
+        let cardId = keyMap[e.code];
+
+        // Special combo detection for Window Manager
+        if ((e.ctrlKey || e.metaKey) && e.altKey) {
+            if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') cardId = 'hudKeyWmHalf';
+            if (e.code === 'Enter' || e.code === 'KeyC') cardId = 'hudKeyWmMax';
+            if (e.code === 'KeyU' || e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyK') cardId = 'hudKeyWmCorner';
+        }
+
         if (cardId) {
             const card = document.getElementById(cardId);
             if (card) {
@@ -960,7 +1129,12 @@ function initKeyboardHUDTester() {
     });
 
     window.addEventListener('keyup', (e) => {
-        const cardId = keyMap[e.code];
+        let cardId = keyMap[e.code];
+        if ((e.ctrlKey || e.metaKey) && e.altKey) {
+            if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') cardId = 'hudKeyWmHalf';
+            if (e.code === 'Enter' || e.code === 'KeyC') cardId = 'hudKeyWmMax';
+            if (e.code === 'KeyU' || e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyK') cardId = 'hudKeyWmCorner';
+        }
         if (cardId) {
             const card = document.getElementById(cardId);
             if (card) {

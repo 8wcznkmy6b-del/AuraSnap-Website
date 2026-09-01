@@ -629,6 +629,14 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
                     <span>原地截图翻译</span>
                 </button>
+                <button class="studio-tab-btn" data-tab="windowmanager">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+                    <span>径向分屏管理</span>
+                </button>
+                <button class="studio-tab-btn" data-tab="mouse">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7.58 2 4 5.58 4 10v4c0 4.42 3.58 8 8 8s8-3.58 8-8v-4c0-4.42-3.58-8-8-8z"></path><line x1="12" y1="6" x2="12" y2="10"></line></svg>
+                    <span>鼠标增强 & 平滑滚动</span>
+                </button>
                 <button class="studio-tab-btn" data-tab="beautify">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                     <span>背景美化 & 5K壁纸</span>
@@ -864,6 +872,175 @@
                             <div style="background: linear-gradient(135deg, #f0f9ff 0%, #eef2ff 100%); border-radius: 12px; padding: 18px 20px; box-shadow: 0 8px 24px rgba(2, 132, 199, 0.14); border: 1px solid rgba(2, 132, 199, 0.18);">
                                 <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; color: #0284c7; margin-bottom: 8px;">AFTER · 原地译文重绘</div>
                                 <div style="font-size: 0.92rem; color: #0f172a; line-height: 1.8;">错误：找不到请求的资源。<br>请核对您的 API 端点地址。</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: 径向分屏管理 (Radial Window Manager) -->
+            <div class="studio-panel" id="panel-windowmanager">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>径向分屏管理 · 160pt 毛玻璃灵动轮盘与智能邻接贴合</h3>
+                        <p>纯 Swift 原生构建的轻量级分屏引擎。按住滚轮中键、侧键或修饰键轻推鼠标，160pt 灵动轮盘无延迟浮空，向 8 个方向极速吸附；独创智能邻接贴合，彻底消灭第三方分屏工具的臃肿与延迟！</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>8 向极速径向吸附</strong>：左/右半屏、上/下半屏、四角 1/4 屏、全屏最大化与居中，轻推鼠标松手即吸附，不夺取前台焦点</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>智能邻接贴合 (Complementary Tiling)</strong>：当应用具有最小尺寸限制时，自动微调相邻窗口铺满屏幕，消除小屏重叠遮挡</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>台前调度避让与间隙调节</strong>：自动在屏幕侧边预留台前调度缩略图安全区；支持 0~24pt 窗口与贴边间距自由微调</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>全套纯键盘极速直达</strong>：支持 <code>⌃⌥←/→</code> 左右半屏、<code>⌃⌥↑/↓</code> 上下半屏、<code>⌃⌥↩</code> 全屏、<code>⌃⌥C</code> 居中与 <code>⌃⌥U/I/J/K</code> 四角分屏</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 交互式径向分屏轮盘模拟器 -->
+                    <div class="studio-stage-box" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div style="width: 100%; max-width: 420px; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                            <!-- 模拟屏幕顶部栏 -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px;">
+                                <span style="font-weight: 700; color: #38bdf8;">🪟 径向分屏轮盘交互模拟</span>
+                                <span style="color: #94a3b8;">点击方向按钮体验吸附</span>
+                            </div>
+
+                            <!-- 模拟桌面屏幕与吸附窗口 -->
+                            <div id="simWmScreen" style="position: relative; width: 100%; height: 210px; background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                                <!-- 吸附目标半透明落点指示框 (Footprint) -->
+                                <div id="simWmFootprint" style="position: absolute; border: 2px dashed #38bdf8; background: rgba(56,189,248,0.15); border-radius: 8px; transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; opacity: 0;"></div>
+
+                                <!-- 模拟活动窗口 -->
+                                <div id="simWmWindow" style="position: absolute; top: 25px; left: 60px; width: 220px; height: 140px; background: #ffffff; border-radius: 8px; box-shadow: 0 12px 28px rgba(0,0,0,0.5); transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; overflow: hidden;">
+                                    <div style="height: 22px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; padding: 0 8px; gap: 4px;">
+                                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444;"></span>
+                                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #eab308;"></span>
+                                        <span style="width: 8px; height: 8px; border-radius: 50%; background: #22c55e;"></span>
+                                        <span style="font-size: 10px; color: #64748b; font-weight: 600; margin-left: 6px;" id="simWmWinTitle">活动窗口 (当前)</span>
+                                    </div>
+                                    <div style="flex: 1; padding: 10px; font-size: 11px; color: #475569; background: #fafafa; display: flex; flex-direction: column; gap: 4px;">
+                                        <div style="height: 8px; width: 65%; background: #cbd5e1; border-radius: 4px;"></div>
+                                        <div style="height: 8px; width: 85%; background: #e2e8f0; border-radius: 4px;"></div>
+                                        <div style="height: 8px; width: 45%; background: #e2e8f0; border-radius: 4px;"></div>
+                                    </div>
+                                </div>
+
+                                <!-- 居中 160pt 毛玻璃灵动轮盘模拟 -->
+                                <div id="simRadialWheel" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 110px; height: 110px; border-radius: 50%; background: rgba(30,41,59,0.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1.5px solid rgba(255,255,255,0.25); box-shadow: 0 8px 24px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 10;">
+                                    <div id="simRadialCenterDot" style="width: 32px; height: 32px; border-radius: 50%; background: rgba(56,189,248,0.2); border: 1.5px solid #38bdf8; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #38bdf8; font-weight: 700;">
+                                        ⌃⌥
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 8 方向与全屏/居中极速控制按钮组 -->
+                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 12px;">
+                                <button class="btn-wm-snap" data-snap="left" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; border-radius: 6px; padding: 6px 2px; font-size: 11px; font-weight: 600; cursor: pointer;">◀ 左半屏</button>
+                                <button class="btn-wm-snap" data-snap="right" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; border-radius: 6px; padding: 6px 2px; font-size: 11px; font-weight: 600; cursor: pointer;">▶ 右半屏</button>
+                                <button class="btn-wm-snap" data-snap="top" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; border-radius: 6px; padding: 6px 2px; font-size: 11px; font-weight: 600; cursor: pointer;">▲ 上半屏</button>
+                                <button class="btn-wm-snap" data-snap="bottom" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; border-radius: 6px; padding: 6px 2px; font-size: 11px; font-weight: 600; cursor: pointer;">▼ 下半屏</button>
+                                <button class="btn-wm-snap" data-snap="max" style="background: rgba(56,189,248,0.2); border: 1px solid #38bdf8; color: #38bdf8; border-radius: 6px; padding: 6px 2px; font-size: 11px; font-weight: 600; cursor: pointer;">⛶ 全屏</button>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 6px;">
+                                <button class="btn-wm-snap" data-snap="topleft" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; border-radius: 6px; padding: 5px 2px; font-size: 10px; cursor: pointer;">◤ 左上 1/4</button>
+                                <button class="btn-wm-snap" data-snap="topright" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; border-radius: 6px; padding: 5px 2px; font-size: 10px; cursor: pointer;">◥ 右上 1/4</button>
+                                <button class="btn-wm-snap" data-snap="bottomleft" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; border-radius: 6px; padding: 5px 2px; font-size: 10px; cursor: pointer;">◣ 左下 1/4</button>
+                                <button class="btn-wm-snap" data-snap="bottomright" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; border-radius: 6px; padding: 5px 2px; font-size: 10px; cursor: pointer;">◢ 右下 1/4</button>
+                                <button class="btn-wm-snap" data-snap="center" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #f8fafc; border-radius: 6px; padding: 5px 2px; font-size: 10px; cursor: pointer;">◎ 居中</button>
+                            </div>
+
+                            <!-- 间距微调滑块 -->
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 11px; color: #94a3b8;">
+                                <span>分屏间隙 (Window Gaps):</span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="range" id="simWmGapSlider" min="0" max="20" value="6" style="width: 100px; accent-color: #38bdf8;">
+                                    <span id="simWmGapVal" style="font-family: monospace; color: #38bdf8; font-weight: 700; width: 30px;">6 pt</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: 鼠标增强 & 平滑滚动 (Mouse Enhancement) -->
+            <div class="studio-panel" id="panel-mouse">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>鼠标增强 · 模拟触控板平滑滚动、独立滚轮反向与线性指针</h3>
+                        <p>专为 macOS 外接鼠标深度调优。消除机械滚轮生硬卡顿与非线性加速度，让普通鼠标拥有媲美 Magic Trackpad 的丝滑顺手感；支持物理侧键与中键录制映射任意应用动作！</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>模拟触控板平滑滚动 (Smooth Scroll)</strong>：将传统滚轮阶梯式跳动转化为触控板级惯性平滑过渡，浏览长网页与代码丝滑无比</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>独立反转滚轮方向 (Reverse Scrolling)</strong>：单独反向外接鼠标滚轮，内置触控板双指滑动方向保持不变，彻底解耦</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>线性指针移动 (消除加速度)</strong>：消除 macOS 默认非线性加速曲线，1:1 像素级精准跟手，专为 Figma 修图与 FPS 游戏优化</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>全局按键录制映射 (Button Remapper)</strong>：一键捕获鼠标侧键 4/5 或中键，自由映射为截图、贴图、OCR、美化或分屏动作</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 交互式鼠标增强配置与平滑滚动测试区 -->
+                    <div class="studio-stage-box" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div style="width: 100%; max-width: 420px; background: rgba(15,23,42,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                            <!-- 模拟设置控制行 -->
+                            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; font-size: 11px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 8px;">
+                                    <span style="color: #f8fafc; font-weight: 600;">🌊 模拟触控板平滑滚动</span>
+                                    <label style="position: relative; display: inline-block; width: 34px; height: 18px;">
+                                        <input type="checkbox" id="simMouseSmoothToggle" checked style="opacity: 0; width: 0; height: 0;">
+                                        <span style="position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #0071e3; border-radius: 18px; transition: .2s;"></span>
+                                    </label>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 8px;">
+                                    <span style="color: #f8fafc; font-weight: 600;">🔄 反转外接鼠标滚轮方向</span>
+                                    <span style="color: #38bdf8; font-weight: 700; font-size: 10px;">触控板不受影响</span>
+                                </div>
+                                <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 8px;">
+                                    <span style="color: #f8fafc; font-weight: 600;">🎯 线性指针移动 (1:1 零加速度)</span>
+                                    <span style="background: rgba(16,185,129,0.2); color: #10b981; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 10px;">已启用</span>
+                                </div>
+                            </div>
+
+                            <!-- 实时可滚动体验框 -->
+                            <div style="margin-top: 10px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 10px; color: #94a3b8; margin-bottom: 4px;">
+                                    <span>滚轮滑动体验区（在下方区域滚动鼠标滚轮）：</span>
+                                    <span id="simScrollModeTag" style="color: #38bdf8; font-weight: 600;">平滑惯性模式</span>
+                                </div>
+                                <div id="simScrollTestBox" style="height: 120px; overflow-y: auto; background: #0b1120; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px; font-size: 11px; font-family: monospace; color: #cbd5e1; line-height: 1.8; scroll-behavior: smooth;">
+                                    <div style="color: #38bdf8;">// AuraSnap Smooth Scrolling Engine v3.1.0</div>
+                                    <div>1. func computeMomentum(delta: CGFloat) -> CGFloat {</div>
+                                    <div>2.     let friction: CGFloat = 0.92</div>
+                                    <div>3.     return delta * friction + inertiaState.velocity</div>
+                                    <div>4. }</div>
+                                    <div>5. // 模拟触控板 120Hz 物理阻尼与平滑衰减...</div>
+                                    <div>6. struct LinearPointerState {</div>
+                                    <div>7.     var accelerationCurve: Bool = false // 零加速度</div>
+                                    <div>8.     var sensitivity: Double = 1.0</div>
+                                    <div>9. }</div>
+                                    <div>10. // 鼠标侧键 4 ➔ 一键触发 ⌥1 屏幕截图</div>
+                                    <div>11. // 鼠标侧键 5 ➔ 呼出 160pt 径向分屏轮盘</div>
+                                    <div>12. // 彻底告别外接机械鼠标在 macOS 上的生硬跳跃！</div>
+                                    <div style="color: #10b981;">// 滚轮滑动流畅无阻，触感丝滑如丝缎。</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1522,6 +1699,18 @@
                     <div class="hud-key-card" id="hudKeyPin">
                         <kbd>⌘ P</kbd>
                         <span>置顶为屏幕贴图</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyWmHalf">
+                        <kbd>⌃ ⌥ ← / →</kbd>
+                        <span>左半屏 / 右半屏分屏</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyWmMax">
+                        <kbd>⌃ ⌥ ↩ / C</kbd>
+                        <span>全屏最大化 / 居中窗口</span>
+                    </div>
+                    <div class="hud-key-card" id="hudKeyWmCorner">
+                        <kbd>⌃ ⌥ U / I</kbd>
+                        <span>四角 1/4 屏幕贴靠</span>
                     </div>
                 </div>
             </div>
