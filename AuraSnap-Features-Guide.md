@@ -636,7 +636,7 @@ AuraSnap 构建了三路兼顾极致锐利与高保真连续 Alpha 蒙版的智�
 
 ---
 
-## 20. 径向分屏管理与智能邻接贴合 (Radial Window Manager) `[v3.1.0 新增]`
+## 20. 径向分屏管理与智能邻接贴合 (Radial Window Manager) `[v3.0.24 新增]`
 
 AuraSnap 引入了纯 Swift 原生构建的轻量级径向分屏管理引擎。通过极简的鼠标手势轮盘与纯键盘快捷键，让 macOS 窗口管理如丝般顺滑，彻底消灭第三方窗口管理软件的臃肿与延迟。
 
@@ -679,7 +679,7 @@ AuraSnap 引入了纯 Swift 原生构建的轻量级径向分屏管理引擎。�
 
 ---
 
-## 21. 鼠标增强、平滑滚动与线性指针 (Mouse & Cursor Enhancement) `[v3.1.0 新增]`
+## 21. 鼠标增强、平滑滚动与线性指针 (Mouse & Cursor Enhancement) `[v3.0.24 新增]`
 
 为普通外接鼠标带来媲美 Apple Magic Trackpad 触控板的顺滑体验，一站式解决 macOS 外接鼠标滚轮生硬、方向绑定及加速度漂移的历史痛点。
 
