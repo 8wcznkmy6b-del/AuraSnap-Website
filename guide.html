@@ -66,7 +66,7 @@
                 <a href="index.html" class="docs-brand">
                     <img src="logo.png?v=3.7.0" alt="AuraSnap" class="docs-brand-img">
                     <span>AuraSnap</span>
-                    <span class="badge-ver badge-blue">v3.0.24</span>
+                    <span class="badge-ver badge-blue">v3.0.57</span>
                 </a>
                 <span class="docs-nav-divider"></span>
                 <span class="docs-nav-title">用户使用手册</span>
@@ -229,7 +229,25 @@
                 <li class="docs-nav-item">
                     <a href="#sec-21" class="docs-nav-link">
                         <span class="docs-nav-num">21</span>
-                        <span>鼠标增强与平滑滚动 (Mouse)</span>
+                        <span>鼠标外设增强与 Profile (Mouse)</span>
+                    </a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-22" class="docs-nav-link">
+                        <span class="docs-nav-num">22</span>
+                        <span>原生图床与多云存储 (Image Hosting)</span>
+                    </a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-23" class="docs-nav-link">
+                        <span class="docs-nav-num">23</span>
+                        <span>访达超级右键扩展 (FinderSync)</span>
+                    </a>
+                </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-24" class="docs-nav-link">
+                        <span class="docs-nav-num">24</span>
+                        <span>全局快捷键独立开关系统 (Shortcuts)</span>
                     </a>
                 </li>
             </ul>
@@ -247,7 +265,7 @@
                 <div class="docs-stats-bar">
                     <span class="docs-stat-chip">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        <span>适用版本：v2.8.2</span>
+                        <span>适用版本：v3.0.57</span>
                     </span>
                     <span class="docs-stat-chip">
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
@@ -1142,38 +1160,50 @@
                             <tr data-scene="window">
                                 <td class="td-scene">分屏管理</td>
                                 <td class="td-action">按住滚轮 / 侧键 / <kbd>Fn</kbd> / <kbd>⌥</kbd> 滑动</td>
-                                <td>唤起 8 向径向分屏轮盘，推向对应方向松手吸附</td>
-                                <td><span class="badge-ver badge-purple">v3.0.24</span></td>
+                                <td>唤起 8 向 Liquid Glass 液态玻璃轮盘，轻推松手秒级吸附</td>
+                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
                             </tr>
                             <tr data-scene="window">
                                 <td class="td-scene">分屏快捷键</td>
                                 <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>←</kbd> / <kbd>→</kbd></td>
                                 <td>前台窗口极速吸附至 左半屏 / 右半屏</td>
-                                <td><span class="badge-ver badge-purple">v3.0.24</span></td>
+                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
                             </tr>
                             <tr data-scene="window">
                                 <td class="td-scene">分屏快捷键</td>
                                 <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td>
                                 <td>前台窗口极速吸附至 上半屏 / 下半屏</td>
-                                <td><span class="badge-ver badge-purple">v3.0.24</span></td>
+                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
                             </tr>
                             <tr data-scene="window">
                                 <td class="td-scene">分屏快捷键</td>
                                 <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↩</kbd> / <kbd>C</kbd></td>
                                 <td>全屏最大化 / 居中显示窗口</td>
-                                <td><span class="badge-ver badge-purple">v3.0.24</span></td>
+                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
                             </tr>
                             <tr data-scene="window">
                                 <td class="td-scene">分屏快捷键</td>
                                 <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>U</kbd> / <kbd>I</kbd> / <kbd>J</kbd> / <kbd>K</kbd></td>
                                 <td>四角 1/4 分屏（左上 / 右上 / 左下 / 右下）</td>
-                                <td><span class="badge-ver badge-purple">v3.0.24</span></td>
+                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
+                            </tr>
+                            <tr data-scene="mouse">
+                                <td class="td-scene">鼠标手势</td>
+                                <td class="td-action">按住侧键/中键 + 滚动滚轮</td>
+                                <td>平滑切全屏桌面、循环切应用 (⌘Tab)、切同窗口、切标签页与视图缩放</td>
+                                <td><span class="badge-ver badge-emerald">v3.0.57</span></td>
                             </tr>
                             <tr data-scene="mouse">
                                 <td class="td-scene">鼠标增强</td>
-                                <td class="td-action">独立设置面板</td>
-                                <td>模拟触控板平滑滚动、滚轮独立反向、线性指针与侧键映射</td>
-                                <td><span class="badge-ver badge-emerald">v3.0.24</span></td>
+                                <td class="td-action">多 Profile 方案系统</td>
+                                <td>多鼠标独立按键映射规则，硬件拓扑感知自动切换，平滑滚动与应用白名单</td>
+                                <td><span class="badge-ver badge-emerald">v3.0.57</span></td>
+                            </tr>
+                            <tr data-scene="cloud">
+                                <td class="td-scene">原生图床</td>
+                                <td class="td-action"><kbd>⌥</kbd> + <kbd>U</kbd> (可自定义)</td>
+                                <td>将选区截图一键秒传至默认云存储，自动复制 Markdown / URL 链接</td>
+                                <td><span class="badge-ver badge-blue">v3.0.57</span></td>
                             </tr>
 </tbody>
                     </table>
@@ -1239,43 +1269,30 @@
             <section id="sec-20" class="docs-section">
                 <div class="docs-section-title">
                     <span>20. 径向分屏管理 (Radial Window Manager)</span>
-                    <span class="badge-ver badge-purple">v3.0.24 旗舰新增</span>
+                    <span class="badge-ver badge-purple">v3.0.57 升级</span>
                 </div>
 
-                <p>AuraSnap 全新内置纯 Swift 原生构建的轻量级径向分屏管理引擎。通过极简的 160pt 灵动毛玻璃轮盘与全套键盘快捷键，让 macOS 窗口布局如丝般顺滑，彻底告别臃肿的第三方窗口管理工具。</p>
+                <p>AuraSnap 全新内置纯 Swift 原生构建的极速径向分屏引擎。适配 Apple Liquid Glass 液态玻璃折射材质，配备「引力透镜」一体化极简主题、7 款微晶底色与 8 款独立高亮流光定制，配合 1:1 光标动态仿真实验台与全套键盘快捷键，让 macOS 窗口布局如丝般顺滑。</p>
 
-                <h3 style="margin-top: 1.2rem;">8 向灵动轮盘与手势极速吸附</h3>
+                <h3 style="margin-top: 1.2rem;">Apple Liquid Glass 材质与引力透镜极简主题</h3>
                 <div class="docs-card" style="padding: 1rem;">
-                    <strong>160pt 毛玻璃灵动轮盘</strong>：非激活式浮动面板（<code>NSPanel</code>），呼出瞬间不夺取当前前台 App 焦点，100% 零阴影零渲染伪影。
+                    <strong>Apple 原生 Liquid Glass 折射材质</strong>：四款轮盘形态（回环拨盘、静谧星环、经典双同心、引力透镜）均支持通透液态玻璃折射，非激活式浮动面板（<code>NSPanel</code>），呼出瞬间不夺取当前前台 App 焦点。
                 </div>
                 <div class="docs-card" style="padding: 1rem;">
-                    <strong>8 方向极速吸附</strong>：以光标为中心向 8 个方向轻推鼠标，松手瞬间窗口即刻吸附：
-                    <ul style="margin: 0.5rem 0 0 1.2rem; font-size: 0.9rem; line-height: 1.7;">
-                        <li><strong>向左 / 向右推</strong>：左半屏 / 右半屏（50% 宽度）</li>
-                        <li><strong>向上 / 向下推</strong>：上半屏 / 下半屏（50% 高度）</li>
-                        <li><strong>左上 / 右上 / 左下 / 右下推</strong>：四角 1/4 屏幕贴靠</li>
-                        <li><strong>中心稍推</strong>：全屏最大化（铺满当前屏幕工作区）</li>
-                        <li><strong>中心微移</strong>：居中窗口（保持原始尺寸或黄金比例居中）</li>
-                    </ul>
+                    <strong>引力透镜 (Gravity Lens) 专属极简主题</strong>：一体化无缝圆盘设计，罗盘式超导微光向量针顺滑追随光标转向，中心区域实时显示 1:1 屏幕布局拓扑 HUD。
                 </div>
                 <div class="docs-card" style="padding: 1rem;">
-                    <strong>半透明落点预览框 (Footprint Overlay)</strong>：在滑动过程中实时高亮半透明落点示意框，所见即所得。
+                    <strong>微晶底色与独立高亮流光定制</strong>：提供 7 款大师微晶底色与 8 款独立高亮流光色相，通透度与高亮光度双自由度连续微调，浅色外观模式自动强化对比边框与选中打勾标记。
                 </div>
 
-                <h3 style="margin-top: 1.2rem;">多样化触发方式与防误触死区</h3>
+                <h3 style="margin-top: 1.2rem;">8 向极速径向吸附与智能补位</h3>
                 <ul class="docs-list">
-                    <li class="docs-list-item"><strong>鼠标滚轮中键</strong>：按住滚轮中键滑动即可唤起轮盘；</li>
-                    <li class="docs-list-item"><strong>鼠标侧键触发</strong>：内置智能侧键录制器，支持一键捕获并绑定鼠标按键 4 或按键 5；</li>
-                    <li class="docs-list-item"><strong>键盘修饰键触发</strong>：支持 <code>按住 Fn 滑动</code>、<code>按住 ⌥ 滑动</code> 或 <code>按住 ⌃⌥ 滑动</code>；</li>
-                    <li class="docs-list-item"><strong>滑动触发死区调节 (10~35pt)</strong>：有效过滤日常使用修饰键时的微小鼠标抖动，杜绝误触；</li>
-                    <li class="docs-list-item"><strong>纯键盘模式</strong>：可随时关闭手势轮盘，仅使用键盘快捷键极速分屏。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">智能邻接贴合 (Smart Complementary Tiling) 与窗口间隙</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>消除小屏重叠</strong>：当某个分屏应用具有系统级最小尺寸限制时，邻接贴合引擎会自动感知相邻窗口，智能微调相邻窗口尺寸并实现无缝对齐铺满，彻底消除重叠遮挡。</li>
-                    <li class="docs-list-item"><strong>台前调度 (Stage Manager) 自动避让</strong>：在系统开启台前调度时，分屏自动在屏幕侧边预留缩略图安全区。</li>
-                    <li class="docs-list-item"><strong>窗口贴边与间隙调节 (Window Gaps)</strong>：支持 0~24pt 自由调整窗口之间与屏幕边缘的间距。</li>
+                    <li class="docs-list-item"><strong>向左 / 向右推</strong>：左半屏 / 右半屏（50% 宽度）；</li>
+                    <li class="docs-list-item"><strong>向上 / 向下推</strong>：上半屏 / 下半屏（50% 高度）；</li>
+                    <li class="docs-list-item"><strong>四角方向推</strong>：左上 / 右上 / 左下 / 右下 1/4 屏幕吸附；</li>
+                    <li class="docs-list-item"><strong>中心稍推 / 微移</strong>：全屏最大化 / 居中窗口（保持原始尺寸或黄金比例居中）；</li>
+                    <li class="docs-list-item"><strong>智能邻接贴合 (Complementary Tiling)</strong>：应用受最小尺寸限制时自动微调相邻窗口铺满屏幕，消除小屏重叠遮挡；</li>
+                    <li class="docs-list-item"><strong>台前调度避让与间隙调节</strong>：自动避让侧边缩略图安全区，支持 0~24pt 窗口与贴边间隙自由调节。</li>
                 </ul>
 
                 <h3 style="margin-top: 1.2rem;">常用分屏快捷键速查</h3>
@@ -1296,30 +1313,95 @@
 
             <section id="sec-21" class="docs-section">
                 <div class="docs-section-title">
-                    <span>21. 鼠标增强与平滑滚动 (Mouse Enhancement)</span>
-                    <span class="badge-ver badge-emerald">v3.0.24 旗舰新增</span>
+                    <span>21. 鼠标外设增强与多 Profile 方案 (Mouse Enhancement)</span>
+                    <span class="badge-ver badge-emerald">v3.0.57 升级</span>
                 </div>
 
-                <p>为普通外接鼠标带来媲美 Apple Magic Trackpad 触控板的顺滑体验，一站式解决 macOS 外接鼠标滚轮生硬、方向绑定及加速度漂移的历史痛点。</p>
+                <p>为普通外接鼠标带来媲美 Apple Magic Trackpad 触控板的顺滑体验。全新引入多 Profile 方案系统与物理硬件感知，独创「按住侧键 + 滑动滚轮」手势联动，一站式解决多设备切换与滚轮痛点。</p>
 
-                <h3 style="margin-top: 1.2rem;">模拟触控板平滑滚动 (Smooth Scroll)</h3>
+                <h3 style="margin-top: 1.2rem;">多 Profile 方案系统与硬件拓扑感知 (`DeviceMatcher`)</h3>
                 <ul class="docs-list">
-                    <li class="docs-list-item"><strong>触控板级惯性算法</strong>：将传统机械滚轮阶梯式的生硬跳动转化为类似触控板的高帧率平滑过渡。</li>
-                    <li class="docs-list-item"><strong>平滑度与滚动速度档位调节</strong>：支持精细化级别调节，适配不同滚轮手感。</li>
-                    <li class="docs-list-item"><strong>精准滚动模式 (Precision Scroll)</strong>：在代码编辑器、设计画布与长文档中提供像素级平稳滚动。</li>
+                    <li class="docs-list-item"><strong>多套独立方案管理</strong>：办公、游戏、移动鼠标各建一套独立按键映射方案，规则完全隔离，杜绝冲突；</li>
+                    <li class="docs-list-item"><strong>四维物理硬件指纹感知</strong>：基于厂商 ID、产品 ID、型号名称与物理序列号自动识别外接鼠标；</li>
+                    <li class="docs-list-item"><strong>自动感知切换与状态胶囊</strong>：插入或拔出鼠标时自动激活绑定方案，方案名旁常驻连接胶囊（🟢已连接 / 🟠未连接 / ⚪️未绑定）；</li>
+                    <li class="docs-list-item"><strong>防粘滞与平滑自愈</strong>：切换方案瞬间清空待释放队列，避免按键事件偶发粘滞，老版本配置无感自愈迁移。</li>
                 </ul>
 
-                <h3 style="margin-top: 1.2rem;">独立反转滚轮方向与冲突检测</h3>
+                <h3 style="margin-top: 1.2rem;">「按住此键 + 滚动滚轮」多任务手势联动 (Hold-and-Scroll)</h3>
                 <ul class="docs-list">
-                    <li class="docs-list-item"><strong>鼠标与触控板方向解耦</strong>：单独反转外接鼠标的滚轮滚动方向，内置触控板双指滑动方向保持不变。</li>
-                    <li class="docs-list-item"><strong>第三方工具冲突主动检测</strong>：自动识别后台运行的 Mos、LinearMouse、Scroll Reverser 等工具，给出温馨提示防止反转冲突。</li>
+                    <li class="docs-list-item"><strong>平滑切换全屏桌面 (Spaces)</strong>：按住侧键滚动滚轮，直接在各虚拟桌面与全屏应用间丝滑滑屏；</li>
+                    <li class="docs-list-item"><strong>快速切换应用 (⌘Tab)</strong>：按住侧键滚动直接调出并循环选择前台应用，松开按键瞬间自动切换；</li>
+                    <li class="docs-list-item"><strong>切换当前应用窗口 (⌘`)</strong>：在同一应用程序的多个独立窗口之间快速流转；</li>
+                    <li class="docs-list-item"><strong>切换标签页与画布无级缩放</strong>：快速切换浏览器与 IDE 标签，或无级平滑放大缩小画布；</li>
+                    <li class="docs-list-item"><strong>状态机防误触保护</strong>：产生滚轮联动后松开按键会自动吞噬释放事件，绝不触发原本绑定的单击动作。</li>
                 </ul>
 
-                <h3 style="margin-top: 1.2rem;">线性指针移动与物理按键录制映射</h3>
+                <h3 style="margin-top: 1.2rem;">平滑滚动、应用白名单与线性指针</h3>
                 <ul class="docs-list">
-                    <li class="docs-list-item"><strong>线性指针 (消除系统加速度)</strong>：消除 macOS 默认的非线性鼠标加速度曲线，指针移动距离与物理鼠标位移绝对成正比，专为 Figma/Sketch 精准修图与 FPS 游戏优化。</li>
-                    <li class="docs-list-item"><strong>全局鼠标物理按键录制</strong>：按下鼠标上的物理侧键或中键，系统自动识别按键编号。</li>
-                    <li class="docs-list-item"><strong>灵活绑定核心动作</strong>：可将鼠标侧键自由映射为屏幕截图、屏幕贴图、OCR 文字识别、背景美化、原地翻译、径向分屏等任意动作，单手掌控全局效率。</li>
+                    <li class="docs-list-item"><strong>模拟触控板平滑滚动</strong>：将传统机械滚轮离散跳动转化为高帧率触控板级惯性平滑；</li>
+                    <li class="docs-list-item"><strong>应用例外名单自主配置</strong>：支持自主为特定软件设置白名单，放行原生离散滚轮信号，避免缩放飞出；</li>
+                    <li class="docs-list-item"><strong>独立反转与线性指针</strong>：解耦触控板与外接鼠标滚轮方向；消除非线性加速度，实现 1:1 像素级精准跟手。</li>
+                </ul>
+            </section>
+
+            <section id="sec-22" class="docs-section">
+                <div class="docs-section-title">
+                    <span>22. 原生图床与多云存储直传 (Image Hosting & Cloud Upload)</span>
+                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
+                </div>
+
+                <p>AuraSnap 原生内置 10 大主流云存储直传能力，告别第三方臃肿传图插件。支持截图标注后一键直传、WebP 高效压缩编码、AI 智能语义命名，上传成功瞬间将 Markdown 或纯 URL 链接注入剪贴板。</p>
+
+                <h3 style="margin-top: 1.2rem;">兼容 10 大主流云存储生态</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>S3 协议生态</strong>：Amazon S3、Cloudflare R2、MinIO (自建私有存储)、Backblaze B2、DigitalOcean Spaces、腾讯云 COS (S3 兼容模式)；</li>
+                    <li class="docs-list-item"><strong>国内专有协议</strong>：阿里云 OSS、七牛云 KODO；</li>
+                    <li class="docs-list-item"><strong>极客与版本控制</strong>：GitHub 仓库直传、自定义 Webhook / HTTP POST API 接入。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">格式实时转换压缩与 AI 智能命名</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>WebP / JPEG / PNG 实时压缩</strong>：内置高性能图像压缩管线，支持导出质量滑块控制，大幅降低存储开销与外链加载带宽；</li>
+                    <li class="docs-list-item"><strong>AI 画面语义理解命名</strong>：利用深度思考大模型自动理解截图主体，生成简短易读的语义化英文/拼音文件名；</li>
+                    <li class="docs-list-item"><strong>快捷键一键直传与格式回填</strong>：截图后按下 <kbd>⌥</kbd> + <kbd>U</kbd> 直接上传至默认云服务，自动生成 Markdown、HTML 或纯 URL 链接写入剪贴板，伴随轻盈 Toast 提示。</li>
+                </ul>
+            </section>
+
+            <section id="sec-23" class="docs-section">
+                <div class="docs-section-title">
+                    <span>23. 访达超级右键扩展 (FinderSync Context Menu)</span>
+                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
+                </div>
+
+                <p>以独立沙盒扩展 Target (<code>AuraSnapFinderSync.appex</code>) 深度融入 macOS 访达（Finder）进程。采用原生单层菜单设计，零卡顿、极速稳定，提供空白处秒建文档、系统级拷贝移动与全格式路径提取。</p>
+
+                <h3 style="margin-top: 1.2rem;">原生单层菜单与空白处模板新建</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>对齐 macOS 原生风格</strong>：移除多余彩色小图标，融入系统原生右键菜单，操作层级扁平克制；</li>
+                    <li class="docs-list-item"><strong>十余种常用内置模板</strong>：在访达空白处右击，即可极速新建 Word (.docx)、Excel (.xlsx)、PowerPoint (.pptx)、PDF、Markdown (.md)、文本 (.txt)、Shell (.sh)、Python (.py)、Swift (.swift)、.env、.gitignore 等；</li>
+                    <li class="docs-list-item"><strong>自定义模板与工程脚手架</strong>：支持将常用工作模板放入自定义目录，右键一键生成成套工程脚手架文件。</li>
+                </ul>
+
+                <h3 style="margin-top: 1.2rem;">扁平化拷贝移动、路径提取与系统授权指引</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>扁平化目录操作</strong>：简化“拷贝到”和“移动到”的操作层级，直接唤起系统原生目录选择器，支持跨卷移动与完成即时高亮定位；</li>
+                    <li class="docs-list-item"><strong>全格式路径一键复制</strong>：右键直拷 POSIX 绝对路径、Shell 终端安全转义路径或 file:// 链接，纯文本写入随处粘贴；</li>
+                    <li class="docs-list-item"><strong>系统授权指引 (macOS 14/15+)</strong>：首次开启时，前往「系统设置」➔「通用」➔「登录项与扩展」➔「扩展」➔ 找到 AuraSnap 点 ⓘ 开启（或在访达扩展中勾选）。</li>
+                </ul>
+            </section>
+
+            <section id="sec-24" class="docs-section">
+                <div class="docs-section-title">
+                    <span>24. 全局快捷键独立开关系统 (Shortcut Registry)</span>
+                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
+                </div>
+
+                <p>为满足专业生产力用户的严苛要求，AuraSnap 在偏好设置中为所有全局快捷键提供了独立开关，实现按需启闭与绝对解耦，绝不强行抢占其他软件的按键组合。</p>
+
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>独立注销监听</strong>：关闭任意快捷键时，底层输入中心会立即向系统注销该全局热键监听，彻底将组合键释放给 Final Cut Pro、Xcode、Photoshop、VS Code 等专业软件；</li>
+                    <li class="docs-list-item"><strong>输入仲裁解耦</strong>：鼠标侧键录制或触发热键时，仅对处于“开启”状态的全局快捷键执行重定向，未开启的快捷键正常放行给系统或第三方软件；</li>
+                    <li class="docs-list-item"><strong>开关与工具栏解耦</strong>：快捷键开关与截图标注工具栏按钮显隐互不干扰，自由度更高。</li>
                 </ul>
             </section>
 
