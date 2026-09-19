@@ -23,10 +23,10 @@
     <meta name="twitter:description" content="纯 Swift/AppKit 构建，常驻内存仅 ~45MB，支持径向分屏轮盘、鼠标平滑滚动与手势、原生图床直传、访达超级右键、空间排版 OCR 与智能贴图。">
 
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3.0.57">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=3.0.57">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3.0.57">
-    <link rel="shortcut icon" href="favicon.ico?v=3.0.57">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3.1.12">
+    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=3.1.12">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3.1.12">
+    <link rel="shortcut icon" href="favicon.ico?v=3.1.12">
 
     <!-- Schema.org SoftwareApplication 结构化数据 (Google 富媒体抓取) -->
     <script type="application/ld+json">
@@ -47,14 +47,14 @@
         "name": "Dochi",
         "url": "https://aurasnap.dpdns.org"
       },
-      "description": "专为 Apple Silicon 打造的原生 macOS 截图、径向分屏、鼠标外设增强、云图床、访达超级右键、独立 OCR 文本清洗与屏幕贴图工作台。"
+      "description": "专为 Apple Silicon 打造的原生 macOS 截图、全盘智能清理与软件卸载、径向分屏、鼠标外设增强、云图床、访达超级右键、独立 OCR 文本清洗与屏幕贴图工作台。"
     }
     </script>
 
     <!-- Fonts & CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css?v=3.0.57">
+    <link rel="stylesheet" href="style.css?v=3.1.12">
     <style>
         /* Pricing & Comparison Table Inline Protection Styles */
         .pricing-grid {
@@ -300,9 +300,9 @@
     <header id="navbar">
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="logo.png?v=3.0.57" alt="AuraSnap" class="logo-badge-img">
+                <img src="logo.png?v=3.1.12" alt="AuraSnap" class="logo-badge-img">
                 <span class="logo-text">AuraSnap</span>
-                <span class="logo-tag">v3.0.57</span>
+                <span class="logo-tag">v3.1.12</span>
             </a>
 
             <nav class="nav-links">
@@ -372,16 +372,16 @@
         
         <div class="chip-pill">
             <span class="pulse-dot"></span>
-            <span>🔥 全新 v3.0.57 生产力大版本 · 径向分屏轮盘 · 鼠标多方案手势 · 原生云图床 · 访达超级右键</span>
+            <span>🔥 全新 v3.1.12 生产力大版本 · 全盘智能清理与软件卸载 · 径向分屏轮盘 · 鼠标多方案手势 · 原生云图床 · 访达超级右键</span>
         </div>
 
         <h1 class="hero-title">
             轻快、全能、纯原生的<br>
-            <span class="gradient-title-text">macOS 截图 · 径向分屏 · 鼠标增强与生产力工作台</span>
+            <span class="gradient-title-text">macOS 截图 · 清理卸载 · 径向分屏与生产力工作台</span>
         </h1>
 
         <p class="hero-subtitle">
-            不仅仅是毫秒级屏幕捕获与 OCR 文本清洗。AuraSnap v3.0.57 现已全面集成<strong>液态玻璃径向分屏轮盘</strong>、<strong>鼠标平滑滚动与物理硬件 Profile 绑定</strong>、<strong>一键上传多云图床</strong>与<strong>访达空白处超级右键</strong>，打造纯正的原生 macOS 生产力工作台。
+            不仅仅是毫秒级屏幕捕获与 OCR 文本清洗。AuraSnap v3.1.12 现已全面集成<strong>全盘智能清理与软件卸载</strong>、<strong>液态玻璃径向分屏轮盘</strong>、<strong>鼠标平滑滚动与物理硬件 Profile 绑定</strong>、<strong>一键上传多云图床</strong>与<strong>访达空白处超级右键</strong>，打造纯正的原生 macOS 生产力工作台。
         </p>
 
         <div class="hero-actions">
@@ -413,7 +413,7 @@
             <span class="meta-divider">|</span>
             <span class="meta-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                v3.0.57 稳定版 · 100% 自由开源
+                v3.1.12 稳定版 · 100% 自由开源
             </span>
         </div>
 
@@ -644,6 +644,10 @@
                 <button class="studio-tab-btn" data-tab="findersync">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path><path d="M12 11v6"></path><path d="M9 14h6"></path></svg>
                     <span>访达超级右键 <span style="background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-size: 10px; padding: 1px 5px; border-radius: 4px; font-weight: 700; margin-left: 4px;">NEW</span></span>
+                </button>
+                <button class="studio-tab-btn" data-tab="cleaner">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18m-2 0v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6m3 0V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                    <span>系统清理与卸载 <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; font-size: 10px; padding: 1px 5px; border-radius: 4px; font-weight: 700; margin-left: 4px;">v3.1 NEW</span></span>
                 </button>
                 <button class="studio-tab-btn" data-tab="beautify">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -1044,7 +1048,7 @@
                                     <span id="simScrollModeTag" style="color: #38bdf8; font-weight: 600;">平滑惯性模式</span>
                                 </div>
                                 <div id="simScrollTestBox" style="height: 120px; overflow-y: auto; background: #0b1120; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 10px; font-size: 11px; font-family: monospace; color: #cbd5e1; line-height: 1.8; scroll-behavior: smooth;">
-                                    <div style="color: #38bdf8;">// AuraSnap Smooth Scrolling Engine v3.0.57</div>
+                                    <div style="color: #38bdf8;">// AuraSnap Smooth Scrolling Engine v3.1.12</div>
                                     <div>1. func computeMomentum(delta: CGFloat) -> CGFloat {</div>
                                     <div>2.     let friction: CGFloat = 0.92</div>
                                     <div>3.     return delta * friction + inertiaState.velocity</div>
@@ -1200,6 +1204,129 @@
                                 </div>
                                 <div style="padding: 7px 12px; border-top: 1px solid rgba(255,255,255,0.08); color: #cbd5e1;">
                                     <span>⚡️ 在终端中打开当前目录</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: 全盘智能清理与软件深度卸载 (Cleaner & Uninstaller) -->
+            <div class="studio-panel" id="panel-cleaner">
+                <div class="studio-panel-layout">
+                    <div class="studio-panel-info">
+                        <h3>全盘智能清理与软件深度卸载 · 存活渠道保护与芯片架构识别</h3>
+                        <p>专为 macOS 精心打造的原生系统维护套件。快速检索全盘日志缓存、开发构建产物与废弃数据，一键安全释放存储空间；深入梳理应用程序关联支持文件并提供深度卸载；智能感知同族版本共存并保护存活渠道配置，支持芯片架构微标识别，全程依托系统白名单与特权认证安全护航！</p>
+                        <ul class="studio-feature-bullets">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>全盘多维智能扫描与空间释放</strong>：全面覆盖系统日志、用户应用缓存、临时下载文件与废纸篓，清晰计算可释放体积，支持一键安全清理释放空间</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>开发者工具构建缓存智能识别</strong>：自动发现并整理 Xcode DerivedData、CocoaPods、SPM 缓存、Node 依赖 (node_modules)、Gradle 等开发构建中间产物，轻松回收数十 GB 磁盘空间</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>软件深度卸载与深层关联目录梳理</strong>：自动定位应用所属的偏好设置 (Preferences)、Application Support 支撑文件、Caches 缓存与沙盒容器 (Containers)，避免残留无用文件</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>同族多版本存活渠道保护 (Surviving Channel Protection)</strong>：智能感知多版本共存（如正式版与 Beta 版）或同一厂商多款软件，保护共享的基础配置与支撑目录，避免卸载单版本造成其他版本配置丢失</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>孤立废弃残留排查 (Orphan Residue)</strong>：排查历史直接拖移废纸篓遗留在系统深处的无主配置文件与孤立残片，以直观居中卡片展示详情，确认后安全清除</div>
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <div><strong>芯片架构微标识别与系统白名单保障</strong>：直观显示 Apple Silicon (arm64)、Intel (x86_64) 与 Universal 通用二进制微标；内置核心系统白名单防护，配合 Touch ID / 管理员特权鉴权，安全受控</div>
+                            </li>
+                        </ul>
+                        <p style="font-size: 0.82rem; color: #10b981; margin-top: 12px; font-weight: 600;">✨ 深度扫描与空间分析免费开放 · 一键极速释放磁盘空间，安全透明受控。</p>
+                    </div>
+
+                    <!-- 交互式清理与卸载体验模拟区 -->
+                    <div class="studio-stage-box" style="padding: 1.2rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <div style="width: 100%; max-width: 440px; background: rgba(15,23,42,0.9); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                            <!-- 模拟 macOS 窗口标题栏 -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 11px;">
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="width: 9px; height: 9px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
+                                    <span style="width: 9px; height: 9px; border-radius: 50%; background: #eab308; display: inline-block;"></span>
+                                    <span style="width: 9px; height: 9px; border-radius: 50%; background: #22c55e; display: inline-block;"></span>
+                                    <span style="font-weight: 700; color: #f8fafc; margin-left: 6px;">AuraSnap 清理与卸载工作台</span>
+                                </div>
+                                <span style="background: rgba(16,185,129,0.15); color: #34d399; font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 600; display: flex; align-items: center; gap: 4px;">
+                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                    双向白名单保护中
+                                </span>
+                            </div>
+
+                            <!-- 模拟内部模块切换胶囊 -->
+                            <div style="display: flex; background: rgba(0,0,0,0.3); padding: 3px; border-radius: 8px; margin-bottom: 12px; gap: 4px;">
+                                <button id="btnCleanerSubScan" style="flex: 1; border: none; background: #0284c7; color: #ffffff; padding: 5px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">全盘扫描清理</button>
+                                <button id="btnCleanerSubUninstall" style="flex: 1; border: none; background: transparent; color: #94a3b8; padding: 5px 8px; border-radius: 6px; font-size: 11px; cursor: pointer;">应用深度卸载</button>
+                                <button id="btnCleanerSubOrphan" style="flex: 1; border: none; background: transparent; color: #94a3b8; padding: 5px 8px; border-radius: 6px; font-size: 11px; cursor: pointer;">孤立废弃排查</button>
+                            </div>
+
+                            <!-- 扫描容量状态概览卡片 -->
+                            <div style="background: linear-gradient(135deg, rgba(30,41,59,0.8), rgba(15,23,42,0.8)); border: 1px solid rgba(56,189,248,0.25); border-radius: 10px; padding: 12px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div id="simCleanerMetricLabel" style="font-size: 10px; color: #94a3b8; margin-bottom: 2px;">已检测到可释放空间</div>
+                                    <div id="simCleanerMetricVal" style="font-size: 20px; font-weight: 800; color: #38bdf8; letter-spacing: -0.5px;">16.84 <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">GB</span></div>
+                                </div>
+                                <button id="btnCleanerAction" style="background: linear-gradient(135deg, #0284c7, #0369a1); border: none; color: #fff; padding: 6px 14px; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(2,132,199,0.35);">一键安全释放</button>
+                            </div>
+
+                            <!-- 清理扫描与应用卡片清单 -->
+                            <div id="simCleanerList" style="display: flex; flex-direction: column; gap: 8px; font-size: 11px;">
+                                <!-- 扫描项 1: 开发者构建产物 -->
+                                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #38bdf8; font-size: 14px;">⚡️</span>
+                                        <div>
+                                            <div style="font-weight: 600; color: #f8fafc;">开发者工具与中间构建产物</div>
+                                            <div style="font-size: 10px; color: #64748b;">Xcode DerivedData · Node Modules · SPM</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span style="font-weight: 700; color: #f8fafc;">11.2 GB</span>
+                                        <span style="display: block; font-size: 9px; color: #10b981;">可安全清理</span>
+                                    </div>
+                                </div>
+
+                                <!-- 扫描项 2: 应用深度卸载示例 (带芯片架构微标与存活保护) -->
+                                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #c084fc; font-size: 14px;">📦</span>
+                                        <div>
+                                            <div style="display: flex; align-items: center; gap: 6px;">
+                                                <span style="font-weight: 600; color: #f8fafc;">Visual Studio Code</span>
+                                                <span style="background: rgba(56,189,248,0.2); color: #38bdf8; font-size: 9px; padding: 1px 4px; border-radius: 3px; font-weight: 700;">Apple Silicon</span>
+                                            </div>
+                                            <div style="font-size: 10px; color: #64748b;">已保护存活版本共享配置 · 关联 5 处支撑目录</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span style="font-weight: 700; color: #f8fafc;">1.42 GB</span>
+                                        <span style="display: block; font-size: 9px; color: #94a3b8;">深度分析</span>
+                                    </div>
+                                </div>
+
+                                <!-- 扫描项 3: 孤立废弃残留 -->
+                                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span style="color: #f59e0b; font-size: 14px;">🔍</span>
+                                        <div>
+                                            <div style="font-weight: 600; color: #f8fafc;">历史废弃无主残留 (Orphan Residue)</div>
+                                            <div style="font-size: 10px; color: #64748b;">排查到 3 项已删除应用的深层空置碎片</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <span style="font-weight: 700; color: #f8fafc;">4.22 GB</span>
+                                        <span style="display: block; font-size: 9px; color: #fbbf24;">待确认</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1424,20 +1551,20 @@
             <div class="studio-panel" id="panel-themes">
                 <div class="studio-panel-layout">
                     <div class="studio-panel-info">
-                        <h3>分模块独立主题与高对比 HUD 界面</h3>
-                        <p>工具栏追求轻透灵动，而 OCR 窗口需要舒适专注的阅读对比度。支持为不同模块独立选择专属外观：</p>
+                        <h3>分模块独立主题 · 黑曜晶透、磨砂玻璃与高辨识度工具栏</h3>
+                        <p>主工具栏追求轻透灵动，而 OCR 窗口需要专注的阅读对比度。AuraSnap 规范了黑曜晶透、磨砂玻璃与经典纯色三大系统级主题，并优化了标注工具栏高对比度与微投影渲染：</p>
                         <ul class="studio-feature-bullets">
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>通透玻璃质感 (Liquid Glass)</strong>：晶莹透亮的水滴毛玻璃效果，透出桌面背景色彩，轻盈优雅</div>
+                                <div><strong>三大规范化系统原生主题</strong>：提供「黑曜晶透 (Obsidian Glass)」、「磨砂玻璃 (Frosted Glass)」与「经典纯色 (Classic Solid)」，全面适配 macOS 深浅外观</div>
                             </li>
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>高对比度暗色磨砂 (HUD)</strong>：深色磨砂沉浸背景，有效吸收杂乱反光，让文字阅读清晰专注</div>
+                                <div><strong>标注工具栏对比度与微投影优化</strong>：自适应环境衬底阴影，图标采用高辨识度半粗体配合精密微投影，在复杂桌面壁纸与浅色窗口上均清晰可辨，杜绝反光干扰与元素发虚</div>
                             </li>
                             <li>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <div><strong>各模块独立随心搭配</strong>：主工具栏与 OCR 窗口可分别设置不同主题，即选即生效</div>
+                                <div><strong>各模块独立随心搭配</strong>：主工具栏、OCR 结果窗口、贴图视口均可分别设置不同主题风格，即选即生效</div>
                             </li>
                         </ul>
                     </div>
@@ -1449,22 +1576,22 @@
                         </div>
                         <div class="theme-showcase-cards">
                             <div class="theme-card glass-mode">
-                                <div class="theme-card-badge">🔮 通透玻璃 (Liquid Glass)</div>
+                                <div class="theme-card-badge">🔮 黑曜晶透 (Obsidian Glass)</div>
                                 <div class="theme-toolbar-preview">
                                     <span class="preview-tool active">画笔</span>
                                     <span class="preview-tool">矩形</span>
                                     <span class="preview-tool">OCR</span>
                                     <span class="preview-tool">贴图</span>
                                 </div>
-                                <span class="theme-card-caption">主工具栏默认推荐 · 真实透出底层壁纸色彩与晶莹高光</span>
+                                <span class="theme-card-caption">主工具栏默认推荐 · 真实透出底层壁纸色彩并伴随微晶高光</span>
                             </div>
                             <div class="theme-card hud-mode">
-                                <div class="theme-card-badge">🌫️ 高对比度 (HUD 磨砂)</div>
+                                <div class="theme-card-badge">🌫️ 磨砂玻璃 (Frosted Glass)</div>
                                 <div class="theme-ocr-preview">
                                     <span class="hud-text-strong">TextTransformEngine.swift</span>
-                                    <span class="hud-text-desc">原生深色厚磨砂吸收底层反光，文字边缘极度锐利</span>
+                                    <span class="hud-text-desc">原生深色厚磨砂吸收底层反光，文字边缘舒适锐利</span>
                                 </div>
-                                <span class="theme-card-caption">OCR 结果窗口默认推荐 · 强力阻隔底层杂乱噪点</span>
+                                <span class="theme-card-caption">OCR 结果窗口推荐 · 阻隔底层杂乱噪点，专注文字阅读</span>
                             </div>
                         </div>
                     </div>
@@ -1956,7 +2083,7 @@
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.61-.75 1.04-1.8 0.92-2.85-.9.04-2.02.6-2.66 1.36-.57.66-.99 1.74-.86 2.76 1.01.08 2.01-.52 2.6-1.27z"/>
                         </svg>
-                        <span>下载最新版本 v3.0.57 (.dmg)</span>
+                        <span>下载最新版本 v3.1.12 (.dmg)</span>
                     </a>
                     <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="btn-secondary-lg" target="_blank" rel="noopener">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -1967,7 +2094,7 @@
                 </div>
 
                 <div class="version-meta-pill">
-                    <span>当前稳定版: <strong>v3.0.57 (Build 2026.09)</strong></span>
+                    <span>当前稳定版: <strong>v3.1.12 (Build 2026.09)</strong></span>
                     <span>·</span>
                     <span>适配: <strong>Apple Silicon (M1-M4) 原生</strong></span>
                     <span>·</span>
@@ -1982,7 +2109,7 @@
         <div class="footer-inner">
             <div class="footer-brand-col">
                 <div class="footer-brand-logo">
-                    <img src="logo.png?v=3.0.57" alt="AuraSnap" class="footer-brand-img">
+                    <img src="logo.png?v=3.1.12" alt="AuraSnap" class="footer-brand-img">
                     <span>AuraSnap</span>
                 </div>
                 <p>专为 Apple Silicon 打造的原生 macOS 截图、径向分屏、鼠标增强与生产力工作台。Crafted with Vibe Coding by Dochi.</p>
@@ -2031,6 +2158,6 @@
     </footer>
 
     <!-- 核心交互脚本 -->
-    <script src="main.js?v=3.0.57"></script>
+    <script src="main.js?v=3.1.12"></script>
 </body>
 </html>

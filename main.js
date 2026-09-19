@@ -1091,6 +1091,194 @@ tion string for SQLite database.`;
             }
         });
     }
+
+    // =========================================================================
+    // Tab: Cleaner & Uninstaller Studio Interactivity (v3.1.12)
+    // =========================================================================
+    const btnCleanerSubScan = document.getElementById('btnCleanerSubScan');
+    const btnCleanerSubUninstall = document.getElementById('btnCleanerSubUninstall');
+    const btnCleanerSubOrphan = document.getElementById('btnCleanerSubOrphan');
+    const simCleanerMetricLabel = document.getElementById('simCleanerMetricLabel');
+    const simCleanerMetricVal = document.getElementById('simCleanerMetricVal');
+    const simCleanerList = document.getElementById('simCleanerList');
+    const btnCleanerAction = document.getElementById('btnCleanerAction');
+
+    if (btnCleanerSubScan && btnCleanerSubUninstall && btnCleanerSubOrphan && simCleanerList) {
+        const subBtns = [btnCleanerSubScan, btnCleanerSubUninstall, btnCleanerSubOrphan];
+
+        function setCleanerSubActive(activeBtn) {
+            subBtns.forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.color = '#94a3b8';
+                btn.style.fontWeight = '400';
+            });
+            activeBtn.style.background = '#0284c7';
+            activeBtn.style.color = '#ffffff';
+            activeBtn.style.fontWeight = '600';
+        }
+
+        btnCleanerSubScan.addEventListener('click', () => {
+            setCleanerSubActive(btnCleanerSubScan);
+            if (simCleanerMetricLabel) simCleanerMetricLabel.textContent = '已检测到可释放空间';
+            if (simCleanerMetricVal) simCleanerMetricVal.innerHTML = '16.84 <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">GB</span>';
+            if (btnCleanerAction) btnCleanerAction.textContent = '一键安全释放';
+            simCleanerList.innerHTML = `
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #38bdf8; font-size: 14px;">⚡️</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">开发者工具与中间构建产物</div>
+                            <div style="font-size: 10px; color: #64748b;">Xcode DerivedData · Node Modules · SPM</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">11.2 GB</span>
+                        <span style="display: block; font-size: 9px; color: #10b981;">可安全清理</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #0ea5e9; font-size: 14px;">🗂️</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">用户应用缓存与系统日志</div>
+                            <div style="font-size: 10px; color: #64748b;">Caches · Logs · 诊断日志</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">4.82 GB</span>
+                        <span style="display: block; font-size: 9px; color: #10b981;">可安全清理</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #f59e0b; font-size: 14px;">🗑️</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">废纸篓与临时下载废弃项</div>
+                            <div style="font-size: 10px; color: #64748b;">Trash · 临时下载包</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">820 MB</span>
+                        <span style="display: block; font-size: 9px; color: #10b981;">可安全清理</span>
+                    </div>
+                </div>
+            `;
+            showGlobalToast('🔍 已切换至「全盘扫描清理」视图');
+        });
+
+        btnCleanerSubUninstall.addEventListener('click', () => {
+            setCleanerSubActive(btnCleanerSubUninstall);
+            if (simCleanerMetricLabel) simCleanerMetricLabel.textContent = '已检索已安装软件';
+            if (simCleanerMetricVal) simCleanerMetricVal.innerHTML = '28 <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">款应用</span>';
+            if (btnCleanerAction) btnCleanerAction.textContent = '深度分析与卸载';
+            simCleanerList.innerHTML = `
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #38bdf8; font-size: 14px;">💻</span>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 600; color: #f8fafc;">Visual Studio Code</span>
+                                <span style="background: rgba(56,189,248,0.2); color: #38bdf8; font-size: 9px; padding: 1px 4px; border-radius: 3px; font-weight: 700;">Apple Silicon</span>
+                            </div>
+                            <div style="font-size: 10px; color: #64748b;">已保护存活版本配置 · 关联 5 处支撑目录</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">1.42 GB</span>
+                        <span style="display: block; font-size: 9px; color: #38bdf8;">已就绪</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #38bdf8; font-size: 14px;">🐳</span>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 600; color: #f8fafc;">Docker Desktop</span>
+                                <span style="background: rgba(168,85,247,0.2); color: #c084fc; font-size: 9px; padding: 1px 4px; border-radius: 3px; font-weight: 700;">Universal</span>
+                            </div>
+                            <div style="font-size: 10px; color: #64748b;">VM 镜像与容器支持数据 · 关联 8 处支撑目录</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">4.80 GB</span>
+                        <span style="display: block; font-size: 9px; color: #38bdf8;">已就绪</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #f59e0b; font-size: 14px;">⚙️</span>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <span style="font-weight: 600; color: #f8fafc;">Legacy Utility</span>
+                                <span style="background: rgba(245,158,11,0.2); color: #fbbf24; font-size: 9px; padding: 1px 4px; border-radius: 3px; font-weight: 700;">Intel (x86_64)</span>
+                            </div>
+                            <div style="font-size: 10px; color: #64748b;">转译运行模式 · 建议升级或清理</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">320 MB</span>
+                        <span style="display: block; font-size: 9px; color: #fbbf24;">待处理</span>
+                    </div>
+                </div>
+            `;
+            showGlobalToast('📦 已切换至「应用深度卸载」视图');
+        });
+
+        btnCleanerSubOrphan.addEventListener('click', () => {
+            setCleanerSubActive(btnCleanerSubOrphan);
+            if (simCleanerMetricLabel) simCleanerMetricLabel.textContent = '已排查到历史无主残留';
+            if (simCleanerMetricVal) simCleanerMetricVal.innerHTML = '3 <span style="font-size: 12px; font-weight: 600; color: #cbd5e1;">处孤立项 (4.22 GB)</span>';
+            if (btnCleanerAction) btnCleanerAction.textContent = '清理废弃残留';
+            simCleanerList.innerHTML = `
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ef4444; font-size: 14px;">📁</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">已删除软件残留配置</div>
+                            <div style="font-size: 10px; color: #64748b;">~/Library/Application Support/OldEditor/</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">2.80 GB</span>
+                        <span style="display: block; font-size: 9px; color: #f87171;">已废弃</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ef4444; font-size: 14px;">📁</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">空置沙盒容器缓存</div>
+                            <div style="font-size: 10px; color: #64748b;">~/Library/Caches/com.vintage.app/</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">1.20 GB</span>
+                        <span style="display: block; font-size: 9px; color: #f87171;">已废弃</span>
+                    </div>
+                </div>
+                <div style="background: #1e293b; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span style="color: #ef4444; font-size: 14px;">📄</span>
+                        <div>
+                            <div style="font-weight: 600; color: #f8fafc;">孤立偏好设置文件</div>
+                            <div style="font-size: 10px; color: #64748b;">~/Library/Preferences/com.vintage.app.plist</div>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: #f8fafc;">220 MB</span>
+                        <span style="display: block; font-size: 9px; color: #f87171;">已废弃</span>
+                    </div>
+                </div>
+            `;
+            showGlobalToast('🔍 已切换至「孤立残留排查」视图');
+        });
+
+        if (btnCleanerAction) {
+            btnCleanerAction.addEventListener('click', () => {
+                showGlobalToast('✨ 模拟安全操作成功！已释放所选空间，白名单目录受保护');
+            });
+        }
+    }
 }
 
 /* ==========================================================================
