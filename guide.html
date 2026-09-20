@@ -262,6 +262,12 @@
                         <span>智能剪贴板历史 (Clipboard)</span>
                     </a>
                 </li>
+                <li class="docs-nav-item">
+                    <a href="#sec-27" class="docs-nav-link">
+                        <span class="docs-nav-num">27</span>
+                        <span>权限管理与修复向导 (Permissions)</span>
+                    </a>
+                </li>
             </ul>
         </aside>
 
@@ -371,45 +377,6 @@
                     <li class="docs-list-item"><strong>单键直达 (<kbd>D</kbd>)</strong>：点击工具栏橡皮擦按钮或按 <kbd>D</kbd> 键。</li>
                     <li class="docs-list-item"><strong>三种形态选区</strong>：支持 ▭ 矩形框选（默认）、⭘ 自由套索圈选 与 ✎ 画笔涂抹，松手立即消除画面。</li>
                     <li class="docs-list-item"><strong>秒级撤销</strong>：按 <kbd>⌘</kbd> + <kbd>Z</kbd> 极速单步撤销擦除操作。</li>
-                </ul>
-            </section>
-
-            <!-- 4. 屏幕贴图与深度交互 (Pin Window) -->
-            <section id="sec-4" class="docs-section">
-                <div class="docs-section-title">
-                    <span>4. 屏幕贴图 (Pin Window)</span>
-                    <span class="badge-ver badge-sky">贴图交互</span>
-                </div>
-
-                <h3 class="docs-subsection-title">2.1 基础操作与生命周期</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>固定为贴图</strong>：选区完成后点击工具栏【贴图】按钮或按快捷键 <kbd>⌘</kbd> + <kbd>P</kbd>，窗口以浮动级别置顶显示。</li>
-                    <li class="docs-list-item"><strong>双击关闭</strong>：双击贴图空白处即可关闭当前贴图。</li>
-                    <li class="docs-list-item"><strong>中键重置</strong>：鼠标中键单击贴图，恢复 100% 原始缩放比例与不透明度。</li>
-                    <li class="docs-list-item"><strong>多贴图并发</strong>：支持同时固定多张贴图，每张贴图独立记忆缩放大小与位置。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">2.2 拖拽外发与高级交互</h3>
-                <div class="docs-callout docs-callout-info">
-                    <span class="docs-callout-icon">📌</span>
-                    <div class="docs-callout-content">
-                        <strong>按住 Command 键直接拖拽外发</strong>
-                        在贴图上<strong>按住 <kbd>⌘</kbd> 键并拖拽</strong>，可直接将图片拖入微信、钉钉、飞书、Slack、邮件等聊天输入框发送，或直接拖入访达文件夹保存为 PNG 文件。
-                    </div>
-                </div>
-
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>缩放与精度保持</strong>：支持触控板双指捏合或滚轮无级缩放（0.3x ~ 10x），内部使用浮点坐标追踪，避免缩放过程中的像素累计漂移。</li>
-                    <li class="docs-list-item"><strong>透明度调节</strong>：按住 <kbd>⌥</kbd> + 滚动滚轮，可在 10% ~ 100% 之间调节透明度。</li>
-                    <li class="docs-list-item"><strong>鼠标穿透模式 (Ghost Mode)</strong>：
-                        <ul class="docs-sublist">
-                            <li class="docs-sublist-item">右键菜单或快捷键 <kbd>⌥</kbd> + <kbd>G</kbd> 开启穿透模式后，鼠标点击将直接穿透贴图操作底层网页或代码。</li>
-                            <li class="docs-sublist-item">穿透状态下长按 <kbd>⌥</kbd> 键可临时接管贴图进行拖动与调整。</li>
-                        </ul>
-                    </li>
-                    <li class="docs-list-item"><strong>全域快捷键响应</strong>：贴图激活时支持 <kbd>⌘</kbd> + <kbd>C</kbd>（复制）、<kbd>⌘</kbd> + <kbd>S</kbd>（保存）、<kbd>⌘</kbd> + <kbd>P</kbd>（再转贴图）、<kbd>Esc</kbd>（关闭）。</li>
-                    <li class="docs-list-item"><strong>非破坏性二次标注</strong>：贴图自带悬浮工具栏，可随时追加画笔、矩形、马赛克等标注，支持 <kbd>⌘</kbd> + <kbd>Z</kbd> 撤销。</li>
-                    <li class="docs-list-item"><strong>误关恢复 (<kbd>⌥</kbd> + <kbd>2</kbd>)</strong>：贴图关闭时暂存于磁盘缓存，按 <kbd>⌥</kbd> + <kbd>2</kbd> 可按后进先出顺序依次恢复已关闭的贴图。</li>
                 </ul>
             </section>
 
@@ -1499,6 +1466,43 @@
                     <li class="docs-list-item"><strong>全格式归档</strong>：支持纯文本、富文本、代码片段、高分辨率截图与 GIF 动图；</li>
                     <li class="docs-list-item"><strong>一键转贴图</strong>：选中任意图片条目按 <code>P</code> 键，可直接转换为独立的屏幕置顶贴图窗口；</li>
                     <li class="docs-list-item"><strong>直接粘贴</strong>：按回车键后面板快速隐退，自动将选中的条目内容粘贴至原宿主应用的光标位置。</li>
+                </ul>
+            </section>
+
+            <!-- 27. 系统权限管理与脱机看门狗自动修复向导 (Permission Repair Wizard) -->
+            <section id="sec-27" class="docs-section">
+                <div class="docs-section-title">
+                    <span>27. 系统权限管理与脱机看门狗修复向导 (Permission Repair Wizard)</span>
+                    <span class="badge-ver badge-emerald">维护向导</span>
+                </div>
+
+                <div class="docs-callout docs-callout-info">
+                    <span class="docs-callout-icon">🛡️</span>
+                    <div class="docs-callout-content">
+                        <strong>脱机跳板架构 (Detached Watchdog Trampoline)</strong>
+                        在 macOS 跨版本升级或证书变更后，TCC 权限数据库易残留旧签名导致授权假死。若在活跃主进程执行 <code>tccutil reset</code>，系统内核会立即抛出 <code>SIGKILL</code> 强杀主进程。AuraSnap 采用独立的脱机看门狗跳板脚本，在主进程安全退出后清空失效记录、重新注册扩展并自动重启唤起步进向导。
+                    </div>
+                </div>
+
+                <h3 class="docs-subsection-title">27.1 脱机看门狗跳板模式</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>进程隔离退出</strong>：<code>PermissionRepairCoordinator</code> 派发独立 Shell 脚本监听宿主 PID，在主进程完全退出、释放单例文件锁与 WindowServer 会话后，安全执行重置；</li>
+                    <li class="docs-list-item"><strong>杜绝 SIGKILL 崩溃</strong>：主进程彻底退出后执行清理，规避运行中重置权限被内核强制强杀闪退的问题；</li>
+                    <li class="docs-list-item"><strong>扩展热注册</strong>：杀死陈旧的 <code>AuraSnapFinderSync</code> 进程，使用 <code>pluginkit</code> 重新注册并激活带有新签名的访达扩展；</li>
+                    <li class="docs-list-item"><strong>冷启动自动拉起</strong>：清理完毕后重新打开应用，并注入 <code>--permission-repair-wizard</code> 参数直接呈现步进向导。</li>
+                </ul>
+
+                <h3 class="docs-subsection-title">27.2 步进式向导交互</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>核心权限三步引导</strong>：提供屏幕录制 (Screen Recording)、辅助功能 (Accessibility) 及访达扩展 (FinderSync) 三步清晰指引；</li>
+                    <li class="docs-list-item"><strong>系统状态实时自检</strong>：通过 <code>CGPreflightScreenCaptureAccess()</code> 与 <code>AXIsProcessTrusted()</code> 实时轮询授权状态，授予后实时亮起绿色对勾微标；</li>
+                    <li class="docs-list-item"><strong>一键直达设置面板</strong>：点击按钮直接跳转至 macOS 系统设置对应隐私子页面，免除手动翻找。</li>
+                </ul>
+
+                <h3 class="docs-subsection-title">27.3 偏好设置一键重置</h3>
+                <ul class="docs-list">
+                    <li class="docs-list-item"><strong>关于面板快速自愈</strong>：在「偏好设置 → 关于」中提供【重置并修复全部系统权限】入口，配备二次确认防误触弹窗；</li>
+                    <li class="docs-list-item"><strong>免手动删减条目</strong>：无需用户在系统设置中使用「-」号手动删除失效条目，全程自动化一键搞定。</li>
                 </ul>
             </section>
 
