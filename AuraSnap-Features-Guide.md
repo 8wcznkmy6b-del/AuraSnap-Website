@@ -26,6 +26,11 @@
 19. [AuraSnap Pro 会员与免费配额 (Pro Membership & Free Quota)](#19-aurasnap-pro-会员与免费配额-pro-membership--free-quota)
 20. [径向分屏管理与智能邻接贴合 (Radial Window Manager)](#20-径向分屏管理与智能邻接贴合-radial-window-manager)
 21. [鼠标增强、平滑滚动与线性指针 (Mouse & Cursor Enhancement)](#21-鼠标增强平滑滚动与线性指针-mouse--cursor-enhancement)
+22. [原生图床与多云存储直传 (Image Hosting & Cloud Upload)](#22-原生图床与多云存储直传-image-hosting--cloud-upload)
+23. [访达超级右键扩展 (FinderSync Context Menu)](#23-访达超级右键扩展-findersync-context-menu)
+24. [全局快捷键独立开关系统 (Shortcut Registry)](#24-全局快捷键独立开关系统-shortcut-registry)
+25. [系统清理与软件深度卸载套件 (Cleaner & Uninstaller)](#25-系统清理与软件深度卸载套件-cleaner--uninstaller)
+26. [系统级智能剪贴板历史管理器 (Clipboard History Manager)](#26-系统级智能剪贴板历史管理器-clipboard-history-manager)
 
 ---
 
@@ -766,5 +771,32 @@ AuraSnap 原生内置 10 大主流云存储生态直传能力，告别第三方�
 - **系统核心白名单保护**：系统核心保护目录与关键基础服务均处于内置安全保护范围，避免意外误操作；
 - **Touch ID 与系统管理员特权认证**：对于受系统权限保护的深层清理与应用卸载，平滑唤起 Touch ID 或系统管理员鉴权，全程透明安全。
 
+---
 
+## 26. 系统剪贴板历史管理器 (Clipboard History Manager) `[v3.1.16 新增]`
 
+AuraSnap 内置了原生系统剪贴板历史管理器，默认快捷键为 `⌥ + V`。基于 AppKit Non-activating Panel 机制开发，唤起窗口时不会剥夺宿主应用的焦点，原输入光标保持闪烁。支持文本、富文本、代码、截图与动图记录，提供即时搜索、输入法合成态保护、自适应侧边预览与平滑滚动支持，全功能免费开放。
+
+### 26.1 非激活面板机制 (Non-activating Key Panel)
+- **焦点保持机制**：剪贴板窗口采用 `NSPanel` 与 `[.borderless, .nonactivatingPanel]` 样式掩码，通过 `orderFrontRegardless()` 与 `makeKey()` 显示，不调用 `NSApp.activate()`；
+- **宿主应用光标保持**：在 TextEdit、VS Code、Xcode、浏览器或聊天工具中按下快捷键唤起剪贴板时，当前活跃应用不会失活，文本输入光标在原位置持续闪烁，避免视觉焦点中断；
+- **失焦自动隐藏**：当用户点击外部区域、按 `Esc` 或切换前台进程时，剪贴板与预览窗口将自动协同关闭。
+
+### 26.2 键盘即时搜索与输入法保护
+- **自动聚焦搜索**：面板呼出时搜索框自动获取第一响应者（First Responder），无需鼠标点击即可直接输入关键词进行筛选；
+- **输入法合成态（IME）保护**：通过 `hasMarkedText()` 监听输入法状态。在拼音或日文假名候选输入过程中，空格与回车键优先由输入法消费，不触发剪贴板的确认粘贴或列表项移动；
+- **键盘操作流**：支持使用 `↑` / `↓` 上下移动光标，按 `↩` 确认粘贴，按 `P` 键直接转为置顶贴图。
+
+### 26.3 自适应侧边预览与 OCR 文本复制
+- **自适应尺寸预览**：选中条目时在侧边浮动展示完整内容，代码条目展示语法高亮与行号，图片展示分辨率与文件大小；
+- **预览面板非激活隔离 (`canBecomeKey = false`)**：侧边预览面板重写 `canBecomeKey = false`，在预览卡片内选中文本、滚动或点击复制按钮时，不会导致主剪贴板面板失焦关闭；
+- **图片 OCR 提取**：对于截图和图片条目，可通过内置离线 OCR 提取文本，用户可在预览区域直接框选并拷贝部分文字。
+
+### 26.4 120Hz 平滑滚动支持
+- **多窗口区域同步**：更新 `InputPipelineContext`，将主列表与侧边预览窗口的 Frame 统一注册到 `clipboardWindowFrames` 列表中；
+- **惯性滚动支持**：鼠标悬停在侧边长文本或代码预览区域滚动时，平滑滚动拦截器能正确识别该区域并放行，避免退化为生硬的步进滚动。
+
+### 26.5 多格式支持与置顶贴图转换
+- **全格式归档**：支持纯文本、富文本、代码片段、高分辨率截图与 GIF 动图；
+- **一键转贴图**：选中任意图片条目按 `P` 键，可直接转换为独立的屏幕置顶贴图窗口；
+- **直接粘贴**：按回车键后面板快速隐退，自动将选中的条目内容粘贴至原宿主应用的光标位置。

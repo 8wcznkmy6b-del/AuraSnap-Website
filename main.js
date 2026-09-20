@@ -1278,11 +1278,47 @@ tion string for SQLite database.`;
                 showGlobalToast('✨ 模拟安全操作成功！已释放所选空间，白名单目录受保护');
             });
         }
+
+        // =========================================================================
+        // Tab: Clipboard Studio Interactivity (v3.1.16)
+        // =========================================================================
+        const simClipboardSearch = document.getElementById('simClipboardSearch');
+        const simClipboardList = document.getElementById('simClipboardList');
+        if (simClipboardList) {
+            const clipItems = simClipboardList.querySelectorAll('.sim-clip-item');
+            if (simClipboardSearch) {
+                simClipboardSearch.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    clipItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        if (!query || text.includes(query)) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+
+            clipItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    clipItems.forEach(ci => {
+                        ci.classList.remove('active');
+                        ci.style.background = 'rgba(255,255,255,0.03)';
+                        ci.style.borderColor = 'rgba(255,255,255,0.06)';
+                    });
+                    item.classList.add('active');
+                    item.style.background = 'linear-gradient(135deg, rgba(2,132,199,0.35), rgba(3,105,161,0.2))';
+                    item.style.borderColor = '#38bdf8';
+                    showGlobalToast('📋 已选择条目：按 ↩ 粘贴，按 P 转为置顶贴图');
+                });
+            });
+        }
     }
 }
 
 /* ==========================================================================
-   5. Live Keyboard Shortcut HUD Tester (v3.1.0 Full Mappings)
+   5. Live Keyboard Shortcut HUD Tester (v3.1.16 Full Mappings)
    ========================================================================== */
 function initKeyboardHUDTester() {
     const keyMap = {
@@ -1292,22 +1328,47 @@ function initKeyboardHUDTester() {
         'Digit1': 'hudKeyCapture',
         'Digit2': 'hudKeyRestore',
         'Digit4': 'hudKeyOCR',
+        'Digit5': 'hudKeyScroll',
+        'Digit6': 'hudKeyGIF',
         'KeyG': 'hudKeyGhost',
         'KeyP': 'hudKeyPin',
         'KeyT': 'hudKeyTextPin',
         'Enter': 'hudKeyOcrSubmit'
     };
 
-    window.addEventListener('keydown', (e) => {
+    function resolveCardId(e) {
         let cardId = keyMap[e.code];
+
+        // Option + V: Clipboard history
+        if (e.altKey && e.code === 'KeyV') {
+            return 'hudKeyClipboard';
+        }
 
         // Special combo detection for Window Manager
         if ((e.ctrlKey || e.metaKey) && e.altKey) {
-            if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') cardId = 'hudKeyWmHalf';
-            if (e.code === 'Enter' || e.code === 'KeyC') cardId = 'hudKeyWmMax';
-            if (e.code === 'KeyU' || e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyK') cardId = 'hudKeyWmCorner';
+            if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') return 'hudKeyWmHalf';
+            if (e.code === 'Enter' || e.code === 'KeyC') return 'hudKeyWmMax';
+            if (e.code === 'KeyU' || e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyK') return 'hudKeyWmCorner';
+            if (e.code === 'KeyT') return 'hudKeyTextPin';
         }
 
+        if (e.metaKey && e.code === 'KeyC') return 'hudKeyCopy';
+        if (e.altKey && e.code === 'Digit1') return 'hudKeyCapture';
+        if (e.altKey && e.code === 'Digit2') return 'hudKeyRestore';
+        if (e.altKey && e.code === 'Digit4') return 'hudKeyOCR';
+        if (e.altKey && e.code === 'Digit5') return 'hudKeyScroll';
+        if (e.altKey && e.code === 'Digit6') return 'hudKeyGIF';
+        if (e.altKey && e.code === 'KeyG') return 'hudKeyGhost';
+
+        if (!e.ctrlKey && !e.metaKey && !e.altKey && (e.code === 'KeyR' || e.code === 'KeyA' || e.code === 'KeyM')) {
+            return 'hudKeyTools';
+        }
+
+        return cardId;
+    }
+
+    window.addEventListener('keydown', (e) => {
+        const cardId = resolveCardId(e);
         if (cardId) {
             const card = document.getElementById(cardId);
             if (card) {
@@ -1317,12 +1378,7 @@ function initKeyboardHUDTester() {
     });
 
     window.addEventListener('keyup', (e) => {
-        let cardId = keyMap[e.code];
-        if ((e.ctrlKey || e.metaKey) && e.altKey) {
-            if (e.code === 'ArrowLeft' || e.code === 'ArrowRight') cardId = 'hudKeyWmHalf';
-            if (e.code === 'Enter' || e.code === 'KeyC') cardId = 'hudKeyWmMax';
-            if (e.code === 'KeyU' || e.code === 'KeyI' || e.code === 'KeyJ' || e.code === 'KeyK') cardId = 'hudKeyWmCorner';
-        }
+        const cardId = resolveCardId(e);
         if (cardId) {
             const card = document.getElementById(cardId);
             if (card) {
