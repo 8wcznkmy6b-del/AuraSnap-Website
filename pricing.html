@@ -751,7 +751,7 @@
             <!-- 选中的套餐信息 -->
             <div id="modal-plan-pill" class="plan-pill">
                 <span id="modal-plan-name" style="font-weight: 700; color: #0284c7;">早鸟限时买断</span>
-                <span id="modal-plan-price" style="font-weight: 700; color: #0f172a;">实付 ¥145.00 ($19.99)</span>
+                <span id="modal-plan-price" style="font-weight: 700; color: #0f172a;">$19.99</span>
             </div>
 
             <!-- 步骤 1 & 2：输入邮箱与扫码支付 -->
@@ -993,7 +993,7 @@
             const meta = PLAN_META[checkoutCurrentPlan] || PLAN_META.lifetime;
             
             document.getElementById('modal-plan-name').innerText = meta.name;
-            document.getElementById('modal-plan-price').innerText = '实付 ¥' + meta.priceCNY.toFixed(2) + ' (' + meta.priceUSD + ')';
+            document.getElementById('modal-plan-price').innerText = meta.priceUSD;
             
             // 自动回填历史邮箱
             const savedEmail = localStorage.getItem('aurasnap_checkout_email') || '';
