@@ -792,25 +792,37 @@
                     </button>
                 </div>
 
-                <div class="qr-box">
+                <div class="qr-box" style="text-align: center; margin-bottom: 12px;">
                     <div style="background: #fff; padding: 10px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); display: inline-block;">
                         <img id="checkout-qr-img" src="" alt="收款码" style="width: 168px; height: 168px; object-fit: contain; display: block;">
                     </div>
-                    <div id="checkout-ref-instruction" style="font-size: 12px; color: #475569; margin-top: 10px;">
-                        请打开<b>支付宝</b>扫码，并在<b>【转账备注】</b>中填入专属识别码：
+                </div>
+
+                <!-- 扫码转账核销信息卡片（随折扣动态联动） -->
+                <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 1px dashed #cbd5e1;">
+                        <div>
+                            <div style="font-size: 12px; font-weight: 700; color: #1e293b;">① 扫码转账金额</div>
+                            <div style="font-size: 11px; color: #64748b;">手机扫码后在金额框填入</div>
+                        </div>
+                        <div id="checkout-cny-display" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 19px; font-weight: 800; color: #059669;">
+                            ¥145.00
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 10px;">
+                        <div>
+                            <div id="checkout-ref-channel-label" style="font-size: 12px; font-weight: 700; color: #1e293b;">② 支付宝【转账备注】</div>
+                            <div style="font-size: 11px; color: #64748b;">自动发码对账凭证（必填）</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="checkout-ref-code" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 16px; font-weight: 800; color: #0284c7; letter-spacing: 0.5px;">加载中...</span>
+                            <button type="button" class="btn-copy-ref" onclick="copyCheckoutRef()">复制</button>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 专属识别码 -->
-                <div class="ref-code-card">
-                    <div style="font-size: 11px; color: #64748b; margin-bottom: 2px;">专属转账对账识别码（点击一键复制）</div>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-                        <span id="checkout-ref-code" style="font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 18px; font-weight: 800; color: #059669; letter-spacing: 1px;">加载中...</span>
-                        <button type="button" class="btn-copy-ref" onclick="copyCheckoutRef()">复制识别码</button>
-                    </div>
-                </div>
                 <div id="checkout-ref-warning" style="font-size: 11.5px; color: #b45309; background: #fef3c7; border: 1px solid #fde68a; padding: 8px 12px; border-radius: 6px; margin-bottom: 16px; line-height: 1.4;">
-                    ⚠️ 转账时请务必在转账备注中填入上述识别码，系统方能将转账与您的邮箱精准对账并自动发码！
+                    ⚠️ 转账时请务必准确填写上述金额与【转账备注】，系统方能将转账与您的邮箱精准对账并自动发码！
                 </div>
 
                 <div style="display: flex; gap: 10px;">
@@ -1014,6 +1026,7 @@
             
             document.getElementById('modal-plan-name').innerText = meta.name;
             document.getElementById('modal-plan-price').innerText = meta.priceUSD;
+            document.getElementById('checkout-cny-display').innerText = '¥' + meta.priceCNY.toFixed(2);
             
             // 重置优惠券区域
             document.getElementById('coupon-input-wrap').style.display = 'none';
@@ -1083,9 +1096,11 @@
                     const origMeta = PLAN_META[checkoutCurrentPlan] || PLAN_META.lifetime;
                     document.getElementById('modal-plan-price').innerHTML = '<s style="color: #94a3b8; font-size: 12px; margin-right: 4px;">' + origMeta.priceUSD + '</s> <span style="color: #059669; font-weight: 700;">$' + data.discounted_price_usd.toFixed(2) + '</span>';
 
+                    document.getElementById('checkout-cny-display').innerHTML = '<s style="color: #94a3b8; font-size: 13px; font-weight: 500; margin-right: 6px;">¥' + data.original_price_cny.toFixed(2) + '</s> <span style="color: #059669; font-weight: 800;">¥' + data.discounted_price_cny.toFixed(2) + '</span>';
+
                     msg.style.display = 'block';
                     msg.style.color = '#059669';
-                    msg.innerText = '🎉 ' + data.discount_text + '！已更新订单金额';
+                    msg.innerText = '🎉 ' + data.discount_text + '！已实时更新转账金额';
 
                     // 重新创建带折扣的未支付订单
                     createUnpaidOrder();
@@ -1116,19 +1131,19 @@
             checkoutCurrentMethod = method;
             const tabAli = document.getElementById('tab-alipay');
             const tabWx = document.getElementById('tab-wechat');
-            const refInst = document.getElementById('checkout-ref-instruction');
+            const channelLabel = document.getElementById('checkout-ref-channel-label');
             const refWarn = document.getElementById('checkout-ref-warning');
 
             if (method === 'wechat') {
                 tabAli.className = 'pay-tab';
                 tabWx.className = 'pay-tab active';
-                refInst.innerHTML = '请打开<b>微信</b>扫码，并在<b>【添加转账说明】</b>中填入专属识别码：';
-                refWarn.innerHTML = '⚠️ 微信转账请务必填写【转账说明】，系统方能将订单与您的邮箱精准对账发码！';
+                if (channelLabel) channelLabel.innerText = '② 微信【添加转账说明】';
+                if (refWarn) refWarn.innerHTML = '⚠️ 微信转账请务必准确填写上述金额与【转账说明】，系统方能将订单与您的邮箱精准对账发码！';
             } else {
                 tabWx.className = 'pay-tab';
                 tabAli.className = 'pay-tab active';
-                refInst.innerHTML = '请打开<b>支付宝</b>扫码，并在<b>【转账备注】</b>中填入专属识别码：';
-                refWarn.innerHTML = '⚠️ 支付宝付款请务必填写【转账备注】，系统方能将订单与您的邮箱精准对账发码！';
+                if (channelLabel) channelLabel.innerText = '② 支付宝【转账备注】';
+                if (refWarn) refWarn.innerHTML = '⚠️ 支付宝付款请务必准确填写上述金额与【转账备注】，系统方能将订单与您的邮箱精准对账发码！';
             }
             updateCheckoutQrImage();
         }
