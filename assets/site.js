@@ -5,8 +5,8 @@
 
   // 默认值随网站发布更新；页面打开后再从 GitHub 取最新发行版，取不到就用这里的
   var FALLBACK = {
-    version: '3.2.60',
-    dmg: 'https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.60/AuraSnap-3.2.60.dmg'
+    version: '3.2.62',
+    dmg: 'https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.62/AuraSnap-3.2.62.dmg'
   };
   var RELEASE_API = 'https://api.github.com/repos/8wcznkmy6b-del/AuraSnap-PB/releases/latest';
   var CACHE_KEY = 'aurasnap_latest_release_v1';
