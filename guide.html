@@ -1,1537 +1,342 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AuraSnap 用户使用手册与功能指南</title>
-    <meta name="description" content="AuraSnap 官方用户手册：涵盖屏幕截图、屏幕贴图、剪贴板转贴图、区域录屏、滚动截长图、独立 OCR 文字识别与排版清洗、矢量标注、图像抠图、AI 视觉解析及快捷键配置。">
-    <meta name="keywords" content="AuraSnap 使用手册, macOS 截图教程, OCR 文本清洗, 空间几何排版, 贴图穿透, 录屏外发, 快捷键指南">
-    
-    <!-- Google Search Console 站点验证 -->
-    <meta name="google-site-verification" content="6imrNBbtHpXlvs_eJxVL0ueiRYzWSX-zMwA5sKnrR0o" />
-
-    <!-- SEO & Canonical -->
-    <link rel="canonical" href="https://aurasnap.dpdns.org/guide.html">
-    <meta name="robots" content="index, follow">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="AuraSnap 用户使用手册与功能指南">
-    <meta property="og:description" content="AuraSnap 官方使用手册：涵盖屏幕截图、屏幕贴图、剪贴板转贴图、区域录屏、滚动截长图、独立 OCR 文字识别、空间几何排版、文本清洗套件与快捷键速查。">
-    <meta property="og:url" content="https://aurasnap.dpdns.org/guide.html">
-    <meta property="og:site_name" content="AuraSnap Documentation">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="AuraSnap 用户使用手册">
-    <meta name="twitter:description" content="涵盖 15 大核心功能模块、35+ 快捷键与高频交互手势全览。">
-
-    <!-- Favicon & Icons -->
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon.png?v=3.1.16">
-    <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=3.1.16">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=3.1.16">
-    <link rel="shortcut icon" href="favicon.ico?v=3.1.16">
-
-    <!-- Schema.org TechArticle 结构化数据 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      "headline": "AuraSnap 完整功能与用户使用手册",
-      "description": "AuraSnap macOS 截图、全盘清理与卸载、径向分屏、鼠标增强、图床与访达右键功能指南、快捷键与交互手势详解。",
-      "author": {
-        "@type": "Person",
-        "name": "Dochi",
-        "url": "https://dochi.dpdns.org"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "AuraSnap",
-        "url": "https://aurasnap.dpdns.org"
-      }
-    }
-    </script>
-
-    <!-- 样式引入 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="style.css?v=3.1.16">
-    <link rel="stylesheet" href="guide.css?v=3.1.16">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>使用指南 · AuraSnap</title>
+  <meta name="description" content="AuraSnap 使用指南：安装与权限、截图与标注、贴图、文字识别与翻译、长截图、录屏、剪贴板、分屏、鼠标、访达右键、图床与全部快捷键。">
+  <link rel="canonical" href="https://aurasnapapp.com/guide">
+  <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AuraSnap">
+  <meta property="og:title" content="使用指南 · AuraSnap">
+  <meta property="og:url" content="https://aurasnapapp.com/guide">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="stylesheet" href="/assets/site.css?v=4.0.0">
 </head>
-<body class="docs-body">
-
-    <!-- 顶部固定毛玻璃导航栏 -->
-    <header class="docs-navbar">
-        <div class="docs-nav-inner">
-            <div class="docs-nav-left">
-                <button class="docs-sidebar-toggle" id="sidebarToggle" aria-label="切换目录">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-                </button>
-                <a href="index.html" class="docs-brand">
-                    <img src="logo.png?v=3.1.16" alt="AuraSnap" class="docs-brand-img">
-                    <span>AuraSnap</span>
-                    <span class="badge-ver badge-blue">v3.1.16</span>
-                </a>
-                <span class="docs-nav-divider"></span>
-                <span class="docs-nav-title">用户使用手册</span>
-            </div>
-
-            <!-- 即时搜索框 -->
-            <div class="docs-search-container">
-                <div class="docs-search-input-wrap">
-                    <svg class="docs-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                    <input type="text" id="docsSearchInput" class="docs-search-input" placeholder="搜索功能、快捷键或参数..." autocomplete="off">
-                    <span class="docs-search-shortcut">⌘K</span>
-                </div>
-            </div>
-
-            <!-- 右侧快捷跳转 -->
-            <div class="docs-nav-right">
-                <a href="index.html" class="docs-nav-link-btn">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>返回官网</span>
-                </a>
-                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="docs-nav-link-btn" target="_blank" rel="noopener" aria-label="GitHub">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" class="docs-nav-link-btn docs-nav-primary-btn" target="_blank" rel="noopener">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    <span>下载 DMG</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- 两栏式主体容器 -->
-    <div class="docs-layout">
-        
-        <!-- 左侧目录导航 -->
-        <aside class="docs-sidebar" id="docsSidebar">
-            <div class="docs-sidebar-header">目录导航</div>
-            <ul class="docs-nav-tree">
-                <li class="docs-nav-item">
-                    <a href="#sec-1" class="docs-nav-link active">
-                        <span class="docs-nav-num">01</span>
-                        <span>屏幕截图与窗口探测</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-2" class="docs-nav-link">
-                        <span class="docs-nav-num">02</span>
-                        <span>背景美化 (Background Beautifier)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-3" class="docs-nav-link">
-                        <span class="docs-nav-num">03</span>
-                        <span>智能内容擦除 (Content Eraser)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-4" class="docs-nav-link">
-                        <span class="docs-nav-num">04</span>
-                        <span>屏幕贴图 (Pin Window)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-5" class="docs-nav-link">
-                        <span class="docs-nav-num">05</span>
-                        <span>剪贴板内容转贴图</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-6" class="docs-nav-link">
-                        <span class="docs-nav-num">06</span>
-                        <span>区域录屏与动图导出</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-7" class="docs-nav-link">
-                        <span class="docs-nav-num">07</span>
-                        <span>滚动截长图 (Long Screenshot)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-8" class="docs-nav-link">
-                        <span class="docs-nav-num">08</span>
-                        <span>OCR 文字识别与文本清洗</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-9" class="docs-nav-link">
-                        <span class="docs-nav-num">09</span>
-                        <span>标注工具、贴纸与智能图形</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-10" class="docs-nav-link">
-                        <span class="docs-nav-num">10</span>
-                        <span>防泄密平铺水印</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-11" class="docs-nav-link">
-                        <span class="docs-nav-num">11</span>
-                        <span>图像抠图与主体提取</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-12" class="docs-nav-link">
-                        <span class="docs-nav-num">12</span>
-                        <span>AI 视觉大模型集成</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-13" class="docs-nav-link">
-                        <span class="docs-nav-num">13</span>
-                        <span>外观与分模块独立主题</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-14" class="docs-nav-link">
-                        <span class="docs-nav-num">14</span>
-                        <span>工具栏与菜单栏深度定制</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-15" class="docs-nav-link">
-                        <span class="docs-nav-num">15</span>
-                        <span>全维度快捷键体系 (单键直达)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-16" class="docs-nav-link">
-                        <span class="docs-nav-num">16</span>
-                        <span>历史记录与离线搜索</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-17" class="docs-nav-link">
-                        <span class="docs-nav-num">17</span>
-                        <span>快捷键与手势速查表</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-18" class="docs-nav-link">
-                        <span class="docs-nav-num">18</span>
-                        <span>原地截图翻译 (In-Place Translation)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-19" class="docs-nav-link">
-                        <span class="docs-nav-num">19</span>
-                        <span>Pro 会员与免费配额</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-20" class="docs-nav-link">
-                        <span class="docs-nav-num">20</span>
-                        <span>径向分屏管理 (Window Manager)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-21" class="docs-nav-link">
-                        <span class="docs-nav-num">21</span>
-                        <span>鼠标外设增强与 Profile (Mouse)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-22" class="docs-nav-link">
-                        <span class="docs-nav-num">22</span>
-                        <span>原生图床与多云存储 (Image Hosting)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-23" class="docs-nav-link">
-                        <span class="docs-nav-num">23</span>
-                        <span>访达超级右键扩展 (FinderSync)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-24" class="docs-nav-link">
-                        <span class="docs-nav-num">24</span>
-                        <span>全局快捷键独立开关系统 (Shortcuts)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-25" class="docs-nav-link">
-                        <span class="docs-nav-num">25</span>
-                        <span>系统清理与软件卸载 (Cleaner)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-26" class="docs-nav-link">
-                        <span class="docs-nav-num">26</span>
-                        <span>智能剪贴板历史 (Clipboard)</span>
-                    </a>
-                </li>
-                <li class="docs-nav-item">
-                    <a href="#sec-27" class="docs-nav-link">
-                        <span class="docs-nav-num">27</span>
-                        <span>权限管理与修复向导 (Permissions)</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-
-        <!-- 右侧正文区 -->
-        <main class="docs-content-container">
-            
-            <!-- 文档主标题区 -->
-            <header class="docs-hero-header">
-                <h1 class="docs-main-title">AuraSnap 用户使用手册</h1>
-                <p class="docs-subtitle-lead">
-                    本手册包含 AuraSnap 各项功能的使用说明、快捷键映射、文本与图像处理套件、偏好设置配置以及常用交互细节。
-                </p>
-                <div class="docs-stats-bar">
-                    <span class="docs-stat-chip">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        <span>适用版本：v3.1.16</span>
-                    </span>
-                    <span class="docs-stat-chip">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                        <span>16 个功能模块</span>
-                    </span>
-                    <span class="docs-stat-chip">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        <span>35+ 快捷键与手势</span>
-                    </span>
-                    <span class="docs-stat-chip">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-                        <span>macOS 13.0+ / Apple Silicon</span>
-                    </span>
-                </div>
-            </header>
-
-            <!-- 1. 屏幕截图与窗口/微观元素探测 -->
-            <section id="sec-1" class="docs-section">
-                <div class="docs-section-title">
-                    <span>1. 屏幕截图与窗口探测</span>
-                    <span class="badge-ver badge-core">截屏基础</span>
-                </div>
-
-                <h3 class="docs-subsection-title">1.1 快捷键触发与自适应调光</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>唤起截图</strong>：默认快捷键为 <kbd>⌥</kbd> + <kbd>1</kbd>（<code>Option + 1</code>），可在偏好设置中重新录制。</li>
-                    <li class="docs-list-item"><strong>背景自适应明暗</strong>：按下快捷键后背景适度压暗以突出选区。当鼠标移动超过 3pt 时恢复屏幕原始亮度与色彩，拖拽生成选区后仅选区外保持暗色遮罩，确保框选与取色无色差。</li>
-                    <li class="docs-list-item"><strong>转场与防抖</strong>：采用统一转场度量（120ms），进出平滑淡入淡出；主线程加入防重入锁，避免高频连击导致重复创建窗口。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">1.2 窗口与 UI 控件吸附</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>窗口自动吸附</strong>：鼠标悬停在应用上方时自动识别并高亮当前窗口边界。</li>
-                    <li class="docs-list-item"><strong>宏观与微观吸附切换 (<kbd>Space</kbd>)</strong>：
-                        <ul class="docs-sublist">
-                            <li class="docs-sublist-item"><strong>默认模式</strong>：吸附整个应用窗口。</li>
-                            <li class="docs-sublist-item"><strong>按下空格键</strong>：切换为吸附按钮、输入框、标签页等局部 UI 控件（基于系统辅助功能接口探测）。</li>
-                        </ul>
-                    </li>
-                    <li class="docs-list-item"><strong>层级穿梭</strong>：悬停时滑动鼠标滚轮，可在父容器与子控件层级树之间上下切换探测目标。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">1.3 取色器与放大镜</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>差分十字标尺</strong>：十字线采用底片反色差分效果，在明暗背景下均清晰可见。</li>
-                    <li class="docs-list-item"><strong>21×21 像素放大镜</strong>：显示中心十字准星与当前光标处精确像素色值。</li>
-                    <li class="docs-list-item"><strong>复制色值</strong>：按 <kbd>C</kbd> 键将当前像素的 HEX 与 RGB 色值复制到剪贴板。</li>
-                    <li class="docs-list-item"><strong>像素微调</strong>：按方向键 <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd> 以 1px 步进微调准星位置。</li>
-                </ul>
-            </section>
-
-            <!-- 2. 独立背景美化工作台 (Background Beautifier) -->
-            <section id="sec-2" class="docs-section">
-                <div class="docs-section-title">
-                    <span>2. 背景美化工作台 (Background Beautifier)</span>
-                    <span class="badge-ver badge-emerald">美化工具</span>
-                </div>
-
-                <h3 class="docs-subsection-title">2.1 极速独立唤醒与多模式切换</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>快捷呼出 (<kbd>F</kbd> / <kbd>⌥</kbd>+<kbd>7</kbd>)</strong>：截图框选后按下 <kbd>F</kbd> 键或全局快捷键 <kbd>⌥</kbd> + <kbd>7</kbd>，即刻呼出独立背景美化窗口。</li>
-                    <li class="docs-list-item"><strong>多模式无缝切换</strong>：美化预设模式与标注涂鸦模式自由切换，支持自适应布局与图层管理。</li>
-                    <li class="docs-list-item"><strong>精美壁纸与色板浏览</strong>：底部壁纸与调色板支持触控板滑动与鼠标滚轮流畅浏览。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">2.2 高清系统壁纸与智能萃取色板</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>当前桌面壁纸一键铺底</strong>：一键提取当前屏幕桌面壁纸作为背景，内置多款官方高清壁纸，切换流畅不模糊。</li>
-                    <li class="docs-list-item"><strong>智能主色提取</strong>：自动分析截图提炼专属调和色，提供莫兰迪色系、极简灰阶与多款精美调色板。</li>
-                    <li class="docs-list-item"><strong>立体浮空光影与自适应边距</strong>：自然逼真的阴影质感与自适应留白边距，导出清晰无裁剪，让截图更具层次感。</li>
-                    <li class="docs-list-item"><strong>标注无缝同步与随时返回</strong>：在美化过程中绘制的涂鸦、箭头与文字，点击「返回截图」即可完整保留并继续编辑。</li>
-                </ul>
-            </section>
-
-            <!-- 3. 智能内容擦除 (Content Eraser) -->
-            <section id="sec-3" class="docs-section">
-                <div class="docs-section-title">
-                    <span>3. 智能内容擦除 (Content Eraser)</span>
-                    <span class="badge-ver badge-purple">擦除工具</span>
-                </div>
-
-                <h3 class="docs-subsection-title">3.1 自然融合消除</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>自然去字不留痕</strong>：精准消除深色文字与微小噪点，浅色或纯色背景擦除后干净透亮。</li>
-                    <li class="docs-list-item"><strong>自适应纹理补全</strong>：面对复杂背景或微质感桌面，自动匹配周边纯净区域进行自然融合填补。</li>
-                    <li class="docs-list-item"><strong>柔和边缘自然过渡</strong>：消除区域与周围背景平滑过渡，杜绝生硬边缘，告别“贴膏药”感。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">3.2 快捷操作与多模态选区</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>单键直达 (<kbd>D</kbd>)</strong>：点击工具栏橡皮擦按钮或按 <kbd>D</kbd> 键。</li>
-                    <li class="docs-list-item"><strong>三种形态选区</strong>：支持 ▭ 矩形框选（默认）、⭘ 自由套索圈选 与 ✎ 画笔涂抹，松手立即消除画面。</li>
-                    <li class="docs-list-item"><strong>秒级撤销</strong>：按 <kbd>⌘</kbd> + <kbd>Z</kbd> 极速单步撤销擦除操作。</li>
-                </ul>
-            </section>
-
-            <!-- 4. 屏幕贴图与深度交互 (Pin Window) -->
-            <section id="sec-4" class="docs-section">
-                <div class="docs-section-title">
-                    <span>4. 屏幕贴图 (Pin Window)</span>
-                    <span class="badge-ver badge-sky">贴图交互</span>
-                </div>
-
-                <h3 class="docs-subsection-title">4.1 基础操作与生命周期</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>固定为贴图</strong>：选区完成后点击工具栏【贴图】按钮或按快捷键 <kbd>⌘</kbd> + <kbd>P</kbd>，窗口以浮动级别置顶显示。</li>
-                    <li class="docs-list-item"><strong>双击关闭</strong>：双击贴图空白处即可关闭当前贴图。</li>
-                    <li class="docs-list-item"><strong>中键重置</strong>：鼠标中键单击贴图，恢复 100% 原始缩放比例与不透明度。</li>
-                    <li class="docs-list-item"><strong>多贴图并发</strong>：支持同时固定多张贴图，每张贴图独立记忆缩放大小与位置。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">4.2 拖拽外发与高级交互</h3>
-                <div class="docs-callout docs-callout-info">
-                    <span class="docs-callout-icon">📌</span>
-                    <div class="docs-callout-content">
-                        <strong>按住 Command 键直接拖拽外发</strong>
-                        在贴图上<strong>按住 <kbd>⌘</kbd> 键并拖拽</strong>，可直接将图片拖入微信、钉钉、飞书、Slack、邮件等聊天输入框发送，或直接拖入访达文件夹保存为 PNG 文件。
-                    </div>
-                </div>
-
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>缩放与精度保持</strong>：支持触控板双指捏合或滚轮无级缩放（0.3x ~ 10x），内部使用浮点坐标追踪，避免缩放过程中的像素累计漂移。</li>
-                    <li class="docs-list-item"><strong>透明度调节</strong>：按住 <kbd>⌥</kbd> + 滚动滚轮，可在 10% ~ 100% 之间调节透明度。</li>
-                    <li class="docs-list-item"><strong>鼠标穿透模式 (Ghost Mode)</strong>：
-                        <ul class="docs-sublist">
-                            <li class="docs-sublist-item">右键菜单或快捷键 <kbd>⌥</kbd> + <kbd>G</kbd> 开启穿透模式后，鼠标点击将直接穿透贴图操作底层网页或代码。</li>
-                            <li class="docs-sublist-item">穿透状态下长按 <kbd>⌥</kbd> 键可临时接管贴图进行拖动与调整。</li>
-                        </ul>
-                    </li>
-                    <li class="docs-list-item"><strong>全域快捷键响应</strong>：贴图激活时支持 <kbd>⌘</kbd> + <kbd>C</kbd>（复制）、<kbd>⌘</kbd> + <kbd>S</kbd>（保存）、<kbd>⌘</kbd> + <kbd>P</kbd>（再转贴图）、<kbd>Esc</kbd>（关闭）。</li>
-                    <li class="docs-list-item"><strong>非破坏性二次标注</strong>：贴图自带悬浮工具栏，可随时追加画笔、矩形、马赛克等标注，支持 <kbd>⌘</kbd> + <kbd>Z</kbd> 撤销。</li>
-                    <li class="docs-list-item"><strong>误关恢复 (<kbd>⌥</kbd> + <kbd>2</kbd>)</strong>：贴图关闭时暂存于磁盘缓存，按 <kbd>⌥</kbd> + <kbd>2</kbd> 可按后进先出顺序依次恢复已关闭的贴图。</li>
-                </ul>
-            </section>
-
-            <!-- 5. 剪贴板图文/代码极速转贴图 (Text/Image-to-Pin) -->
-            <section id="sec-5" class="docs-section">
-                <div class="docs-section-title">
-                    <span>5. 剪贴板内容转贴图 (Text/Image-to-Pin)</span>
-                    <span class="badge-ver badge-blue">剪贴板直出</span>
-                </div>
-
-                <h3 class="docs-subsection-title">5.1 一键生成贴图 (<kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd>)</h3>
-                <p class="docs-paragraph">
-                    复制任意文本、代码、JSON 或外部图片后，按快捷键 <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd> 即可直接在当前屏幕中央生成浮动贴图，省去保存或手动截图步骤。
-                </p>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>文本/代码贴图</strong>：自动采用毛玻璃背景与等宽排版展示文本内容。</li>
-                    <li class="docs-list-item"><strong>外部图片贴图</strong>：自动裁切边缘透明留白（Alpha Trimming），并根据屏幕尺寸自动缩放居中。</li>
-                    <li class="docs-list-item"><strong>空白处穿透拖拽</strong>：文本贴图在行间或空白区域点击可直接拖拽移动，文字区域保留高亮划选能力。</li>
-                    <li class="docs-list-item"><strong>文本截断保护</strong>：对超长文本（上万像素）提供底部渐变截断保护，确保性能平稳。</li>
-                </ul>
-            </section>
-
-            <!-- 6. 区域录屏与多格式视频/动图导出 -->
-            <section id="sec-6" class="docs-section">
-                <div class="docs-section-title">
-                    <span>6. 区域录屏与动图导出</span>
-                    <span class="badge-ver badge-emerald">录屏导出</span>
-                </div>
-
-                <h3 class="docs-subsection-title">6.1 导出格式支持</h3>
-                <div class="docs-card-grid">
-                    <div class="docs-card">
-                        <div class="docs-card-title">MP4 视频</div>
-                        <div class="docs-card-desc">基于 Apple 原生硬件加速编码，色彩保真度高，适合较长时长的操作演示与归档。</div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">GIF 动图</div>
-                        <div class="docs-card-desc">内置动态调色板量化算法，减少色彩断层，适合聊天工具快速分享与短演示。</div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">WebM 格式</div>
-                        <div class="docs-card-desc">采用 VP9 编码，在保持高清画质的同时显著缩减文件体积。</div>
-                    </div>
-                </div>
-
-                <h3 class="docs-subsection-title">6.2 预览与拖拽外发</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>录完即览</strong>：录制完成后弹出循环播放预览面板。</li>
-                    <li class="docs-list-item"><strong>按住 <kbd>⌘</kbd> 拖拽分享</strong>：在播放器内按住 <kbd>⌘</kbd> 拖拽，可直接将视频或 GIF 拖入聊天软件发送，或拖至访达保存。</li>
-                    <li class="docs-list-item"><strong>GIF 剪贴板原生支持</strong>：按 <kbd>⌘</kbd> + <kbd>C</kbd> 复制动图时写入标准 GIF 二进制数据流，粘贴到聊天软件直接显示为动图。</li>
-                </ul>
-            </section>
-
-            <!-- 7. 双引擎长截图与 Retina 2x Minimap -->
-            <section id="sec-7" class="docs-section">
-                <div class="docs-section-title">
-                    <span>7. 滚动截长图 (Long Screenshot)</span>
-                    <span class="badge-ver badge-purple">长图拼接</span>
-                </div>
-
-                <h3 class="docs-subsection-title">7.1 图像拼接机制</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>自适应无缝拼接</strong>：自动识别滚动重叠区域进行无缝拼接，快滑慢滑都能精准对齐无断层。</li>
-                    <li class="docs-list-item"><strong>平滑画面捕获</strong>：消除长截图启动与完成时的画面闪烁，过程流畅自然。</li>
-                    <li class="docs-list-item"><strong>完整画面保全</strong>：完成截取时自动同步最后一帧状态，避免结尾内容遗漏。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">7.2 微缩地图与交互</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>实时全景缩略图</strong>：右侧提供实时长图微缩地图，随滚动自顶向下扩展预览。</li>
-                    <li class="docs-list-item"><strong>滚动条与微调</strong>：支持拖拽滚动条翻页；按住 <kbd>Shift</kbd> 键拖拽可开启慢速微调模式。</li>
-                    <li class="docs-list-item"><strong>快捷键操作</strong>：长截图预览状态下支持 <kbd>⌘</kbd> + <kbd>C</kbd>（复制）、<kbd>⌘</kbd> + <kbd>S</kbd>（保存）、<kbd>⌘</kbd> + <kbd>P</kbd>（转贴图）。</li>
-                </ul>
-            </section>
-
-            <!-- 8. 独立 OCR 文字识别、空间几何排版与全能文本清洗套件 -->
-            <section id="sec-8" class="docs-section">
-                <div class="docs-section-title">
-                    <span>8. OCR 文字识别与文本清洗套件</span>
-                    <span class="badge-ver badge-rose">OCR 工具</span>
-                </div>
-
-                <h3 class="docs-subsection-title">8.1 高精度多语言 OCR 体验</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>多语言极速混排识别</strong>：支持中英日韩德法西等多种语言混合精准识别，瞬间秒出结果。</li>
-                    <li class="docs-list-item"><strong>离线可用无网络依赖</strong>：本地即时识别，无需等待网络请求，稳定高效。</li>
-                    <li class="docs-list-item"><strong>高分辨率大图轻松应对</strong>：对超大分辨率截图自动进行优化处理，流畅识别不卡顿。</li>
-                    <li class="docs-list-item"><strong>稳定高可用保障</strong>：内置多重识别保障机制，确保在各种复杂截图场景下均能稳定产出文字。</li>
-                    <li class="docs-list-item"><strong>优雅状态提示</strong>：耗时操作自动浮现磨砂提示条，识别完成平滑淡出。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">8.2 触发与操作方式</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>快捷键直达</strong>：按 <kbd>⌥</kbd> + <kbd>4</kbd> 框选任意区域，松开鼠标直接弹出 OCR 结果面板。</li>
-                    <li class="docs-list-item"><strong>工具栏/贴图提取</strong>：截图或贴图时点击工具栏 🔍 图标或按 <kbd>⌥</kbd> + <kbd>O</kbd> 提取文字。</li>
-                    <li class="docs-list-item"><strong>图片拖拽识别</strong>：将本地图片文件（PNG、JPG、WebP、HEIC 等）直接拖入 OCR 窗口，自动执行识别并更新文本。</li>
-                    <li class="docs-list-item"><strong>连续追加模式</strong>：开启 Header 栏「追加模式」后，多次连续截图的识别文字将自动换行拼接在文末，适合整理多页文档。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">8.3 空间排版与表格还原</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>阅读顺序还原</strong>：根据行高垂直聚类与水平间距，还原多栏排版与表格行列对齐结构。</li>
-                    <li class="docs-list-item"><strong>转 Markdown 表格</strong>：按制表符或间距智能分列，一键转换为标准 GitHub Flavored Markdown 表格，可直接粘贴至 Obsidian、Notion 等工具。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">8.4 快捷文本清洗工具栏</h3>
-                <p class="docs-paragraph">OCR 面板顶部集成快捷格式化工具栏，支持对全文或局部选中文本执行清洗：</p>
-                
-                <!-- 真实 UI 模拟工具栏 -->
-                <div class="ocr-toolbar-preview">
-                    <div class="ocr-toolbar-preview-inner">
-                        <div class="ocr-tool-pill">清洗 ▾</div>
-                        <div class="ocr-tool-pill">排版 ▾</div>
-                        <div class="ocr-tool-pill">大小写 ▾</div>
-                        <div class="ocr-tool-pill">标点 ▾</div>
-                        <div class="ocr-tool-pill ocr-tool-pill-ai">✨ AI 解释</div>
-                    </div>
-                </div>
-
-                <div class="docs-card-grid">
-                    <div class="docs-card">
-                        <div class="docs-card-title">1. 「清洗」菜单</div>
-                        <div class="docs-card-desc">
-                            • <strong>智能去空格</strong>：仅在英文字词之间或英文与数字之间保留必要词距空格，清除汉字、标点及括号周围的冗余空格。<br>
-                            • <strong>去换行</strong>：合并段落内的断行，并自动拼接行尾英文连字符（如 <code>connec-</code> + <code>tion</code> → <code>connection</code>）。<br>
-                            • <strong>清理空行</strong>：移除连续的空白行。
-                        </div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">2. 「排版」菜单</div>
-                        <div class="docs-card-desc">
-                            • <strong>智能间距 (Pangu)</strong>：在中文字符与英文单词、数字之间自动插入规范空格。<br>
-                            • <strong>转 Markdown 表格</strong>：将表格文本自动转换为标准 Markdown 表格语法。
-                        </div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">3. 「大小写」菜单</div>
-                        <div class="docs-card-desc">
-                            • 全部大写 (UPPERCASE)<br>
-                            • 全部小写 (lowercase)<br>
-                            • 首字母大写 (Title Case)
-                        </div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">4. 「标点」菜单</div>
-                        <div class="docs-card-desc">
-                            • <strong>标点转半角</strong>：将中文全角标点符号（，。！？（））转换为标准 ASCII 半角标点。<br>
-                            • <strong>局部清洗感知</strong>：选中局部文字时，所有格式化操作仅作用于所选范围。
-                        </div>
-                    </div>
-                </div>
-
-                <h3 class="docs-subsection-title">8.5 二维码检测、AI 解析与快捷操作</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>二维码/条形码识别</strong>：自动检测画面中的二维码与条码，顶部滑出横幅提供一键【打开网址】或【复制内容】。</li>
-                    <li class="docs-list-item"><strong>AI 流式解析</strong>：点击「✨ AI 解释」调用大模型进行内容提炼，支持思考过程折叠、Markdown 渲染与多轮连续追问。</li>
-                    <li class="docs-list-item"><strong>复制并关闭</strong>：按快捷键 <kbd>⌘</kbd> + <kbd>↩</kbd>（<code>Command + Return</code>）一键复制当前文本并关闭 OCR 窗口。</li>
-                </ul>
-            </section>
-
-            <!-- 9. 矢量标注、贴纸与智能图形体系 -->
-            <section id="sec-9" class="docs-section">
-                <div class="docs-section-title">
-                    <span>9. 标注工具、贴纸与马赛克</span>
-                    <span class="badge-ver badge-sky">标注工具</span>
-                </div>
-
-                <h3 class="docs-subsection-title">9.1 常用标注工具、贴纸与细腻马赛克</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>基础图形</strong>：矩形、椭圆、箭头、直线、折线（支持单键 <kbd>R</kbd>/<kbd>A</kbd>/<kbd>P</kbd>/<kbd>L</kbd>/<kbd>T</kbd>/<kbd>D</kbd>/<kbd>K</kbd> 等秒级直达）。</li>
-                    <li class="docs-list-item"><strong>贴纸标注系统 (<kbd>K</kbd>)</strong>：内置 Emoji、矢量徽章与自定义贴纸，悬停贴纸滑动滚轮或触控板双指轻扫即可实现等比平滑缩放。</li>
-                    <li class="docs-list-item"><strong>自由画笔与荧光笔</strong>：平滑曲线绘制，支持半透明叠色。</li>
-                    <li class="docs-list-item"><strong>细腻马赛克与高斯模糊</strong>：保留文字排版密度与颗粒质感，告别粗糙死白，清晰遮盖敏感信息。</li>
-                    <li class="docs-list-item"><strong>连续涂抹支持</strong>：支持单点打码与连续多次独立涂抹，操作流畅不卡顿。</li>
-                    <li class="docs-list-item"><strong>专属选项面板</strong>：马赛克模式下二级工具栏自动适配展示【像素化/模糊/纯黑】样式、一键智能脱敏与粗细调节。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">9.2 引线批注 (Remark)</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>锚点与卡片联动</strong>：第一点锁定目标位置，第二点放置说明卡片。</li>
-                    <li class="docs-list-item"><strong>边缘自动吸附</strong>：移动卡片时，引线自动停靠至卡片四边最优位置，支持直线与直角折线两种风格。</li>
-                    <li class="docs-list-item"><strong>打字自适应扩展</strong>：输入文字时卡片宽度与引线交点平滑向外延展，避免遮挡内容。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">9.3 步骤序号图钉与手绘矫正</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>水滴指向图钉</strong>：带尖端锚点，支持绕尖端 360° 旋转指向特定控件；删除任意序号后，后续编号自动递补（如删除 2 号，原 3、4 自动变为 2、3）。</li>
-                    <li class="docs-list-item"><strong>手绘图形自矫正</strong>：随手绘制圆圈、矩形或折线时，自动矫正为规则几何图形。</li>
-                    <li class="docs-list-item"><strong>敏感信息脱敏</strong>：一键识别画面中的手机号、身份证号、银行卡号及人脸并添加马赛克。</li>
-                </ul>
-            </section>
-
-            <!-- 10. 全局平铺防泄密水印滤镜 -->
-            <section id="sec-10" class="docs-section">
-                <div class="docs-section-title">
-                    <span>10. 防泄密平铺水印</span>
-                    <span class="badge-ver badge-emerald">安全滤镜</span>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>底层滤镜覆盖</strong>：水印作为底层全局滤镜铺满截图区域，在此之上添加箭头、框选或文字标注时不会误选或移动水印。</li>
-                    <li class="docs-list-item"><strong>参数调节</strong>：支持 0° (水平)、45° (向右下)、-45° (向右上) 三种预设角度切换，并可通过滑块调节平铺疏密程度。</li>
-                    <li class="docs-list-item"><strong>导出全链路保持</strong>：保存图片、复制剪贴板、固定贴图与长截图均同步合成水印层。</li>
-                </ul>
-            </section>
-
-            <!-- 11. 一键智能抠图与净底工作台 -->
-            <section id="sec-11" class="docs-section">
-                <div class="docs-section-title">
-                    <span>11. 图像抠图与主体提取</span>
-                    <span class="badge-ver badge-purple">主体提取</span>
-                </div>
-                <div class="docs-card-grid">
-                    <div class="docs-card">
-                        <div class="docs-card-title">1. UI 界面与图标净底</div>
-                        <div class="docs-card-desc">适用于纯色背景、代码截图、图标与 App 卡片。保持文字边缘锐利清晰，纯净去底无白边。</div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">2. 复杂主体与毛发去背 (Bria API)</div>
-                        <div class="docs-card-desc">适用于人像、宠物毛发与半透明物体。支持配置自有 API 密钥，精准分离复杂边缘。</div>
-                    </div>
-                    <div class="docs-card">
-                        <div class="docs-card-title">3. 本地离线快速去背</div>
-                        <div class="docs-card-desc">无需网络即可完成基础前景主体提取，随时随地可用。</div>
-                    </div>
-                </div>
-                <p class="docs-paragraph">
-                    抠图后背景呈现透明棋盘格，支持原位切换（点击【抠图】原位去背，再次点击恢复原图背景），贴图右键支持【仅复制主体】导出透明 PNG。
-                </p>
-            </section>
-
-            <!-- 12. AuraVision AI 视觉大模型与输入清洗 -->
-            <section id="sec-12" class="docs-section">
-                <div class="docs-section-title">
-                    <span>12. AI 视觉大模型集成</span>
-                    <span class="badge-ver badge-blue">AI 助手</span>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>兼容协议端点</strong>：支持接入兼容 OpenAI 协议的各类服务（包括 SiliconFlow、OpenAI GPT-4o、Claude 3.5、DeepSeek-V3/R1、Google Gemini 及本地 Ollama），自由配置 Base URL 与 Key。</li>
-                    <li class="docs-list-item"><strong>不可见字符自动清洗</strong>：粘贴 API Key 或 URL 时，自动过滤剪贴板附带的零宽空格、双向控制符与非断行空格，避免配置格式报错。</li>
-                    <li class="docs-list-item"><strong>标注引导感知</strong>：如果在截图中用红圈或箭头圈出特定区域，系统 Prompt 会自动引导大模型重点分析被圈选的局部区域。</li>
-                </ul>
-            </section>
-
-            <!-- 13. 分模块独立主题配置与高对比 HUD 渲染 -->
-            <section id="sec-13" class="docs-section">
-                <div class="docs-section-title">
-                    <span>13. 外观与分模块独立主题</span>
-                    <span class="badge-ver badge-sky">主题配置</span>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>分模块独立配置</strong>：「主工具栏」与「OCR 结果窗口」外观配置相互独立，可在偏好设置中分别设定。</li>
-                    <li class="docs-list-item"><strong>三种外观风格</strong>：
-                        <ul class="docs-sublist">
-                            <li class="docs-sublist-item"><strong>通透玻璃 (Liquid Glass)</strong>：采用系统级毛玻璃材质与微暗调吸光滤镜，呈现半透明质感。</li>
-                            <li class="docs-sublist-item"><strong>高对比度 (HUD)</strong>：采用深色厚磨砂材质，吸收浅色高光反光，提升大段文字阅读对比度。</li>
-                            <li class="docs-sublist-item"><strong>经典纯色 (Classic)</strong>：跟随系统深浅模式的纯色底板。</li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- 14. 工具栏与菜单栏深度定制 -->
-            <section id="sec-14" class="docs-section">
-                <div class="docs-section-title">
-                    <span>14. 工具栏与菜单栏深度定制</span>
-                    <span class="badge-ver badge-rose">自定义布局</span>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>菜单栏功能排序</strong>：偏好设置支持对系统状态栏菜单项进行显隐勾选与上下拖拽排序。</li>
-                    <li class="docs-list-item"><strong>直达模式</strong>：点击菜单栏「文字识别」或按 <kbd>⌥</kbd> + <kbd>4</kbd>，框选松手直接弹出识别结果；点击「录制动图」或「滚动截长图」直接进入录屏/长图状态。</li>
-                    <li class="docs-list-item"><strong>工具栏独立配置</strong>：提供【截图工具栏】与【贴图工具栏】两套独立配置，支持单个工具显隐开关与拖拽重排；工具栏支持跨屏幕自由拖拽并记忆位置。</li>
-                </ul>
-            </section>
-
-            <!-- 15. 全维度快捷键体系与单键直达系统 -->
-            <section id="sec-15" class="docs-section">
-                <div class="docs-section-title">
-                    <span>15. 全维度快捷键体系 (单键直达)</span>
-                    <span class="badge-ver badge-emerald">v2.9.0 增强</span>
-                </div>
-                <h3 class="docs-subsection-title">15.1 单键标注工具秒级直达</h3>
-                <p class="docs-paragraph">截屏框选后或在贴图窗口中，直接按下单键即刻切换标注工具；在贴图浏览态下按单键自动激活编辑模式：</p>
-                <div class="docs-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));">
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>R</kbd></strong> 矩形选框</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>A</kbd></strong> 精准箭头</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>M</kbd></strong> 马赛克/模糊</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>P</kbd></strong> 自由画笔</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>L</kbd></strong> 直线折线</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>T</kbd></strong> 文本标注</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>N</kbd></strong> 序号图钉</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>B</kbd></strong> 引线批注</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>D</kbd></strong> 内容擦除 <span class="badge-ver badge-purple">v2.9.0</span></div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>K</kbd></strong> 贴纸系统 <span class="badge-ver badge-purple">v2.9.0</span></div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>F</kbd></strong> 背景美化 <span class="badge-ver badge-emerald">v2.9.0</span></div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>W</kbd></strong> 防泄密水印</div>
-                    <div class="docs-card" style="padding: 1rem;"><strong><kbd>V</kbd></strong> 选择/手柄</div>
-                </div>
-
-                <h3 class="docs-subsection-title">15.2 文本打字安全防冲突</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>输入状态自动防冲突</strong>：当光标聚焦于文本输入区打字时，系统自动放行原生按键输入，彻底杜绝打字时误触单键快捷键切换工具。</li>
-                    <li class="docs-list-item"><strong>快捷键提示悬浮气泡</strong>：鼠标悬停工具栏按钮时轻盈弹出毛玻璃气泡，内嵌对应按键提示，清晰直观。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">15.3 全局与会话快捷键</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>屏幕截图</strong>：默认 <kbd>⌥</kbd> + <kbd>1</kbd></li>
-                    <li class="docs-list-item"><strong>恢复贴图栈</strong>：默认 <kbd>⌥</kbd> + <kbd>2</kbd></li>
-                    <li class="docs-list-item"><strong>历史图库</strong>：默认 <kbd>⌥</kbd> + <kbd>3</kbd></li>
-                    <li class="docs-list-item"><strong>文字识别直达</strong>：默认 <kbd>⌥</kbd> + <kbd>4</kbd></li>
-                    <li class="docs-list-item"><strong>滚动截长图直达</strong>：默认 <kbd>⌥</kbd> + <kbd>5</kbd></li>
-                    <li class="docs-list-item"><strong>录制动图直达</strong>：默认 <kbd>⌥</kbd> + <kbd>6</kbd></li>
-                    <li class="docs-list-item"><strong>背景美化直达</strong>：默认 <kbd>⌥</kbd> + <kbd>7</kbd> <span class="badge-ver badge-emerald">v2.9.0</span></li>
-                    <li class="docs-list-item"><strong>剪贴板转贴图</strong>：默认 <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd></li>
-                    <li class="docs-list-item"><strong>贴图穿透模式</strong>：默认 <kbd>⌥</kbd> + <kbd>G</kbd></li>
-                    <li class="docs-list-item"><strong>一键抠图/提取主体</strong>：选区按 <kbd>E</kbd></li>
-                    <li class="docs-list-item"><strong>选区转长截图/录屏</strong>：选区按 <kbd>S</kbd> 转长图，按 <kbd>G</kbd> 转录屏</li>
-                    <li class="docs-list-item"><strong>选区呼出背景美化</strong>：选区按 <kbd>F</kbd> <span class="badge-ver badge-emerald">v2.9.0</span></li>
-                </ul>
-            </section>
-
-            <!-- 16. 历史图库画廊与离线 OCR 语义检索 -->
-            <section id="sec-16" class="docs-section">
-                <div class="docs-section-title">
-                    <span>16. 历史记录与离线搜索</span>
-                    <span class="badge-ver badge-core">历史管理</span>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>图库浏览</strong>：查看历史截图，支持设置保留周期（1天 / 3天 / 7天 / 永久），过期自动清理。</li>
-                    <li class="docs-list-item"><strong>本地离线文字检索</strong>：截图在本地提取文本索引，在搜索框输入关键词即可查找包含对应文字的历史截图。</li>
-                    <li class="docs-list-item"><strong>按需加载</strong>：采用磁盘缓存与按需加载机制，避免内存过度常驻。</li>
-                </ul>
-            </section>
-
-            <!-- 17. 快捷键与高频交互手势全览表 (Interactive Cheat Sheet) -->
-            <section id="sec-17" class="docs-section">
-                <div class="docs-section-title">
-                    <span>17. 快捷键与手势速查表</span>
-                    <span class="badge-ver badge-blue">v2.9.0 最新</span>
-                </div>
-
-                <div class="cheatsheet-header-row">
-                    <!-- 分类筛选标签 -->
-                    <div class="cheatsheet-filters">
-                        <button class="cheatsheet-tab-btn active" data-filter="all">全部</button>
-                        <button class="cheatsheet-tab-btn" data-filter="global">全局热键</button>
-                        <button class="cheatsheet-tab-btn" data-filter="capture">截图与标注</button>
-                        <button class="cheatsheet-tab-btn" data-filter="pin">贴图交互</button>
-                        <button class="cheatsheet-tab-btn" data-filter="ocr">OCR 工作台</button>
-                        <button class="cheatsheet-tab-btn" data-filter="record">录屏与长图</button>
-                    </div>
-                    <!-- 表格即时过滤框 -->
-                    <input type="text" id="cheatsheetSearch" class="cheatsheet-search" placeholder="输入按键或功能筛选...">
-                </div>
-
-                <div class="docs-table-wrapper">
-                    <table class="docs-table" id="cheatsheetTable">
-                        <thead>
-                            <tr>
-                                <th style="width: 14%;">场景 / 模块</th>
-                                <th style="width: 22%;">按键 / 手势</th>
-                                <th style="width: 50%;">操作说明</th>
-                                <th style="width: 14%;">属性</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>1</kbd></td>
-                                <td>唤起屏幕截图（支持自定义录制）</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>2</kbd></td>
-                                <td>恢复最近关闭的贴图（后进先出栈）</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>3</kbd></td>
-                                <td>打开历史截图图库</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>4</kbd></td>
-                                <td>文字识别 (OCR) 直达：框选松手直接弹出识别结果</td>
-                                <td><span class="badge-ver badge-rose">直达</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>5</kbd></td>
-                                <td>滚动截长图直达：框选松手直接唤起长截图控制条</td>
-                                <td><span class="badge-ver badge-rose">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>6</kbd></td>
-                                <td>录制动图 (GIF) 直达：框选松手直接锁定选区并唤起录屏栏</td>
-                                <td><span class="badge-ver badge-rose">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>7</kbd></td>
-                                <td>独立背景美化直达：框选松手直接唤起 680pt 背景美化工作台</td>
-                                <td><span class="badge-ver badge-emerald">v2.9.0</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>T</kbd></td>
-                                <td>剪贴板转贴图：复制的文本、代码或图片直接生成浮动贴图</td>
-                                <td><span class="badge-ver badge-rose">直出</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>G</kbd></td>
-                                <td>切换贴图穿透模式 (Ghost Mode)</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">截图前</td>
-                                <td class="td-action"><kbd>Space</kbd></td>
-                                <td>切换应用窗口吸附与局部 UI 控件吸附</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">截图前</td>
-                                <td class="td-action">鼠标滚轮</td>
-                                <td>在 UI 控件层级树中向上/向下切换探测目标</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">截图前</td>
-                                <td class="td-action"><kbd>C</kbd></td>
-                                <td>复制当前光标处像素的 HEX 与 RGB 色值</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">截图前</td>
-                                <td class="td-action"><kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd></td>
-                                <td>以 1px 为单位微调准星位置</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>R</kbd> / <kbd>A</kbd> / <kbd>M</kbd> / <kbd>P</kbd> / <kbd>L</kbd></td>
-                                <td>单键直达：矩形 / 箭头 / 马赛克 / 画笔 / 直线</td>
-                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>T</kbd> / <kbd>N</kbd> / <kbd>B</kbd> / <kbd>W</kbd> / <kbd>V</kbd></td>
-                                <td>单键直达：文本 / 序号图钉 / 引线批注 / 水印 / 选择</td>
-                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>D</kbd></td>
-                                <td>单键直达智能内容擦除</td>
-                                <td><span class="badge-ver badge-purple">v2.9.0</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>K</kbd></td>
-                                <td>单键直达贴纸标注系统</td>
-                                <td><span class="badge-ver badge-purple">v2.9.0</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>F</kbd></td>
-                                <td>一键唤起独立背景美化工作台 (系统壁纸 / 莫兰迪色板)</td>
-                                <td><span class="badge-ver badge-emerald">v2.9.0</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>E</kbd></td>
-                                <td>单键一键提取主体 / 抠图</td>
-                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区/标注</td>
-                                <td class="td-action"><kbd>S</kbd> / <kbd>G</kbd></td>
-                                <td>当前选区一键转滚动截长图 (S) 或录制动图 (G)</td>
-                                <td><span class="badge-ver badge-emerald">v2.8.1</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action">双击选区</td>
-                                <td>复制选区图片并退出截图</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>C</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd> / <kbd>⌘</kbd> + <kbd>P</kbd></td>
-                                <td>复制 / 保存 / 置顶贴图</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>O</kbd></td>
-                                <td>对当前选区执行 OCR 文字识别</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>Z</kbd></td>
-                                <td>撤销上一步标注</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action"><kbd>Esc</kbd> 或 单击右键</td>
-                                <td>取消并退出当前截图</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">批注</td>
-                                <td class="td-action">涂抹马赛克</td>
-                                <td>细腻打码，彻底消除文字死白，保留排版质感</td>
-                                <td><span class="badge-ver badge-sky">v2.8.2</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">批注</td>
-                                <td class="td-action">拖动水滴图钉把手</td>
-                                <td>步骤图钉绕尖端 360° 旋转指向目标</td>
-                                <td><span class="badge-ver badge-purple">标注</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">批注</td>
-                                <td class="td-action">删除序号图钉</td>
-                                <td>其余序号自动连续递补重排</td>
-                                <td><span class="badge-ver badge-purple">标注</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">批注</td>
-                                <td class="td-action">引线标注</td>
-                                <td>引线根据说明卡片位置自动吸附至最优边缘</td>
-                                <td><span class="badge-ver badge-sky">标注</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">批注</td>
-                                <td class="td-action">点击水印图标</td>
-                                <td>开启或关闭全局平铺防泄密水印</td>
-                                <td><span class="badge-ver badge-emerald">安全</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><strong>按住 <kbd>⌘</kbd> + 拖拽</strong></td>
-                                <td>直接将贴图拖入聊天软件发送，或拖入文件夹保存</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action">普通拖拽</td>
-                                <td>移动贴图窗口位置</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action">双击空白处</td>
-                                <td>关闭贴图窗口</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action">滚轮 / 双指捏合</td>
-                                <td>0.3x ~ 10x 无级等比缩放</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>⌥</kbd> + 滚轮</td>
-                                <td>10% ~ 100% 调节贴图透明度</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action">鼠标中键单击</td>
-                                <td>重置贴图缩放与透明度至 100%</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action">右键单击</td>
-                                <td>打开功能菜单（复制/保存/分享/编辑/穿透/仅复制主体/OCR）</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>C</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd> / <kbd>⌘</kbd> + <kbd>P</kbd></td>
-                                <td>贴图窗口直接响应复制、保存与转贴图</td>
-                                <td><span class="badge-ver badge-emerald">快捷键</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>O</kbd></td>
-                                <td>对当前贴图提取文字</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">贴图 (穿透)</td>
-                                <td class="td-action">长按 <kbd>⌥</kbd></td>
-                                <td>临时接管穿透状态下的贴图以便移动或调整</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">文本贴图</td>
-                                <td class="td-action">点击文字外空白处</td>
-                                <td>直接拖拽移动窗口（文字区域保留高亮划选）</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action">拖入图片文件</td>
-                                <td>自动提取图片中的文字并更新至当前面板</td>
-                                <td><span class="badge-ver badge-rose">新功能</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action">拖入纯文本</td>
-                                <td>将文本追加至当前编辑区末尾</td>
-                                <td><span class="badge-ver badge-rose">新功能</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action">点击「追加模式」</td>
-                                <td>多次连续截图自动换行拼接在文末</td>
-                                <td><span class="badge-ver badge-rose">新功能</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action">划选文字 + 清洗</td>
-                                <td>仅对所选文字执行清洗格式化，未选中文本不受影响</td>
-                                <td><span class="badge-ver badge-rose">局部</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>↩</kbd></td>
-                                <td>复制全文并关闭 OCR 窗口</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>Z</kbd> / <kbd>⇧</kbd> + <kbd>⌘</kbd> + <kbd>Z</kbd></td>
-                                <td>文本清洗与编辑的撤销与重做</td>
-                                <td><span class="badge-ver badge-blue">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">OCR 窗口</td>
-                                <td class="td-action">点击条码横幅「打开网址」</td>
-                                <td>在默认浏览器中打开二维码包含的链接</td>
-                                <td><span class="badge-ver badge-rose">新功能</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">录屏预览</td>
-                                <td class="td-action"><strong>按住 <kbd>⌘</kbd> + 拖拽</strong></td>
-                                <td>直接将录制的 MP4/GIF/WebM 拖入聊天软件发送或保存</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">录屏预览</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>C</kbd></td>
-                                <td>复制动图数据流，粘贴至聊天软件显示为真实动图</td>
-                                <td><span class="badge-ver badge-emerald">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">长截图浏览</td>
-                                <td class="td-action">按住 <kbd>Shift</kbd> + 拖滚动条</td>
-                                <td>开启 1/4 阻尼慢速微调模式</td>
-                                <td><span class="badge-ver badge-sky">常用</span></td>
-                            </tr>
-                            <tr>
-                                <td class="td-scene">长截图浏览</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>C</kbd> / <kbd>⌘</kbd> + <kbd>S</kbd> / <kbd>⌘</kbd> + <kbd>P</kbd></td>
-                                <td>复制长图 / 保存长图 / 固定为贴图</td>
-                                <td><span class="badge-ver badge-emerald">快捷键</span></td>
-                            </tr>
-                                                    <tr data-scene="global">
-                                <td class="td-scene">全局</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>8</kbd></td>
-                                <td>极速直达原地截图翻译：框选松手直接替换为目标语言</td>
-                                <td><span class="badge-ver badge-blue">v3.0.5</span></td>
-                            </tr>
-                            <tr data-scene="capture">
-                                <td class="td-scene">选区中</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>T</kbd></td>
-                                <td>当前选区一键原地翻译（擦除原文字 + 译文原字号重绘）</td>
-                                <td><span class="badge-ver badge-blue">v3.0.5</span></td>
-                            </tr>
-                            <tr data-scene="pin">
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>⌘</kbd> + <kbd>E</kbd></td>
-                                <td>切换贴图二次编辑模式（标注 / 翻译 / 消除）</td>
-                                <td><span class="badge-ver badge-purple">v3.0.14</span></td>
-                            </tr>
-                            <tr data-scene="pin">
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>Space</kbd></td>
-                                <td>切换贴图编辑模式（二次编辑开/关）</td>
-                                <td><span class="badge-ver badge-purple">v3.0.16</span></td>
-                            </tr>
-                            <tr data-scene="pin">
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>E</kbd></td>
-                                <td>移除背景 / 恢复原图（计入每日抠图配额）</td>
-                                <td><span class="badge-ver badge-core">核心</span></td>
-                            </tr>
-                            <tr data-scene="pin">
-                                <td class="td-scene">贴图</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>T</kbd> / 右键「翻译」</td>
-                                <td>对贴图内容原地翻译（自动进入编辑态，多贴图互不连带）</td>
-                                <td><span class="badge-ver badge-blue">v3.0.14</span></td>
-                            </tr>
-                            <tr data-scene="pin">
-                                <td class="td-scene">翻译面板</td>
-                                <td class="td-action">「重新翻译」按钮</td>
-                                <td>强制刷新：跳过译文缓存全量重跑，治愈确定性回显</td>
-                                <td><span class="badge-ver badge-blue">v3.0.14</span></td>
-                            </tr>
-                            <tr data-scene="window">
-                                <td class="td-scene">分屏管理</td>
-                                <td class="td-action">按住滚轮 / 侧键 / <kbd>Fn</kbd> / <kbd>⌥</kbd> 滑动</td>
-                                <td>唤起 8 向 Liquid Glass 液态玻璃轮盘，轻推松手秒级吸附</td>
-                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="window">
-                                <td class="td-scene">分屏快捷键</td>
-                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>←</kbd> / <kbd>→</kbd></td>
-                                <td>前台窗口极速吸附至 左半屏 / 右半屏</td>
-                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="window">
-                                <td class="td-scene">分屏快捷键</td>
-                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td>
-                                <td>前台窗口极速吸附至 上半屏 / 下半屏</td>
-                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="window">
-                                <td class="td-scene">分屏快捷键</td>
-                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↩</kbd> / <kbd>C</kbd></td>
-                                <td>全屏最大化 / 居中显示窗口</td>
-                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="window">
-                                <td class="td-scene">分屏快捷键</td>
-                                <td class="td-action"><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>U</kbd> / <kbd>I</kbd> / <kbd>J</kbd> / <kbd>K</kbd></td>
-                                <td>四角 1/4 分屏（左上 / 右上 / 左下 / 右下）</td>
-                                <td><span class="badge-ver badge-purple">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="mouse">
-                                <td class="td-scene">鼠标手势</td>
-                                <td class="td-action">按住侧键/中键 + 滚动滚轮</td>
-                                <td>平滑切全屏桌面、循环切应用 (⌘Tab)、切同窗口、切标签页与视图缩放</td>
-                                <td><span class="badge-ver badge-emerald">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="mouse">
-                                <td class="td-scene">鼠标增强</td>
-                                <td class="td-action">多 Profile 方案系统</td>
-                                <td>多鼠标独立按键映射规则，硬件拓扑感知自动切换，平滑滚动与应用白名单</td>
-                                <td><span class="badge-ver badge-emerald">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="cloud">
-                                <td class="td-scene">原生图床</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>U</kbd> (可自定义)</td>
-                                <td>将选区截图一键秒传至默认云存储，自动复制 Markdown / URL 链接</td>
-                                <td><span class="badge-ver badge-blue">v3.0.57</span></td>
-                            </tr>
-                            <tr data-scene="cleaner">
-                                <td class="td-scene">清理与卸载</td>
-                                <td class="td-action">偏好设置 ➔ 清理与卸载</td>
-                                <td>全盘智能扫描、缓存安全释放、构建产物清理、应用深度卸载与残留排查</td>
-                                <td><span class="badge-ver badge-blue">v3.1.12</span></td>
-                            </tr>
-                            <tr data-scene="clipboard">
-                                <td class="td-scene">智能剪贴板</td>
-                                <td class="td-action"><kbd>⌥</kbd> + <kbd>V</kbd> (可自定义)</td>
-                                <td>呼出系统级智能剪贴板历史：原宿主光标原地保活、即打即搜、自适应预览与 120Hz 物理平滑阻尼</td>
-                                <td><span class="badge-ver badge-blue">v3.1.16</span></td>
-                            </tr>
-</tbody>
-                    </table>
-                </div>
-            </section>
-
-                    <section id="sec-18" class="docs-section">
-                <div class="docs-section-title">
-                    <span>18. 原地截图翻译 (In-Place Translation)</span>
-                    <span class="badge-ver badge-blue">v2.9.6 ~ v3.0.16 核心功能</span>
-                </div>
-
-                <p>选区内的外文截图，一键把文字替换为目标语言——擦除、排版、重绘全自动，译文以原字号原地呈现。</p>
-
-                <h3 style="margin-top: 1.2rem;">触发方式与全流程</h3>
-                <div class="docs-card" style="padding: 1rem;"><strong>工具栏按钮</strong>：选区拉出后点击工具栏「翻译」</div>
-                <div class="docs-card" style="padding: 1rem;"><strong><kbd>⌥</kbd> + <kbd>T</kbd></strong>：选区内直接翻译 <span class="badge-ver badge-blue">v3.0.5</span></div>
-                <div class="docs-card" style="padding: 1rem;"><strong><kbd>⌥</kbd> + <kbd>8</kbd> 全局直呼</strong>：框选松手直接原地翻译，免点按钮</div>
-                <div class="docs-card" style="padding: 1rem;"><strong>贴图</strong>：右键菜单「翻译」/ 工具栏按钮 / <kbd>⌥</kbd> + <kbd>T</kbd>（自动进入编辑态）</div>
-                <div class="docs-card" style="padding: 1rem;"><strong>重新翻译</strong>：翻译二级面板「重新翻译」= 强制刷新（跳过译文缓存 + 混排块遮罩首发）</div>
-
-                <h3 style="margin-top: 1.2rem;">双轨架构与引擎模式</h3>
-                <div class="docs-card" style="padding: 1rem;"><strong>快捷翻译模式</strong>：提供开箱即用的快捷翻译通道，无需复杂配置，快速完成选区识别与译文呈现。</div>
-                <div class="docs-card" style="padding: 1rem;"><strong>自定义 KEY 智能管线（BYO-Key）</strong>：基于本地 Vision 高精度 OCR + 用户自备 API Key + CoreText 原生排版重绘，译文清晰锐利、排版精度更高、数据隐私自主可控。</div>
-
-                <h3 style="margin-top: 1.2rem;">核心特性</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>原字号优先排版</strong>：译文继承原文的字号、字重与颜色，版面观感与原图一致。</li>
-                    <li class="docs-list-item"><strong>空间几何排版引擎</strong>：CoreText 原生测绘 + 射线借宽 + 平衡折行，中英混排不溢出不重叠。</li>
-                    <li class="docs-list-item"><strong>代码标识符大小写校正</strong>：行内代码驼峰标识符被 OCR 误读大小写时自动二次校正，译文拼写忠实原代码。</li>
-                    <li class="docs-list-item"><strong>译文钉定</strong>：翻译生效后调整选区范围，译文与擦除补丁钉在原位不随框漂移。</li>
-                    <li class="docs-list-item"><strong>多贴图隔离</strong>：多个贴图各自独立翻译，互不连带。</li>
-                    <li class="docs-list-item"><strong>三态显示切换</strong>：译文 / 原文一键切换，随时回看原文。</li>
-                </ul>
-            </section>
-
-            <section id="sec-19" class="docs-section">
-                <div class="docs-section-title">
-                    <span>19. Pro 会员与免费配额</span>
-                    <span class="badge-ver badge-emerald">v3.0.16</span>
-                </div>
-
-                <h3 style="margin-top: 1.2rem;">免费用户每日配额（自然日自动重置）</h3>
-                <div class="docs-table-wrapper">
-                    <table class="docs-table">
-                        <thead><tr><th>功能</th><th>每日免费次数</th></tr></thead>
-                        <tbody>
-                            <tr><td class="td-scene">智能主体抠图</td><td>3 次</td></tr>
-                            <tr><td class="td-scene">智能内容消除</td><td>3 次</td></tr>
-                            <tr><td class="td-scene">OCR 文字识别</td><td>3 次</td></tr>
-                            <tr><td class="td-scene">原地截图翻译</td><td>3 次</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <ul class="docs-list">
-                    <li class="docs-list-item">工具栏悬停提示实时显示<strong>今日剩余次数</strong>；剩余 ≤2 次时主动气泡提醒。</li>
-                    <li class="docs-list-item">额度耗尽后气泡提示前往「设置 → 关于」开通 Pro；基础功能免费不限量。</li>
-                    <li class="docs-list-item"><strong>Pro 会员</strong>：全部配额功能无限次，外加 AI 视觉、背景美化与 3D 光影、60FPS 录屏、长截图 PDF 导出、表格转 Markdown、多图追加、隐私遮罩、智能形状、自定义贴纸与 Pro 字体库。</li>
-                    <li class="docs-list-item"><strong>开通与激活</strong>：「设置 → 关于」→「开通 Pro 会员」前往购买页面；激活码秒级发送至邮箱，在「关于 → 输入激活码」粘贴即可激活。</li>
-                </ul>
-            </section>
-
-            <section id="sec-20" class="docs-section">
-                <div class="docs-section-title">
-                    <span>20. 径向分屏管理 (Radial Window Manager)</span>
-                    <span class="badge-ver badge-purple">v3.0.57 升级</span>
-                </div>
-
-                <p>AuraSnap 全新内置纯 Swift 原生构建的极速径向分屏引擎。适配 Apple Liquid Glass 液态玻璃折射材质，配备「引力透镜」一体化极简主题、7 款微晶底色与 8 款独立高亮流光定制，配合 1:1 光标动态仿真实验台与全套键盘快捷键，让 macOS 窗口布局如丝般顺滑。</p>
-
-                <h3 style="margin-top: 1.2rem;">Apple Liquid Glass 材质与引力透镜极简主题</h3>
-                <div class="docs-card" style="padding: 1rem;">
-                    <strong>Apple 原生 Liquid Glass 折射材质</strong>：四款轮盘形态（回环拨盘、静谧星环、经典双同心、引力透镜）均支持通透液态玻璃折射，非激活式浮动面板（<code>NSPanel</code>），呼出瞬间不夺取当前前台 App 焦点。
-                </div>
-                <div class="docs-card" style="padding: 1rem;">
-                    <strong>引力透镜 (Gravity Lens) 专属极简主题</strong>：一体化无缝圆盘设计，罗盘式超导微光向量针顺滑追随光标转向，中心区域实时显示 1:1 屏幕布局拓扑 HUD。
-                </div>
-                <div class="docs-card" style="padding: 1rem;">
-                    <strong>微晶底色与独立高亮流光定制</strong>：提供 7 款大师微晶底色与 8 款独立高亮流光色相，通透度与高亮光度双自由度连续微调，浅色外观模式自动强化对比边框与选中打勾标记。
-                </div>
-
-                <h3 style="margin-top: 1.2rem;">8 向极速径向吸附与智能补位</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>向左 / 向右推</strong>：左半屏 / 右半屏（50% 宽度）；</li>
-                    <li class="docs-list-item"><strong>向上 / 向下推</strong>：上半屏 / 下半屏（50% 高度）；</li>
-                    <li class="docs-list-item"><strong>四角方向推</strong>：左上 / 右上 / 左下 / 右下 1/4 屏幕吸附；</li>
-                    <li class="docs-list-item"><strong>中心稍推 / 微移</strong>：全屏最大化 / 居中窗口（保持原始尺寸或黄金比例居中）；</li>
-                    <li class="docs-list-item"><strong>智能邻接贴合 (Complementary Tiling)</strong>：应用受最小尺寸限制时自动微调相邻窗口铺满屏幕，消除小屏重叠遮挡；</li>
-                    <li class="docs-list-item"><strong>台前调度避让与间隙调节</strong>：自动避让侧边缩略图安全区，支持 0~24pt 窗口与贴边间隙自由调节。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">常用分屏快捷键速查</h3>
-                <div class="docs-table-wrapper">
-                    <table class="docs-table">
-                        <thead><tr><th>分屏动作</th><th>默认快捷键</th><th>手势方向</th></tr></thead>
-                        <tbody>
-                            <tr><td><strong>左半屏 / 右半屏</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>←</kbd> / <kbd>→</kbd></td><td>向左推 / 向右推</td></tr>
-                            <tr><td><strong>上半屏 / 下半屏</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td><td>向上推 / 向下推</td></tr>
-                            <tr><td><strong>全屏最大化</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>↩</kbd></td><td>中心稍推</td></tr>
-                            <tr><td><strong>居中窗口</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd></td><td>中心微移</td></tr>
-                            <tr><td><strong>左上 / 右上 1/4</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>U</kbd> / <kbd>I</kbd></td><td>左上推 / 右上推</td></tr>
-                            <tr><td><strong>左下 / 右下 1/4</strong></td><td><kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>J</kbd> / <kbd>K</kbd></td><td>左下推 / 右下推</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="sec-21" class="docs-section">
-                <div class="docs-section-title">
-                    <span>21. 鼠标外设增强与多 Profile 方案 (Mouse Enhancement)</span>
-                    <span class="badge-ver badge-emerald">v3.0.57 升级</span>
-                </div>
-
-                <p>为普通外接鼠标带来媲美 Apple Magic Trackpad 触控板的顺滑体验。全新引入多 Profile 方案系统与物理硬件感知，独创「按住侧键 + 滑动滚轮」手势联动，一站式解决多设备切换与滚轮痛点。</p>
-
-                <h3 style="margin-top: 1.2rem;">多 Profile 方案系统与硬件拓扑感知 (`DeviceMatcher`)</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>多套独立方案管理</strong>：办公、游戏、移动鼠标各建一套独立按键映射方案，规则完全隔离，杜绝冲突；</li>
-                    <li class="docs-list-item"><strong>四维物理硬件指纹感知</strong>：基于厂商 ID、产品 ID、型号名称与物理序列号自动识别外接鼠标；</li>
-                    <li class="docs-list-item"><strong>自动感知切换与状态胶囊</strong>：插入或拔出鼠标时自动激活绑定方案，方案名旁常驻连接胶囊（🟢已连接 / 🟠未连接 / ⚪️未绑定）；</li>
-                    <li class="docs-list-item"><strong>防粘滞与平滑自愈</strong>：切换方案瞬间清空待释放队列，避免按键事件偶发粘滞，老版本配置无感自愈迁移。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">「按住此键 + 滚动滚轮」多任务手势联动 (Hold-and-Scroll)</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>平滑切换全屏桌面 (Spaces)</strong>：按住侧键滚动滚轮，直接在各虚拟桌面与全屏应用间丝滑滑屏；</li>
-                    <li class="docs-list-item"><strong>快速切换应用 (⌘Tab)</strong>：按住侧键滚动直接调出并循环选择前台应用，松开按键瞬间自动切换；</li>
-                    <li class="docs-list-item"><strong>切换当前应用窗口 (⌘`)</strong>：在同一应用程序的多个独立窗口之间快速流转；</li>
-                    <li class="docs-list-item"><strong>切换标签页与画布无级缩放</strong>：快速切换浏览器与 IDE 标签，或无级平滑放大缩小画布；</li>
-                    <li class="docs-list-item"><strong>状态机防误触保护</strong>：产生滚轮联动后松开按键会自动吞噬释放事件，绝不触发原本绑定的单击动作。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">平滑滚动、应用白名单与线性指针</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>模拟触控板平滑滚动</strong>：将传统机械滚轮离散跳动转化为高帧率触控板级惯性平滑；</li>
-                    <li class="docs-list-item"><strong>应用例外名单自主配置</strong>：支持自主为特定软件设置白名单，放行原生离散滚轮信号，避免缩放飞出；</li>
-                    <li class="docs-list-item"><strong>独立反转与线性指针</strong>：解耦触控板与外接鼠标滚轮方向；消除非线性加速度，实现 1:1 像素级精准跟手。</li>
-                </ul>
-            </section>
-
-            <section id="sec-22" class="docs-section">
-                <div class="docs-section-title">
-                    <span>22. 原生图床与多云存储直传 (Image Hosting & Cloud Upload)</span>
-                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
-                </div>
-
-                <p>AuraSnap 原生内置 10 大主流云存储直传能力，告别第三方臃肿传图插件。支持截图标注后一键直传、WebP 高效压缩编码、AI 智能语义命名，上传成功瞬间将 Markdown 或纯 URL 链接注入剪贴板。</p>
-
-                <h3 style="margin-top: 1.2rem;">兼容 10 大主流云存储生态</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>S3 协议生态</strong>：Amazon S3、Cloudflare R2、MinIO (自建私有存储)、Backblaze B2、DigitalOcean Spaces、腾讯云 COS (S3 兼容模式)；</li>
-                    <li class="docs-list-item"><strong>国内专有协议</strong>：阿里云 OSS、七牛云 KODO；</li>
-                    <li class="docs-list-item"><strong>极客与版本控制</strong>：GitHub 仓库直传、自定义 Webhook / HTTP POST API 接入。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">格式实时转换压缩与 AI 智能命名</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>WebP / JPEG / PNG 实时压缩</strong>：内置高性能图像压缩管线，支持导出质量滑块控制，大幅降低存储开销与外链加载带宽；</li>
-                    <li class="docs-list-item"><strong>AI 画面语义理解命名</strong>：利用深度思考大模型自动理解截图主体，生成简短易读的语义化英文/拼音文件名；</li>
-                    <li class="docs-list-item"><strong>快捷键一键直传与格式回填</strong>：截图后按下 <kbd>⌥</kbd> + <kbd>U</kbd> 直接上传至默认云服务，自动生成 Markdown、HTML 或纯 URL 链接写入剪贴板，伴随轻盈 Toast 提示。</li>
-                </ul>
-            </section>
-
-            <section id="sec-23" class="docs-section">
-                <div class="docs-section-title">
-                    <span>23. 访达超级右键扩展 (FinderSync Context Menu)</span>
-                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
-                </div>
-
-                <p>以独立沙盒扩展 Target (<code>AuraSnapFinderSync.appex</code>) 深度融入 macOS 访达（Finder）进程。采用原生单层菜单设计，零卡顿、极速稳定，提供空白处秒建文档、系统级拷贝移动与全格式路径提取。</p>
-
-                <h3 style="margin-top: 1.2rem;">原生单层菜单与空白处模板新建</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>对齐 macOS 原生风格</strong>：移除多余彩色小图标，融入系统原生右键菜单，操作层级扁平克制；</li>
-                    <li class="docs-list-item"><strong>十余种常用内置模板</strong>：在访达空白处右击，即可极速新建 Word (.docx)、Excel (.xlsx)、PowerPoint (.pptx)、PDF、Markdown (.md)、文本 (.txt)、Shell (.sh)、Python (.py)、Swift (.swift)、.env、.gitignore 等；</li>
-                    <li class="docs-list-item"><strong>自定义模板与工程脚手架</strong>：支持将常用工作模板放入自定义目录，右键一键生成成套工程脚手架文件。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">扁平化拷贝移动、路径提取与系统授权指引</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>扁平化目录操作</strong>：简化“拷贝到”和“移动到”的操作层级，直接唤起系统原生目录选择器，支持跨卷移动与完成即时高亮定位；</li>
-                    <li class="docs-list-item"><strong>全格式路径一键复制</strong>：右键直拷 POSIX 绝对路径、Shell 终端安全转义路径或 file:// 链接，纯文本写入随处粘贴；</li>
-                    <li class="docs-list-item"><strong>系统授权指引 (macOS 14/15+)</strong>：首次开启时，前往「系统设置」➔「通用」➔「登录项与扩展」➔「扩展」➔ 找到 AuraSnap 点 ⓘ 开启（或在访达扩展中勾选）。</li>
-                </ul>
-            </section>
-
-            <section id="sec-24" class="docs-section">
-                <div class="docs-section-title">
-                    <span>24. 全局快捷键独立开关系统 (Shortcut Registry)</span>
-                    <span class="badge-ver badge-blue">v3.0.57 新增</span>
-                </div>
-
-                <p>为满足专业生产力用户的严苛要求，AuraSnap 在偏好设置中为所有全局快捷键提供了独立开关，实现按需启闭与绝对解耦，绝不强行抢占其他软件的按键组合。</p>
-
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>独立注销监听</strong>：关闭任意快捷键时，底层输入中心会立即向系统注销该全局热键监听，将组合键释放给 Final Cut Pro、Xcode、Photoshop、VS Code 等专业软件；</li>
-                    <li class="docs-list-item"><strong>输入仲裁解耦</strong>：鼠标侧键录制或触发热键时，仅对处于“开启”状态的全局快捷键执行重定向，未开启的快捷键正常放行给系统或第三方软件；</li>
-                    <li class="docs-list-item"><strong>开关与工具栏解耦</strong>：快捷键开关与截图标注工具栏按钮显隐互不干扰，自由度更高。</li>
-                </ul>
-            </section>
-
-            <section id="sec-25" class="docs-section">
-                <div class="docs-section-title">
-                    <span>25. 系统清理与软件深度卸载套件 (Cleaner & Uninstaller)</span>
-                    <span class="badge-ver badge-blue">v3.1.12 新增</span>
-                </div>
-
-                <p>为释放宝贵磁盘空间并保持 macOS 纯净敏捷，AuraSnap 内置了原生系统清理与应用深度卸载套件。提供全盘缓存智能扫描、应用深度卸载、同族存活版本保护、孤立废弃残留排查及芯片架构微标识别，全程依托系统安全白名单与特权认证保障。</p>
-
-                <h3 style="margin-top: 1.2rem;">全盘智能扫描与空间释放</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>多维度系统与用户缓存扫描</strong>：快速检索系统日志、用户应用缓存、临时下载文件以及废纸篓，清晰计算可释放空间；</li>
-                    <li class="docs-list-item"><strong>开发者构建缓存智能识别</strong>：自动检索常见开发工具与构建链产生的中间产物（如 Xcode DerivedData、CocoaPods 缓存、Swift Package Manager 缓存、Node 依赖缓存等），方便开发者按需清理；</li>
-                    <li class="docs-list-item"><strong>安全容量评估与按需勾选</strong>：所有扫描项均列明具体路径与占用体积，支持一键批量勾选或逐项精细化筛选。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">软件深度卸载与存活保护</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>全盘已安装应用列表一览</strong>：快速检索系统中已安装应用，清晰展示应用图标、版本号及磁盘占用；</li>
-                    <li class="docs-list-item"><strong>深层关联目录自动梳理</strong>：自动梳理应用相关的偏好设置、Application Support 支持文件、Caches 缓存与沙盒容器数据；</li>
-                    <li class="docs-list-item"><strong>多版本共存与同族存活渠道保护</strong>：当同一软件存在多个发布版本（如 Beta 与正式版）或同一厂商多款应用共用基础配置时，智能保护共用的支撑数据，避免误删导致仍在使用的版本配置受影响。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">孤立残留排查与架构微标识别</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>历史残片智能检索与居中卡片展示</strong>：精准排查由于直接将应用移至废纸篓而遗留在系统深处的无主配置文件与孤立数据碎片，以直观居中卡片展示详情；</li>
-                    <li class="docs-list-item"><strong>芯片架构微标识别</strong>：为应用程序清晰标识 Apple Silicon、Intel 或 Universal 通用二进制架构，方便用户筛选与管理；</li>
-                    <li class="docs-list-item"><strong>安全白名单与系统特权认证</strong>：内置系统安全白名单保护，配合 Touch ID 或管理员鉴权，确保清理过程安全可靠。</li>
-                </ul>
-            </section>
-
-            <section id="sec-26" class="docs-section">
-                <div class="docs-section-title">
-                    <span>26. 系统剪贴板历史 (Clipboard History)</span>
-                    <span class="badge-ver badge-blue">v3.1.16 新增</span>
-                </div>
-
-                <p>AuraSnap 内置了原生系统剪贴板历史管理器，默认快捷键为 <code>⌥ + V</code>。基于 AppKit Non-activating Panel 机制开发，唤起窗口时不会抢占当前宿主应用的焦点，原输入光标保持闪烁。支持文本、富文本、代码、截图与动图记录，提供即时搜索、输入法合成态保护、自适应侧边预览与平滑滚动支持，全功能免费开放。</p>
-
-                <h3 style="margin-top: 1.2rem;">非激活面板机制 (Non-activating Key Panel)</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>焦点保持机制</strong>：剪贴板窗口采用 <code>NSPanel</code> 与 <code>.nonactivatingPanel</code> 样式掩码，通过 <code>orderFrontRegardless()</code> 与 <code>makeKey()</code> 显示，不调用 <code>NSApp.activate()</code>；</li>
-                    <li class="docs-list-item"><strong>宿主应用光标保持</strong>：在 TextEdit、VS Code、Xcode、浏览器或聊天工具中按下快捷键唤起剪贴板时，当前活跃应用不会失活，文本输入光标在原位置持续闪烁，避免视觉焦点中断；</li>
-                    <li class="docs-list-item"><strong>失焦自动隐藏</strong>：当用户点击外部区域、按 <code>Esc</code> 或切换前台进程时，剪贴板与预览窗口将自动协同关闭。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">键盘即时搜索与输入法保护</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>自动聚焦搜索</strong>：面板呼出时搜索框自动获取第一响应者（First Responder），无需鼠标点击即可直接输入关键词进行筛选；</li>
-                    <li class="docs-list-item"><strong>输入法合成态（IME）保护</strong>：通过 <code>hasMarkedText()</code> 监听输入法状态。在拼音或日文假名候选输入过程中，空格与回车键优先由输入法消费，不触发剪贴板的确认粘贴或列表项移动；</li>
-                    <li class="docs-list-item"><strong>键盘操作流</strong>：支持使用 <code>↑</code> / <code>↓</code> 上下移动光标，按 <code>↩</code> 确认粘贴，按 <code>P</code> 键直接转为置顶贴图。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">自适应侧边预览与 OCR 文本复制</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>自适应尺寸预览</strong>：选中条目时在侧边浮动展示完整内容，代码条目展示语法高亮与行号，图片展示分辨率与文件大小；</li>
-                    <li class="docs-list-item"><strong>预览面板非激活隔离</strong>：侧边预览面板重写 <code>canBecomeKey = false</code>，在预览卡片内选中文本、滚动或点击复制按钮时，不会导致主剪贴板面板失焦关闭；</li>
-                    <li class="docs-list-item"><strong>图片 OCR 提取</strong>：对于截图和图片条目，可通过内置离线 OCR 提取文本，用户可在预览区域直接框选并拷贝部分文字。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">120Hz 平滑滚动支持</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>多窗口区域同步</strong>：更新 <code>InputPipelineContext</code>，将主列表与侧边预览窗口的 Frame 统一注册到 <code>clipboardWindowFrames</code> 列表中；</li>
-                    <li class="docs-list-item"><strong>惯性滚动支持</strong>：鼠标悬停在侧边长文本或代码预览区域滚动时，平滑滚动拦截器能正确识别该区域并放行，避免退化为生硬的步进滚动。</li>
-                </ul>
-
-                <h3 style="margin-top: 1.2rem;">多格式支持与置顶贴图转换</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>全格式归档</strong>：支持纯文本、富文本、代码片段、高分辨率截图与 GIF 动图；</li>
-                    <li class="docs-list-item"><strong>一键转贴图</strong>：选中任意图片条目按 <code>P</code> 键，可直接转换为独立的屏幕置顶贴图窗口；</li>
-                    <li class="docs-list-item"><strong>直接粘贴</strong>：按回车键后面板快速隐退，自动将选中的条目内容粘贴至原宿主应用的光标位置。</li>
-                </ul>
-            </section>
-
-            <!-- 27. 系统权限管理与脱机看门狗自动修复向导 (Permission Repair Wizard) -->
-            <section id="sec-27" class="docs-section">
-                <div class="docs-section-title">
-                    <span>27. 系统权限管理与脱机看门狗修复向导 (Permission Repair Wizard)</span>
-                    <span class="badge-ver badge-emerald">维护向导</span>
-                </div>
-
-                <div class="docs-callout docs-callout-info">
-                    <span class="docs-callout-icon">🛡️</span>
-                    <div class="docs-callout-content">
-                        <strong>脱机跳板架构 (Detached Watchdog Trampoline)</strong>
-                        在 macOS 跨版本升级或证书变更后，TCC 权限数据库易残留旧签名导致授权假死。若在活跃主进程执行 <code>tccutil reset</code>，系统内核会立即抛出 <code>SIGKILL</code> 强杀主进程。AuraSnap 采用独立的脱机看门狗跳板脚本，在主进程安全退出后清空失效记录、重新注册扩展并自动重启唤起步进向导。
-                    </div>
-                </div>
-
-                <h3 class="docs-subsection-title">27.1 脱机看门狗跳板模式</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>进程隔离退出</strong>：<code>PermissionRepairCoordinator</code> 派发独立 Shell 脚本监听宿主 PID，在主进程完全退出、释放单例文件锁与 WindowServer 会话后，安全执行重置；</li>
-                    <li class="docs-list-item"><strong>杜绝 SIGKILL 崩溃</strong>：主进程彻底退出后执行清理，规避运行中重置权限被内核强制强杀闪退的问题；</li>
-                    <li class="docs-list-item"><strong>扩展热注册</strong>：杀死陈旧的 <code>AuraSnapFinderSync</code> 进程，使用 <code>pluginkit</code> 重新注册并激活带有新签名的访达扩展；</li>
-                    <li class="docs-list-item"><strong>冷启动自动拉起</strong>：清理完毕后重新打开应用，并注入 <code>--permission-repair-wizard</code> 参数直接呈现步进向导。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">27.2 步进式向导交互</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>核心权限三步引导</strong>：提供屏幕录制 (Screen Recording)、辅助功能 (Accessibility) 及访达扩展 (FinderSync) 三步清晰指引；</li>
-                    <li class="docs-list-item"><strong>系统状态实时自检</strong>：通过 <code>CGPreflightScreenCaptureAccess()</code> 与 <code>AXIsProcessTrusted()</code> 实时轮询授权状态，授予后实时亮起绿色对勾微标；</li>
-                    <li class="docs-list-item"><strong>一键直达设置面板</strong>：点击按钮直接跳转至 macOS 系统设置对应隐私子页面，免除手动翻找。</li>
-                </ul>
-
-                <h3 class="docs-subsection-title">27.3 偏好设置一键重置</h3>
-                <ul class="docs-list">
-                    <li class="docs-list-item"><strong>关于面板快速自愈</strong>：在「偏好设置 → 关于」中提供【重置并修复全部系统权限】入口，配备二次确认防误触弹窗；</li>
-                    <li class="docs-list-item"><strong>免手动删减条目</strong>：无需用户在系统设置中使用「-」号手动删除失效条目，全程自动化一键搞定。</li>
-                </ul>
-            </section>
-
-        </main>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/"><img src="/assets/app-icon-64.png" alt="" width="28" height="28">AuraSnap</a>
+    <button class="nav-toggle" aria-label="打开菜单" aria-expanded="false"><svg class="i"><use href="/assets/icons.svg#menu"/></svg></button>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="/#features">功能</a>
+      <a href="/pricing">价格</a>
+      <a href="/guide" aria-current="page">使用指南</a>
+      <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" target="_blank" rel="noopener">更新记录</a>
+      <a class="btn btn-primary" href="/#download">免费下载</a>
+    </nav>
+    <a class="btn btn-primary btn-sm nav-cta" href="/#download">下载</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="doc-hero">
+    <span class="eyebrow">使用指南 · 适用于 <span data-version>v3.2.60</span></span>
+    <h1 class="title-lg" style="margin-top:12px;">AuraSnap 使用指南</h1>
+    <p class="lead">每个模块怎么用、默认快捷键是什么、遇到问题怎么办。应用内「设置 › 关于 › 功能指南」也能随时查看，那里的快捷键会按你改过的设置显示。</p>
+  </div>
+
+  <div class="doc-layout">
+    <nav class="toc" aria-label="目录">
+      <div class="toc-title">目录</div>
+      <a href="#install">安装与权限</a>
+      <a href="#capture">截图与标注</a>
+      <a href="#pin">贴图</a>
+      <a href="#ocr">识别与翻译</a>
+      <a href="#long">长截图</a>
+      <a href="#record">录屏</a>
+      <a href="#clipboard">剪贴板</a>
+      <a href="#windows">分屏</a>
+      <a href="#mouse">鼠标</a>
+      <a href="#finder">访达右键</a>
+      <a href="#imagehost">图床</a>
+      <a href="#shortcuts">快捷键总表</a>
+      <a href="#pro">Pro 与激活</a>
+      <a href="#trouble">常见问题</a>
+    </nav>
+
+    <article class="prose">
+      <section class="doc-sec" id="install">
+        <h2><span class="mod-ico c-gray"><svg class="i"><use href="/assets/icons.svg#shield"/></svg></span>安装与权限</h2>
+        <p class="sec-sub">需要 macOS 14 或更高版本、Apple 芯片（M1 及以后）。</p>
+        <ol>
+          <li>从<a href="/#download">首页</a>下载 DMG，打开后把 AuraSnap 拖进「应用程序」。</li>
+          <li>第一次打开时如果提示「无法验证开发者」：打开「系统设置 › 隐私与安全性」，在页面下方找到 AuraSnap，点「仍要打开」。</li>
+          <li>欢迎向导会逐项引导开启权限，授权后切回来，向导里会自动变成「已就绪」。</li>
+        </ol>
+        <table>
+          <thead><tr><th>权限</th><th>用来做什么</th></tr></thead>
+          <tbody>
+            <tr><td>屏幕录制</td><td>截图、取色、长截图与录屏。画面只在本机处理，不会上传。</td></tr>
+            <tr><td>辅助功能</td><td>识别窗口与按钮边界、全局快捷键、分屏、把剪贴板内容粘贴回原应用。</td></tr>
+            <tr><td>访达扩展</td><td>访达右键菜单。开启位置：系统设置 › 通用 › 登录项与扩展 › 扩展，找到 AuraSnap 点 ⓘ 打开。</td></tr>
+          </tbody>
+        </table>
+        <p>AuraSnap 常驻菜单栏。点菜单栏图标可以打开设置；更新在「设置 › 关于 › 检查更新」，下载完成后自动安装并重启。</p>
+      </section>
+
+      <section class="doc-sec" id="capture">
+        <h2><span class="mod-ico c-blue"><svg class="i"><use href="/assets/icons.svg#capture"/></svg></span>截图与标注</h2>
+        <p class="sec-sub">按 <kbd>⌥</kbd> <kbd>1</kbd> 开始截图。</p>
+        <h3>框选</h3>
+        <ul>
+          <li>鼠标悬停会自动吸附窗口和界面元素，单击即选中；也可以直接拖出任意区域。</li>
+          <li><kbd>空格</kbd> 在整个窗口和单个元素之间切换，滚动滚轮切换层级，方向键逐像素微调选区。</li>
+          <li><kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>1</kbd> 截图并直接复制，松手就进剪贴板，跳过标注。</li>
+          <li><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>1</kbd> 延时截图：先框好范围，3 / 5 / 10 秒倒计时后自动截取，适合截菜单和悬停提示。</li>
+        </ul>
+        <h3>标注工具</h3>
+        <p>截图时直接按字母键切换工具，不用去工具栏里找。按 <kbd>V</kbd> 退出当前工具。</p>
+        <table>
+          <thead><tr><th>工具</th><th>按键</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>矩形</td><td><kbd>R</kbd></td><td>可拖框内手柄调圆角，拖四角外侧旋转；支持实线、虚线、点线、点划线、长短线和填充底色。</td></tr>
+            <tr><td>箭头</td><td><kbd>A</kbd></td><td>拖中间的手柄可以弯成弧线。</td></tr>
+            <tr><td>画笔</td><td><kbd>P</kbd></td><td>自由画线；开启智能图形后，手绘线条自动规整为直线、矩形、椭圆或箭头（Pro）。</td></tr>
+            <tr><td>直线</td><td><kbd>L</kbd></td><td>线型与矩形相同。</td></tr>
+            <tr><td>文本</td><td><kbd>T</kbd></td><td>第一次单击选中，再单击进入编辑。</td></tr>
+            <tr><td>马赛克</td><td><kbd>M</kbd></td><td>框选或涂抹，有多种打码样式。</td></tr>
+            <tr><td>序号</td><td><kbd>N</kbd></td><td>点一下放一个，自动递增。</td></tr>
+            <tr><td>批注</td><td><kbd>B</kbd></td><td>带引线的文字卡片，拖卡片时锚点不动。</td></tr>
+            <tr><td>贴纸</td><td><kbd>K</kbd></td><td>内置贴纸；导入自己的图片为 Pro。</td></tr>
+            <tr><td>聚光灯</td><td><kbd>H</kbd></td><td>压暗其他区域，突出一块。</td></tr>
+            <tr><td>放大镜</td><td><kbd>O</kbd></td><td>见下文。</td></tr>
+            <tr><td>智能消除</td><td><kbd>D</kbd></td><td>涂抹掉多余内容，背景自动补齐。</td></tr>
+            <tr><td>水印</td><td><kbd>W</kbd></td><td>给截图加文字水印。</td></tr>
+          </tbody>
+        </table>
+        <h3>调整已有标注</h3>
+        <ul>
+          <li>无论正在用哪个工具，单击已有标注就能选中，按住拖动即移动；点空白处取消选中。</li>
+          <li>选中后滚动滚轮调大小：文字调字号，贴纸和序号调尺寸，线条调粗细，放大镜调倍率。</li>
+          <li><kbd>⌘</kbd> <kbd>Z</kbd> 撤销。</li>
+        </ul>
+        <h3>放大镜</h3>
+        <p>框选要放大的区域后，把放大视图拖开，两者之间会带连接线。拖原区域的边角改取样范围；拖放大视图边上的手柄或滚动滚轮改倍率（1.25–8 倍）。可选圆形或圆角矩形、平滑或像素放大、是否包含其他标注。截图、贴图、长截图和背景美化里都能用。</p>
+        <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/magnifier.webp" alt="放大镜标注与形状、放大方式选项" width="1564" height="1144" loading="lazy" decoding="async"></figure>
+        <h3>截完之后</h3>
+        <table>
+          <thead><tr><th>操作</th><th>按键</th></tr></thead>
+          <tbody>
+            <tr><td>复制并退出</td><td><kbd>⌘</kbd> <kbd>C</kbd></td></tr>
+            <tr><td>保存</td><td><kbd>⌘</kbd> <kbd>S</kbd>（设置了快速保存文件夹时直接存进去）</td></tr>
+            <tr><td>贴在桌面</td><td><kbd>⌘</kbd> <kbd>P</kbd></td></tr>
+            <tr><td>上传图床</td><td><kbd>⌘</kbd> <kbd>U</kbd></td></tr>
+            <tr><td>隔空投送</td><td><kbd>⌘</kbd> <kbd>D</kbd></td></tr>
+            <tr><td>文字识别 / 二维码</td><td><kbd>⌥</kbd> <kbd>O</kbd></td></tr>
+            <tr><td>翻译</td><td><kbd>⌥</kbd> <kbd>T</kbd></td></tr>
+            <tr><td>提取主体（抠图）</td><td><kbd>E</kbd></td></tr>
+            <tr><td>背景美化</td><td><kbd>F</kbd>（Pro）</td></tr>
+            <tr><td>从选区开始长截图</td><td><kbd>S</kbd></td></tr>
+            <tr><td>从选区开始录屏</td><td><kbd>G</kbd></td></tr>
+            <tr><td>复制光标处色值</td><td><kbd>C</kbd></td></tr>
+          </tbody>
+        </table>
+        <h3>排列工具栏</h3>
+        <p>在「设置 › 截图 › 工具栏 › 工具排列」里，顶部预览可以直接拖动图标：拖到两个图标之间换位置，拖到另一个图标正中合为一组。分组在工具栏上只占一格，鼠标在右下角小三角上停一下就会展开。「推荐分组」可一键套用常用分法，「恢复默认排版」清除分组。截图和贴图编辑共用这一份排列。</p>
+      </section>
+
+      <section class="doc-sec" id="pin">
+        <h2><span class="mod-ico c-orange"><svg class="i"><use href="/assets/icons.svg#pin"/></svg></span>贴图</h2>
+        <p class="sec-sub">把截图钉在屏幕最上层，当作对照参考。</p>
+        <ul>
+          <li>截图后按 <kbd>⌘</kbd> <kbd>P</kbd>，或在剪贴板历史里把任意条目转成贴图；<kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>T</kbd> 把当前剪贴板内容直接变成贴图。</li>
+          <li>滚轮缩放，可调透明度；<kbd>⌥</kbd> <kbd>G</kbd> 切换鼠标穿透，穿透时点击会落到下面的窗口。</li>
+          <li><kbd>⌘</kbd> <kbd>E</kbd> 进入二次编辑，工具栏与截图时相同；贴图上也能识别文字和翻译。</li>
+          <li>关掉的贴图可以按 <kbd>⌥</kbd> <kbd>2</kbd> 找回来。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="ocr">
+        <h2><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#translate"/></svg></span>文字识别与翻译</h2>
+        <p class="sec-sub"><kbd>⌥</kbd> <kbd>4</kbd> 识别文字，<kbd>⌥</kbd> <kbd>8</kbd> 截图翻译。免费版每天各 3 次。</p>
+        <h3>文字识别</h3>
+        <p>识别在本机离线完成，同时识别二维码。结果可以编辑、整理排版后复制；Pro 可以把表格导出为 Markdown、CSV 或 JSON，也能连续识别多张截图。截图时按 <kbd>Z</kbd> 可临时开启划词识别，直接在截图上选中文字。</p>
+        <h3>截图翻译</h3>
+        <p>框选后，原文被擦掉，译文按原来的颜色、字号、字重和版面写回原处。翻译方式在「设置 › 截图 › 翻译」里选：</p>
+        <table>
+          <thead><tr><th>方式</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>快捷翻译</td><td>免配置，整张图发到云端翻译。</td></tr>
+            <tr><td>系统翻译</td><td>macOS 15 起可用，完全在本机离线运行。第一次用某个语言时要等系统加载语言模型。</td></tr>
+            <tr><td>自备 Key</td><td>DeepL、谷歌、微软、百度、腾讯、火山。配置多个时，一个失败会自动换下一个。</td></tr>
+          </tbody>
+        </table>
+        <h3>划词翻译</h3>
+        <p>在「设置 › 鼠标」里开启后，按住指定的鼠标侧键划选文字，译文会显示在光标旁，可以设为自动复制译文。</p>
+      </section>
+
+      <section class="doc-sec" id="long">
+        <h2><span class="mod-ico c-teal"><svg class="i"><use href="/assets/icons.svg#longshot"/></svg></span>长截图</h2>
+        <p class="sec-sub">按 <kbd>⌥</kbd> <kbd>5</kbd>，或截图时框好区域后按 <kbd>S</kbd>。</p>
+        <ul>
+          <li>开始滚动前可以拖动边框调整范围。</li>
+          <li>之后由你自己滚动页面（没有自动滚动），预览实时显示拼接结果，满意了点完成。</li>
+          <li>支持纵向和横向。横向截取表格时，冻结的列会自动识别，只拼接滚动的部分。</li>
+          <li>吸顶栏、悬浮按钮、滚动条只保留一次。</li>
+          <li>滚得太快、两帧之间完全没有重叠时无法拼接，界面会提示放慢速度。</li>
+          <li>拼好的长图可以继续标注、识别文字、贴图，导出 PNG、JPEG；导出 PDF 为 Pro。</li>
+        </ul>
+        <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/longshot.webp" alt="长截图开始前：调整范围、切换纵向 / 横向，右侧实时预览" width="1206" height="748" loading="lazy" decoding="async"></figure>
+      </section>
+
+      <section class="doc-sec" id="record">
+        <h2><span class="mod-ico c-red"><svg class="i"><use href="/assets/icons.svg#record"/></svg></span>录屏</h2>
+        <p class="sec-sub">按 <kbd>⌥</kbd> <kbd>6</kbd>，或截图时框好区域后按 <kbd>G</kbd>。</p>
+        <ul>
+          <li>开始前可以调整范围。录制为原画 60 帧，按屏幕实际像素采集。</li>
+          <li>控制条上可开关系统声音、麦克风、点击效果与按键显示，可暂停。</li>
+          <li>结束后在预览里拖动首尾剪辑，选择 MP4、WebM 或 GIF 导出；用控制条上的复制、保存按钮，或按住 <kbd>⌘</kbd> 把视频拖到其他窗口。</li>
+          <li>复制后可以直接粘贴到微信、访达，关闭预览后文件仍在。</li>
+          <li>未保存就关闭时会提示一次，再关闭一次即确认。</li>
+        </ul>
+        <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/record-export.webp" alt="录屏结束后的预览：剪辑、选择格式、复制或保存" width="992" height="626" loading="lazy" decoding="async"></figure>
+        <div class="callout"><svg class="i"><use href="/assets/icons.svg#tag"/></svg><span>免费版单次最长 15 秒、导出 GIF、最高 1080p；Pro 不限时长，可导出 MP4 / WebM 和原分辨率。</span></div>
+      </section>
+
+      <section class="doc-sec" id="clipboard">
+        <h2><span class="mod-ico c-orange"><svg class="i"><use href="/assets/icons.svg#clipboard"/></svg></span>剪贴板历史</h2>
+        <p class="sec-sub">按 <kbd>⌥</kbd> <kbd>3</kbd> 在光标旁呼出。</p>
+        <ul>
+          <li>面板不抢原应用的焦点，输入光标继续闪烁。直接打字筛选，截图里的文字也能搜到。</li>
+          <li>选中后按 <kbd>↩</kbd> 自动粘贴回原应用，也可以改成单击或双击粘贴。</li>
+          <li>顶部分类：全部、文本、图片、链接、颜色、文件、标签；可以按来源应用筛选，给条目加自定义标签，重要条目可以置顶。</li>
+          <li>在访达里复制的文件只记录位置，粘贴时放回原文件；<kbd>⌥</kbd> <kbd>↩</kbd> 粘贴文件路径。</li>
+          <li>悬停条目预览大图和长文本，可以划选其中一段复制。</li>
+          <li>再次使用的记录默认移到最前，可在设置里关闭。</li>
+          <li>密码管理器等标记为敏感的内容不会记录；也可以在设置里指定忽略的应用。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="windows">
+        <h2><span class="mod-ico c-purple"><svg class="i"><use href="/assets/icons.svg#radial"/></svg></span>窗口分屏</h2>
+        <h3>手势轮盘</h3>
+        <p>按住鼠标中键或侧键，朝一个方向滑动，弹出分屏轮盘，松手窗口就吸附过去。触发按键与目标窗口（鼠标下的窗口或当前窗口）可以在设置里改。</p>
+        <div class="wheels four"><figure><img src="/assets/shots/wheel-ring.webp" alt="回环拨盘" width="264" height="264" loading="lazy"><figcaption>回环拨盘</figcaption></figure><figure><img src="/assets/shots/wheel-star.webp" alt="静谧星环" width="264" height="264" loading="lazy"><figcaption>静谧星环</figcaption></figure><figure><img src="/assets/shots/wheel-lens.webp" alt="引力透镜" width="264" height="264" loading="lazy"><figcaption>引力透镜</figcaption></figure><figure><img src="/assets/shots/wheel-classic.webp" alt="经典双同心" width="264" height="264" loading="lazy"><figcaption>经典双同心</figcaption></figure></div>
+        <p>轮盘有四种样式，在「设置 › 分屏 › 轮盘外观」里切换，底色和透明度也能调。</p>
+        <h3>快捷键</h3>
+        <table>
+          <thead><tr><th>操作</th><th>默认快捷键</th></tr></thead>
+          <tbody>
+            <tr><td>左 / 右 / 上 / 下半屏</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> + 方向键</td></tr>
+            <tr><td>最大化</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>↩</kbd></td></tr>
+            <tr><td>居中</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>C</kbd></td></tr>
+            <tr><td>还原</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>⌫</kbd></td></tr>
+          </tbody>
+        </table>
+        <p>四个角（1/4 屏）、接近最大化等布局在「设置 › 快捷键」里，可以自己分配按键。一个窗口吸附到一侧后，相邻窗口会自动补满剩余空间；跨屏移动时会避开台前调度侧栏。</p>
+      </section>
+
+      <section class="doc-sec" id="mouse">
+        <h2><span class="mod-ico c-green"><svg class="i"><use href="/assets/icons.svg#mouse"/></svg></span>鼠标增强</h2>
+        <ul>
+          <li><strong>平滑滚动</strong>：让普通滚轮像触控板一样顺滑，平滑度可调；可单独反转鼠标滚轮方向，不影响触控板。</li>
+          <li><strong>滚轮修饰键</strong>：按住修饰键滚动可以横向滚动、缩放、加速或慢速微调。</li>
+          <li><strong>线性指针</strong>：关闭系统指针加速，移动 1:1 跟手。</li>
+          <li><strong>按设备配置</strong>：不同鼠标各存一套配置，插上自动切换；指定的应用保持系统原生滚动。</li>
+          <li><strong>按键映射（Pro）</strong>：录制中键或侧键，绑定快捷键、截图、分屏、调度中心等动作；单击、滚轮、拖动手势和修饰键组合可以分别设置。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="finder">
+        <h2><span class="mod-ico c-cyan"><svg class="i"><use href="/assets/icons.svg#finder"/></svg></span>访达右键</h2>
+        <p class="sec-sub">需要先开启访达扩展，见<a href="#install">安装与权限</a>。</p>
+        <ul>
+          <li><strong>新建文件</strong>：在当前目录新建 Word、Excel、PPT、Markdown、文本或代码文件，建好立即重命名。</li>
+          <li><strong>拷贝路径</strong>：点一下拷贝绝对路径；终端转义路径、file:// 链接等格式在「拷贝为…」里。</li>
+          <li><strong>剪切移动</strong>：<kbd>⌘</kbd> <kbd>X</kbd> 剪切，到目标位置 <kbd>⌘</kbd> <kbd>V</kbd> 移动；常用目标文件夹可以一键送达。</li>
+          <li><strong>打开方式</strong>：用终端、iTerm2、VS Code 等打开当前目录，或用其他应用打开选中文件。</li>
+          <li><strong>压缩与图片处理</strong>：压缩 / 解压，图片转换格式、按比例缩小。</li>
+          <li><strong>自定义动作</strong>：把常用脚本或命令加进右键菜单，对选中文件一键执行。</li>
+          <li>装了 AuraCleaner 时，右键 .app 会出现「使用 AuraCleaner 卸载」。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="imagehost">
+        <h2><span class="mod-ico c-gray"><svg class="i"><use href="/assets/icons.svg#cloud"/></svg></span>图床</h2>
+        <ul>
+          <li>支持 S3、Cloudflare R2、MinIO、阿里云 OSS、腾讯云 COS、七牛、Backblaze B2、GitHub 与自定义接口，需要使用你自己的账号或令牌。</li>
+          <li><kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>U</kbd> 上传剪贴板里的图片；截图时按 <kbd>⌘</kbd> <kbd>U</kbd> 上传选区。也可以设为截图完成后自动上传。</li>
+          <li>上传后自动复制链接，格式可选 Markdown、URL、HTML 或 BBCode。</li>
+          <li>上传前可转为 WebP、PNG 或 JPEG，文件名可按时间戳、手动或 AI 命名。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="shortcuts">
+        <h2><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#keyboard"/></svg></span>快捷键总表</h2>
+        <p class="sec-sub">以下是默认值，全部可以在「设置 › 快捷键」里修改或关闭，也支持单个按键（如 F1）作为全局快捷键。</p>
+        <table>
+          <thead><tr><th>全局</th><th>默认快捷键</th></tr></thead>
+          <tbody>
+            <tr><td>截图</td><td><kbd>⌥</kbd> <kbd>1</kbd></td></tr>
+            <tr><td>截图并直接复制</td><td><kbd>⌥</kbd> <kbd>⇧</kbd> <kbd>1</kbd></td></tr>
+            <tr><td>延时截图</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>1</kbd></td></tr>
+            <tr><td>恢复贴图</td><td><kbd>⌥</kbd> <kbd>2</kbd></td></tr>
+            <tr><td>剪贴板历史</td><td><kbd>⌥</kbd> <kbd>3</kbd></td></tr>
+            <tr><td>文字识别</td><td><kbd>⌥</kbd> <kbd>4</kbd></td></tr>
+            <tr><td>长截图</td><td><kbd>⌥</kbd> <kbd>5</kbd></td></tr>
+            <tr><td>录屏</td><td><kbd>⌥</kbd> <kbd>6</kbd></td></tr>
+            <tr><td>美化截图</td><td><kbd>⌥</kbd> <kbd>7</kbd></td></tr>
+            <tr><td>截图翻译</td><td><kbd>⌥</kbd> <kbd>8</kbd></td></tr>
+            <tr><td>切换贴图穿透</td><td><kbd>⌥</kbd> <kbd>G</kbd></td></tr>
+            <tr><td>剪贴板转贴图</td><td><kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>T</kbd></td></tr>
+            <tr><td>剪贴板上传图床</td><td><kbd>⌘</kbd> <kbd>⌥</kbd> <kbd>U</kbd></td></tr>
+          </tbody>
+        </table>
+        <p>截图过程中的按键见<a href="#capture">截图与标注</a>，分屏快捷键见<a href="#windows">窗口分屏</a>。</p>
+      </section>
+
+      <section class="doc-sec" id="pro">
+        <h2><span class="mod-ico c-purple"><svg class="i"><use href="/assets/icons.svg#sparkles"/></svg></span>Pro 与激活</h2>
+        <ul>
+          <li>在<a href="/pricing">价格页</a>选择方案，扫码付款后激活码会发到邮箱。</li>
+          <li>点菜单栏图标打开「设置 › 关于」，粘贴激活码即可激活；同一页可以解除本机绑定，换到另一台 Mac。</li>
+          <li>可用设备数：月度 1 台，季度 2 台，年度和终身 3 台。</li>
+          <li>激活后会定期联网确认授权，短时间离线不影响使用。</li>
+          <li>Pro 和免费版的详细区别见<a href="/pricing">价格页的功能对比</a>。</li>
+        </ul>
+      </section>
+
+      <section class="doc-sec" id="trouble">
+        <h2><span class="mod-ico c-red"><svg class="i"><use href="/assets/icons.svg#question"/></svg></span>常见问题</h2>
+        <h3>截图只有桌面壁纸，看不到窗口内容</h3>
+        <p>屏幕录制权限没有生效。到「系统设置 › 隐私与安全性 › 屏幕录制」（macOS 15 起叫「屏幕与系统音频录制」）里把 AuraSnap 关掉再打开，然后退出并重新打开 AuraSnap。</p>
+        <h3>快捷键没反应、分屏不动</h3>
+        <p>检查「系统设置 › 隐私与安全性 › 辅助功能」里 AuraSnap 是否开启。如果已经开启仍无效，先关掉再打开。也可能是快捷键被其他应用占用，到「设置 › 快捷键」换一个试试。</p>
+        <h3>访达右键看不到 AuraSnap 的菜单</h3>
+        <p>到「系统设置 › 通用 › 登录项与扩展 › 扩展」，找到 AuraSnap 点 ⓘ 打开访达扩展，然后重新打开访达窗口。</p>
+        <h3>系统翻译一直在加载</h3>
+        <p>第一次使用某个语言时，系统要先下载并加载语言模型，可能需要等一会儿；超过 30 秒会提示失败，可以换用快捷翻译。</p>
+        <h3>还有其他问题</h3>
+        <p>写信到 <a href="mailto:pengyj0811@gmail.com">pengyj0811@gmail.com</a>，附上 AuraSnap 版本号（设置 › 关于）和 macOS 版本，能更快定位问题。</p>
+      </section>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/"><img src="/assets/app-icon-64.png" alt="" width="28" height="28">AuraSnap</a>
+        <p>为 Mac 编写的截图与效率工具。</p>
+      </div>
+      <div><h5>产品</h5><ul><li><a href="/#features">功能</a></li><li><a href="/pricing">价格</a></li><li><a href="/#download">下载</a></li><li><a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" target="_blank" rel="noopener">更新记录</a></li></ul></div>
+      <div><h5>帮助</h5><ul><li><a href="/guide">使用指南</a></li><li><a href="/#faq">常见问题</a></li><li><a href="mailto:pengyj0811@gmail.com">联系我们</a></li></ul></div>
+      <div><h5>条款</h5><ul><li><a href="/privacy">隐私政策</a></li><li><a href="/terms">服务条款与退款</a></li></ul></div>
     </div>
+    <div class="footer-note">
+      <p>macOS、Apple 芯片是 Apple Inc. 的商标。文中提到的第三方服务名称归各自所有者所有，AuraSnap 与其没有合作或背书关系。</p>
+      <p>© <span data-year>2026</span> AuraSnap</p>
+    </div>
+  </div>
+</footer>
 
-    <!-- 页脚 -->
-    <footer style="background: #f1f5f9; border-top: 1px solid var(--border-subtle); padding: 3rem 0; margin-top: auto;">
-        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
-            <div>
-                <p style="font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem;">AuraSnap 用户使用手册</p>
-                <p style="font-size: 0.85rem; color: var(--text-tertiary);">适用于 AuraSnap v3.0+。遵循 MIT 开源协议。客服邮箱：<a href="mailto:pengyj0811@gmail.com" style="color: var(--accent-blue); text-decoration: none;">pengyj0811@gmail.com</a></p>
-            </div>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="index.html" class="docs-nav-link-btn">返回主页</a>
-                <a href="pricing.html" class="docs-nav-link-btn">价格方案</a>
-                <a href="privacy.html" class="docs-nav-link-btn">隐私政策</a>
-                <a href="terms.html" class="docs-nav-link-btn">服务条款</a>
-                <a href="https://github.com/8wcznkmy6b-del/AuraSnap-PB" class="docs-nav-link-btn" target="_blank" rel="noopener">GitHub 仓库</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 返回顶部浮动按钮 -->
-    <button class="docs-back-to-top" id="backToTopBtn" title="返回顶部" aria-label="返回顶部">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-
-    <!-- 交互脚本 -->
-    <script src="guide.js?v=3.1.16"></script>
+<script src="/assets/site.js?v=4.0.0" defer></script>
 </body>
 </html>
