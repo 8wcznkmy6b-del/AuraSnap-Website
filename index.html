@@ -146,7 +146,7 @@
         <a class="mod reveal" href="#more"><span class="mod-ico c-green"><svg class="i"><use href="/assets/icons.svg#mouse"/></svg></span><h3>鼠标增强</h3><p>普通滚轮也像触控板一样顺滑。</p><span class="mod-key">按设备自动切换配置</span></a>
         <a class="mod reveal" href="#finder"><span class="mod-ico c-cyan"><svg class="i"><use href="/assets/icons.svg#finder"/></svg></span><h3>访达右键</h3><p>新建文件、拷贝路径、打开终端。</p><span class="mod-key">单层菜单，无嵌套</span></a>
         <a class="mod reveal" href="#more"><span class="mod-ico c-gray"><svg class="i"><use href="/assets/icons.svg#cloud"/></svg></span><h3>图床上传</h3><p>上传后自动复制 Markdown 外链。</p><span class="mod-key"><kbd>⌘</kbd><kbd>⌥</kbd><kbd>U</kbd></span></a>
-        <a class="mod reveal" href="#cleaner"><span class="mod-ico c-pink"><svg class="i"><use href="/assets/icons.svg#broom"/></svg></span><h3>AuraCleaner</h3><p>伴侣应用：清理空间、卸载干净。</p><span class="mod-key">Pro 用户可用</span></a>
+        <a class="mod reveal" href="#cleaner"><img class="mod-ico app-ico" src="/assets/auracleaner-icon-64.png" alt="" width="44" height="44"><h3>AuraCleaner</h3><p>伴侣应用：清理空间、卸载干净。</p><span class="mod-key">Pro 用户可用</span></a>
       </div>
     </div>
   </section>
@@ -218,8 +218,10 @@
         <div class="chips"><span class="chip">免费可用</span><span class="chip chip-pro">导出 PDF · Pro</span></div>
       </div>
       <div class="reveal">
-        <figure class="shot"><img src="/assets/shots/longshot.webp" alt="长截图：开始滚动前的选区，左下角切换纵向 / 横向，右侧为实时预览" width="1206" height="748" loading="lazy" decoding="async"></figure>
-        <p class="shot-cap">开始前可以拖动边框、切换纵向 / 横向；右边小窗实时显示拼接结果。</p>
+<div class="shot-tabs" data-tabs>
+        <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">开始截取</button><button type="button" role="tab" aria-selected="false" data-tab="1">拼接结果</button></div>
+        <figure class="shot" data-panel="0"><img src="/assets/shots/longshot.webp" alt="长截图：开始滚动前的选区，左下角切换纵向 / 横向，右侧为实时预览" width="1206" height="748" loading="lazy" decoding="async"><figcaption>开始前可以拖动边框、切换纵向 / 横向；右边小窗实时显示拼接结果。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/longshot-result.webp" alt="长截图拼接完成后的预览窗口，左上角显示尺寸，可滚动查看，底部有复制、保存、贴图与关闭按钮" width="842" height="890" loading="lazy" decoding="async"><figcaption>拼好后在预览窗口里滚动查看，左上角是尺寸，底部可以复制、保存或钉到桌面。</figcaption></figure>
+      </div>
       </div>
     </div>
   </section>
@@ -262,7 +264,7 @@
       </div>
       <div class="shot-tabs reveal" data-tabs>
         <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">背景美化</button><button type="button" role="tab" aria-selected="false" data-tab="1">美化中标注</button><button type="button" role="tab" aria-selected="false" data-tab="2">贴图</button></div>
-        <figure class="shot" data-panel="0"><img src="/assets/shots/beautify.webp" alt="背景美化：截图放在当前桌面背景上，下方选择壁纸与渐变" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>背景可选当前桌面、渐变、纯色调色板，下方切换窗口与光影。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/beautify-annotate.webp" alt="背景美化界面中切换到标注工具条" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>美化时点左下角画笔，就能在成品上继续标注。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/pin.webp" alt="桌面上的贴图窗口，左上角显示尺寸，底部有复制、保存、固定与关闭按钮" width="842" height="890" loading="lazy" decoding="async"><figcaption>贴图左上角显示尺寸，底部可以复制、保存或关闭。</figcaption></figure>
+        <figure class="shot" data-panel="0"><img src="/assets/shots/beautify.webp" alt="背景美化：截图放在当前桌面背景上，下方选择壁纸与渐变" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>背景可选当前桌面、渐变、纯色调色板，下方切换窗口与光影。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/beautify-annotate.webp" alt="背景美化界面中切换到标注工具条" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>美化时点左下角画笔，就能在成品上继续标注。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/pin.webp" alt="贴图：截图钉在桌面最上层，带系统阴影" width="1165" height="884" loading="lazy" decoding="async"><figcaption>贴图钉在所有窗口最上层：滚轮缩放，可调透明度、让鼠标穿透，还能二次编辑。</figcaption></figure>
       </div>
     </div>
   </section>
@@ -411,7 +413,7 @@
   <section class="section section-tight" id="cleaner">
     <div class="wrap">
       <div class="cleaner reveal">
-        <span class="mod-ico c-pink"><svg class="i"><use href="/assets/icons.svg#broom"/></svg></span>
+        <img class="mod-ico app-ico" src="/assets/auracleaner-icon.png" alt="AuraCleaner 图标" width="64" height="64">
         <div>
           <h3>AuraCleaner：清理与卸载</h3>
           <p>独立的伴侣应用。清理缓存、日志和开发构建产物，卸载应用时把它散落各处的残留一起找出来，删除前逐项列给你确认。在访达里右键 App 也能直接卸载。AuraSnap Pro 用户可用。</p>
