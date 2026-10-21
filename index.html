@@ -20,7 +20,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/site.css?v=4.0.0">
+  <link rel="stylesheet" href="/assets/site.css?v=4.1.0">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -77,6 +77,14 @@
     .pm p { font-size: 14.5px; color: var(--text-2); }
     @media (max-width: 760px) { .price-mini { grid-template-columns: minmax(0, 1fr); } }
 
+    /* 截图便利贴 */
+    .sticky { margin-top: clamp(72px, 10vw, 128px); }
+    .sticky .head { margin-bottom: clamp(28px, 4vw, 44px); }
+    .badge-new { display: inline-block; margin-left: 2px; padding: 2px 8px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 600; letter-spacing: 0; }
+    .shot video { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--surface-2); box-shadow: var(--shadow-lg), 0 0 0 1px var(--line); }
+    .sticky .shot video, .sticky .shot img { width: auto; max-width: 100%; max-height: min(68vh, 600px); margin: 0 auto; }
+    .sticky .spot-grid { margin-top: clamp(28px, 4vw, 44px); }
+
     .cleaner { display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; padding: clamp(24px, 4vw, 40px); border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--line); }
     .cleaner .mod-ico { width: 64px; height: 64px; border-radius: 16px; margin: 0; }
     .cleaner .mod-ico .i { width: 34px; height: 34px; }
@@ -107,18 +115,18 @@
   <section class="hero">
     <div class="wrap">
       <a class="hero-pill" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/latest" target="_blank" rel="noopener">
-        <b data-version>v3.2.62</b><span>放大镜标注、工具栏分组、单击选中标注</span><svg class="i"><use href="/assets/icons.svg#chevron"/></svg>
+        <b data-version>v3.2.114</b><span>截图便利贴、双击修饰键快捷键、放大视图拖出截图</span><svg class="i"><use href="/assets/icons.svg#chevron"/></svg>
       </a>
       <h1 class="title-xl"><span class="nw">截图、剪贴板、分屏</span><br><span class="grad-text nw">一个应用就够了</span></h1>
       <p class="lead">AuraSnap 是为 Mac 编写的原生效率工具：截图标注、文字识别与翻译、长截图、录屏，再加上剪贴板历史、窗口分屏、鼠标增强和访达右键。常驻菜单栏，按快捷键随叫随到。</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.62/AuraSnap-3.2.62.dmg" data-dmg><svg class="i"><use href="/assets/icons.svg#apple"/></svg>免费下载</a>
+        <a class="btn btn-primary" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.114/AuraSnap-3.2.114.dmg" data-dmg><svg class="i"><use href="/assets/icons.svg#apple"/></svg>免费下载</a>
         <a class="btn btn-ghost" href="/pricing">查看价格</a>
       </div>
       <div class="hero-meta">
         <span><svg class="i"><use href="/assets/icons.svg#check"/></svg>macOS 14 及以上</span>
         <span><svg class="i"><use href="/assets/icons.svg#check"/></svg>Apple 芯片</span>
-        <span><svg class="i"><use href="/assets/icons.svg#check"/></svg>安装包约 19 MB</span>
+        <span><svg class="i"><use href="/assets/icons.svg#check"/></svg>安装包约 13 MB</span>
         <span><svg class="i"><use href="/assets/icons.svg#check"/></svg>基础功能永久免费</span>
       </div>
 
@@ -137,7 +145,7 @@
         <p class="lead">九个模块都收在菜单栏的一个图标里，用不到的可以在设置里关掉，快捷键都能改。最后一个是独立的伴侣应用 AuraCleaner。</p>
       </div>
       <div class="mod-grid home">
-        <a class="mod reveal" href="#capture"><span class="mod-ico c-blue"><svg class="i"><use href="/assets/icons.svg#capture"/></svg></span><h3>截图与标注</h3><p>窗口吸附、单键切换工具、画完还能改。</p><span class="mod-key"><kbd>⌥</kbd><kbd>1</kbd></span></a>
+        <a class="mod reveal" href="#capture"><span class="mod-ico c-blue"><svg class="i"><use href="/assets/icons.svg#capture"/></svg></span><h3>截图与标注</h3><p>窗口吸附、单键切换工具，截完贴成便利贴。</p><span class="mod-key"><kbd>⌥</kbd><kbd>1</kbd></span></a>
         <a class="mod reveal" href="#ocr"><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#translate"/></svg></span><h3>识别与翻译</h3><p>离线识别文字，译文画回原位。</p><span class="mod-key"><kbd>⌥</kbd><kbd>4</kbd> / <kbd>⌥</kbd><kbd>8</kbd></span></a>
         <a class="mod reveal" href="#long"><span class="mod-ico c-teal"><svg class="i"><use href="/assets/icons.svg#longshot"/></svg></span><h3>长截图</h3><p>边滚边拼，纵向横向都行。</p><span class="mod-key"><kbd>⌥</kbd><kbd>5</kbd></span></a>
         <a class="mod reveal" href="#record"><span class="mod-ico c-red"><svg class="i"><use href="/assets/icons.svg#record"/></svg></span><h3>录屏</h3><p>带声音、点击和按键，录完就剪。</p><span class="mod-key"><kbd>⌥</kbd><kbd>6</kbd></span></a>
@@ -161,15 +169,33 @@
         <ul class="bullets">
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>选区更准</b>：空格切换整窗 / 元素，滚轮切层级，方向键逐像素微调。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>工具齐全</b>：矩形、箭头、画笔、文字、马赛克、序号、批注、贴纸、聚光灯、放大镜、水印、智能消除。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>随时修改</b>：单击选中已有标注，拖动移动，滚动滚轮调大小、粗细或倍率。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>随时修改</b>：单击选中已有标注，拖动移动，滚动滚轮调大小、粗细或倍率；单击选中的批注就能接着改字，长文直接粘贴，文字框自动适应画布。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>工具栏自己排</b>：拖动排序、合并成组，截图和贴图编辑共用一份排列。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>截完怎么用都行</b>：复制、保存、贴在桌面置顶、隔空投送、上传图床，或加上背景再分享。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>截完怎么用都行</b>：复制、保存、贴在桌面置顶、隔空投送、上传图床，或加上背景再分享；也可以让截图<a href="#sticky">贴成便利贴</a>藏在屏幕边上。</span></li>
         </ul>
         <div class="chips"><span class="chip">延时截图</span><span class="chip">截图直接复制</span><span class="chip">屏幕取色</span><span class="chip">贴图穿透</span><span class="chip">抠图</span><span class="chip chip-pro">背景美化 · Pro</span><span class="chip chip-pro">一键隐私打码 · Pro</span></div>
       </div>
       <div class="shot-tabs reveal" data-tabs>
         <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">放大镜</button><button type="button" role="tab" aria-selected="false" data-tab="1">样式调节</button><button type="button" role="tab" aria-selected="false" data-tab="2">弯曲箭头</button><button type="button" role="tab" aria-selected="false" data-tab="3">工具分组</button><button type="button" role="tab" aria-selected="false" data-tab="4">截完怎么用</button></div>
-        <figure class="shot" data-panel="0"><img src="/assets/shots/magnifier.webp" alt="放大镜标注：原区域与放大视图之间带连接线，下拉菜单可选形状与放大方式" width="1564" height="1144" loading="lazy" decoding="async"><figcaption>放大镜：拖开放大视图，滚轮调倍率；可选圆形或圆角矩形、平滑或像素放大。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/rect-style.webp" alt="选中矩形后，上方出现颜色、线型、圆角与粗细调节条" width="1292" height="792" loading="lazy" decoding="async"><figcaption>选中任意标注，上方直接出现它的颜色、线型和粗细，改完即生效。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/arrow-ai.webp" alt="可拖成弧线的箭头，选中后显示旋转与删除按钮" width="1354" height="792" loading="lazy" decoding="async"><figcaption>箭头拖中间手柄就能弯成弧线；下方是 AI 指令条（Pro，需自备 Key）。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/text-group.webp" alt="文本、序号、批注、贴纸、水印合为一组，展开时显示工具名和单键" width="1336" height="816" loading="lazy" decoding="async"><figcaption>多个工具合成一格，悬停右下角小三角就展开，每个工具旁标着单键。</figcaption></figure><figure class="shot" data-panel="4" hidden><img src="/assets/shots/save-group.webp" alt="保存分组展开：保存、上传图床、隔空投送" width="1330" height="778" loading="lazy" decoding="async"><figcaption>保存、上传图床、隔空投送收在一组，⌘S / ⌘U / ⌘D 直接触发。</figcaption></figure>
+        <figure class="shot" data-panel="0"><img src="/assets/shots/magnifier.webp" alt="放大镜标注：原区域与放大视图之间带连接线，下拉菜单可选形状与放大方式" width="1564" height="1144" loading="lazy" decoding="async"><figcaption>放大镜：拖开放大视图，滚轮调倍率，放大视图还能拖到截图外面，导出时画布自动扩大；可选圆形或圆角矩形、平滑或像素放大。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/rect-style.webp" alt="选中矩形后，上方出现颜色、线型、圆角与粗细调节条" width="1292" height="792" loading="lazy" decoding="async"><figcaption>选中任意标注，上方直接出现它的颜色、线型和粗细，改完即生效。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/arrow-ai.webp" alt="可拖成弧线的箭头，选中后显示旋转与删除按钮" width="1354" height="792" loading="lazy" decoding="async"><figcaption>箭头拖中间手柄就能弯成弧线；下方是 AI 指令条（Pro，需自备 Key）。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/text-group.webp" alt="文本、序号、批注、贴纸、水印合为一组，展开时显示工具名和单键" width="1336" height="816" loading="lazy" decoding="async"><figcaption>多个工具合成一格，悬停右下角小三角就展开，每个工具旁标着单键。</figcaption></figure><figure class="shot" data-panel="4" hidden><img src="/assets/shots/save-group.webp" alt="保存分组展开：保存、上传图床、隔空投送" width="1330" height="778" loading="lazy" decoding="async"><figcaption>保存、上传图床、隔空投送收在一组，⌘S / ⌘U / ⌘D 直接触发。</figcaption></figure>
+      </div>
+    </div>
+
+    <!-- 截图便利贴 -->
+    <div class="wrap sticky" id="sticky">
+      <div class="head reveal">
+        <span class="eyebrow"><svg class="i"><use href="/assets/icons.svg#sticker"/></svg>截图便利贴<span class="badge-new">新</span></span>
+        <h2 class="title-md">截完的图，<br>先贴在屏幕边上。</h2>
+        <p class="lead">在「设置 › 常规 › 导出与保存」里把「截图完成后」改成便利贴。之后每次复制、保存或上传，截图都会从选区飞到屏幕边上，平时藏在边框外面，要用时把鼠标往边上推一下就出来。</p>
+      </div>
+      <div class="shot-tabs wide reveal" data-tabs>
+        <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">截完飞上墙</button><button type="button" role="tab" aria-selected="false" data-tab="1">推一下就出来</button><button type="button" role="tab" aria-selected="false" data-tab="2">单击贴到屏幕</button><button type="button" role="tab" aria-selected="false" data-tab="3">整面墙</button></div>
+        <figure class="shot" data-panel="0"><video src="/assets/shots/sticky-fly.mp4" poster="/assets/shots/sticky-fly.webp" width="1072" height="880" muted loop playsinline preload="metadata" aria-label="录屏：框选一块区域后点复制，截图沿弧线飞到屏幕左上角，变成一张便利贴后藏回边框"></video><figcaption>点复制的同一刻，截图沿弧线飞过去，路上长出纸边和胶条，落地停一下就藏回边框。</figcaption></figure><figure class="shot" data-panel="1" hidden><video src="/assets/shots/sticky-reveal.mp4" poster="/assets/shots/sticky-reveal.webp" width="1080" height="320" muted loop playsinline preload="none" aria-label="录屏：鼠标推到屏幕顶边，一排便利贴依次滑出，移开后依次收回"></video><figcaption>鼠标顶住屏幕顶边再往外推一下，便利贴从最新一张起依次滑出；移开后倒序收回。</figcaption></figure><figure class="shot" data-panel="2" hidden><video src="/assets/shots/sticky-drag.mp4" poster="/assets/shots/sticky-drag.webp" width="1080" height="772" muted loop playsinline preload="none" aria-label="录屏：唤出便利贴后单击其中一张，它变成钉在屏幕上的贴图"></video><figcaption>单击便利贴，它就变成钉在屏幕上的贴图；按住拖到聊天框或文件夹，得到一张图片文件。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/sticky-wall.webp" alt="屏幕顶部一排十张便利贴，每张带不同颜色的胶条，略微歪斜" width="1600" height="501" loading="lazy" decoding="async"><figcaption>最多贴 10 张，满了自动摘掉最旧的一张；张数越多每张越小，13 寸屏也排得下。</figcaption></figure>
+      </div>
+      <div class="spot-grid">
+        <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#windows"/></svg><h3>不挡任何窗口</h3><p>便利贴平时完全藏在屏幕边框外。可以贴在顶部或左右两侧，接了外接显示器时每块屏都能唤出同一套。</p></div>
+        <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#search"/></svg><h3>悬停就看原图</h3><p>鼠标停在便利贴上，旁边弹出原大小预览；在几张之间移动，预览跟着切换。长截图只显示开头一段，单击在长截图窗口里打开。</p></div>
+        <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#clipboard"/></svg><h3>和剪贴板连在一起</h3><p>每张便利贴就是剪贴板历史里的一条，不另存图片，也不会覆盖你正在复制的内容。往屏幕外一推就取下。免费可用。</p></div>
       </div>
     </div>
   </section>
@@ -213,9 +239,9 @@
         <ul class="bullets">
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>纵向、横向都能截</b>：宽表格、时间线也行，表格的冻结列会自动识别。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>不重复、不断层</b>：吸顶栏、悬浮按钮和滚动条只保留一次；鼠标停在列表上产生的悬停效果也会处理掉。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>拼完接着用</b>：可以继续标注、识别文字、贴图，导出 PNG、JPEG 或 PDF。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>拼完接着用</b>：可以继续标注、识别文字、贴图，导出 PNG、JPEG 或 PDF；开了便利贴的话，复制或保存后长图也会飞到屏幕边上。</span></li>
         </ul>
-        <div class="chips"><span class="chip">免费可用</span><span class="chip chip-pro">导出 PDF · Pro</span></div>
+        <div class="chips"><span class="chip">免费版单次约 10 屏</span><span class="chip chip-pro">不限长度 · Pro</span><span class="chip chip-pro">导出 PDF · Pro</span></div>
       </div>
       <div class="reveal">
 <div class="shot-tabs" data-tabs>
@@ -300,10 +326,10 @@
         <p class="lead">按住鼠标中键或侧键往一个方向划，轮盘出现，松手窗口就吸附过去。习惯键盘的话，快捷键同样顺手。</p>
         <ul class="bullets">
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><kbd>⌃</kbd><kbd>⌥</kbd> 加方向键吸附半屏，<kbd>↩</kbd> 最大化，<kbd>C</kbd> 居中，<kbd>⌫</kbd> 还原。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>自动补位</b>：一个窗口吸到一侧，相邻窗口自动填满剩下的空间。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>多窗口联动</b>：一个窗口吸到一侧，同屏的其他窗口自动排好，填满剩下的空间（Pro）。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>多屏与台前调度</b>：跨屏移动窗口，自动避开台前调度侧栏；窗口间距可调。</span></li>
         </ul>
-        <div class="chips"><span class="chip">永久免费</span></div>
+        <div class="chips"><span class="chip">快捷键与手势轮盘免费</span><span class="chip chip-pro">联动分屏 · 主题工作台 · Pro</span></div>
       </div>
       <div class="reveal">
         <div class="wheels">
@@ -312,7 +338,7 @@
           <figure><img src="/assets/shots/wheel-lens.webp" alt="引力透镜样式的分屏轮盘" width="264" height="264" loading="lazy"><figcaption>引力透镜</figcaption></figure>
           <figure><img src="/assets/shots/wheel-classic.webp" alt="经典双同心样式的分屏轮盘" width="264" height="264" loading="lazy"><figcaption>经典双同心</figcaption></figure>
         </div>
-        <p class="shot-cap">四种轮盘样式，底色、透明度都能在设置里调。中间的小屏幕预告窗口将落在哪里。</p>
+        <p class="shot-cap">四种轮盘样式，中间的小屏幕预告窗口将落在哪里。在主题工作台里改形态、材质和配色为 Pro。</p>
       </div>
     </div>
   </section>
@@ -328,9 +354,10 @@
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>新建文件</b>：Word、Excel、PPT、Markdown、文本或代码文件，建好直接改名。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>拷贝路径</b>：点一下拷贝绝对路径，其他格式（终端转义、file:// 链接）收在「拷贝为…」里。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>剪切移动</b>：<kbd>⌘</kbd><kbd>X</kbd> 剪切、<kbd>⌘</kbd><kbd>V</kbd> 移动；常用目标文件夹一键送达。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>更多操作</b>：用终端、iTerm2、VS Code 打开当前目录，压缩 / 解压，图片转格式、缩小，自定义脚本动作。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>更多操作</b>：用终端、iTerm2、VS Code 打开当前目录，压缩 / 解压，图片转格式、缩小，右键提取图片里的文字。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>高级动作（Pro）</b>：多张图片 / PDF 合并提取文本，一次转换或缩小多张图片，新建自己的脚本动作。已经建好的自定义动作照常可用。</span></li>
         </ul>
-        <div class="chips"><span class="chip">永久免费</span></div>
+        <div class="chips"><span class="chip">常用功能免费</span><span class="chip">提取文本与截图共用每日 3 次</span><span class="chip chip-pro">高级动作 · Pro</span></div>
       </div>
       <div class="demo fs-demo reveal">
         <img src="/assets/shots/finder-menu.webp" alt="访达右键菜单：系统菜单下方是 AuraSnap 加入的新建文件、粘贴 / 移动到此文件夹、在终端中打开、剪切、移动到、拷贝到、压缩为 ZIP、拷贝路径、拷贝为" width="600" height="1436" loading="lazy" decoding="async">
@@ -346,7 +373,7 @@
         <h2 class="title-lg">小处也用心</h2>
       </div>
       <div class="spot-grid two">
-        <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#mouse"/></svg><h3>鼠标增强</h3><p>普通滚轮像触控板一样顺滑，可反转方向、关闭指针加速。不同鼠标各存一套配置，插上自动切换。Pro 还能把侧键绑定到快捷键、截图、分屏或调度中心。</p></div>
+        <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#mouse"/></svg><h3>鼠标增强</h3><p>普通滚轮像触控板一样顺滑，可反转方向、关闭指针加速。不同鼠标各存一套配置，插上自动切换；雷蛇和 MCHOSE 鼠标还能直接改 DPI 档位、轮询率和灯光，写进鼠标里。Pro 能把侧键、滚轮左右拨绑定到快捷键、截图、分屏或调度中心。</p></div>
         <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#cloud"/></svg><h3>图床上传</h3><p>支持 S3、R2、MinIO、阿里云 OSS、腾讯云 COS、七牛、B2、GitHub 和自定义接口。上传前可转 WebP，上传后自动复制 Markdown、URL 或 HTML 外链。</p></div>
         <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#eraser"/></svg><h3>智能消除与抠图</h3><p>抹掉画面里多余的东西，背景自动补齐；一键提取主体，去掉背景。</p></div>
         <div class="spot reveal"><svg class="i"><use href="/assets/icons.svg#eyedropper"/></svg><h3>屏幕取色</h3><p>截图时放大镜显示像素和色值，按 <kbd>C</kbd> 复制 HEX 或 RGB。</p></div>
@@ -364,7 +391,7 @@
       </div>
       <div class="shot-tabs reveal wide" data-tabs>
         <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">工具栏主题</button><button type="button" role="tab" aria-selected="false" data-tab="1">工具排列</button><button type="button" role="tab" aria-selected="false" data-tab="2">快捷键</button><button type="button" role="tab" aria-selected="false" data-tab="3">剪贴板</button><button type="button" role="tab" aria-selected="false" data-tab="4">分类与标签</button><button type="button" role="tab" aria-selected="false" data-tab="5">分屏轮盘</button><button type="button" role="tab" aria-selected="false" data-tab="6">分屏快捷键</button><button type="button" role="tab" aria-selected="false" data-tab="7">鼠标滚动</button><button type="button" role="tab" aria-selected="false" data-tab="8">鼠标按键</button><button type="button" role="tab" aria-selected="false" data-tab="9">访达右键</button><button type="button" role="tab" aria-selected="false" data-tab="10">外观</button><button type="button" role="tab" aria-selected="false" data-tab="11">运行状态</button><button type="button" role="tab" aria-selected="false" data-tab="12">常规</button><button type="button" role="tab" aria-selected="false" data-tab="13">翻译</button><button type="button" role="tab" aria-selected="false" data-tab="14">AI 助手</button><button type="button" role="tab" aria-selected="false" data-tab="15">图床</button></div>
-        <figure class="shot" data-panel="0"><img src="/assets/shots/set-toolbar-theme.webp" alt="设置：截图工具栏主题（黑曜晶透、磨砂玻璃、经典纯色）与图标大小" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>三种工具栏主题，图标大小可调，分组展开时可显示工具名称。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/set-toolbar-arrange.webp" alt="设置：工具排列，顶部预览可拖动排序与分组" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>顶部预览直接拖动排序、合并分组；截图和贴图编辑共用一份排列。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/set-shortcuts.webp" alt="设置：全局快捷键与标注单键" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>全局快捷键与标注单键都在这里，支持单个按键（如 F1–F12）。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/set-clipboard.webp" alt="设置：剪贴板通用选项" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>回贴方式、使用过的记录移到最前、记录复制的文件、图片文字识别。</figcaption></figure><figure class="shot" data-panel="4" hidden><img src="/assets/shots/set-clipboard-tabs.webp" alt="设置：剪贴板分类栏排序与自定义标签" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>分类栏可调顺序、改名、隐藏，⌘1–9 快速切换。</figcaption></figure><figure class="shot" data-panel="5" hidden><img src="/assets/shots/set-wheel.webp" alt="设置：分屏轮盘外观、材质与底色" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>轮盘样式、液态玻璃材质、底色与透明度。</figcaption></figure><figure class="shot" data-panel="6" hidden><img src="/assets/shots/set-window-keys.webp" alt="设置：分屏快捷键，半屏、四角与还原" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>半屏、四角 1/4 屏、居中、还原，按键都能改。</figcaption></figure><figure class="shot" data-panel="7" hidden><img src="/assets/shots/set-mouse-scroll.webp" alt="设置：鼠标平滑滚动、速度与修饰键滚动" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>平滑度、滚动速度、修饰键横向滚动 / 缩放 / 变速，指定应用保持原生滚动。</figcaption></figure><figure class="shot" data-panel="8" hidden><img src="/assets/shots/set-mouse-buttons.webp" alt="设置：鼠标按键映射方案，按设备自动切换" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>按鼠标型号保存方案；侧键单击、按住滚轮、按住移动各自绑定动作（Pro）。</figcaption></figure><figure class="shot" data-panel="9" hidden><img src="/assets/shots/set-finder.webp" alt="设置：访达右键功能模块开关" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>右键菜单里每一项都能单独开关。</figcaption></figure><figure class="shot" data-panel="10" hidden><img src="/assets/shots/set-appearance.webp" alt="设置：设置面板主题与识别结果窗口主题" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>设置面板有液态玻璃与经典纯色、深浅两种配色。</figcaption></figure><figure class="shot" data-panel="11" hidden><img src="/assets/shots/set-performance.webp" alt="设置：应用资源占用与模块运行状态" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>实时查看 CPU、内存占用和各模块运行状态，用不到的模块可以停掉。</figcaption></figure><figure class="shot" data-panel="12" hidden><img src="/assets/shots/set-general.webp" alt="设置：常规，语言、开机自启、截图格式与保存路径（路径已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>语言、开机自启、截图格式、保存与复制时附带窗口阴影、默认保存位置。</figcaption></figure><figure class="shot" data-panel="13" hidden><img src="/assets/shots/set-translate.webp" alt="设置：截图翻译模式与服务商（App ID 与密钥已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>快捷翻译、系统翻译、自定义 Key 三种模式；自备 Key 时选服务商并测试连接。</figcaption></figure><figure class="shot" data-panel="14" hidden><img src="/assets/shots/set-ai.webp" alt="设置：AI 助手服务商与 API 配置（密钥与地址已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>AI 助手可接 OpenAI 兼容接口或本地 Ollama，需自备 Key（Pro）。</figcaption></figure><figure class="shot" data-panel="15" hidden><img src="/assets/shots/set-imagehost.webp" alt="设置：图床服务商、链接格式与命名规则（账号已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>选择存储服务、链接格式、命名规则与上传格式，可设为截图后自动上传。</figcaption></figure>
+        <figure class="shot" data-panel="0"><img src="/assets/shots/set-toolbar-theme.webp" alt="设置：截图工具栏主题（黑曜晶透、磨砂玻璃、经典纯色）与图标大小" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>三种工具栏主题，图标大小可调，分组展开时可显示工具名称。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/set-toolbar-arrange.webp" alt="设置：工具排列，顶部预览可拖动排序与分组" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>顶部预览直接拖动排序、合并分组；截图和贴图编辑共用一份排列。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/set-shortcuts.webp" alt="设置：全局快捷键与标注单键" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>全局快捷键与标注单键都在这里，支持单个按键（如 F1–F12），也可以设成连按两下 ⌘、⌥ 这类修饰键。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/set-clipboard.webp" alt="设置：剪贴板通用选项" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>回贴方式、使用过的记录移到最前、记录复制的文件、图片文字识别。</figcaption></figure><figure class="shot" data-panel="4" hidden><img src="/assets/shots/set-clipboard-tabs.webp" alt="设置：剪贴板分类栏排序与自定义标签" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>分类栏可调顺序、改名、隐藏，⌘1–9 快速切换。</figcaption></figure><figure class="shot" data-panel="5" hidden><img src="/assets/shots/set-wheel.webp" alt="设置：分屏轮盘外观、材质与底色" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>轮盘样式、液态玻璃材质、底色与透明度。</figcaption></figure><figure class="shot" data-panel="6" hidden><img src="/assets/shots/set-window-keys.webp" alt="设置：分屏快捷键，半屏、四角与还原" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>半屏、四角 1/4 屏、居中、还原，按键都能改。</figcaption></figure><figure class="shot" data-panel="7" hidden><img src="/assets/shots/set-mouse-scroll.webp" alt="设置：鼠标平滑滚动、速度与修饰键滚动" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>平滑度、滚动速度、修饰键横向滚动 / 缩放 / 变速，指定应用保持原生滚动。</figcaption></figure><figure class="shot" data-panel="8" hidden><img src="/assets/shots/set-mouse-buttons.webp" alt="设置：鼠标按键映射方案，按设备自动切换" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>按鼠标型号保存方案；侧键单击、按住滚轮、按住移动各自绑定动作（Pro）。</figcaption></figure><figure class="shot" data-panel="9" hidden><img src="/assets/shots/set-finder.webp" alt="设置：访达右键功能模块开关" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>右键菜单里每一项都能单独开关。</figcaption></figure><figure class="shot" data-panel="10" hidden><img src="/assets/shots/set-appearance.webp" alt="设置：设置面板主题与识别结果窗口主题" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>设置面板有液态玻璃与经典纯色、深浅两种配色。</figcaption></figure><figure class="shot" data-panel="11" hidden><img src="/assets/shots/set-performance.webp" alt="设置：应用资源占用与模块运行状态" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>实时查看 CPU、内存占用和各模块运行状态，用不到的模块可以停掉。</figcaption></figure><figure class="shot" data-panel="12" hidden><img src="/assets/shots/set-general.webp" alt="设置：常规，语言、开机自启、截图格式与保存路径（路径已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>语言、开机自启、截图格式、保存与复制时附带窗口阴影、默认保存位置。</figcaption></figure><figure class="shot" data-panel="13" hidden><img src="/assets/shots/set-translate.webp" alt="设置：截图翻译模式与服务商（App ID 与密钥已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>快捷翻译、系统翻译、自定义 Key 三种模式；自备 Key 时选服务商并测试连接。</figcaption></figure><figure class="shot" data-panel="14" hidden><img src="/assets/shots/set-ai.webp" alt="设置：AI 助手服务商与 API 配置（密钥与地址已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>AI 助手可接 OpenAI 兼容接口或本地 Ollama，需自备 Key（Pro）。</figcaption></figure><figure class="shot" data-panel="15" hidden><img src="/assets/shots/set-imagehost.webp" alt="设置：图床服务商、链接格式与命名规则（账号已打码）" width="1560" height="1160" loading="lazy" decoding="async"><figcaption>选择存储服务、链接格式、命名规则与上传格式，可设为截图后自动上传。</figcaption></figure>
       </div>
     </div>
   </section>
@@ -377,7 +404,7 @@
         <h2 class="title-lg">轻、快、守本分</h2>
       </div>
       <div class="spot-grid">
-        <div class="spot reveal"><div class="big">19 MB</div><h3>纯原生</h3><p>用 Swift 和系统框架编写，没有内置浏览器内核。启动快，常驻菜单栏不占地方。</p></div>
+        <div class="spot reveal"><div class="big">13 MB</div><h3>纯原生</h3><p>用 Swift 和系统框架编写，没有内置浏览器内核。启动快，常驻菜单栏不占地方。</p></div>
         <div class="spot reveal"><div class="big">本机</div><h3>数据不出门</h3><p>截图、文字识别、剪贴板历史都在你的 Mac 上处理和保存。只有你主动用在线翻译、AI 或图床时，相应内容才会发给你选的服务。</p></div>
         <div class="spot reveal"><div class="big">全可改</div><h3>按你的习惯来</h3><p>每个快捷键都能改或关闭，工具栏随意排列，用不到的模块整个停掉。</p></div>
       </div>
@@ -429,10 +456,10 @@
       <div class="head reveal">
         <span class="eyebrow">价格</span>
         <h2 class="title-lg">基础功能永久免费</h2>
-        <p class="lead">截图标注、贴图、长截图、剪贴板、分屏、访达右键和图床都不收费。需要无限次识别翻译、录长视频、背景美化时，再升级 Pro。</p>
+        <p class="lead">截图标注、贴图、便利贴、剪贴板、分屏、访达右键和图床都不收费。需要无限次识别翻译、录长视频、超长截图、背景美化时，再升级 Pro。</p>
       </div>
       <div class="price-mini">
-        <div class="pm reveal"><span class="nm">免费版</span><span class="pr">$0</span><p>日常截图和效率功能全部可用；文字识别、翻译、抠图、智能消除每天各 3 次。</p></div>
+        <div class="pm reveal"><span class="nm">免费版</span><span class="pr">$0</span><p>日常截图和效率功能都能用；文字识别、翻译、抠图、智能消除每天各 3 次，长截图单次约 10 屏。</p></div>
         <div class="pm hl reveal"><span class="nm">Pro 年度</span><span class="pr">$9.99<small> / 年</small></span><p>折合每月约 $0.83，可在 3 台 Mac 上使用。</p></div>
         <div class="pm reveal"><span class="nm">Pro 终身</span><span class="pr">$19.99</span><p>一次付费，以后的更新都包含，可在 3 台 Mac 上使用。</p></div>
       </div>
@@ -448,7 +475,7 @@
         <h2 class="title-lg">现在就试试 AuraSnap</h2>
         <p class="lead">免费下载，不用注册账号。</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.62/AuraSnap-3.2.62.dmg" data-dmg><svg class="i"><use href="/assets/icons.svg#apple"/></svg>下载 <span data-version>v3.2.62</span></a>
+          <a class="btn btn-primary" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.114/AuraSnap-3.2.114.dmg" data-dmg><svg class="i"><use href="/assets/icons.svg#apple"/></svg>下载 <span data-version>v3.2.114</span></a>
           <a class="btn btn-ghost" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases" target="_blank" rel="noopener"><svg class="i"><use href="/assets/icons.svg#github"/></svg>所有版本</a>
         </div>
         <p class="small" style="margin-top:16px;">需要 macOS 14 或更高版本、Apple 芯片（M1 及以后）</p>
@@ -468,7 +495,8 @@
       <div class="faq reveal">
         <details>
           <summary>免费版能用多久，有什么限制？<svg class="i"><use href="/assets/icons.svg#chevron"/></svg></summary>
-          <div class="ans"><p>一直能用。截图和标注、贴图、长截图、剪贴板历史、窗口分屏、访达右键、图床都没有次数限制。文字识别、截图翻译、抠图和智能消除每天各 3 次，第二天自动恢复；录屏单次 15 秒，导出 GIF。</p></div>
+          <div class="ans"><p>一直能用。截图和标注、贴图、便利贴、剪贴板历史、窗口分屏、访达右键、图床都没有次数限制。文字识别（含访达右键提取文本）、截图翻译、抠图和智能消除每天各 3 次，第二天自动恢复；长截图单次约 10 屏；录屏单次 15 秒，导出 GIF。多窗口联动分屏、轮盘主题工作台和访达右键的高级动作需要 Pro。</p>
+          <p>以前就在用的功能不会因为升级被收走：比如更新前已经在用联动分屏、已经建好的自定义右键动作，都照常可用。</p></div>
         </details>
         <details>
           <summary>支持 Intel 芯片的 Mac 吗？<svg class="i"><use href="/assets/icons.svg#chevron"/></svg></summary>
@@ -513,7 +541,7 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=4.0.0" defer></script>
+<script src="/assets/site.js?v=4.1.0" defer></script>
 <script>
   // 翻译演示：切换原文 / 译文，并自动轮换一次吸引注意
   (function () {

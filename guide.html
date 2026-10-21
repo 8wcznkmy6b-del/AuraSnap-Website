@@ -15,7 +15,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/site.css?v=4.0.0">
+  <link rel="stylesheet" href="/assets/site.css?v=4.1.0">
 </head>
 <body>
 
@@ -36,7 +36,7 @@
 
 <main class="wrap">
   <div class="doc-hero">
-    <span class="eyebrow">使用指南 · 适用于 <span data-version>v3.2.62</span></span>
+    <span class="eyebrow">使用指南 · 适用于 <span data-version>v3.2.114</span></span>
     <h1 class="title-lg" style="margin-top:12px;">AuraSnap 使用指南</h1>
     <p class="lead">每个模块怎么用、默认快捷键是什么、遇到问题怎么办。应用内「设置 › 关于 › 功能指南」也能随时查看，那里的快捷键会按你改过的设置显示。</p>
   </div>
@@ -47,6 +47,7 @@
       <a href="#install">安装与权限</a>
       <a href="#capture">截图与标注</a>
       <a href="#pin">贴图</a>
+      <a href="#sticky">便利贴</a>
       <a href="#ocr">识别与翻译</a>
       <a href="#long">长截图</a>
       <a href="#record">录屏</a>
@@ -114,10 +115,11 @@
         <ul>
           <li>无论正在用哪个工具，单击已有标注就能选中，按住拖动即移动；点空白处取消选中。</li>
           <li>选中后滚动滚轮调大小：文字调字号，贴纸和序号调尺寸，线条调粗细，放大镜调倍率。</li>
+          <li>文字和批注：单击已选中的批注卡片可以接着改字；粘贴长文超出画布时，文字框先变宽再自动缩小字号，整块收在画布内。</li>
           <li><kbd>⌘</kbd> <kbd>Z</kbd> 撤销。</li>
         </ul>
         <h3>放大镜</h3>
-        <p>框选要放大的区域后，把放大视图拖开，两者之间会带连接线。拖原区域的边角改取样范围；拖放大视图边上的手柄或滚动滚轮改倍率（1.25–8 倍）。可选圆形或圆角矩形、平滑或像素放大、是否包含其他标注。截图、贴图、长截图和背景美化里都能用。</p>
+        <p>框选要放大的区域后，把放大视图拖开，两者之间会带连接线。拖原区域的边角改取样范围；拖放大视图边上的手柄或滚动滚轮改倍率（1.25–8 倍）。可选圆形或圆角矩形、平滑或像素放大、是否包含其他标注。放大视图可以拖到截图范围外面，导出时画布自动扩大、外扩部分透明，不会挡住原图。截图、贴图、长截图和背景美化里都能用。</p>
         <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/magnifier.webp" alt="放大镜标注与形状、放大方式选项" width="1564" height="1144" loading="lazy" decoding="async"></figure>
         <h3>截完之后</h3>
         <table>
@@ -152,6 +154,21 @@
         </ul>
       </section>
 
+      <section class="doc-sec" id="sticky">
+        <h2><span class="mod-ico c-orange"><svg class="i"><use href="/assets/icons.svg#sticker"/></svg></span>截图便利贴</h2>
+        <p class="sec-sub">在「设置 › 常规 › 导出与保存」里把「截图完成后」设为「便利贴」。免费可用。</p>
+        <ul>
+          <li>开启后，复制、保存、上传或隔空投送的截图会从选区飞到屏幕边上，变成一张便利贴，停一下就藏回边框外，不挡任何窗口。长截图在长截图窗口里复制或保存后也一样。</li>
+          <li><strong>唤出</strong>：鼠标顶住那条边再往外轻推一下；或者在最边上停住（两侧约 0.5 秒、顶部约 0.8 秒）。鼠标离开后自动收回。</li>
+          <li><strong>位置</strong>：「便利贴位置」可选顶部（默认）或左右两侧。接了外接显示器时，每块屏都显示同一套；两侧只贴在不挨着别的屏的那一边。</li>
+          <li><strong>预览</strong>：悬停在便利贴上会弹出按原大小显示的预览，放不下才缩小；长截图只显示开头一段。</li>
+          <li><strong>使用</strong>：按住拖到聊天框或文件夹，得到一张图片文件；单击贴到屏幕（长截图在长截图窗口里打开）；往屏幕边外推就取下。右键可以复制、保存、贴到屏幕、取下或全部取下。</li>
+          <li>最多 10 张，满了摘掉最旧的一张。便利贴不另存图片，每张对应剪贴板历史里的一条：开启后截图都会记进剪贴板历史，但不会覆盖你正在复制的内容；在剪贴板里删掉，便利贴也跟着消失。</li>
+          <li>系统开了「减弱动态效果」时，便利贴改为从边框后滑出，不做飞行动画。</li>
+        </ul>
+        <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/sticky-wall.webp" alt="屏幕顶部一排十张便利贴" width="1600" height="501" loading="lazy" decoding="async"></figure>
+      </section>
+
       <section class="doc-sec" id="ocr">
         <h2><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#translate"/></svg></span>文字识别与翻译</h2>
         <p class="sec-sub"><kbd>⌥</kbd> <kbd>4</kbd> 识别文字，<kbd>⌥</kbd> <kbd>8</kbd> 截图翻译。免费版每天各 3 次。</p>
@@ -181,6 +198,7 @@
           <li>吸顶栏、悬浮按钮、滚动条只保留一次。</li>
           <li>滚得太快、两帧之间完全没有重叠时无法拼接，界面会提示放慢速度。</li>
           <li>拼好的长图可以继续标注、识别文字、贴图，导出 PNG、JPEG；导出 PDF 为 Pro。</li>
+          <li>免费版单次最长约 10 屏（按选区沿滚动方向的长度计，横向同理），到了会自动停止并提示；Pro 不限长度。</li>
         </ul>
         <figure class="shot" style="margin:8px 0 22px;"><img src="/assets/shots/longshot.webp" alt="长截图开始前：调整范围、切换纵向 / 横向，右侧实时预览" width="1206" height="748" loading="lazy" decoding="async"></figure>
       </section>
@@ -229,7 +247,12 @@
             <tr><td>还原</td><td><kbd>⌃</kbd> <kbd>⌥</kbd> <kbd>⌫</kbd></td></tr>
           </tbody>
         </table>
-        <p>四个角（1/4 屏）、接近最大化等布局在「设置 › 快捷键」里，可以自己分配按键。一个窗口吸附到一侧后，相邻窗口会自动补满剩余空间；跨屏移动时会避开台前调度侧栏。</p>
+        <p>四个角（1/4 屏）、接近最大化等布局在「设置 › 快捷键」里，可以自己分配按键。跨屏移动时会避开台前调度侧栏。</p>
+        <h3>高级功能（Pro）</h3>
+        <ul>
+          <li><strong>多窗口联动分屏</strong>：一个窗口吸附到一侧后，同屏的其他窗口自动排好、补满剩余空间。更新到 v3.2.109 之前就已在用的用户继续可用。</li>
+          <li><strong>主题工作台</strong>：自定义轮盘的形态、材质与配色。免费版可以打开查看，已选好的轮盘外观照常生效。</li>
+        </ul>
       </section>
 
       <section class="doc-sec" id="mouse">
@@ -239,7 +262,8 @@
           <li><strong>滚轮修饰键</strong>：按住修饰键滚动可以横向滚动、缩放、加速或慢速微调。</li>
           <li><strong>线性指针</strong>：关闭系统指针加速，移动 1:1 跟手。</li>
           <li><strong>按设备配置</strong>：不同鼠标各存一套配置，插上自动切换；指定的应用保持系统原生滚动。</li>
-          <li><strong>按键映射（Pro）</strong>：录制中键或侧键，绑定快捷键、截图、分屏、调度中心等动作；单击、滚轮、拖动手势和修饰键组合可以分别设置。</li>
+          <li><strong>按键映射（Pro）</strong>：录制中键、侧键或滚轮左右拨，绑定快捷键、截图、分屏、调度中心等动作；单击、滚轮、拖动手势和修饰键组合可以分别设置。一套方案可以绑定多只鼠标。</li>
+          <li><strong>硬件设置</strong>：接上支持的雷蛇或 MCHOSE 鼠标时，鼠标设置里多出「硬件」分页，可以改 DPI 档位、轮询率和灯光（含逐灯颜色），设置写进鼠标里，换电脑也生效。装着官方驱动并在运行时会自动让出。</li>
         </ul>
       </section>
 
@@ -252,7 +276,9 @@
           <li><strong>剪切移动</strong>：<kbd>⌘</kbd> <kbd>X</kbd> 剪切，到目标位置 <kbd>⌘</kbd> <kbd>V</kbd> 移动；常用目标文件夹可以一键送达。</li>
           <li><strong>打开方式</strong>：用终端、iTerm2、VS Code 等打开当前目录，或用其他应用打开选中文件。</li>
           <li><strong>压缩与图片处理</strong>：压缩 / 解压，图片转换格式、按比例缩小。</li>
+          <li><strong>提取文本</strong>：右键图片直接识别文字，和截图识别共用每天的免费次数。</li>
           <li><strong>自定义动作</strong>：把常用脚本或命令加进右键菜单，对选中文件一键执行。</li>
+          <li><strong>高级动作（Pro）</strong>：多张图片 / PDF 合并提取文本、一次转换或缩小多张图片、新建自定义动作。已经建好的自定义动作照常运行、可以编辑。</li>
           <li>装了 AuraCleaner 时，右键 .app 会出现「使用 AuraCleaner 卸载」。</li>
         </ul>
       </section>
@@ -269,7 +295,7 @@
 
       <section class="doc-sec" id="shortcuts">
         <h2><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#keyboard"/></svg></span>快捷键总表</h2>
-        <p class="sec-sub">以下是默认值，全部可以在「设置 › 快捷键」里修改或关闭，也支持单个按键（如 F1）作为全局快捷键。</p>
+        <p class="sec-sub">以下是默认值，全部可以在「设置 › 快捷键」里修改或关闭，也支持单个按键（如 F1）作为全局快捷键，或者录成「连按两下修饰键」（如连按两下 <kbd>⌘</kbd>，需要辅助功能权限）。</p>
         <table>
           <thead><tr><th>全局</th><th>默认快捷键</th></tr></thead>
           <tbody>
@@ -338,6 +364,6 @@
   </div>
 </footer>
 
-<script src="/assets/site.js?v=4.0.0" defer></script>
+<script src="/assets/site.js?v=4.1.0" defer></script>
 </body>
 </html>

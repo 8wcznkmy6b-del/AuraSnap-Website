@@ -5,8 +5,8 @@
 
   // 默认值随网站发布更新；页面打开后再从 GitHub 取最新发行版，取不到就用这里的
   var FALLBACK = {
-    version: '3.2.62',
-    dmg: 'https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.62/AuraSnap-3.2.62.dmg'
+    version: '3.2.114',
+    dmg: 'https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/download/v3.2.114/AuraSnap-3.2.114.dmg'
   };
   var RELEASE_API = 'https://api.github.com/repos/8wcznkmy6b-del/AuraSnap-PB/releases/latest';
   var CACHE_KEY = 'aurasnap_latest_release_v1';
@@ -73,11 +73,42 @@
           var id = btn.getAttribute('data-tab');
           btns.forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
           panels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== id; });
+          syncVideos(box, true);
           var row = btn.parentNode;
           if (row.scrollWidth > row.clientWidth) row.scrollTo({ left: btn.offsetLeft - row.clientWidth / 2 + btn.offsetWidth / 2, behavior: 'smooth' });
         });
       });
     });
+  }
+
+  // 演示录屏：只播放当前分页里、并且滚进视口的那一段；减弱动态效果时不自动播放，改为显示控制条
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function syncVideos(box, restart) {
+    box.querySelectorAll('video').forEach(function (v) {
+      var panel = v.closest('[data-panel]');
+      var show = !(panel && panel.hidden) && box.dataset.inView === '1' && !reduceMotion;
+      if (show) {
+        if (restart) v.currentTime = 0;
+        var p = v.play();
+        if (p && p.catch) p.catch(function () { v.controls = true; });
+      } else {
+        v.pause();
+      }
+    });
+  }
+
+  function setupVideos() {
+    var boxes = Array.prototype.filter.call(document.querySelectorAll('[data-tabs]'), function (b) { return b.querySelector('video'); });
+    if (!boxes.length) return;
+    if (reduceMotion) { boxes.forEach(function (b) { b.querySelectorAll('video').forEach(function (v) { v.controls = true; }); }); return; }
+    if (!('IntersectionObserver' in window)) { boxes.forEach(function (b) { b.dataset.inView = '1'; syncVideos(b, false); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        entry.target.dataset.inView = entry.isIntersecting ? '1' : '0';
+        syncVideos(entry.target, false);
+      });
+    }, { threshold: 0.35 });
+    boxes.forEach(function (b) { io.observe(b); });
   }
 
   // 文档页目录：滚动时高亮当前章节，手机上把高亮项滚进可视区
@@ -122,6 +153,7 @@
     setupReveal();
     setupToc();
     setupShotTabs();
+    setupVideos();
     loadRelease();
     legacyDomainNotice();
     setYear();
