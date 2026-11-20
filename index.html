@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>AuraSnap · Mac 截图、剪贴板与分屏工具</title>
   <meta name="description" content="AuraSnap 是为 Mac 编写的原生效率工具：截图标注、文字识别与原位翻译、长截图、录屏，以及剪贴板历史、窗口分屏、鼠标增强和访达右键。基础功能永久免费。">
-  <meta name="keywords" content="AuraSnap, Mac 截图, macOS 截图工具, 截图标注, OCR, 截图翻译, 长截图, 滚动截图, 录屏, 剪贴板历史, 窗口分屏, 访达右键">
+  <meta name="keywords" content="AuraSnap, Mac 截图, macOS 截图工具, 截图标注, OCR, 公式识别, LaTeX, 圆角裁剪, 截图翻译, 长截图, 滚动截图, 录屏, 剪贴板历史, 窗口分屏, 访达右键">
   <meta name="google-site-verification" content="6imrNBbtHpXlvs_eJxVL0ueiRYzWSX-zMwA5sKnrR0o">
   <link rel="canonical" href="https://aurasnapapp.com/">
   <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
@@ -115,7 +115,7 @@
   <section class="hero">
     <div class="wrap">
       <a class="hero-pill" href="https://github.com/8wcznkmy6b-del/AuraSnap-PB/releases/latest" target="_blank" rel="noopener">
-        <b data-version>v3.2.128</b><span>三分屏与跨屏移动、剪贴板片段与横条面板、鼠标按应用映射、录屏摄像头</span><svg class="i"><use href="/assets/icons.svg#chevron"/></svg>
+        <b data-version>v3.2.168</b><span>本地离线公式识别转 LaTeX、二次编辑圆角裁剪、访达右键编辑居中</span><svg class="i"><use href="/assets/icons.svg#chevron"/></svg>
       </a>
       <h1 class="title-xl"><span class="nw">截图、剪贴板、分屏</span><br><span class="grad-text nw">一个应用就够了</span></h1>
       <p class="lead">AuraSnap 是为 Mac 编写的原生效率工具：截图标注、文字识别与翻译、长截图、录屏，再加上剪贴板历史、窗口分屏、鼠标增强和访达右键。常驻菜单栏，按快捷键随叫随到。</p>
@@ -146,7 +146,7 @@
       </div>
       <div class="mod-grid home">
         <a class="mod reveal" href="#capture"><span class="mod-ico c-blue"><svg class="i"><use href="/assets/icons.svg#capture"/></svg></span><h3>截图与标注</h3><p>窗口吸附、单键切换工具，截完贴成便利贴。</p><span class="mod-key"><kbd>⌥</kbd><kbd>1</kbd></span></a>
-        <a class="mod reveal" href="#ocr"><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#translate"/></svg></span><h3>识别与翻译</h3><p>离线识别文字，译文画回原位。</p><span class="mod-key"><kbd>⌥</kbd><kbd>4</kbd> / <kbd>⌥</kbd><kbd>8</kbd></span></a>
+        <a class="mod reveal" href="#ocr"><span class="mod-ico c-indigo"><svg class="i"><use href="/assets/icons.svg#translate"/></svg></span><h3>识别与翻译</h3><p>离线识别文字与公式，译文画回原位。</p><span class="mod-key"><kbd>⌥</kbd><kbd>4</kbd> / <kbd>⌥</kbd><kbd>8</kbd></span></a>
         <a class="mod reveal" href="#long"><span class="mod-ico c-teal"><svg class="i"><use href="/assets/icons.svg#longshot"/></svg></span><h3>长截图</h3><p>边滚边拼，纵向横向都行。</p><span class="mod-key"><kbd>⌥</kbd><kbd>5</kbd></span></a>
         <a class="mod reveal" href="#record"><span class="mod-ico c-red"><svg class="i"><use href="/assets/icons.svg#record"/></svg></span><h3>录屏</h3><p>带声音、点击和按键，录完就剪。</p><span class="mod-key"><kbd>⌥</kbd><kbd>6</kbd></span></a>
         <a class="mod reveal" href="#clipboard"><span class="mod-ico c-orange"><svg class="i"><use href="/assets/icons.svg#clipboard"/></svg></span><h3>剪贴板历史</h3><p>不抢焦点，打字就搜，回车就贴。</p><span class="mod-key"><kbd>⌥</kbd><kbd>3</kbd></span></a>
@@ -205,27 +205,32 @@
   <section class="section section-alt" id="ocr">
     <div class="wrap feature flip">
       <div class="feature-copy reveal">
-        <span class="eyebrow"><svg class="i"><use href="/assets/icons.svg#translate"/></svg>文字识别与截图翻译</span>
+        <span class="eyebrow"><svg class="i"><use href="/assets/icons.svg#translate"/></svg>文字、公式识别与截图翻译</span>
         <h2 class="title-md">译文画回原处，<br>版面一点不乱。</h2>
         <p class="lead">框选一段界面，原文被干净擦掉，译文按原来的颜色、字号和字重写回去。看外文软件、读截图里的说明，不用再来回对照。</p>
         <ul class="bullets">
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>两种翻译方式</b>：系统翻译在 macOS 15 起本地离线运行；也可以填自己的百度、微软、有道、DeepL、谷歌或火山 Key。翻译不限次数，免费。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>离线识别文字</b>：识别结果可编辑、整理后复制，顺带识别二维码。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>离线公式识别</b>：截图或二次编辑中按 <kbd>⇧</kbd><kbd>F</kbd> 识别数学公式，首次按需下载约 60 MB 精简模型后纯本地离线运行，无需 API Key；支持多公式自动切分、离线 KaTeX 实时预览与 4 种 LaTeX 定界符一键切换。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>划词翻译</b>：按住鼠标侧键划选文字，译文直接显示在光标旁。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>贴图上也能翻</b>：钉在桌面的截图同样可以原地翻译。</span></li>
         </ul>
-        <div class="chips"><span class="chip">翻译免费不限次</span><span class="chip">文字识别免费每天 3 次</span><span class="chip chip-pro">无限次识别 · Pro</span><span class="chip chip-pro">表格转 Markdown / CSV · Pro</span></div>
+        <div class="chips"><span class="chip">翻译免费不限次</span><span class="chip">离线公式识别免费</span><span class="chip">文字识别免费每天 3 次</span><span class="chip chip-pro">无限次识别 · Pro</span><span class="chip chip-pro">表格转 Markdown / CSV · Pro</span></div>
       </div>
-      <div class="demo tr-demo reveal" id="trDemo">
-        <div class="tr-switch" role="group" aria-label="切换原文与译文">
-          <button type="button" aria-pressed="true" data-tr="en">原文</button>
-          <button type="button" aria-pressed="false" data-tr="zh">译文</button>
+      <div class="shot-tabs reveal" data-tabs>
+        <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">截图翻译</button><button type="button" role="tab" aria-selected="false" data-tab="1">离线公式识别</button></div>
+        <div class="demo tr-demo" id="trDemo" data-panel="0">
+          <div class="tr-switch" role="group" aria-label="切换原文与译文">
+            <button type="button" aria-pressed="true" data-tr="en">原文</button>
+            <button type="button" aria-pressed="false" data-tr="zh">译文</button>
+          </div>
+          <div class="tr-pair">
+            <img class="en" src="/assets/shots/translate-before.webp" alt="原文：英文的搜索结果卡片" width="1384" height="360" loading="lazy" decoding="async">
+            <img class="zh" src="/assets/shots/translate-after.webp" alt="译文：同一张卡片，文字被替换成中文，链接颜色、红色关键词和版式保持不变" width="1378" height="360" loading="lazy" decoding="async" aria-hidden="true">
+          </div>
+          <p class="tr-note"><svg class="i"><use href="/assets/icons.svg#sparkles"/></svg>链接蓝、关键词红和卡片版式都留在原处，只换文字。</p>
         </div>
-        <div class="tr-pair">
-          <img class="en" src="/assets/shots/translate-before.webp" alt="原文：英文的搜索结果卡片" width="1384" height="360" loading="lazy" decoding="async">
-          <img class="zh" src="/assets/shots/translate-after.webp" alt="译文：同一张卡片，文字被替换成中文，链接颜色、红色关键词和版式保持不变" width="1378" height="360" loading="lazy" decoding="async" aria-hidden="true">
-        </div>
-        <p class="tr-note"><svg class="i"><use href="/assets/icons.svg#sparkles"/></svg>链接蓝、关键词红和卡片版式都留在原处，只换文字。</p>
+        <figure class="shot" data-panel="1" hidden><img src="/assets/shots/formula-recognition.webp" alt="公式识别结果窗：左侧原始截图，右上离线 KaTeX 实时预览，右下 LaTeX 源码与定界符切换" width="1598" height="1138" loading="lazy" decoding="async"><figcaption>左侧对照原始截图，右上离线 KaTeX 实时预览（修改下方 LaTeX 源码同步重绘），支持 4 种定界符一键切换。</figcaption></figure>
       </div>
     </div>
   </section>
@@ -240,7 +245,7 @@
         <ul class="bullets">
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>纵向、横向都能截</b>：宽表格、时间线也行，表格的冻结列会自动识别。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>不重复、不断层</b>：吸顶栏、悬浮按钮和滚动条只保留一次；鼠标停在列表上产生的悬停效果也会处理掉。</span></li>
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>拼完接着用</b>：可以继续标注、识别文字、贴图，导出 PNG、JPEG 或 PDF；开了便利贴的话，复制或保存后长图也会飞到屏幕边上。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>拼完接着用</b>：可以继续标注、二次裁剪（含透明圆角）、识别文字、贴图，导出 PNG、JPEG 或 PDF；开了便利贴的话，复制或保存后长图也会飞到屏幕边上。</span></li>
         </ul>
         <div class="chips"><span class="chip">免费版单次约 10 屏</span><span class="chip chip-pro">不限长度 · Pro</span><span class="chip chip-pro">导出 PDF · Pro</span></div>
       </div>
@@ -285,15 +290,16 @@
         <h2 class="title-md">钉在桌面当参考，<br>发出去之前再美化。</h2>
         <p class="lead">截图按 <kbd>⌘</kbd> <kbd>P</kbd> 钉在所有窗口最上层，对着它写代码、填表格都方便。要分享时，一键加上背景和阴影。</p>
         <ul class="bullets">
-          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>贴图</b>：滚轮缩放、调透明度，<kbd>⌥</kbd> <kbd>G</kbd> 让鼠标穿透；还能接着标注、识别文字、翻译。关掉了按 <kbd>⌥</kbd> <kbd>2</kbd> 找回。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>贴图</b>：滚轮缩放、调透明度，<kbd>⌥</kbd> <kbd>G</kbd> 让鼠标穿透；还能接着标注、识别文字与公式、翻译。关掉了按 <kbd>⌥</kbd> <kbd>2</kbd> 找回。</span></li>
+          <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>二次编辑裁剪与透明圆角</b>：贴图、长截图预览及访达右键「编辑图片」均支持二次裁剪（默认 <kbd>⇧</kbd><kbd>C</kbd>），支持拖拽边界、平移选区与按像素调节连续圆角，导出保留透明四角并可撤销，不破坏已有标注。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>背景美化</b>：当前桌面、渐变、纯色或内置壁纸做背景，调窗口外框、圆角和阴影。</span></li>
           <li><svg class="i"><use href="/assets/icons.svg#check"/></svg><span><b>美化里也能标注</b>：工具和截图时一样，改完直接复制或保存。</span></li>
         </ul>
-        <div class="chips"><span class="chip">贴图永久免费</span><span class="chip chip-pro">背景美化 · Pro</span></div>
+        <div class="chips"><span class="chip">贴图与圆角裁剪永久免费</span><span class="chip chip-pro">背景美化 · Pro</span></div>
       </div>
       <div class="shot-tabs reveal" data-tabs>
-        <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">背景美化</button><button type="button" role="tab" aria-selected="false" data-tab="1">美化中标注</button><button type="button" role="tab" aria-selected="false" data-tab="2">贴图</button></div>
-        <figure class="shot" data-panel="0"><img src="/assets/shots/beautify.webp" alt="背景美化：截图放在当前桌面背景上，下方选择壁纸与渐变" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>背景可选当前桌面、渐变、纯色调色板，下方切换窗口与光影。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/beautify-annotate.webp" alt="背景美化界面中切换到标注工具条" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>美化时点左下角画笔，就能在成品上继续标注。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/pin.webp" alt="贴图：截图钉在桌面最上层，带系统阴影" width="1165" height="884" loading="lazy" decoding="async"><figcaption>贴图钉在所有窗口最上层：滚轮缩放，可调透明度、让鼠标穿透，还能二次编辑。</figcaption></figure>
+        <div class="tab-row" role="tablist"><button type="button" role="tab" aria-selected="true" data-tab="0">背景美化</button><button type="button" role="tab" aria-selected="false" data-tab="1">美化中标注</button><button type="button" role="tab" aria-selected="false" data-tab="2">贴图</button><button type="button" role="tab" aria-selected="false" data-tab="3">圆角裁剪</button></div>
+        <figure class="shot" data-panel="0"><img src="/assets/shots/beautify.webp" alt="背景美化：截图放在当前桌面背景上，下方选择壁纸与渐变" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>背景可选当前桌面、渐变、纯色调色板，下方切换窗口与光影。</figcaption></figure><figure class="shot" data-panel="1" hidden><img src="/assets/shots/beautify-annotate.webp" alt="背景美化界面中切换到标注工具条" width="1448" height="1372" loading="lazy" decoding="async"><figcaption>美化时点左下角画笔，就能在成品上继续标注。</figcaption></figure><figure class="shot" data-panel="2" hidden><img src="/assets/shots/pin.webp" alt="贴图：截图钉在桌面最上层，带系统阴影" width="1165" height="884" loading="lazy" decoding="async"><figcaption>贴图钉在所有窗口最上层：滚轮缩放，可调透明度、让鼠标穿透，还能二次编辑。</figcaption></figure><figure class="shot" data-panel="3" hidden><img src="/assets/shots/crop-rounded.webp" alt="二次编辑裁剪：拖动边界调整范围，按像素调节连续圆角，悬停角点显示贴合曲率的蓝色弧形角标" width="1687" height="1334" loading="lazy" decoding="async"><figcaption>贴图、长截图预览与访达右键「编辑图片」均支持二次裁剪：按像素调连续圆角并保留透明四角，悬停或拖拽角点时渐显弧形角标。</figcaption></figure>
       </div>
     </div>
   </section>
